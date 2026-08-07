@@ -1,0 +1,1989 @@
+/* ==========================================================================
+   Why SOLD? Page - Scoped Styles (css/why-sold.css)
+   All classes prefixed with ws- to avoid conflicts with other pages.
+   ========================================================================== */
+
+/* --- Hero Breadcrumb --- */
+.ws-hero-breadcrumb {
+  position: absolute;
+  top: 49.2361cqi; /* 709/1440 */
+  left: 7.2222cqi; /* 104/1440 */
+  width: 16.3889cqi; /* 236/1440 */
+  height: 2.0139cqi; /* 29/1440 */
+  display: flex;
+  align-items: center;
+  gap: 0.5556cqi; /* 8/1440 */
+}
+
+.ws-hero-breadcrumb .ws-breadcrumb-home {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.25cqi; /* 18/1440 */
+  line-height: 2.0139cqi; /* 29/1440 */
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.ws-hero-breadcrumb .ws-breadcrumb-icon {
+  width: 1.5972cqi; /* 23/1440 */
+  height: 1.0417cqi; /* 15/1440 */
+  object-fit: contain;
+}
+
+.ws-hero-breadcrumb .ws-breadcrumb-current {
+  position: relative;
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.25cqi; /* 18/1440 */
+  line-height: 2.0139cqi; /* 29/1440 */
+  color: #FFFFFF;
+  display: flex;
+  align-items: center; /* or baseline if adjusted later */
+}
+
+.ws-yellow-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #FFA726;
+  border-radius: 50%;
+  margin: 0 4px;
+  position: relative;
+  top: -1px; /* Align slightly off the baseline to act as a period */
+}
+
+/* ============================
+   SECTION LABEL (shared pattern)
+   ============================ */
+.ws-section-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+.ws-section-label-bar {
+  width: 5px;
+  height: 35px;
+  background: #FFA726;
+  border-radius: 2px;
+}
+
+.ws-section-label-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #FFA726;
+  letter-spacing: 0;
+}
+
+/* ============================
+   ABOUT SOLD SECTION
+   ============================ */
+.ws-about-section {
+  background: #FFFFFF;
+  padding: 60px 0; /* Mobile default */
+}
+
+.ws-about-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px; /* Mobile default */
+}
+
+.ws-about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ws-about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.ws-about-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: #555;
+  margin: 0;
+}
+
+/* Mobile text styling for About SOLD */
+@media (max-width: 991px) {
+  .ws-about-text-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 3.82vw; /* 15px */
+    width: 89.57vw; /* 352px */
+    max-width: 100%;
+  }
+
+  .ws-about-text-mobile p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 4.07vw; /* 16px */
+    line-height: 5.60vw; /* 22px */
+    letter-spacing: 0.01em;
+    color: #0B0B0B;
+    margin: 0;
+  }
+
+  /* Mobile specific overrides for About SOLD label based on user specifications */
+  .ws-about-left .ws-section-label-wrap {
+    gap: 1.99vw; /* 7.84px */
+  }
+
+  .ws-about-left .ws-section-label-bar {
+    width: 0.96vw; /* 3.76px */
+    height: 7.89vw; /* 31px */
+  }
+
+  .ws-about-left .ws-section-label-text {
+    font-size: 5.09vw; /* 20px */
+    line-height: 7.63vw; /* 30px */
+  }
+}
+
+.ws-about-right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Web-only layout overrides */
+@media (min-width: 992px) {
+  .ws-about-section {
+    padding: 8.125cqi 0 5.6944cqi;
+  }
+
+  .ws-about-container {
+    max-width: 100cqi;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .ws-about-content {
+    flex-direction: row;
+    width: 82.6389cqi;
+    margin: 0 auto; /* Gives 8.6806cqi left and right gap within the 100cqi container */
+    gap: 11.25cqi;
+  }
+
+  .ws-about-left {
+    flex: 0 0 40cqi;
+    max-width: 40cqi;
+    margin-top: 2.3611cqi;
+    height: 51.3889cqi; /* From Figma layout */
+    position: relative;
+    display: block; /* Reset from flex to allow absolute positioning */
+  }
+
+  .ws-about-left .ws-section-label-wrap {
+    position: absolute;
+    top: 0;
+    left: 2.0833cqi;
+    width: 14.0826cqi;
+    height: 2.4437cqi;
+    margin: 0;
+    gap: 0.7028cqi;
+  }
+  
+  .ws-about-left .ws-section-label-bar {
+    width: 0.3937cqi;
+    height: 2.4437cqi;
+  }
+  
+  .ws-about-left .ws-section-label-text {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833cqi;
+    line-height: 2.0833cqi;
+    color: #FFA726;
+  }
+
+  .ws-about-text {
+    position: absolute;
+    top: 6.9444cqi;
+    left: 2.0833cqi;
+    width: 36.1806cqi;
+    height: 10.6944cqi;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25cqi;
+    line-height: 1.5278cqi;
+    letter-spacing: 0.01em;
+    color: #504B4B;
+  }
+
+  .ws-about-btn {
+    position: absolute;
+    top: 21.1111cqi;
+    left: 1.9444cqi;
+    border-radius: 3.8194cqi;
+    background: #263238;
+    display: inline-flex;
+    align-items: center;
+    /* top: 13, right: 11, bottom: 11.77, left: 9 */
+    padding: 0.9028cqi 0.7639cqi 0.8174cqi 0.625cqi;
+    /* gap: 24.9 (so text left is 9 + 41.1 + 24.9 = 75) */
+    gap: 1.7292cqi;
+  }
+  
+  .ws-about-btn .ws-btn-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.7361cqi;
+    line-height: 2.5375cqi; /* match Figma 36.54px bounding box to ensure exact vertical geometry */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  
+  .ws-about-btn .ws-btn-icon {
+    width: 2.8542cqi;
+    height: 2.8542cqi;
+    border-radius: 1.6667cqi;
+    background: #FFA726;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ws-about-right {
+    flex: 0 0 31.3889cqi;
+    max-width: 31.3889cqi;
+    margin-top: 0;
+    height: 53.75cqi; /* Force height from Figma */
+  }
+
+  /* Info Card Web Overrides (Exact absolute coordinates) */
+  .ws-about-right .ws-info-card {
+    display: block;
+    padding: 2.0139cqi 3.4722cqi 2.5cqi 3.4722cqi;
+    box-sizing: border-box;
+  }
+  
+  .ws-about-right .ws-info-icon {
+    position: absolute;
+    top: 2.0139cqi;
+    left: 13.4028cqi;
+    width: 4.5833cqi;
+    height: 4.3056cqi;
+    margin: 0;
+  }
+  
+  .ws-about-right .ws-info-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  
+  .ws-about-right .ws-info-title {
+    position: absolute;
+    top: 7.5cqi;
+    left: 3.4722cqi;
+    width: 24.4444cqi;
+    height: 2.2222cqi;
+    margin: 0;
+    font-size: 1.9444cqi;
+    line-height: 2.2222cqi; 
+  }
+
+  .ws-about-right .ws-info-desc {
+    position: absolute;
+    top: 10.9028cqi;
+    left: 3.4722cqi;
+    width: 24.4444cqi;
+    height: 3.5417cqi;
+    margin: 0;
+    font-size: 1.0417cqi;
+    line-height: 1.1806cqi;
+    letter-spacing: 0.01em;
+  }
+  
+  .ws-map-container {
+    position: absolute;
+    top: 28.8194cqi;
+    left: 0;
+    width: 40cqi;
+    height: 22.5694cqi;
+    margin-top: 0;
+  }
+
+  /* --- Web-only overrides for Our Founders --- */
+  .ws-founders-section {
+    padding-top: 5.6944cqi;
+    padding-bottom: 6.9444cqi;
+    background: #FFFFFF;
+  }
+
+  .ws-founders-container {
+    width: 79.5139cqi;
+    height: 68.75cqi;
+    margin-left: 10.2778cqi;
+    margin-right: 10.2083cqi;
+    padding: 0;
+    position: relative;
+  }
+
+  .ws-founders-container > .ws-section-label-wrap {
+    position: absolute;
+    top: 0;
+    left: 0.8333cqi;
+    width: 14.8611cqi;
+    height: 2.4306cqi;
+    display: block;
+    gap: 0; /* Remove flex gap */
+  }
+
+  .ws-founders-container > .ws-section-label-wrap .ws-section-label-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.4167cqi;
+    height: 2.4306cqi;
+    margin: 0;
+  }
+
+  .ws-founders-container > .ws-section-label-wrap .ws-section-label-text {
+    position: absolute;
+    top: 0.3472cqi; /* 0.3569cqi rounded */
+    left: 1.1806cqi; /* 1.1569cqi rounded */
+    width: 14.5139cqi;
+    height: 2.0833cqi;
+    line-height: 2.0833cqi;
+    font-size: 2.0833cqi;
+    font-weight: 600;
+    color: #FFA726; /* Figma fill exported as background */
+    margin: 0;
+  }
+
+  .ws-founder-card {
+    margin-bottom: 0;
+    border-radius: 0.9028cqi;
+    background: #E9EAEB;
+  }
+
+  /* Founder 1 */
+  .ws-founder-1 {
+    position: absolute;
+    top: 6.7361cqi;
+    left: 1px;
+    width: 79.4444cqi;
+    height: 27.0833cqi;
+    display: block;
+  }
+
+  .ws-founder-1 .ws-founder-info {
+    position: absolute;
+    top: 3.8194cqi;
+    left: 3.5417cqi;
+    width: 39.375cqi;
+    height: 20.6944cqi;
+    padding: 0;
+    display: block; /* To support absolute children */
+  }
+
+  .ws-founder-1 .ws-founder-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11.3889cqi;
+    height: 2.0833cqi;
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.1528cqi;
+    line-height: 1.3194cqi;
+    letter-spacing: 0.02em;
+    color: #263238;
+    display: flex;
+    align-items: center;
+  }
+
+  .ws-founder-1 .ws-founder-subtitle {
+    position: absolute;
+    top: 2.5694cqi;
+    left: 0;
+    width: 11.3889cqi;
+    height: 2.2542cqi;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1875cqi;
+    line-height: 2.0833cqi;
+    letter-spacing: 0.05em;
+    color: #FFA726;
+    display: flex;
+    align-items: center;
+  }
+
+  .ws-founder-1 .ws-founder-bio {
+    position: absolute;
+    top: 6.1431cqi;
+    left: 0;
+    width: 32.1528cqi;
+    height: 6.9444cqi;
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.3889cqi;
+    line-height: 1.7361cqi;
+    letter-spacing: 0.02em;
+    color: #0F0F0F;
+  }
+
+  .ws-founder-1 .ws-founder-btn {
+    position: absolute;
+    top: 16.6cqi;
+    left: 0;
+    width: 18.8194cqi;
+    height: 4.0896cqi;
+    margin: 0;
+    padding: 0;
+    border-radius: 3.8194cqi;
+    background: #263238;
+    display: block; /* To support absolute children */
+  }
+
+  .ws-founder-btn .ws-btn-icon {
+    position: absolute;
+    top: 0.6444cqi;
+    left: 0.625cqi;
+    width: 2.7417cqi;
+    height: 2.7417cqi;
+    border-radius: 1.6667cqi;
+    background: #FFA726;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ws-founder-btn .ws-btn-text {
+    position: absolute;
+    top: 0.7639cqi;
+    left: 5.2083cqi;
+    width: 12.8472cqi;
+    height: 2.5375cqi;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.7361cqi;
+    line-height: 2.0833cqi;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .ws-founder-1 .ws-founder-photo-wrap {
+    position: absolute;
+    top: 1.9444cqi;
+    left: 51.3194cqi;
+    width: 24.1667cqi;
+    height: 23.125cqi;
+    border-radius: 0.6944cqi;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Ensures child image respects the border-radius */
+  }
+
+  .ws-founder-1 .ws-founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.6944cqi;
+  }
+
+  /* Founder 2 */
+  .ws-founder-2 {
+    position: absolute;
+    top: 38.4028cqi; /* 97 + 390 + 66 gap */
+    left: 0;
+    width: 79.4444cqi;
+    height: 30.3472cqi;
+    display: block;
+  }
+
+  .ws-founder-2 .ws-founder-info {
+    position: absolute;
+    top: 4.9021cqi;
+    left: 36.4583cqi;
+    width: 39.5833cqi;
+    height: 22.2222cqi;
+    padding: 0;
+    display: block;
+  }
+
+  .ws-founder-2 .ws-founder-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20.4167cqi;
+    height: 2.0833cqi;
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.1528cqi;
+    line-height: 1.3194cqi;
+    letter-spacing: 0.02em;
+    color: #263238;
+    display: flex;
+    align-items: center;
+  }
+
+  .ws-founder-2 .ws-founder-subtitle {
+    position: absolute;
+    top: 2.5694cqi;
+    left: 0;
+    width: 17.6389cqi;
+    height: 2.0833cqi;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1875cqi;
+    line-height: 2.0833cqi;
+    color: #FFA726;
+    display: flex;
+    align-items: center;
+  }
+
+  .ws-founder-2 .ws-founder-bio {
+    position: absolute;
+    top: 5.9722cqi;
+    left: 0;
+    width: 39.5833cqi;
+    height: 6.9444cqi;
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.4583cqi;
+    line-height: 1.7361cqi;
+    letter-spacing: 0.02em;
+    color: #0F0F0F;
+  }
+
+  .ws-founder-2 .ws-founder-btn {
+    position: absolute;
+    top: 18.125cqi;
+    left: 0;
+    width: 18.8194cqi;
+    height: 4.0896cqi;
+    margin: 0;
+    padding: 0;
+    border-radius: 3.8194cqi;
+    background: #263238;
+    display: block;
+  }
+
+  .ws-founder-2 .ws-founder-photo-wrap {
+    position: absolute;
+    top: 2.2917cqi;
+    left: 3.3333cqi;
+    width: 26.6667cqi;
+    height: 26.1806cqi;
+    border-radius: 0.6944cqi;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .ws-founder-2 .ws-founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.6944cqi;
+  }
+
+  /* Founder Typography */
+  .ws-founder-name {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.1528cqi;
+    line-height: 1.3194cqi;
+    letter-spacing: 0.02em;
+    color: #263238;
+    margin: 0 0 0.4861cqi 0;
+  }
+
+  .ws-founder-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1875cqi;
+    line-height: 2.0833cqi;
+    letter-spacing: 0.05em;
+    color: #FFA726;
+    margin: 0 0 1.3194cqi 0;
+  }
+
+  .ws-founder-2 .ws-founder-subtitle {
+    letter-spacing: 0;
+  }
+
+  .ws-founder-bio {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.3889cqi;
+    line-height: 1.7361cqi;
+    letter-spacing: 0.02em;
+    color: #0F0F0F;
+    margin: 0;
+  }
+
+  .ws-founder-2 .ws-founder-bio {
+    font-size: 1.4583cqi;
+  }
+
+  .ws-founder-btn {
+    position: absolute;
+    width: 18.8194cqi;
+    height: 4.0896cqi;
+    border-radius: 3.8194cqi;
+    padding: 0;
+  }
+
+  .ws-founder-1 .ws-founder-btn {
+    top: 16.5972cqi;
+    left: 0;
+  }
+
+  .ws-founder-2 .ws-founder-btn {
+    bottom: 0; /* Auto pins to bottom of 22.2222cqi info block */
+    left: 0;
+  }
+
+  /* --- Web-only overrides for Clients Section --- */
+  .ws-clients-section {
+    position: relative;
+    width: 100cqi;
+    height: 64.8611cqi;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  .ws-clients-section .ws-clients-container {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ws-clients-section .ws-section-label-wrap {
+    position: absolute;
+    top: 4.8611cqi;
+    left: 6.1111cqi;
+    width: 20.9722cqi;
+    height: 2.4306cqi;
+    display: block;
+    margin: 0;
+  }
+
+  .ws-clients-section .ws-section-label-wrap .ws-section-label-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.4167cqi;
+    height: 2.4306cqi;
+    margin: 0;
+  }
+
+  .ws-clients-section .ws-section-label-wrap .ws-section-label-text {
+    position: absolute;
+    top: 0.2778cqi; /* 4.14 rounded */
+    left: 1.1806cqi; /* 16.66 rounded */
+    width: 19.7917cqi;
+    height: 2.0833cqi;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833cqi;
+    line-height: 2.0833cqi;
+    color: #FFA726;
+    margin: 0;
+  }
+
+  /* Mask wrapper — pass-through on desktop, functional on mobile */
+  .ws-clients-arc-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .ws-clients-arc-container {
+    position: absolute;
+    top: 13.6806cqi;
+    left: 7.2917cqi;
+    width: 85cqi;
+    height: 42.1528cqi;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ws-clients-arc-container .ws-client-logo {
+    position: absolute;
+    width: 9.8611cqi; /* 142px / 1440px */
+    height: 9.8611cqi;
+    margin: 0;
+  }
+
+  .ws-clients-arc-container .ws-client-inner {
+    top: 0.6944cqi; /* 10px / 1440px */
+    left: 0.625cqi; /* 9px / 1440px */
+    width: 8.5417cqi; /* 123px / 1440px */
+    height: 8.5417cqi;
+  }
+
+  /* Logo positioning calculated relative to arc container (offset: top 197, left 105) */
+  .ws-clients-arc-container .ws-logo-1 { top: 0px; left: 38.0556cqi; }
+  .ws-clients-arc-container .ws-logo-2 { top: 4.3056cqi; left: 25.3472cqi; }
+  .ws-clients-arc-container .ws-logo-3 { top: 11.0417cqi; left: 14.1667cqi; }
+  .ws-clients-arc-container .ws-logo-4 { top: 20.9028cqi; left: 4.9306cqi; }
+  .ws-clients-arc-container .ws-logo-5 { top: 32.9861cqi; left: 0.625cqi; }
+  .ws-clients-arc-container .ws-logo-6 { top: 4.3056cqi; left: 50.4167cqi; }
+  .ws-clients-arc-container .ws-logo-7 { top: 11.0417cqi; left: 60.9722cqi; }
+  .ws-clients-arc-container .ws-logo-8 { top: 20.9028cqi; left: 70.2083cqi; }
+  .ws-clients-arc-container .ws-logo-9 { top: 32.2917cqi; left: 75.1389cqi; }
+
+  /* Central Testimonial Block inside Section */
+  .ws-clients-section .ws-client-testimonial {
+    position: absolute;
+    top: 35.2778cqi; 
+    left: 27.2917cqi; 
+    width: 45cqi;
+    height: 25.625cqi;
+    padding: 0;
+    margin: 0;
+    display: block; /* Override global flex */
+  }
+
+  .ws-clients-section .ws-client-testimonial .ws-quote-icon {
+    position: absolute;
+    top: 0;
+    left: 19.7222cqi;
+    width: 7.5cqi;
+    height: 5.3472cqi;
+    margin: 0;
+  }
+
+  .ws-clients-section .ws-client-testimonial .ws-testimonial-text {
+    position: absolute;
+    top: 8.5417cqi;
+    left: 0;
+    width: 45cqi;
+    height: 7.2917cqi;
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.5972cqi;
+    line-height: 2.4306cqi;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #0F0F0F;
+  }
+
+  .ws-clients-section .ws-client-testimonial .ws-testimonial-line {
+    position: absolute;
+    top: 20.7639cqi;
+    left: 8.6111cqi;
+    width: 28.1944cqi;
+    height: 0;
+    margin: 0;
+    border-top: 1px solid #FFA726; /* Equivalent to height 0 with border */
+  }
+
+  .ws-clients-section .ws-client-testimonial .ws-testimonial-stars {
+    position: absolute;
+    top: 23.8194cqi;
+    left: 17.9167cqi;
+    width: 9.5833cqi;
+    height: 1.8056cqi;
+    margin: 0;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .ws-map-container {
+    width: 89.82vw; /* 353px */
+    height: 50.64vw; /* 199px */
+    margin-top: 20px;
+  }
+  .ws-map-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 992px) {
+  .ws-map-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .ws-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+/* --- Info Cards --- */
+.ws-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 21px; /* Gap between cards */
+}
+
+.ws-info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #24323A;
+  border-radius: 13px;
+  width: 452px;
+  height: 244px;
+  padding: 29px 50px 36px 50px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.ws-info-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #FFA726;
+  transition: height 0.4s ease-out;
+  z-index: 0;
+}
+
+.ws-info-card:hover::before {
+  height: 100%;
+}
+
+.ws-info-icon,
+.ws-info-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ws-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 17px;
+}
+
+.ws-icon-img-1 { width: 66px; height: 62px; object-fit: contain; transition: filter 0.4s ease-out; }
+.ws-icon-img-2 { width: 70px; height: 62px; object-fit: contain; transition: filter 0.4s ease-out; }
+.ws-icon-img-3 { width: 70px; height: 56px; object-fit: contain; transition: filter 0.4s ease-out; }
+
+.ws-info-card:hover .ws-info-icon img {
+  filter: brightness(0);
+}
+
+.ws-info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  width: 352px;
+}
+
+.ws-info-title {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: #FFFFFF;
+  margin: 0;
+  width: 352px;
+  height: 32px;
+  line-height: 32px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  transition: color 0.4s ease-out;
+}
+
+.ws-info-desc {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
+  color: #FFFFFF;
+  margin: 0;
+  width: 352px;
+  height: 51px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  transition: color 0.4s ease-out;
+}
+
+.ws-info-card:hover .ws-info-title,
+.ws-info-card:hover .ws-info-desc {
+  color: #000000;
+}
+
+/* --- Dark Pill Button (shared) --- */
+.ws-btn-dark-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #263238;
+  border-radius: 30px;
+  padding: 10px 28px 10px 10px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.ws-btn-dark-pill:hover {
+  background: #374850;
+}
+
+.ws-btn-icon {
+  width: 44px;
+  height: 44px;
+  background: #FFA726;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ws-btn-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* ============================
+   OUR FOUNDERS SECTION
+   ============================ */
+.ws-founders-section {
+  background: #F4F5F5;
+  padding: 60px 0;
+}
+
+@media (min-width: 992px) {
+  .ws-founders-section {
+    background: #FFFFFF;
+  }
+}
+
+.ws-founders-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 95px;
+}
+
+.ws-founder-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: #EDEDED;
+  border-radius: 26px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.ws-founder-card-reverse {
+  flex-direction: row-reverse;
+}
+
+.ws-founder-photo-wrap {
+  flex: 0 0 320px;
+  max-width: 320px;
+  background: #D8D8D8;
+}
+
+.ws-founder-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ws-founder-info {
+  flex: 1;
+  padding: 45px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ws-founder-name {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #263238;
+  margin: 0;
+}
+
+.ws-founder-bio {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #555;
+  margin: 0;
+}
+
+/* ============================
+   WHAT OUR CLIENTS SAY
+   ============================ */
+.ws-clients-section {
+  background: #E9EAEB;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.ws-clients-container {
+  position: relative;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ws-clients-arc-container {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ws-client-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: #B7BCBE;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.ws-client-logo:hover,
+.ws-client-logo.active {
+  background: #FFA726;
+}
+
+.ws-client-inner {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  width: 123px;
+  height: 123px;
+  border-radius: 50%;
+  background: #2F2D2B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ws-client-inner img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+
+
+.ws-client-testimonial {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.ws-quote-icon {
+  margin-bottom: 20px;
+}
+
+.ws-testimonial-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000000;
+  margin: 0 0 30px 0;
+}
+
+.ws-testimonial-line {
+  width: 337px;
+  height: 1px;
+  background: #FFA726;
+  margin-bottom: 30px;
+}
+
+.ws-testimonial-stars {
+  display: flex;
+  gap: 6px;
+}
+
+/* Web-only layout overrides */
+@media (min-width: 992px) {
+  .ws-hero-breadcrumb .ws-breadcrumb-current {
+    align-items: baseline;
+  }
+
+  .ws-clients-section {
+    padding: 0;
+  }
+  
+  .ws-clients-container {
+    width: 100cqi;
+    height: 64.8611cqi;
+    max-width: 100cqi;
+    padding: 0;
+  }
+  
+  .ws-clients-label-wrap {
+    position: absolute;
+    top: 4.8611cqi;
+    left: 6.1111cqi;
+    width: 20.9028cqi;
+  }
+
+  .ws-clients-label-wrap .ws-section-label-text {
+    font-size: 2.0833cqi;
+  }
+
+  .ws-clients-arc-container {
+    position: absolute;
+    width: 85cqi;
+    height: 42.1528cqi;
+    top: 13.6806cqi;
+    left: 7.2917cqi;
+    margin-top: 0;
+    display: block; /* Disable flex wrapper for absolute positioning */
+    transform-origin: 42.5cqi 41.6667cqi; /* Exact mathematical center for the dynamic circle */
+    will-change: transform;
+  }
+  
+
+
+  /* Central Testimonial Block */
+  .ws-client-testimonial {
+    position: absolute;
+    top: 35.2778cqi;
+    left: 27.2917cqi;
+    width: 45cqi;
+    height: 25.625cqi;
+    padding: 0;
+    transform: none;
+    display: block; /* Allows absolute positioning for children */
+  }
+
+  .ws-quote-icon {
+    position: absolute;
+    top: 0;
+    left: 19.7222cqi;
+    width: 7.5cqi;
+    height: 5.3472cqi;
+    margin: 0;
+  }
+
+  .ws-quote-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ws-testimonial-text {
+    position: absolute;
+    top: 8.5417cqi;
+    left: 0;
+    width: 45cqi;
+    height: 7.2917cqi;
+    font-size: 1.5972cqi;
+    line-height: 2.4306cqi;
+    letter-spacing: 0.02em;
+    color: #0F0F0F;
+    margin: 0;
+  }
+
+  .ws-testimonial-line {
+    position: absolute;
+    top: 20.7639cqi;
+    left: 8.6111cqi;
+    width: 28.1944cqi;
+    height: 0px;
+    border: 1px solid #FFA726;
+    margin: 0;
+    background: transparent;
+  }
+
+  .ws-testimonial-stars {
+    position: absolute;
+    top: 23.7681cqi;
+    left: 17.8813cqi;
+    width: 9.625cqi;
+    height: 1.8729cqi;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ws-star-icon {
+    width: 1.875cqi;
+    height: 1.875cqi;
+    flex-shrink: 0;
+  }
+
+  .ws-stars-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* --- Testimonial Click Animations --- */
+  .ws-client-testimonial.animating .ws-quote-icon {
+    opacity: 0;
+    animation: wsFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .ws-client-testimonial.animating .ws-star-icon {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(1) { animation: wsPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.4s; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(2) { animation: wsPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(3) { animation: wsPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.6s; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(4) { animation: wsPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(5) { animation: wsPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.8s; }
+
+  .ws-client-testimonial.animating .ws-testimonial-line {
+    transform: scaleX(0);
+    opacity: 0;
+    animation: wsGrowLineCenter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.0s;
+  }
+  .ws-client-testimonial.animating .ws-testimonial-text {
+    opacity: 0;
+    animation: wsFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.0s;
+  }
+
+  @keyframes wsFadeUp {
+    0% { opacity: 0; transform: translateY(1.0417cqi); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes wsGrowLineCenter {
+    0% { transform: scaleX(0); opacity: 0; }
+    5% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+  @keyframes wsPop {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* --- Info Cards Stack Animation --- */
+  .ws-info-cards {
+    position: relative;
+    width: 31.3889cqi;
+    height: 52.0833cqi; /* Increased to allow cards to appear from below */
+    display: block;
+    overflow: hidden; /* Clips the bottoms of cards that are pushed down */
+  }
+
+  .ws-info-card {
+    position: absolute;
+    left: 0;
+    width: 31.3889cqi;
+    height: 16.9444cqi; /* Matches Figma size perfectly */
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ws-info-desc {
+    opacity: 1;
+    max-height: none;
+    margin-top: 0;
+  }
+
+  /* Scroll Phase 0: Card 1 Active, Card 2 initially visible below */
+  .scroll-phase-0 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
+  .scroll-phase-0 .ws-info-card-2 { transform: translateY(18.4028cqi); z-index: 2; } /* 244 + 21 */
+  .scroll-phase-0 .ws-info-card-3 { transform: translateY(36.8056cqi); z-index: 3; } /* 265 + 244 + 21 */
+
+  /* Scroll Phase 1: Card 2 Covers Card 1 (Logo Visible), Card 3 Appears Below */
+  .scroll-phase-1 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
+  .scroll-phase-1 .ws-info-card-2 { transform: translateY(6.3194cqi); z-index: 2; } /* Leaves Card 1 Logo Exposed */
+  .scroll-phase-1 .ws-info-card-3 { transform: translateY(24.7222cqi); z-index: 3; } /* 91 + 244 + 21 */
+
+  /* Scroll Phase 2: Card 3 Covers Card 2 (Logo Visible) */
+  .scroll-phase-2 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
+  .scroll-phase-2 .ws-info-card-2 { transform: translateY(0px); z-index: 2; }
+  .scroll-phase-2 .ws-info-card-3 { transform: translateY(0px); z-index: 3; }
+}
+
+@media (max-width: 991px) {
+  /* Info cards mobile overrides */
+  /* Info cards mobile overrides */
+  .ws-info-cards {
+    gap: 2.54vw !important; /* 10px */
+    align-items: center !important;
+  }
+  .ws-info-card {
+    position: relative !important;
+    width: 90.58vw !important; /* 356px */
+    height: 44.78vw !important; /* 176px */
+    border-radius: 3.31vw !important; /* 13px */
+    background: #24323A !important;
+    padding: 0 !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+  .ws-info-icon {
+    position: absolute !important;
+    width: 9.41vw !important; /* 37px */
+    height: 8.91vw !important; /* 35px */
+    top: 4.83vw !important; /* 19px */
+    left: 40.58vw !important; /* 159.5px */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ws-icon-img-1, .ws-icon-img-2, .ws-icon-img-3 {
+    width: 100% !important; 
+    height: 100% !important;
+  }
+  .ws-info-content {
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+  .ws-info-title {
+    position: absolute !important;
+    width: 79.39vw !important; /* 312px */
+    height: 8.14vw !important; /* 32px */
+    top: 15.52vw !important; /* 61px */
+    left: 5.60vw !important; /* 22px */
+    font-family: 'Mona Sans', var(--font-heading) !important;
+    font-weight: 500 !important;
+    font-size: 6.11vw !important; /* 24px */
+    line-height: 8.14vw !important; /* 32px */
+    letter-spacing: -0.04em !important;
+    margin: 0 !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+  }
+  .ws-info-desc {
+    position: absolute !important;
+    width: 79.39vw !important; /* 312px */
+    height: 12.98vw !important; /* 51px */
+    top: 26.97vw !important; /* 106px */
+    left: 5.60vw !important; /* 22px */
+    font-family: 'Mona Sans', var(--font-body) !important;
+    font-weight: 400 !important;
+    font-size: 3.56vw !important; /* 14px */
+    line-height: 4.33vw !important; /* 17px */
+    letter-spacing: 0.01em !important;
+    margin: 0 !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+  }
+}
+
+@media (max-width: 991px) {
+  /* Our Founders Section Mobile Overrides */
+  .ws-founders-section {
+    padding-top: 0 !important; /* Gap handled by previous section's margin-bottom (38px) */
+    padding-bottom: 13.48vw !important; /* Exactly 53px gap to Clients section */
+    background-color: #FFFFFF !important;
+  }
+  .ws-founders-container {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 36px !important; /* 36px gap between cards and label */
+    align-items: center;
+  }
+  
+  /* Section Label override for Founders (similar to About SOLD) */
+  .ws-founders-container .ws-section-label-wrap {
+    gap: 1.99vw !important; /* 7.84px */
+    width: 38.68vw !important; /* 152px */
+    height: 8.91vw !important; /* 35px */
+    align-self: flex-start;
+    margin-left: 5.09vw !important; /* 20px left */
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+  .ws-founders-container .ws-section-label-bar {
+    width: 0.96vw !important; /* 3.76px */
+    height: 7.89vw !important; /* 31px */
+  }
+  .ws-founders-container .ws-section-label-text {
+    font-size: 5.09vw !important; /* 20px */
+    line-height: 7.63vw !important; /* 30px */
+  }
+
+  /* Founder Cards */
+  .ws-founder-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 90.58vw !important; /* 356px */
+    border-radius: 3.30vw !important; /* 13px */
+    padding: 7.89vw 5.85vw 10.94vw 5.85vw !important; /* 31px 23px 43px 23px */
+    gap: 8.14vw !important; /* 32px */
+    background: #E9EAEB !important;
+    align-items: center !important;
+    height: auto !important; /* Let content dictate height, Figma said 621/681 but content fits */
+    margin-bottom: 0 !important;
+  }
+  
+  /* Card 1 order (Info then Photo) */
+  .ws-founder-1 .ws-founder-info {
+    order: 1;
+  }
+  .ws-founder-1 .ws-founder-photo-wrap {
+    order: 2;
+  }
+  
+  /* Card 2 order (Match Card 1 on mobile: Info then Photo) */
+  .ws-founder-2 .ws-founder-info {
+    order: 1;
+  }
+  .ws-founder-2 .ws-founder-photo-wrap {
+    order: 2;
+  }
+  .ws-founder-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 78.88vw !important; /* 310px */
+    gap: 3.05vw !important; /* 12px */
+    height: auto !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  
+  .ws-founder-name {
+    width: 100% !important;
+    font-size: 5.09vw !important; /* 20px */
+    line-height: 4.83vw !important; /* 19px */
+    letter-spacing: 0.02em !important;
+    margin: 0 !important;
+    text-align: center !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    height: auto !important;
+  }
+  
+  .ws-founder-subtitle {
+    width: 100% !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 3.56vw !important; /* 14px */
+    line-height: 7.63vw !important; /* 30px */
+    letter-spacing: 0.05em !important; /* 5% */
+    color: #FFA726 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    height: auto !important;
+  }
+  
+  .ws-founder-bio {
+    width: 100% !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 4.07vw !important; /* 16px */
+    line-height: 5.34vw !important; /* 21px */
+    letter-spacing: 0.02em !important; /* 2% */
+    color: #0F0F0F !important;
+    margin: 0 !important;
+    text-align: center !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    height: auto !important;
+    white-space: nowrap !important;
+  }
+  
+  .ws-founder-btn {
+    width: 44.78vw !important; /* 176px */
+    height: 10.94vw !important; /* 43px */
+    border-radius: 13.99vw !important; /* 55px */
+    background: #263238 !important;
+    align-self: center !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    gap: 1.93vw !important; /* 7.58px gap */
+    text-decoration: none !important;
+  }
+  
+  .ws-founder-btn .ws-btn-text {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 5.09vw !important; /* 20px */
+    line-height: 7.63vw !important; /* 30px */
+    letter-spacing: 0.01em !important; /* 1% */
+    color: #FFFFFF !important;
+  }
+  
+  .ws-founder-btn .ws-btn-icon {
+    width: 7.38vw !important; /* 29px */
+    height: 7.38vw !important; /* 29px */
+    background: #FFA726 !important;
+    border-radius: 50% !important; /* User said 24px, 50% is safe for circle */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .ws-founder-btn .ws-btn-icon svg {
+    width: 4.07vw !important; /* ~16px downscaled arrow */
+    height: auto !important;
+  }
+  
+  .ws-founder-photo-wrap {
+    width: 78.88vw !important; /* 310px */
+    border-radius: 2.54vw !important; /* 10px */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+  }
+  
+  .ws-founder-1 .ws-founder-photo-wrap {
+    height: 75.32vw !important; /* 296px */
+  }
+  
+  .ws-founder-2 .ws-founder-photo-wrap {
+    height: 77.35vw !important; /* 304px */
+  }
+  
+  .ws-founder-photo {
+    border-radius: 2.54vw !important; /* 10px */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+@media (max-width: 991px) {
+  /* What Our Clients Say - Mobile Overrides */
+  .ws-clients-section {
+    padding-top: 0 !important; /* Gap handled by previous section's padding-bottom (53px) */
+    padding-bottom: 10vw !important;
+    background: #FFFFFF !important;
+    overflow: hidden !important; /* Prevent horizontal scrollbar from edge logos */
+  }
+  
+  .ws-clients-container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 83.97vw !important; /* Figma height 330px: 330/393*100 */
+    background: #E9EAEB !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 15vw 0 0 0 !important;
+    overflow: visible !important; /* Edge logos extend beyond viewport — section clips them */
+  }
+  
+  /* Section Label */
+  .ws-clients-label-wrap {
+    position: absolute !important;
+    top: -15vw !important;
+    left: 6.16vw !important; /* 24.24px */
+    width: 54.10vw !important; /* 212.59px */
+    height: 8.18vw !important; /* 32.14px */
+    margin: 0 !important;
+    gap: 1.99vw !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .ws-clients-label-wrap .ws-section-label-bar {
+    width: 0.96vw !important; /* 3.76px */
+    height: 7.89vw !important; /* 31px */
+  }
+  .ws-clients-label-wrap .ws-section-label-text {
+    font-size: 5.09vw !important; /* 20px */
+    line-height: 7.63vw !important; /* 30px */
+  }
+  
+  /* Arc Mask Wrapper — clips rotating logos, NOT testimonial */
+  .ws-clients-arc-mask {
+    position: absolute !important;
+    width: 120vw !important; /* Extra wide to fully show edge logos */
+    height: 100% !important; /* Full height of container to prevent harsh cutoff */
+    top: 0 !important;
+    left: -10vw !important; /* Center the extra 20vw width */
+    margin: 0 !important;
+    overflow: hidden !important; 
+    z-index: 1 !important; /* Kept behind the testimonial content (z-index 2) */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50vw, transparent 55vw) !important;
+    mask-image: linear-gradient(to bottom, black 0%, black 50vw, transparent 55vw) !important;
+  }
+  
+  /* Arc Container — rotates inside mask */
+  .ws-clients-arc-container {
+    position: absolute !important;
+    width: 100% !important;
+    height: 300% !important; /* Tall enough for off-screen logos below */
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    transform-origin: 60.38vw 68.14vw !important; /* Center of rotation + 10vw for mask shift */
+  }
+  
+  /* Logo circles */
+  .ws-client-logo {
+    width: 18.32vw !important; /* 72px */
+    height: 18.32vw !important; /* 72px */
+    position: absolute !important;
+    margin: 0 !important;
+    transition: background-color 0.3s ease !important;
+  }
+  .ws-client-inner {
+    width: 15.52vw !important; /* 61px */
+    height: 15.27vw !important; /* 60px */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .ws-client-inner img {
+    max-width: 12.21vw !important; /* 48px */
+    max-height: 6.62vw !important; /* 26px */
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  /* Testimonial Block — sits INSIDE the arc, above logos via z-index */
+  .ws-client-testimonial {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+  
+  .ws-quote-icon {
+    position: absolute !important;
+    top: 44.06vw !important; /* Figma y=173.19px → 173.19/393*100 */
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: 9.41vw !important;
+    pointer-events: auto !important;
+  }
+  .ws-quote-img {
+    width: 100% !important; 
+    height: auto !important; 
+  }
+  
+  .ws-testimonial-text {
+    position: absolute !important;
+    top: 54.19vw !important; /* Figma y=213px → 213/393*100 */
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: 81.93vw !important; /* 322px width → 322/393*100 */
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 3.05vw !important; /* 12px */
+    line-height: 4.33vw !important; /* 17px */
+    letter-spacing: 0.03em !important;
+    text-align: center !important;
+    color: #0F0F0F !important;
+    white-space: normal !important;
+    pointer-events: auto !important;
+  }
+  
+  .ws-testimonial-line {
+    position: absolute !important;
+    top: 72.64vw !important; /* Figma y=285.5px → 285.5/393*100 */
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: 38.42vw !important; /* 151px → 151/393*100 */
+    height: 0px !important;
+    border-top: 1px solid #FFA726 !important;
+    background: transparent !important;
+  }
+  
+  .ws-testimonial-stars {
+    position: absolute !important;
+    top: 75.57vw !important; /* Figma y=297px → 297/393*100 */
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: max-content !important;
+    gap: 0.51vw !important; /* 2px */
+    display: flex !important;
+  }
+  .ws-star-icon {
+    width: 3.05vw !important; /* 12px */
+    height: 3.05vw !important; /* 12px */
+  }
+
+  /* --- Mobile Custom Testimonial Animations --- */
+  /* Sequence: Quotes (0s) -> Line (0.4s) -> Stars (0.8s) -> Content (1.4s) */
+  .ws-client-testimonial.animating .ws-quote-icon {
+    opacity: 0;
+    animation: wsFadeUpMobile 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+  }
+  
+  .ws-client-testimonial.animating .ws-testimonial-line {
+    transform: scaleX(0);
+    opacity: 0;
+    animation: wsGrowLineCenterMobile 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s !important;
+  }
+  
+  .ws-client-testimonial.animating .ws-star-icon {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(1) { animation: wsPopMobile 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.8s !important; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(2) { animation: wsPopMobile 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.9s !important; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(3) { animation: wsPopMobile 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.0s !important; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(4) { animation: wsPopMobile 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.1s !important; }
+  .ws-client-testimonial.animating .ws-star-icon:nth-child(5) { animation: wsPopMobile 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.2s !important; }
+
+  .ws-client-testimonial.animating .ws-testimonial-text {
+    opacity: 0;
+    animation: wsFadeUpMobile 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.4s !important;
+  }
+
+  @keyframes wsFadeUpMobile {
+    0% { opacity: 0; transform: translateY(3vw); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes wsGrowLineCenterMobile {
+    0% { transform: scaleX(0); opacity: 0; }
+    5% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+  @keyframes wsPopMobile {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+}
+
+@media (max-width: 991px) {
+  /* ABOUT SOLD SECTION - Precise Mobile Coordinates */
+  .ws-about-section {
+    padding-top: 13.74vw !important; /* 54px to hero bottom */
+    padding-bottom: 0 !important; /* Handled by card margin-bottom */
+  }
+
+  .ws-about-container {
+    padding: 0 !important; /* Remove default padding to use exact left coordinates */
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
+  
+  .ws-about-content {
+    gap: 0 !important;
+  }
+  
+  .ws-about-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* 1. Label */
+  .ws-about-left .ws-section-label-wrap {
+    margin-left: 5.60vw !important; /* 22px left */
+    margin-bottom: 7.12vw !important; /* 28px below to description */
+    margin-top: 0 !important;
+    width: 38.68vw !important; /* 152px width */
+    height: 8.91vw !important; /* 35px height */
+    align-self: flex-start !important;
+  }
+
+  /* 2. Mobile Description */
+  .ws-about-text-mobile {
+    margin-left: 5.34vw !important; /* 21px left */
+    margin-bottom: 3.31vw !important; /* 13px below to map */
+    margin-top: 0 !important;
+    width: 89.57vw !important; /* 352px width */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3.82vw !important; /* 15px gap between p tags */
+  }
+
+  /* 3. Map */
+  .ws-about-left .ws-map-container {
+    margin-left: 5.09vw !important; /* 20px left */
+    margin-bottom: 9.92vw !important; /* 39px below to card container */
+    margin-top: 0 !important;
+    width: 89.82vw !important; /* 353px width */
+    height: 50.64vw !important; /* 199px height from user prompt 1151-1350? */
+    display: block !important;
+  }
+  .ws-map-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 4. Card Container */
+  .ws-about-right .ws-info-cards {
+    margin-top: 9.92vw !important; /* 39px */
+    margin-left: 4.58vw !important; /* 18px */
+    margin-right: 4.83vw !important; /* 19px */
+    margin-bottom: 9.67vw !important; /* 38px */
+    width: 90.58vw !important; /* 356px width */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Ensure the cards use the exact 356px width to maintain internal pixel gaps */
+  .ws-about-right .ws-info-card {
+    width: 100% !important; 
+    box-sizing: border-box !important;
+  }
+
+  /* Exact Coordinates for Founder Card 1 */
+  .ws-founder-card.ws-founder-1 {
+    height: 158.02vw !important; /* 621px total calculated height */
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .ws-founder-1 .ws-founder-info {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  
+  .ws-founder-1 .ws-founder-name,
+  .ws-founder-1 .ws-founder-subtitle,
+  .ws-founder-1 .ws-founder-bio,
+  .ws-founder-1 .ws-founder-btn,
+  .ws-founder-1 .ws-founder-photo-wrap {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+  }
+  
+  .ws-founder-1 .ws-founder-name {
+    top: 7.89vw !important; /* 31px */
+  }
+  
+  .ws-founder-1 .ws-founder-subtitle {
+    top: 15.01vw !important; /* 59px */
+  }
+  
+  .ws-founder-1 .ws-founder-bio {
+    top: 23.16vw !important; /* 91px */
+  }
+  
+  .ws-founder-1 .ws-founder-btn {
+    top: 52.67vw !important; /* 207px */
+  }
+  
+  .ws-founder-1 .ws-founder-photo-wrap {
+    top: 71.76vw !important; /* 282px */
+  }
+
+  /* Exact Coordinates for Founder Card 2 */
+  .ws-founder-card.ws-founder-2 {
+    height: 168.70vw !important; /* 663px total calculated height */
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .ws-founder-2 .ws-founder-info {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  
+  .ws-founder-2 .ws-founder-name,
+  .ws-founder-2 .ws-founder-subtitle,
+  .ws-founder-2 .ws-founder-bio,
+  .ws-founder-2 .ws-founder-btn,
+  .ws-founder-2 .ws-founder-photo-wrap {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+  }
+  
+  .ws-founder-2 .ws-founder-name {
+    top: 7.89vw !important; /* 31px */
+  }
+  
+  .ws-founder-2 .ws-founder-subtitle {
+    top: 15.01vw !important; /* 59px */
+  }
+  
+  .ws-founder-2 .ws-founder-bio {
+    top: 23.16vw !important; /* 91px */
+  }
+  
+  .ws-founder-2 .ws-founder-btn {
+    top: 63.36vw !important; /* 249px */
+  }
+  
+  .ws-founder-2 .ws-founder-photo-wrap {
+    top: 82.44vw !important; /* 324px */
+  }
+}
+

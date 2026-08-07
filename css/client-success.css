@@ -1,0 +1,846 @@
+/* =========================================================================
+   Client Success Page Styles
+   Using VW (Viewport Width) for fluid 1:1 scaling from 1440px Figma design
+   ========================================================================= */
+
+/* For Desktop (Web screens) - Fluid scaling based on 1440px */
+@media (min-width: 992px) {
+  
+  .client-success-hero {
+    position: relative;
+    width: 100%;
+    height: 57.2917vw; /* 825/1440 */
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+
+  .client-success-hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  /* --- Title Container (Left) --- */
+  .client-success-hero-title-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .client-success-hero-title {
+    position: absolute;
+    top: 16.5972vw; /* 239/1440 */
+    left: 4.4444vw; /* 64/1440 */
+    width: 54.5139vw; /* 785/1440 */
+    height: 8.1944vw; /* 118/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 4.6528vw; /* 67/1440 */
+    line-height: 4.7917vw; /* 69/1440 */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* --- Text Paragraph (Right) --- */
+  .client-success-hero-desc {
+    position: absolute;
+    bottom: 13.75vw; /* 198/1440 */
+    right: 5.6944vw; /* 82/1440 */
+    width: 33.3333vw; /* 480/1440 */
+    height: 10.0694vw; /* 145/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.5972vw; /* 23/1440 */
+    line-height: 2.0139vw; /* 29/1440 */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* --- Button (Right) --- */
+  .client-success-hero-btn {
+    position: absolute;
+    bottom: 6.0417vw; /* 87/1440 */
+    right: 16.1806vw; /* 233/1440 */
+    width: 22.8472vw; /* 329/1440 */
+    height: 3.8194vw; /* 55/1440 */
+    border-radius: 2.0139vw; /* 29/1440 */
+    background: #FFFFFF;
+    text-decoration: none;
+    display: block;
+  }
+
+  .client-success-hero-btn .btn-text-custom {
+    position: absolute;
+    top: 0.8181vw;
+    left: 4.5694vw;
+    width: 16.9444vw;
+    height: 2.0833vw;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.7361vw; /* 25/1440 */
+    line-height: 2.0833vw;
+    letter-spacing: 0.01em;
+    color: #1B3834;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .client-success-hero-btn .icon-circle {
+    position: absolute;
+    top: 0.3743vw;
+    left: 0.7181vw;
+    width: 2.7417vw; /* 39.48/1440 */
+    height: 2.9958vw; /* 43.14/1440 */
+    border-radius: 1.6667vw;
+    background: #FFA726;
+    margin: 0;
+  }
+
+  /* Breadcrumb (Bottom Left) */
+  .client-success-hero-breadcrumb {
+    position: absolute;
+    top: 49.2361vw; /* 709/1440 */
+    left: 7.2222vw; /* 104/1440 */
+    width: 16.3889vw;
+    height: 2.0139vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5556vw;
+  }
+
+  .client-success-hero-breadcrumb .breadcrumb-home {
+    width: 3.8194vw;
+    height: 2.0139vw;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 2.0139vw;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .client-success-hero-breadcrumb .breadcrumb-icon {
+    width: 1.5972vw;
+    height: 1.0417vw;
+    object-fit: contain;
+  }
+
+  .client-success-hero-breadcrumb .breadcrumb-services-wrapper {
+    width: 9.8611vw;
+    height: 2.0139vw;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .client-success-hero-breadcrumb .current {
+    width: auto;
+    height: 2.0139vw;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 2.0139vw;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    display: flex;
+    align-items: flex-end;
+  }
+  /* =========================================================================
+     Intro Section
+     ========================================================================= */
+  .cs-intro-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 7.6389vw; /* 935px absolute top - 825px hero height = 110px margin-top */
+    margin-bottom: 7.6389vw; /* Symmetrical margin for spacing */
+  }
+
+  .cs-intro-container {
+    width: 91.6667vw; /* 1320/1440 */
+    display: flex;
+    gap: 5.2083vw; /* 75/1440 */
+  }
+
+  .cs-intro-label {
+    width: 18.3611vw; /* 264.4/1440 */
+    height: 2.4444vw; /* 35.2/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833vw; /* 30/1440 */
+    line-height: 2.0833vw; /* 30/1440 */
+    color: #FFA726;
+    display: flex;
+    align-items: center; /* vertical-align: middle */
+    gap: 0.7639vw; /* 11/1440 gap between line and text */
+  }
+
+  .cs-intro-label::before {
+    content: '';
+    display: block;
+    width: 0.2778vw; /* 4/1440 */
+    height: 100%;
+    background: #FFA726;
+  }
+
+  .cs-intro-text {
+    width: 68.2639vw; /* 983/1440 */
+    height: 13.8889vw; /* 200/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 500;
+    font-size: 2.7083vw; /* 39/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    color: #000000;
+    margin: 0;
+  }
+
+  /* =========================================================================
+     Cards Section
+     ========================================================================= */
+  .cs-cards-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Figma parent: alignItems center */
+    margin-top: 8.0556vw; /* 116px gap to the above section */
+    gap: 7.3611vw; /* 106/1440 gap between boxes */
+  }
+
+  /* --- White card wrapper (default) --- */
+  .cs-card-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the hug-width card */
+    box-sizing: border-box;
+  }
+
+  /* --- Grey card wrapper --- */
+  .cs-card-wrapper.bg-grey {
+    background: #E9EAEB;
+    position: relative;
+    height: 37.6389vw; /* 542/1440 fixed height */
+  }
+
+  /* Grey card inner content positioned absolutely inside the grey wrapper */
+  .cs-card-wrapper.bg-grey .cs-card {
+    position: absolute;
+  }
+
+  /* Default grey card content position: x:126, y:113 */
+  .cs-card-2 .cs-card { left: 8.75vw; top: 7.8472vw; } /* 126/1440, 113/1440 */
+  .cs-card-4 .cs-card { left: 8.75vw; top: 8.0903vw; } /* 126/1440, 116.5/1440 */
+  .cs-card-6 .cs-card { left: 8.75vw; top: 7.8125vw; } /* 126/1440, 112.5/1440 */
+  .cs-card-8 .cs-card { left: 8.6806vw; top: 7.0139vw; } /* 125/1440, 101/1440 */
+  .cs-card-10 .cs-card { left: 8.0903vw; top: 7.0139vw; } /* 116.5/1440, 101/1440 */
+
+  /* --- Card row (inner flex container) --- */
+  .cs-card {
+    display: flex;
+    gap: 8.8889vw; /* 128/1440 */
+    align-items: flex-end; /* Default: flex-end */
+  }
+
+  /* Card 5: no alignItems (default stretch/start) */
+  .cs-card-5 .cs-card {
+    align-items: stretch;
+  }
+
+  /* Card 9: alignItems center */
+  .cs-card-9 .cs-card {
+    align-items: center;
+  }
+
+  /* --- Left column --- */
+  .cs-card-left {
+    width: 34.7917vw; /* 501/1440 */
+    display: flex;
+    flex-direction: column;
+    gap: 3.6111vw; /* 52/1440 default */
+  }
+
+  /* Card 5: left column gap 115px, fixed height 358px */
+  .cs-card-5 .cs-card-left {
+    gap: 7.9861vw; /* 115/1440 */
+    height: 24.8611vw; /* 358/1440 */
+  }
+
+  /* Card 9: left column gap 100px */
+  .cs-card-9 .cs-card-left {
+    gap: 6.9444vw; /* 100/1440 */
+  }
+
+  /* --- Logo dimensions per card (Figma exact) --- */
+  .cs-card-logo {
+    object-fit: contain;
+    object-position: left;
+  }
+
+  /* Card 1: Mered - 235×176 */
+  .cs-card-1 .cs-card-logo {
+    width: 16.3194vw; /* 235/1440 */
+    height: 12.2222vw; /* 176/1440 */
+  }
+
+  /* Card 2: Ellington - 253×114 */
+  .cs-card-2 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 7.9167vw; /* 114/1440 */
+  }
+
+  /* Card 3: Jubail Island - 253×157 */
+  .cs-card-3 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 10.9028vw; /* 157/1440 */
+  }
+
+  /* Card 4: Knight Frank - 253×107 */
+  .cs-card-4 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 7.4306vw; /* 107/1440 */
+  }
+
+  /* Card 5: Beyond - 310×79 */
+  .cs-card-5 .cs-card-logo {
+    width: 21.5278vw; /* 310/1440 */
+    height: 5.4861vw; /* 79/1440 */
+  }
+
+  /* Card 6: Banyan Group - 253×115 */
+  .cs-card-6 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 7.9861vw; /* 115/1440 */
+  }
+
+  /* Card 7: Regus - 253×114 */
+  .cs-card-7 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 7.9167vw; /* 114/1440 */
+  }
+
+  /* Card 8: Masaraj - 253×131 */
+  .cs-card-8 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 9.0972vw; /* 131/1440 */
+  }
+
+  /* Card 9: Better Homes - 306×54 */
+  .cs-card-9 .cs-card-logo {
+    width: 21.25vw; /* 306/1440 */
+    height: 3.75vw; /* 54/1440 */
+  }
+
+  /* Card 10: Ayat - 253×94 */
+  .cs-card-10 .cs-card-logo {
+    width: 17.5694vw; /* 253/1440 */
+    height: 6.5278vw; /* 94/1440 */
+  }
+
+  .cs-card-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.7083vw; /* 39/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  /* Cards 2, 6 have title width 445px */
+  .cs-card-2 .cs-card-title,
+  .cs-card-6 .cs-card-title {
+    width: 30.9028vw; /* 445/1440 */
+  }
+
+  /* Cards 7, 9 have title width 471px */
+  .cs-card-7 .cs-card-title,
+  .cs-card-9 .cs-card-title {
+    width: 32.7083vw; /* 471/1440 */
+  }
+
+  /* --- Right column --- */
+  .cs-card-right {
+    width: 39.0278vw; /* 562/1440 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Figma: button aligns to the right side */
+    gap: 7.0833vw; /* 102/1440 default */
+  }
+
+  /* Cards 7, 8, 9, 10: right column gap 78px */
+  .cs-card-7 .cs-card-right,
+  .cs-card-8 .cs-card-right,
+  .cs-card-9 .cs-card-right,
+  .cs-card-10 .cs-card-right {
+    gap: 5.4167vw; /* 78/1440 */
+  }
+
+  /* Cards 7, 9: right column button uses full-width wrapper with flex-end alignment */
+  .cs-card-7 .cs-card-right,
+  .cs-card-9 .cs-card-right {
+    align-items: flex-end;
+  }
+
+  /* Card 10: right column width 581px */
+  .cs-card-10 .cs-card-right {
+    width: 40.3472vw; /* 581/1440 */
+  }
+
+  /* Cards 6, 7, 8, 9: desc width 521px */
+  .cs-card-6 .cs-card-desc,
+  .cs-card-7 .cs-card-desc,
+  .cs-card-8 .cs-card-desc,
+  .cs-card-9 .cs-card-desc {
+    width: 36.1806vw; /* 521/1440 */
+  }
+
+  .cs-card-desc {
+    width: 100%;
+    align-self: stretch;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.5972vw; /* 23/1440 */
+    line-height: 2.0139vw; /* 29/1440 */
+    letter-spacing: 0.01em;
+    color: #292626;
+    margin: 0;
+    text-align: left;
+  }
+
+  .cs-card-btn {
+    position: relative;
+    width: 21.3889vw; /* 308/1440 */
+    height: 4.0972vw; /* 59/1440 */
+    border-radius: 3.8194vw; /* 55/1440 */
+    background: #263238;
+    text-decoration: none;
+    display: block;
+  }
+
+  .cs-card-btn-text {
+    position: absolute;
+    width: 15.9431vw; /* 229.58/1440 */
+    height: 2.0833vw; /* 30/1440 */
+    top: 1.0417vw; /* 15/1440 */
+    left: 5.525vw; /* 79.56/1440 */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.7361vw; /* 25/1440 */
+    line-height: 2.0833vw; /* 30/1440 */
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+  }
+
+  .cs-card-btn-icon {
+    position: absolute;
+    width: 3.3333vw; /* 48/1440 */
+    height: 3.3333vw; /* 48/1440 */
+    top: 0.3472vw; /* 5/1440 */
+    left: 0.4861vw; /* 7/1440 */
+    border-radius: 1.6667vw; /* 24/1440 */
+    background: #FFA726;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* =========================================================================
+   Success Formula Section (client-success.html)
+   ========================================================================= */
+.cs-success-formula-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 8.6111vw; /* 124px gap from cards section */
+}
+
+.sf-container {
+  width: 100%;
+  max-width: 1440px; /* Constrain on ultra-wide screens */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Header */
+.sf-header {
+  position: relative;
+  width: 100%;
+  height: 12vw; /* ~172px space before timeline starts */
+}
+
+.sf-title-wrapper {
+  position: absolute;
+  top: 1.0417vw; /* 15px */
+  left: 25.0694vw; /* 361px left gap */
+  width: 50.0694vw; /* 721px */
+  height: 4.0972vw; /* 59px */
+  display: flex;
+  justify-content: center;
+  gap: .9vw; /* Tightly pack elements to match Figma design */
+  align-items: baseline; /* perfectly aligns logo bottom to text baseline */
+}
+
+.sf-title-part {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 800;
+  font-size: 3.6111vw; /* 52/1440 */
+  line-height: 4.0972vw; /* 59/1440 */
+  letter-spacing: 0.01em;
+  color: #263238;
+  margin: 0;
+}
+
+.sf-title-logo {
+  width: 9.375vw; /* 135px */
+  height: 3.3333vw; /* 48px */
+  object-fit: contain;
+  transform: translateY(0.4vw); /* Nudge down slightly relative to text baseline */
+}
+
+.sf-subtitle {
+  position: absolute;
+  top: 6.3889vw; /* 92px */
+  left: 30vw; /* 432px */
+  width: 40.0694vw; /* 577px */
+  text-align: center;
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.1806vw; /* 17/1440 */
+  line-height: 1.7361vw; /* 25/1440 */
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.sf-subtitle .orange-text {
+  color: #FFA726;
+}
+
+
+/* --- Pre-Footer Overrides for Client Success Page --- */
+.cs-pre-footer .pre-footer-title {
+  top: 7.0833vw; /* 102/1440 */
+  left: 5.1389vw; /* 74/1440 */
+  width: 52.0139vw; /* 749/1440 */
+  height: 7.6389vw; /* 110/1440 */
+}
+
+.cs-pre-footer .btn-pre-footer {
+  width: 25.0833vw; /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
+}
+
+.cs-pre-footer .btn-pre-footer .btn-text {
+  color: #1B3834;
+}
+
+/* --- Plus Divider Override for Client Success Page --- */
+.client-success-page-body .plus-btn-divider {
+  position: relative !important;
+  width: 83.9583vw !important; /* 1209/1440 */
+  left: 9.0278vw !important; /* 130/1440 */
+  margin: 0.9028vw 0 2.9861vw 0 !important;
+  justify-content: flex-start !important;
+  padding-left: 40.2431vw !important; /* 579.5/1440 */
+  box-sizing: border-box !important;
+  max-width: none !important;
+}
+
+/* --- Web FAQ Background Override --- */
+.client-success-page-body .faq-section {
+  background-color: #F4F5F5 !important;
+}
+
+/* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
+@media (max-width: 991px) {
+  .client-success-hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .client-success-hero-content {
+    position: relative;
+    transform: none;
+    left: 0;
+    padding: 206px 30px 50px 30px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .client-success-hero-title-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    margin-bottom: 23px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .client-success-hero-title {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    font-size: 33px;
+    line-height: 38px;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .client-success-hero-desc {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    max-width: 321px;
+    height: auto;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.01em;
+    margin: 0 0 41px 0;
+  }
+
+  .client-success-hero-btn {
+    position: relative;
+    width: 225px !important;
+    height: 43px !important;
+    border-radius: 29px !important;
+    background: #FFFFFF !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+  }
+
+  .client-success-hero-btn .btn-text-custom {
+    position: absolute !important;
+    width: 163.54px !important;
+    height: 30px !important;
+    top: 6px !important;
+    left: 51.04px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    letter-spacing: 0.01em !important;
+    color: #1B3834 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .client-success-hero-btn .icon-circle {
+    position: absolute !important;
+    width: 35.42px !important;
+    height: 34px !important;
+    top: 4px !important;
+    left: 7.29px !important;
+    border-radius: 24px !important;
+    background: #FFA726 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+
+  .client-success-hero-breadcrumb {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  .client-success-hero-breadcrumb .breadcrumb-home {
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .client-success-hero-breadcrumb .breadcrumb-icon {
+    width: 20px;
+    height: 13px;
+  }
+
+  /* Intro Section Mobile */
+  .cs-intro-section {
+    padding: 60px 20px;
+  }
+  
+  .cs-intro-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cs-intro-label {
+    font-size: 24px;
+    line-height: 1.2;
+    color: #FFA726;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+  }
+  
+  .cs-intro-text {
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 500;
+  }
+  
+  .cs-intro-text br {
+    display: none; /* Let text wrap naturally on mobile */
+  }
+
+  /* Cards Section Mobile */
+  .cs-cards-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cs-card-wrapper {
+    padding: 60px 20px;
+    width: 100%;
+  }
+
+  .cs-card-wrapper.bg-white {
+    background: #FFFFFF;
+  }
+
+  .cs-card-wrapper.bg-grey {
+    background: #E9EAEB;
+    height: auto; /* Reset fixed height from desktop */
+    position: static; /* Reset relative positioning */
+  }
+
+  .cs-card-wrapper.bg-grey .cs-card {
+    position: static; /* Reset absolute positioning from desktop */
+  }
+  
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .cs-card-left, .cs-card-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cs-card-logo {
+    width: 200px;
+    height: auto;
+  }
+  
+  .cs-card-title {
+    font-size: 28px;
+    line-height: 36px;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    color: #000000;
+  }
+  
+  .cs-card-desc {
+    font-size: 18px;
+    line-height: 26px;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    color: #292626;
+  }
+  
+  .cs-card-btn {
+    position: relative;
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    background: #263238;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .cs-card-btn-text {
+    position: absolute;
+    top: 10px;
+    left: 65px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+  
+  .cs-card-btn-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 5px;
+    left: 5px;
+    border-radius: 20px;
+    background: #FFA726;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Success Formula Mobile */
+  .cs-success-formula-section {
+    padding: 60px 20px;
+  }
+  .sf-title-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .sf-title-part {
+    font-size: 32px;
+    line-height: 42px;
+    text-align: center;
+  }
+  .sf-title-logo {
+    width: 90px;
+    height: auto;
+  }
+  .sf-subtitle {
+    position: relative;
+    top: -10px;
+    left: auto;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+  }
+
+}

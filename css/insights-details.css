@@ -1,0 +1,676 @@
+/* =========================================================================
+   Insights Details Page Styles
+   Using VW (Viewport Width) for fluid 1:1 scaling from 1440px Figma design
+   ========================================================================= */
+
+/* For Desktop (Web screens) - Fluid scaling based on 1440px */
+@media (min-width: 992px) {
+  /* --- Hero Section --- */
+  .insights-details-hero {
+    position: relative;
+    width: 100%;
+    height: 57.2917vw; /* 825/1440 */
+    overflow: hidden;
+  }
+
+  .insights-details-hero-bg {
+    position: absolute;
+    top: 0;
+    left: -1.5972vw; /* -23/1440 */
+    width: 102.7778vw; /* 1480/1440 */
+    height: 100%;
+    background: linear-gradient(135.16deg, #000000 -4.05%, rgba(0, 0, 0, 0) 75.07%), url('../assets/images/insightdetailsherp.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    border-radius: 0 !important;
+  }
+
+  .insights-details-hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  .insights-details-hero-title-container {
+    position: absolute;
+    top: 35.4861vw; /* 511/1440 */
+    left: 4.4444vw; /* 64/1440 */
+  }
+
+  .insights-details-hero-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 4.6528vw; /* 67/1440 */
+    line-height: 4.7917vw; /* 69/1440 */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .insights-details-hero-meta {
+    position: absolute;
+    top: 45.9722vw; /* 662/1440 */
+    left: 4.4444vw; /* 64/1440 */
+    padding-left: 0.9028vw; /* 13/1440 */
+    display: flex;
+    align-items: center;
+    gap: 1.1111vw; /* 16/1440 */
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4167vw; /* 6/1440 */
+  }
+
+  .meta-item span {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 2.0139vw; /* 29/1440 */
+    letter-spacing: 0.01em;
+    color: #FFA726;
+  }
+
+  .meta-item i {
+    color: #FFA726;
+    font-size: 1.3889vw; /* 20/1440 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* --- Details Body Section --- */
+  .insights-details-section {
+    width: 100%;
+    background: #F4F5F5;
+    padding-top: 8.3333vw; /* 120/1440 */
+    padding-bottom: 8.3333vw; /* 120/1440 */
+    display: flex;
+    justify-content: center;
+  }
+
+  .insights-details-container {
+    width: 95.9028vw; /* 1381/1440 */
+    max-width: 1381px;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .insights-details-content {
+    padding: 5.5556vw; /* 80/1440 */
+    display: flex;
+    justify-content: center;
+  }
+
+  .insights-details-body {
+    width: 100%;
+    max-width: 84.7917vw; /* 1221/1440 - Figma node 1867-2252 width */
+    display: flex;
+    flex-direction: column;
+    gap: 5.2083vw; /* 75/1440 - Figma gap */
+  }
+
+  .insights-details-paragraph {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 2.2917vw; /* 33/1440 */
+    line-height: 2.9167vw; /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-details-subtitle {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.125vw; /* 45/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    width: 49.9305vw; /* 719/1440 */
+    margin: 0;
+  }
+
+  .insights-details-list {
+    width: 57.4305vw; /* 827/1440 */
+    margin: 0;
+    margin-left: 4.4583vw; /* Indent by 57px (167px total from screen edge) */
+    padding-left: 2.0833vw; /* 30/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 2.2917vw; /* 33/1440 */
+    line-height: 2.9167vw; /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    list-style-type: none;
+  }
+
+  .insights-details-list li {
+    position: relative;
+  }
+
+  .insights-details-list li::before {
+    content: '•';
+    position: absolute;
+    left: -1.9333vw; /* 12/1440 - tighten gap to match Figma */
+    color: #000000;
+  }
+
+  .insights-details-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5.5556vw; /* 80/1440 */
+  }
+
+  .insights-details-full-image {
+    width: 89.5833vw; /* 1290/1440 */
+    height: 43.75vw; /* 630/1440 */
+    border-radius: 1.4583vw; /* 21/1440 */
+    object-fit: cover;
+  }
+
+  /* --- Related Insights Section VW Overrides --- */
+  .insights-details-page-body .insights-section {
+    padding-top: 8.3333vw !important; /* 120/1440 */
+    padding-bottom: 8.3333vw !important; /* 120/1440 */
+  }
+
+  .insights-details-page-body .insights-label {
+    font-size: 2.0833vw !important; /* 30/1440 */
+    line-height: 2.0833vw !important;
+  }
+
+  .insights-details-page-body .insights-label-wrap svg,
+  .insights-details-page-body .insights-label-wrap img {
+    width: 0.3937vw !important; /* 5.67/1440 */
+    height: 1.9541vw !important; /* 28.14/1440 */
+  }
+
+  .insights-details-page-body .insights-title {
+    font-size: 2.8472vw !important; /* 41/1440 */
+    line-height: 3.2638vw !important; /* 47/1440 */
+    width: 35.0694vw !important; /* 505/1440 */
+  }
+
+  .insights-details-page-body .btn-discover-now-insights {
+    width: 18.75vw !important; /* 270/1440 */
+    height: 3.75vw !important; /* 54/1440 */
+    border-radius: 2.0138vw !important; /* 29/1440 */
+    padding: 0 !important;
+  }
+
+  .insights-details-page-body .btn-discover-now-insights .btn-text {
+    font-size: 1.6666vw !important; /* 24/1440 */
+    line-height: 2.0833vw !important; /* 30/1440 */
+    top: 0.8708vw !important; /* 12.54/1440 */
+    left: 4.7493vw !important; /* 68.39/1440 */
+    width: 12.8vw !important; /* 184.32/1440 */
+    height: 2.2097vw !important; /* 31.82/1440 */
+  }
+
+  .insights-details-page-body .btn-discover-now-insights .icon-circle {
+    top: 0.3472vw !important; /* 5/1440 */
+    left: 0.4166vw !important; /* 6/1440 */
+    width: 3.0784vw !important; /* 44.33/1440 */
+    height: 3.0555vw !important; /* 44/1440 */
+  }
+
+  .insights-details-page-body .btn-discover-now-insights .discover-arrow-img {
+    width: 3.0784vw !important; /* 44.33/1440 */
+    height: 3.0555vw !important; /* 44/1440 */
+    border-radius: 1.6666vw !important; /* 24/1440 */
+  }
+
+  .insights-details-page-body .insights-header-top {
+    width: 89.5833vw !important; /* 1290/1440 */
+    max-width: 89.5833vw !important;
+    margin: 0 auto !important; /* perfectly center */
+    padding: 0 !important;
+  }
+
+  /* --- Related Insights Cards --- */
+  .insights-related-cards-container {
+    width: 91.7361vw; /* 1321/1440 */
+    margin: 0 auto;
+    margin-top: 2.2222vw; /* 32/1440 */
+  }
+
+  .insights-related-cards-row {
+    display: flex;
+    gap: 0.8333vw; /* 12/1440 */
+    align-items: flex-start;
+  }
+
+  .insights-related-card {
+    background: #E9EAEB;
+    border-radius: 1.3194vw; /* 19/1440 */
+    padding: 1.1805vw 1.3888vw 3.0555vw; /* 17px 20px 44px */
+    display: flex;
+    flex-direction: column;
+    gap: 2.2916vw; /* 33/1440 */
+  }
+
+  .insights-related-card-large {
+    width: 37.9861vw; /* 547/1440 */
+    flex-shrink: 0;
+  }
+
+  .insights-related-card-small {
+    flex: 1;
+  }
+
+  .insights-related-card-img {
+    width: 100%;
+    height: 18.4027vw; /* 265/1440 */
+    border-radius: 1.4583vw; /* 21/1440 */
+    overflow: hidden;
+  }
+
+  .insights-related-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.4583vw; /* 21/1440 */
+  }
+
+  .insights-related-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9027vw; /* 13/1440 */
+  }
+
+  .insights-related-card-date {
+    display: flex;
+    align-items: center;
+    gap: 0.4861vw; /* 7/1440 */
+  }
+
+  .insights-related-cal-icon {
+    width: 1.8055vw; /* 26/1440 */
+    height: 1.7361vw; /* 25/1440 */
+    object-fit: contain;
+  }
+
+  .insights-related-card-date span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 3.6111vw; /* 52/1440 */
+    color: #000000;
+  }
+
+  .insights-related-card-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.5972vw; /* 23/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-related-card-title-large {
+    font-size: 1.9444vw; /* 28/1440 */
+  }
+
+  .insights-related-card-desc {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.9722vw; /* 14/1440 */
+    line-height: 1.3888vw; /* 20/1440 */
+    letter-spacing: 0.01em;
+    color: #292626;
+    margin: 0;
+  }
+
+  .insights-related-read-more {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.4583vw; /* 21/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .insights-related-read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* --- Pre-footer VW Overrides --- */
+  .insights-details-page-body .pre-footer {
+    height: 19.8611vw !important; /* 286/1440 */
+  }
+
+  .insights-details-page-body .pre-footer-title {
+    top: 7.0833vw !important; /* 102/1440 */
+    left: 5.1388vw !important; /* 74/1440 */
+    width: 52.0138vw !important; /* 749/1440 */
+    height: 7.6388vw !important; /* 110/1440 */
+    font-size: 3.4027vw !important; /* 49/1440 */
+    line-height: 3.8194vw !important; /* 55/1440 */
+  }
+
+  .insights-details-page-body .btn-pre-footer {
+    top: 12.7083vw !important; /* 183/1440 */
+    right: auto !important;
+    left: 69.2361vw !important; /* 997/1440 */
+    width: 25.2777vw !important; /* 364/1440 */
+    height: 4.0277vw !important; /* 58/1440 */
+    border-radius: 2.0138vw !important; /* 29/1440 */
+  }
+
+  .insights-details-page-body .btn-pre-footer .icon-circle {
+    left: 0.7944vw !important; /* 11.44/1440 */
+    top: 0.3951vw !important; /* 5.69/1440 */
+    width: 3.0333vw !important; /* 43.68/1440 */
+    height: 3.1590vw !important; /* 45.49/1440 */
+    border-radius: 1.6666vw !important; /* 24/1440 */
+  }
+
+  .insights-details-page-body .btn-pre-footer .btn-text {
+    left: 5.0555vw !important; /* 72.8/1440 */
+    top: 0.9722vw !important; /* 14/1440 */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 1.7361vw !important; /* 25/1440 */
+    line-height: 2.0833vw !important; /* 30/1440 */
+    color: #1B3834 !important;
+  }
+}
+
+/* For Mobile (Below 992px) - Fallback to standard px/layout */
+@media (max-width: 991px) {
+  /* --- Hero Section --- */
+  .insights-details-hero {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 100px 20px 40px 20px;
+  }
+
+  .insights-details-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135.16deg, #000000 -4.05%, rgba(0, 0, 0, 0) 75.07%), url('../assets/images/insightdetailsherp.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .insights-details-hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .insights-details-hero-title-container {
+    width: 100%;
+  }
+
+  .insights-details-hero-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .insights-details-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .meta-item span {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #FFA726;
+  }
+
+  .meta-item i {
+    color: #FFA726;
+    font-size: 16px;
+  }
+
+  /* --- Details Body Section --- */
+  .insights-details-section {
+    width: 100%;
+    background: #F4F5F5;
+    padding: 40px 20px;
+  }
+
+  .insights-details-container {
+    width: 100%;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .insights-details-content {
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .insights-details-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .insights-details-paragraph {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-details-subtitle {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-details-list {
+    margin: 0;
+    padding-left: 20px;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    list-style-type: none;
+  }
+
+  .insights-details-list li {
+    position: relative;
+  }
+
+  .insights-details-list li::before {
+    content: '•';
+    position: absolute;
+    left: -10px; /* tighten gap */
+    color: #000000;
+  }
+
+  .insights-details-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .insights-details-full-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* --- Related Insights Section Mobile Overrides --- */
+  .insights-details-page-body .insights-header-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+
+  .insights-details-page-body .insights-label-wrap {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .insights-details-page-body .insights-title {
+    width: 100% !important;
+    font-size: 28px !important;
+    line-height: 36px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .insights-details-page-body .insights-header-top > div:last-child {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* --- Related Insights Cards Mobile --- */
+  .insights-related-cards-container {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 24px;
+  }
+
+  .insights-related-cards-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .insights-related-card {
+    background: #E9EAEB;
+    border-radius: 16px;
+    padding: 12px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .insights-related-card-large {
+    width: 100%;
+  }
+
+  .insights-related-card-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .insights-related-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .insights-related-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .insights-related-card-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .insights-related-cal-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .insights-related-card-date span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+  }
+
+  .insights-related-card-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-related-card-title-large {
+    font-size: 20px;
+  }
+
+  .insights-related-card-desc {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: #292626;
+    margin: 0;
+  }
+
+  .insights-related-read-more {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    text-decoration: none;
+  }
+}
