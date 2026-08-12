@@ -1330,6 +1330,15 @@
     left: 8px !important; /* Matches exactly with Figma */
     width: 32px !important; /* Matches exactly with Figma */
     height: 32px !important;
+    background: #FFA726 !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .client-success-page-body .cs-pre-footer .btn-pre-footer .icon-circle img {
+    border-radius: 24px !important;
   }
 
   .client-success-page-body .cs-pre-footer .btn-pre-footer .btn-text {

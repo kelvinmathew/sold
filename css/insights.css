@@ -1276,10 +1276,11 @@
 
   .insights-latest-title {
     font-family: 'Mona Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 5.0890vw !important; /* 20/393 */
-    line-height: normal !important; /* preventing any artificial gap */
-    color: #FFA726 !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 24px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
     margin: 0 !important;
   }
 
@@ -1397,10 +1398,11 @@
 
   .insights-feed-title {
     font-family: 'Mona Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 5.0890vw !important; /* 20/393 */
-    line-height: 7.6335vw !important; /* 30/393 */
-    color: #FFA726 !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 24px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
     margin: 0 !important;
   }
 
@@ -1551,17 +1553,18 @@
   .insights-load-more {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 5.0890vw !important; /* 20/393 */
-    line-height: 6.1068vw !important; /* 24/393 */
+    font-size: 20px !important;
+    line-height: 24px !important;
     letter-spacing: 0.01em !important;
     color: #000000 !important;
     text-align: center !important;
     text-decoration: none !important;
     display: block !important;
-    width: 30.0254vw !important; /* 118/393 */
-    height: 6.1068vw !important; /* 24/393 */
+    width: max-content !important;
+    height: auto !important;
+    white-space: nowrap !important;
     vertical-align: middle !important;
-    margin: 7.6335vw auto 0 auto !important; /* 30px top margin */
+    margin: 30px auto 0 auto !important; /* 30px top margin restored */
   }
 
   /* Cards Section Mobile */
@@ -1690,6 +1693,104 @@
     font-size: 16px;
     line-height: 24px;
     width: 100%;
+  }
+
+  /* Insights Mobile Pre-Footer Overrides (Replicated from Client Success) */
+  .insights-page-body .cs-pre-footer {
+    height: auto !important;
+    padding-bottom: 60px !important;
+    width: 100% !important; /* Reset 100vw */
+    margin-left: 0 !important; /* Remove negative calc margin pulling section left */
+    margin-right: 0 !important;
+  }
+
+  .insights-page-body .cs-pre-footer .pre-footer-inner {
+    position: relative !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding-top: 59.36px !important;
+    padding-left: 0 !important; /* Move spacing to margins for strict pixel control */
+    background: #263238 !important; 
+  }
+
+  .insights-page-body .cs-pre-footer .pre-footer-title {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important; 
+    left: auto !important;
+    right: auto !important;
+    width: 346.21px !important;
+    height: auto !important;
+    font-size: 36px !important;
+    line-height: 55px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-bottom: 32.04px !important; 
+    margin-left: 30px !important; /* Strict 30px gap to left screen */
+    margin-right: auto !important;
+    padding: 0 !important;
+    color: #FFFFFF !important; 
+  }
+  
+  .insights-page-body .cs-pre-footer .insights-mobile-pre-footer-title {
+    color: #FFFFFF !important;
+  }
+
+  .insights-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
+    color: #FFFFFF !important;
+  }
+
+  .insights-page-body .cs-pre-footer .btn-pre-footer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 239px !important;
+    height: 42px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 30px !important; /* Strict 30px gap to left screen */
+    margin-right: 124px !important; /* Strict right gap to match 125px request roughly */
+    padding: 0 !important;
+    background: #FFFFFF !important; 
+    display: block !important;
+  }
+  
+  .insights-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
+    position: absolute !important;
+    top: 5px !important;
+    left: 8px !important; /* Matches exactly with Figma */
+    width: 32px !important; /* Matches exactly with Figma */
+    height: 32px !important;
+    background: #FFA726 !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .insights-page-body .cs-pre-footer .btn-pre-footer .icon-circle img {
+    border-radius: 24px !important;
+  }
+
+  .insights-page-body .cs-pre-footer .btn-pre-footer .btn-text {
+    position: absolute !important;
+    top: 5px !important;
+    left: 46.47px !important; /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
+    width: 186.95px !important;
+    height: 30px !important;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    color: #1B3834 !important; /* Text inside button should be green */
+    text-align: center !important; /* Center text within Figma's bounding box */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
 }
