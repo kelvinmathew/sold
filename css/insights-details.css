@@ -460,7 +460,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, #0000006B, #0000006B), url('../assets/images/insightdetailsherp.png') !important;
+    background: linear-gradient(0deg, #0000006B, #0000006B), url('../assets/images/herodetailpage.svg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -548,7 +548,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 37px !important; /* Exact gap from Figma */
+    gap: 33px !important;
   }
 
   .insights-details-paragraph {
@@ -567,7 +567,7 @@
     line-height: 28px !important;
     color: #000000 !important;
     margin: 0 !important;
-    margin-bottom: -21px !important; /* Reduces 37px flex gap to exactly 16px gap below subtitle */
+    margin-bottom: 3px !important; /* 33px gap + 3px margin = 36px total gap */
   }
 
   .insights-details-list {

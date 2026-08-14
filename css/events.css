@@ -1,0 +1,1382 @@
+/* 
+  ==============================================
+  EVENTS PAGE STYLES (Desktop - VW Units)
+  ==============================================
+*/
+
+.events-page-body {
+  background: #F4F5F5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base resets for fluid sections */
+.events-page-body .vw-fluid-section {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.events-page-body .vw-fluid-container {
+  width: 100vw;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ==============================================
+   1. HERO SECTION
+   ============================================== */
+@media (min-width: 992px) {
+  
+  .events-hero {
+    position: relative;
+    width: 100%;
+    height: 57.2917vw; /* 825/1440 */
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+
+  .events-hero .hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .events-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.10); /* #0000001A as requested */
+    z-index: 2;
+  }
+
+  .events-hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  /* --- Title Container (Left) --- */
+  .events-hero-title-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .events-hero-title {
+    position: absolute;
+    top: 16.5972vw; /* 239/1440 */
+    left: 4.4444vw; /* 64/1440 */
+    width: 64.7917vw; /* 933/1440 */
+    height: 8.1944vw; /* 118/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 4.6528vw; /* 67/1440 */
+    line-height: 4.7917vw; /* 69/1440 */
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+
+  .events-hero-title .text-orange {
+    color: #FFA726;
+  }
+
+  .events-hero-title .text-white {
+    color: #FFFFFF;
+  }
+
+  /* --- Text Paragraph (Right) --- */
+  .events-hero-desc {
+    position: absolute;
+    bottom: 13.75vw; /* 198/1440 */
+    right: 4.375vw; /* 63/1440 */
+    width: 34.6528vw; /* 499/1440 */
+    height: 8.0556vw; /* 116/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.5972vw; /* 23/1440 */
+    line-height: 2.0139vw; /* 29/1440 */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* --- Button (Right) --- */
+  .events-hero-btn {
+    position: absolute;
+    bottom: 6.0417vw; /* 87/1440 */
+    right: 10.0694vw; /* 145/1440 */
+    width: 28.9583vw; /* 417/1440 */
+    height: 3.8194vw; /* 55/1440 */
+    border-radius: 2.0139vw; /* 29/1440 */
+    background: #FFFFFF;
+    text-decoration: none;
+    display: block;
+  }
+
+  .events-hero-btn .btn-text-custom {
+    position: absolute;
+    top: 0.8181vw; /* 11.78/1440 */
+    left: 5.7917vw; /* 83.4/1440 */
+    width: 27.1097vw; /* 390.38/1440 */
+    height: 2.0833vw; /* 30/1440 */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.7361vw; /* 25/1440 */
+    line-height: 2.0833vw;
+    letter-spacing: 0.01em;
+    color: #1B3834;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .events-hero-btn .icon-circle {
+    position: absolute;
+    top: 0.3472vw; /* 5/1440 */
+    left: 0.9028vw; /* 13/1440 */
+    width: 3.0556vw; /* 44/1440 */
+    height: 3.0556vw; /* 44/1440 */
+    border-radius: 1.6667vw; /* 24/1440 */
+    background: #FFA726;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Breadcrumb (Bottom Left) */
+  .events-hero-breadcrumb {
+    position: absolute;
+    top: 49.2361vw; /* 709/1440 */
+    left: 7.2222vw; /* 104/1440 */
+    width: 16.3889vw;
+    height: 2.0139vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5556vw;
+  }
+
+  .events-hero-breadcrumb .breadcrumb-home {
+    width: 3.8194vw;
+    height: 2.0139vw;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 2.0139vw;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .events-hero-breadcrumb .breadcrumb-icon {
+    width: 1.5972vw;
+    height: 1.0417vw;
+    object-fit: contain;
+  }
+
+  .events-hero-breadcrumb .breadcrumb-services-wrapper {
+    width: 9.8611vw;
+    height: 2.0139vw;
+    display: flex;
+    align-items: center;
+  }
+
+  .events-hero-breadcrumb .current {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw; /* 18/1440 */
+    line-height: 2.0139vw;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+  }
+
+  /* ==============================================
+     2. INTRO SECTION
+     ============================================== */
+  .events-intro-section {
+    width: 100%;
+    padding-top: 6.9444vw; /* 100/1440 - estimated padding */
+    padding-bottom: 104px;
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+  }
+
+  .events-intro-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .events-intro-row {
+    width: 91.6667vw; /* 1320/1440 */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 175px;
+  }
+
+  .events-intro-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7639vw; /* 11/1440 */
+  }
+
+  .events-intro-bar {
+    width: 0.2778vw; /* 4/1440 */
+    height: 2.4438vw; /* 35.19/1440 */
+  }
+
+  .events-intro-heading {
+    width: 17.3194vw; /* 249.4/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833vw; /* 30/1440 */
+    line-height: 2.0833vw; /* 30/1440 */
+    color: #FFA726;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .events-intro-right {
+    display: flex;
+  }
+
+  .events-intro-text {
+    width: 61.0417vw; /* 879/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 500;
+    font-size: 2.2222vw; /* 32/1440 */
+    line-height: 2.9167vw; /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* ==============================================
+     3. PROJECT LAUNCH SECTION
+     ============================================== */
+  .events-project-launch-section {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 6.9444vw; /* 100/1440 */
+    display: flex;
+    justify-content: center;
+  }
+
+  .events-project-launch-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-launch-content {
+    width: 90.4861vw; /* 1303/1440 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .project-launch-left {
+    width: 49.9306vw; /* 719/1440 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-launch-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.75vw; /* 54/1440 */
+    line-height: 3.4722vw; /* 50/1440 */
+    letter-spacing: 0.01em;
+    color: #263238;
+    margin: 0 0 5.0694vw 0; /* 73px */
+  }
+
+  .project-launch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 0.9028vw; /* 13px */
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw; /* EXACT 3px gap from figma */
+  }
+
+  .project-launch-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .bullet-dot {
+    width: 1.25vw; /* 18px */
+    height: 1.25vw; /* 18px */
+    background: #FFA726;
+    border-radius: 0.6944vw; /* 10px */
+    margin-right: 2.9167vw; /* 42px */
+    flex-shrink: 0;
+  }
+
+  .bullet-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 2.0833vw; /* 30/1440 */
+    line-height: 2.7778vw; /* 40/1440 */
+    color: #0B0B0B;
+    display: block; /* Ensure margins and explicit widths work */
+  }
+
+  /* EXACT Figma specific alignments per item */
+  .project-launch-list li:nth-child(1) {
+    height: 6.875vw; /* 99px */
+  }
+  .project-launch-list li:nth-child(1) .bullet-dot {
+    margin-top: 1.5972vw; /* 23px */
+  }
+  .project-launch-list li:nth-child(1) .bullet-text {
+    margin-top: 0.4861vw; /* 7px */
+    width: 45vw; /* 648px */
+  }
+
+  .project-launch-list li:nth-child(2) {
+    height: 5.9028vw; /* 85px */
+  }
+  .project-launch-list li:nth-child(2) .bullet-dot {
+    margin-top: 1.3889vw; /* 20px */
+  }
+  .project-launch-list li:nth-child(2) .bullet-text {
+    margin-top: 0.3472vw; /* 5px */
+    width: 44.6528vw; /* 643px */
+  }
+
+  .project-launch-list li:nth-child(3) {
+    height: 5.8333vw; /* 84px */
+  }
+  .project-launch-list li:nth-child(3) .bullet-dot {
+    margin-top: 1.25vw; /* 18px */
+  }
+  .project-launch-list li:nth-child(3) .bullet-text {
+    margin-top: 0.2778vw; /* 4px */
+    width: 41.3889vw; /* 596px */
+  }
+
+  .project-launch-list li:nth-child(4) {
+    height: 6.9444vw; /* 100px */
+  }
+  .project-launch-list li:nth-child(4) .bullet-dot {
+    margin-top: 1.3194vw; /* 19px */
+  }
+  .project-launch-list li:nth-child(4) .bullet-text {
+    margin-top: 0.2778vw; /* 4px */
+    width: 41.1111vw; /* 592px */
+  }
+
+  .project-launch-list li:nth-child(5) {
+    height: 6.8056vw; /* 98px */
+  }
+  .project-launch-list li:nth-child(5) .bullet-dot {
+    margin-top: 1.5278vw; /* 22px */
+  }
+  .project-launch-list li:nth-child(5) .bullet-text {
+    margin-top: 0.625vw; /* 9px */
+    width: 42.7083vw; /* 615px */
+  }
+
+  .project-launch-right {
+    display: flex;
+  }
+
+  .project-launch-img {
+    width: 35.6944vw; /* 514/1440 */
+    height: 37.9167vw; /* 546/1440 */
+    border-radius: 1.7361vw; /* 25px */
+    margin-top: 3.1944vw; /* 46px */
+    object-fit: cover;
+  }
+
+  /* ==============================================
+     4. GROUND BREAKING SECTION
+     ============================================== */
+  .events-ground-breaking-section {
+    width: 100%;
+    background: #E9EAEB;
+    padding-top: 5.3472vw; /* 77/1440 */
+    padding-bottom: 4.4444vw; /* 64/1440 */
+    display: flex;
+    justify-content: center;
+  }
+
+  .events-ground-breaking-container {
+    width: 100vw;
+    max-width: 1440px;
+    padding-left: 6.4583vw; /* 93/1440 */
+    box-sizing: border-box;
+  }
+
+  .ground-breaking-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.75vw; /* 54/1440 */
+    line-height: 4.0972vw; /* 59/1440 */
+    letter-spacing: 0.01em;
+    color: #263238;
+    margin: 0 0 3.4722vw 0; /* 50/1440 */
+    width: 55.9722vw; /* 806/1440 */
+  }
+
+  .ground-breaking-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .ground-breaking-left {
+    width: 35.6944vw; /* 514/1440 */
+    flex-shrink: 0;
+  }
+
+  .ground-breaking-img {
+    width: 35.6944vw; /* 514/1440 */
+    height: 41.9444vw; /* 604/1440 */
+    border-radius: 1.7361vw; /* 25/1440 */
+    object-fit: cover;
+  }
+
+  .ground-breaking-right {
+    margin-left: 5.2778vw; /* 76/1440 */
+    padding-top: 2.7778vw; /* 40/1440 */
+  }
+
+  .ground-breaking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw; /* EXACT 3px gap from figma */
+  }
+
+  .ground-breaking-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* EXACT Figma specific alignments per item */
+  .ground-breaking-list li:nth-child(1) {
+    height: 6.875vw; /* 99px */
+  }
+  .ground-breaking-list li:nth-child(1) .bullet-dot {
+    margin-top: 1.5972vw; /* 23px */
+  }
+  .ground-breaking-list li:nth-child(1) .bullet-text {
+    margin-top: 0.4861vw; /* 7px */
+    width: 40.9028vw; /* 589px */
+  }
+
+  .ground-breaking-list li:nth-child(2) {
+    height: 5.9028vw; /* 85px */
+  }
+  .ground-breaking-list li:nth-child(2) .bullet-dot {
+    margin-top: 1.3889vw; /* 20px */
+  }
+  .ground-breaking-list li:nth-child(2) .bullet-text {
+    margin-top: 0.3472vw; /* 5px */
+    width: 41.8056vw; /* 602px */
+  }
+
+  .ground-breaking-list li:nth-child(3) {
+    height: 6.3194vw; /* 91px */
+  }
+  .ground-breaking-list li:nth-child(3) .bullet-dot {
+    margin-top: 1.25vw; /* 18px */
+  }
+  .ground-breaking-list li:nth-child(3) .bullet-text {
+    margin-top: 0.2778vw; /* 4px */
+    width: 41.3889vw; /* 596px */
+  }
+
+  .ground-breaking-list li:nth-child(4) {
+    height: 6.9444vw; /* 100px */
+  }
+  .ground-breaking-list li:nth-child(4) .bullet-dot {
+    margin-top: 0.8333vw; /* 12px */
+  }
+  .ground-breaking-list li:nth-child(4) .bullet-text {
+    margin-top: 0.2778vw; /* 4px */
+    width: 41.1111vw; /* 592px */
+  }
+
+  .ground-breaking-list li:nth-child(5) {
+    height: 6.8056vw; /* 98px */
+  }
+  .ground-breaking-list li:nth-child(5) .bullet-dot {
+    margin-top: 1.0417vw; /* 15px */
+  }
+  .ground-breaking-list li:nth-child(5) .bullet-text {
+    margin-top: 0.625vw; /* 9px */
+    width: 42.7083vw; /* 615px */
+  }
+
+  /* ==============================================
+     5. BROKER & AGENT EVENTS SECTION
+     ============================================== */
+  .events-broker-section {
+    width: 100%;
+    background: #FFFFFF;
+    padding-top: 6.9444vw; /* 100/1440 */
+    padding-bottom: 6.9444vw; /* 100/1440 */
+    display: flex;
+    justify-content: center;
+  }
+
+  .events-broker-container {
+    width: 100vw;
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .events-broker-content {
+    width: 87.8472vw; /* 1265/1440 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .events-broker-left {
+    width: 49.8611vw; /* 718/1440 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .events-broker-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.75vw; /* 54/1440 */
+    line-height: 4.375vw; /* 63/1440 */
+    letter-spacing: 0.01em;
+    color: #263238;
+    margin: 0 0 3.6806vw 0; /* 53/1440 gap */
+    width: 30vw; /* 432/1440 */
+  }
+
+  .events-broker-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 0.6944vw; /* 10/1440 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw; /* EXACT 3px gap from figma */
+  }
+
+  .events-broker-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* EXACT Figma specific alignments per item (cloned from project-launch with identical text metrics) */
+  .events-broker-list li:nth-child(1) { height: 6.875vw; /* 99px */ }
+  .events-broker-list li:nth-child(1) .bullet-dot { margin-top: 1.5972vw; /* 23px */ }
+  .events-broker-list li:nth-child(1) .bullet-text { margin-top: 0.4861vw; /* 7px */ width: 45vw; /* 648px */ }
+
+  .events-broker-list li:nth-child(2) { height: 5.9028vw; /* 85px */ }
+  .events-broker-list li:nth-child(2) .bullet-dot { margin-top: 1.3889vw; /* 20px */ }
+  .events-broker-list li:nth-child(2) .bullet-text { margin-top: 0.3472vw; /* 5px */ width: 44.6528vw; /* 643px */ }
+
+  .events-broker-list li:nth-child(3) { height: 5.8333vw; /* 84px */ }
+  .events-broker-list li:nth-child(3) .bullet-dot { margin-top: 1.25vw; /* 18px */ }
+  .events-broker-list li:nth-child(3) .bullet-text { margin-top: 0.2778vw; /* 4px */ width: 41.3889vw; /* 596px */ }
+
+  .events-broker-list li:nth-child(4) { height: 6.9444vw; /* 100px */ }
+  .events-broker-list li:nth-child(4) .bullet-dot { margin-top: 1.3194vw; /* 19px */ }
+  .events-broker-list li:nth-child(4) .bullet-text { margin-top: 0.2778vw; /* 4px */ width: 41.1111vw; /* 592px */ }
+
+  .events-broker-list li:nth-child(5) { height: 6.8056vw; /* 98px */ }
+  .events-broker-list li:nth-child(5) .bullet-dot { margin-top: 1.5278vw; /* 22px */ }
+  .events-broker-list li:nth-child(5) .bullet-text { margin-top: 0.625vw; /* 9px */ width: 42.7083vw; /* 615px */ }
+
+  .events-broker-right {
+    padding-top: 5.5556vw; /* 80/1440 */
+    display: flex;
+  }
+
+  .events-broker-img {
+    width: 35.6944vw; /* 514/1440 */
+    height: 41.9444vw; /* 604/1440 */
+    border-radius: 1.7361vw; /* 25/1440 */
+    object-fit: cover;
+  }
+
+  /* ==============================================
+     6. MEDIA & PR EVENTS SECTION
+     ============================================== */
+  .events-media-section {
+    width: 100%;
+    background: #E9EAEB;
+    padding-top: 5.3472vw; /* 77/1440 */
+    padding-bottom: 4.4444vw; /* 64/1440 */
+    margin-bottom: 9.3903vw; /* 135.22px gap to Testimonials */
+    display: flex;
+    justify-content: center;
+  }
+
+  .events-media-container {
+    width: 100vw;
+    max-width: 1440px;
+    padding-left: 5.2083vw; /* 75/1440 */
+    box-sizing: border-box;
+  }
+
+  .events-media-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.75vw; /* 54/1440 */
+    line-height: 4.0972vw; /* 59/1440 */
+    letter-spacing: 0.01em;
+    color: #263238;
+    margin: 0 0 2.6389vw 0; /* 38/1440 gap */
+    width: 55.9722vw; /* 806/1440 */
+  }
+
+  .events-media-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .events-media-left {
+    width: 35.6944vw; /* 514/1440 */
+    flex-shrink: 0;
+  }
+
+  .events-media-img {
+    width: 35.6944vw; /* 514/1440 */
+    height: 41.9444vw; /* 604/1440 */
+    border-radius: 1.7361vw; /* 25/1440 */
+    object-fit: cover;
+  }
+
+  .events-media-right {
+    margin-left: 4.8611vw; /* 70/1440 */
+    padding-top: 3.125vw; /* 45/1440 */
+  }
+
+  .events-media-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw; /* EXACT 3px gap from figma */
+  }
+
+  .events-media-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* EXACT Figma specific alignments per item */
+  .events-media-list li:nth-child(1) { height: 6.875vw; /* 99px */ }
+  .events-media-list li:nth-child(1) .bullet-dot { margin-top: 1.5972vw; /* 23px */ }
+  .events-media-list li:nth-child(1) .bullet-text { margin-top: 0.4861vw; /* 7px */ width: 40.9028vw; /* 589px */ }
+
+  .events-media-list li:nth-child(2) { height: 5.9028vw; /* 85px */ }
+  .events-media-list li:nth-child(2) .bullet-dot { margin-top: 1.3889vw; /* 20px */ }
+  .events-media-list li:nth-child(2) .bullet-text { margin-top: 0.3472vw; /* 5px */ width: 41.8056vw; /* 602px */ }
+
+  .events-media-list li:nth-child(3) { height: 6.3194vw; /* 91px */ }
+  .events-media-list li:nth-child(3) .bullet-dot { margin-top: 2.5vw; /* 36px */ }
+  .events-media-list li:nth-child(3) .bullet-text { margin-top: 1.7361vw; /* 25px */ width: 41.3889vw; /* 596px */ }
+
+  .events-media-list li:nth-child(4) { height: 6.9444vw; /* 100px */ }
+  .events-media-list li:nth-child(4) .bullet-dot { margin-top: 0.8333vw; /* 12px */ }
+  .events-media-list li:nth-child(4) .bullet-text { margin-top: 0.2778vw; /* 4px */ width: 41.1111vw; /* 592px */ }
+
+  .events-media-list li:nth-child(5) { height: 6.8056vw; /* 98px */ }
+  .events-media-list li:nth-child(5) .bullet-dot { margin-top: 1.0417vw; /* 15px */ }
+  .events-media-list li:nth-child(5) .bullet-text { margin-top: 0.625vw; /* 9px */ width: 42.7083vw; /* 615px */ }
+
+  /* ==============================================
+     7. EVENTS FAQ SECTION
+     ============================================== */
+  .events-faq-section {
+    background: #E9EAEB !important;
+    padding-top: 5.625vw !important; /* 81/1440 */
+    padding-bottom: 5.625vw !important; /* symmetrical bottom padding */
+  }
+
+  /* ==============================================
+     8. EVENTS PRE-FOOTER OVERRIDES
+     ============================================== */
+  .pre-footer-title {
+    width: 52.0138vw !important; /* 749/1440 */
+    height: 7.6388vw !important; /* 110/1440 */
+    top: 7.0833vw !important; /* 102/1440 */
+    text-transform: uppercase !important;
+  }
+}
+
+/* ==============================================
+   9. MOBILE VIEW OVERRIDES (max-width: 991px)
+   ============================================== */
+@media (max-width: 991px) {
+  /* Copy the header styles to ensure exact match on mobile */
+  .site-header {
+    position: absolute !important;
+    top: 12.7226vw !important; /* 50/393 */
+    left: 6.3613vw !important;
+    right: 6.1068vw !important;
+    width: auto !important;
+    max-width: calc(100% - 12.4681vw) !important;
+    height: 13.7404vw !important;
+    z-index: 100 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-logo {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 24.6819vw !important;
+    height: 13.7404vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+  }
+
+  .header-logo .logo-link,
+  .header-logo .site-logo {
+    width: 24.6819vw !important;
+    height: 13.7404vw !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  .mobile-menu-btn {
+    position: relative !important;
+    display: flex !important;
+    width: 10.4325vw !important;
+    height: 10.4325vw !important;
+    border-radius: 7.6335vw !important;
+    background: #FFA726 !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.5267vw !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-menu-btn svg,
+  .mobile-menu-btn img {
+    width: 6.1068vw !important;
+    height: 6.1068vw !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Events Hero specific mobile styles */
+  .events-hero {
+    position: relative !important;
+    width: 100% !important;
+    height: 216.7938vw !important; /* 852/393 */
+    min-height: 216.7938vw !important;
+    background: #141619 !important;
+    overflow: hidden !important;
+  }
+
+  .events-hero .hero-bg-img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  .events-hero .hero-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(180deg, rgba(20, 22, 25, 0) 0%, #141619 100%) !important;
+    z-index: 2 !important;
+  }
+
+  .events-hero-content {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    z-index: 3 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .events-hero-title-container {
+    position: absolute !important;
+    top: 84.7328vw !important; /* 333/393 */
+    left: 6.3613vw !important; /* 25/393 */
+    width: 80.9160vw !important; /* 318/393 */
+    height: 40.7124vw !important; /* 160/393 */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0px !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+  }
+
+  .events-hero-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #FFFFFF !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 9.7201vw !important; /* 38.2/393 */
+    line-height: 10.9414vw !important; /* 43/393 */
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+    vertical-align: middle !important;
+  }
+
+  .events-hero-title .text-orange {
+    color: #FFFFFF !important;
+  }
+
+  .events-hero-title br {
+    display: none !important;
+  }
+
+  .events-hero-desc,
+  .events-hero-btn {
+    display: none !important;
+  }
+
+  .events-hero-breadcrumb {
+    position: absolute !important;
+    top: 135.6234vw !important; /* 533/393 */
+    bottom: auto !important;
+    left: 7.6335vw !important; /* 30/393 */
+    display: flex !important;
+    align-items: center !important;
+    gap: 2.0356vw !important; /* 8px */
+    z-index: 10 !important;
+  }
+
+  .events-hero-breadcrumb .breadcrumb-home,
+  .events-hero-breadcrumb .breadcrumb-services-wrapper .current {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 3.3078vw !important; /* 13px */
+    line-height: 7.3791vw !important; /* 29px */
+    letter-spacing: 0.01em !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+  }
+
+  .events-hero-breadcrumb .breadcrumb-icon {
+    width: 5.8524vw !important; /* 23px */
+    height: 3.8167vw !important; /* 15px */
+    object-fit: contain !important;
+  }
+
+  /* Intro Section specific mobile styles */
+  .events-intro-section {
+    padding-top: 15.2672vw !important; /* ~60px */
+    padding-bottom: 15.2672vw !important; /* ~60px */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .events-intro-container {
+    width: 100% !important;
+    padding: 0 5.2163vw !important; /* ~20.5px padding to match 352px content width on 393px screen */
+    box-sizing: border-box !important;
+  }
+
+  .events-intro-row {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 6.1068vw !important; /* ~24px gap to description */
+  }
+
+  .events-intro-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; /* Vertically centered as in Figma */
+    gap: 1.9924vw !important; /* 7.83px exact gap between bar and text */
+  }
+
+  .events-intro-bar {
+    width: 0.9593vw !important; /* 3.77px */
+    height: 7.888vw !important; /* 31px */
+  }
+
+  .events-intro-heading {
+    width: auto !important;
+    margin: 0 !important;
+    font-size: 5.0891vw !important; /* 20px */
+    line-height: 7.6336vw !important; /* 30px */
+    color: #FFA726 !important;
+  }
+
+  .events-intro-right {
+    width: 100% !important;
+  }
+
+  .events-intro-text {
+    width: 100% !important;
+    font-size: 4.0712vw !important; /* 16px */
+    line-height: 5.5980vw !important; /* 22px */
+    color: #0B0B0B !important;
+  }
+
+  /* ==============================================
+     3. PROJECT LAUNCH SECTION (MOBILE)
+     ============================================== */
+  .events-project-launch-section {
+    padding-top: 10.1781vw !important; /* 40px */
+    padding-bottom: 10.1781vw !important; /* 40px */
+  }
+
+  .events-project-launch-container {
+    width: 100% !important;
+    padding: 0 6.3613vw !important; /* 25px */
+    box-sizing: border-box !important;
+  }
+
+  .project-launch-content {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .project-launch-left {
+    width: 100% !important;
+  }
+
+  .project-launch-title {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 5.5979vw !important; /* 22px */
+    line-height: 7.1246vw !important; /* 28px */
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important; /* 1% matching Figma */
+    margin-bottom: 7.3791vw !important; /* 29px gap */
+    color: #000000 !important;
+    width: auto !important;
+  }
+
+  .project-launch-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
+    width: 77.0992vw !important; /* 303px */
+    box-sizing: content-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.0178vw !important; /* 4px gap matching Figma */
+  }
+
+  .project-launch-list li {
+    position: relative !important;
+    display: block !important;
+    min-height: 10.1781vw !important; /* 40px height from Figma */
+    width: 77.0992vw !important; /* 303px width from Figma */
+  }
+
+  /* Reset the n-th child desktop overrides */
+  .project-launch-list li:nth-child(n) {
+    height: auto !important;
+  }
+
+  .project-launch-list li:nth-child(n) .bullet-dot {
+    position: absolute !important;
+    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
+    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    margin: 0 !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+    min-height: 5px !important;
+    border-radius: 10px !important;
+    background: #FFA726 !important;
+  }
+
+  .project-launch-list li:nth-child(n) .bullet-text {
+    margin: 0 !important;
+    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
+    display: block !important;
+    width: auto !important; /* Inherits 303px from li */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 3.3078vw !important; /* 13px */
+    line-height: 4.5802vw !important; /* 18px */
+    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    color: #0B0B0B !important;
+  }
+
+  .project-launch-right {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    margin-top: 7.6335vw !important; /* 30px */
+    margin-left: 0 !important;
+  }
+
+  .project-launch-img {
+    width: 83.7150vw !important; /* 329px */
+    height: 85.7506vw !important; /* 337px */
+    border-radius: 2.7989vw !important; /* 11px */
+    margin-top: 0 !important;
+    object-fit: cover !important;
+  }
+
+  /* ==============================================
+     4. GROUND BREAKING SECTION (MOBILE)
+     ============================================== */
+  .events-ground-breaking-section {
+    padding-top: 10.1781vw !important; /* 40px */
+    padding-bottom: 10.1781vw !important; /* 40px */
+  }
+
+  .events-ground-breaking-container {
+    width: 100% !important;
+    padding: 0 6.3613vw !important; /* 25px */
+    box-sizing: border-box !important;
+  }
+
+  .ground-breaking-title {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 5.5979vw !important; /* 22px */
+    line-height: 7.1246vw !important; /* 28px */
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important; /* 1% matching Figma */
+    margin-bottom: 7.3791vw !important; /* 29px gap */
+    color: #000000 !important;
+    width: auto !important;
+  }
+
+  .ground-breaking-content {
+    width: 100% !important;
+    flex-direction: column !important; /* title → list → image (natural order) */
+    align-items: flex-start !important;
+  }
+
+  .ground-breaking-right {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+    order: 1 !important; /* list comes first */
+  }
+
+  .ground-breaking-left {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    margin-top: 7.6335vw !important; /* 30px */
+    margin-left: 0 !important;
+    order: 2 !important; /* image comes after list */
+  }
+
+  .ground-breaking-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
+    width: 77.0992vw !important; /* 303px */
+    box-sizing: content-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.0178vw !important; /* 4px gap matching Figma */
+  }
+
+  .ground-breaking-list li {
+    position: relative !important;
+    display: block !important;
+    min-height: 10.1781vw !important; /* 40px height from Figma */
+    width: 77.0992vw !important; /* 303px width from Figma */
+  }
+
+  .ground-breaking-list li:nth-child(n) {
+    height: auto !important;
+  }
+
+  .ground-breaking-list li:nth-child(n) .bullet-dot {
+    position: absolute !important;
+    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
+    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    margin: 0 !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+    min-height: 5px !important;
+    border-radius: 10px !important;
+    background: #FFA726 !important;
+  }
+
+  .ground-breaking-list li:nth-child(n) .bullet-text {
+    margin: 0 !important;
+    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
+    display: block !important;
+    width: auto !important; /* Inherits 303px from li */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 3.3078vw !important; /* 13px */
+    line-height: 4.5802vw !important; /* 18px */
+    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    color: #0B0B0B !important;
+  }
+
+  .ground-breaking-img {
+    width: 83.7150vw !important; /* 329px */
+    height: 85.7506vw !important; /* 337px */
+    border-radius: 2.7989vw !important; /* 11px */
+    object-fit: cover !important;
+  }
+
+  /* ==============================================
+     5. BROKER & AGENT EVENTS SECTION (MOBILE)
+     ============================================== */
+  .events-broker-section {
+    padding-top: 10.1781vw !important; /* 40px */
+    padding-bottom: 10.1781vw !important; /* 40px */
+  }
+
+  .events-broker-container {
+    width: 100% !important;
+    padding: 0 6.3613vw !important; /* 25px */
+    box-sizing: border-box !important;
+  }
+
+  .events-broker-content {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .events-broker-left {
+    width: 100% !important;
+  }
+
+  .events-broker-title {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 5.5979vw !important; /* 22px */
+    line-height: 7.1246vw !important; /* 28px */
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important; /* 1% matching Figma */
+    margin-bottom: 7.3791vw !important; /* 29px gap */
+    color: #000000 !important;
+    width: auto !important;
+  }
+
+  .events-broker-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
+    width: 77.0992vw !important; /* 303px */
+    box-sizing: content-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.0178vw !important; /* 4px gap matching Figma */
+  }
+
+  .events-broker-list li {
+    position: relative !important;
+    display: block !important;
+    min-height: 10.1781vw !important; /* 40px height from Figma */
+    width: 77.0992vw !important; /* 303px width from Figma */
+  }
+
+  .events-broker-list li:nth-child(n) {
+    height: auto !important;
+  }
+
+  .events-broker-list li:nth-child(n) .bullet-dot {
+    position: absolute !important;
+    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
+    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    margin: 0 !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+    min-height: 5px !important;
+    border-radius: 10px !important;
+    background: #FFA726 !important;
+  }
+
+  .events-broker-list li:nth-child(n) .bullet-text {
+    margin: 0 !important;
+    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
+    display: block !important;
+    width: auto !important; /* Inherits 303px from li */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 3.3078vw !important; /* 13px */
+    line-height: 4.5802vw !important; /* 18px */
+    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    color: #0B0B0B !important;
+  }
+
+  .events-broker-right {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    margin-top: 7.6335vw !important; /* 30px */
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .events-broker-img {
+    width: 83.7150vw !important; /* 329px */
+    height: 85.7506vw !important; /* 337px */
+    border-radius: 2.7989vw !important; /* 11px */
+    object-fit: cover !important;
+  }
+
+  /* ==============================================
+     6. MEDIA & PR EVENTS SECTION (MOBILE)
+     ============================================== */
+  .events-media-section {
+    padding-top: 10.1781vw !important; /* 40px */
+    padding-bottom: 10.1781vw !important; /* 40px */
+    margin-bottom: 0 !important;
+  }
+
+  .events-media-container {
+    width: 100% !important;
+    padding: 0 6.3613vw !important; /* 25px */
+    box-sizing: border-box !important;
+  }
+
+  .events-media-title {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 5.5979vw !important; /* 22px */
+    line-height: 7.1246vw !important; /* 28px */
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important; /* 1% matching Figma */
+    margin-bottom: 7.3791vw !important; /* 29px gap */
+    color: #000000 !important;
+    width: auto !important;
+  }
+
+  .events-media-content {
+    width: 100% !important;
+    flex-direction: column !important; /* title → list → image (natural order) */
+    align-items: flex-start !important;
+  }
+
+  .events-media-right {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+    order: 1 !important; /* list comes first */
+  }
+
+  .events-media-left {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    margin-top: 7.6335vw !important; /* 30px */
+    margin-left: 0 !important;
+    order: 2 !important; /* image comes after list */
+  }
+
+  .events-media-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
+    width: 77.0992vw !important; /* 303px */
+    box-sizing: content-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.0178vw !important; /* 4px gap matching Figma */
+  }
+
+  .events-media-list li {
+    position: relative !important;
+    display: block !important;
+    min-height: 10.1781vw !important; /* 40px height from Figma */
+    width: 77.0992vw !important; /* 303px width from Figma */
+  }
+
+  .events-media-list li:nth-child(n) {
+    height: auto !important;
+  }
+
+  .events-media-list li:nth-child(n) .bullet-dot {
+    position: absolute !important;
+    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
+    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    margin: 0 !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+    min-height: 5px !important;
+    border-radius: 10px !important;
+    background: #FFA726 !important;
+  }
+
+  .events-media-list li:nth-child(n) .bullet-text {
+    margin: 0 !important;
+    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
+    display: block !important;
+    width: auto !important; /* Inherits 303px from li */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 3.3078vw !important; /* 13px */
+    line-height: 4.5802vw !important; /* 18px */
+    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    color: #0B0B0B !important;
+  }
+
+  .events-media-img {
+    width: 83.7150vw !important; /* 329px */
+    height: 85.7506vw !important; /* 337px */
+    border-radius: 2.7989vw !important; /* 11px */
+    object-fit: cover !important;
+  }
+}
