@@ -601,13 +601,13 @@
   .client-success-hero-title {
     position: absolute !important;
     top: 342px !important;
-    left: 25px !important;
-    width: 344px !important;
-    height: 95px !important;
+    left: 6.3613vw !important; /* 25px */
+    width: calc(100% - 12.7226vw) !important; /* Full width minus left+right margins */
+    height: auto !important;
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 38.2px !important;
-    line-height: 43px !important;
-    letter-spacing: 0.02em !important; /* 2% */
+    font-size: 9.7201vw !important; /* 38.2px */
+    line-height: 10.9415vw !important; /* 43px */
+    letter-spacing: 0.02em !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
     margin: 0 !important;
@@ -740,13 +740,13 @@
   .cs-intro-text {
     position: absolute !important;
     top: 117px !important; /* 969px - 852px = 117px */
-    left: 21px !important;
-    width: 352px !important;
-    height: 110px !important;
+    left: 5.3435vw !important; /* 21px */
+    width: calc(100% - 10.6870vw) !important; /* Full width minus left+right */
+    height: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 16px !important;
-    line-height: 22px !important;
+    font-size: 4.0712vw !important; /* 16px */
+    line-height: 5.5980vw !important; /* 22px */
     letter-spacing: 0.01em !important;
     color: #0B0B0B !important;
     margin: 0 !important;
@@ -799,7 +799,8 @@
     justify-content: flex-start !important;
     align-items: stretch !important;
     gap: 33px !important;
-    width: 356px !important;
+    width: 100% !important; /* Fill available space within padded wrapper */
+    max-width: 90.5852vw !important; /* 356px cap on 393px screens */
     height: auto !important;
     min-height: auto !important;
   }
@@ -1293,14 +1294,15 @@
     bottom: auto !important; 
     left: auto !important;
     right: auto !important;
-    width: 346.21px !important;
+    width: 88.0941vw !important; /* 346.21px fluid */
+    max-width: 346.21px !important; /* Cap at Figma value */
     height: auto !important;
     font-size: 36px !important;
     line-height: 55px !important;
     text-align: left !important;
     margin-top: 0 !important;
     margin-bottom: 32.04px !important; 
-    margin-left: 30px !important; /* Strict 30px gap to left screen */
+    margin-left: 30px !important;
     margin-right: auto !important;
     padding: 0 !important;
     color: #FFFFFF !important; 
@@ -1316,12 +1318,13 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    width: 239px !important;
+    width: 60.8142vw !important; /* 239px fluid */
+    max-width: 239px !important;
     height: 42px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    margin-left: 30px !important; /* Strict 30px gap to left screen */
-    margin-right: 124px !important; /* Strict right gap to match 125px request roughly */
+    margin-left: 30px !important;
+    margin-right: auto !important;
     padding: 0 !important;
     background: #FFFFFF !important; 
   }
