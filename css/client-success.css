@@ -170,16 +170,17 @@
   .cs-intro-container {
     width: 91.6667vw; /* 1320/1440 */
     display: flex;
-    gap: 5.2083vw; /* 75/1440 */
+    justify-content: space-between; /* Ensures content touches both left and right bounds exactly */
   }
 
   .cs-intro-label {
-    width: 18.3611vw; /* 264.4/1440 */
-    height: 2.4444vw; /* 35.2/1440 */
+    width: 18.3611vw; /* 264.4/1440 (line 4 + gap 11 + text 249.4) */
+    height: 2.0833vw; /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
     font-size: 2.0833vw; /* 30/1440 */
     line-height: 2.0833vw; /* 30/1440 */
+    letter-spacing: 0;
     color: #FFA726;
     display: flex;
     align-items: center; /* vertical-align: middle */
@@ -196,11 +197,12 @@
 
   .cs-intro-text {
     width: 68.2639vw; /* 983/1440 */
-    height: 13.8889vw; /* 200/1440 */
+    height: 8.75vw; /* 126/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 500;
-    font-size: 2.7083vw; /* 39/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: 2.2222vw; /* 32/1440 */
+    line-height: 2.9167vw; /* 42/1440 */
+    letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
   }
@@ -837,8 +839,8 @@
   .cs-card-title {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 28px !important;
-    line-height: 40px !important;
+    font-size: 7.1247vw !important; /* 28px relative to 393px */
+    line-height: 10.1781vw !important; /* 40px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
     margin: 0 !important;
@@ -848,8 +850,8 @@
   .cs-card-desc {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 18px !important;
-    line-height: 27px !important;
+    font-size: 4.5802vw !important; /* 18px relative to 393px */
+    line-height: 6.8702vw !important; /* 27px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #292626 !important;
     margin: 0 !important;
@@ -1169,7 +1171,7 @@
   }
 
   .faq-mobile-container {
-    padding: 0 9.92vw !important;
+    padding: 0 5.8524vw !important; /* 23px */
     display: flex !important;
     flex-direction: column !important;
     gap: 9.16vw !important;
@@ -1235,8 +1237,8 @@
   .faq-mobile-question-text {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
-    font-size: 3.56vw !important;
-    line-height: 5.09vw !important;
+    font-size: 3.5623vw !important; /* 14px relative to 393px */
+    line-height: 5.0891vw !important; /* 20px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000 !important;
     display: block !important;
@@ -1258,8 +1260,8 @@
   .faq-mobile-answer p {
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 3.56vw !important;
-    line-height: 5.09vw !important;
+    font-size: 3.5623vw !important; /* 14px relative to 393px */
+    line-height: 5.0891vw !important; /* 20px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #3A3939 !important;
     margin: 0 !important;
@@ -1280,7 +1282,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    padding-top: 59.36px !important;
+    padding-top: 59.81px !important;
     padding-left: 0 !important; /* Move spacing to margins for strict pixel control */
     background: #263238 !important; 
   }
@@ -1355,5 +1357,10 @@
     align-items: center !important;
     justify-content: center !important;
   }
-
+  
+  /* Mobile padding overrides for Client Success Cards to ensure exactly 18px edge gap */
+  .client-success-page-body .cs-cards-section .cs-card-wrapper {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
 }

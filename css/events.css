@@ -928,7 +928,7 @@
   /* Intro Section specific mobile styles */
   .events-intro-section {
     padding-top: 15.2672vw !important; /* ~60px */
-    padding-bottom: 15.2672vw !important; /* ~60px */
+    padding-bottom: 18.8295vw !important; /* 74px gap to next section */
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -940,9 +940,10 @@
   }
 
   .events-intro-row {
+    display: flex !important;
     width: 100% !important;
     flex-direction: column !important;
-    gap: 6.1068vw !important; /* ~24px gap to description */
+    gap: 4.5801vw !important; /* 18px gap to description */
   }
 
   .events-intro-left {
@@ -974,13 +975,14 @@
     font-size: 4.0712vw !important; /* 16px */
     line-height: 5.5980vw !important; /* 22px */
     color: #0B0B0B !important;
+    margin-bottom: 0 !important; /* Remove Bootstrap default 1rem margin */
   }
 
   /* ==============================================
      3. PROJECT LAUNCH SECTION (MOBILE)
      ============================================== */
   .events-project-launch-section {
-    padding-top: 10.1781vw !important; /* 40px */
+    padding-top: 0 !important; /* Gap handled by previous section's padding-bottom */
     padding-bottom: 10.1781vw !important; /* 40px */
   }
 
@@ -991,6 +993,7 @@
   }
 
   .project-launch-content {
+    display: flex !important; /* Required for order to work on mobile */
     width: 100% !important;
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -998,6 +1001,7 @@
 
   .project-launch-left {
     width: 100% !important;
+    order: 1 !important; /* Title + list first */
   }
 
   .project-launch-title {
@@ -1006,16 +1010,17 @@
     line-height: 7.1246vw !important; /* 28px */
     font-weight: 700 !important;
     letter-spacing: 0.01em !important; /* 1% matching Figma */
-    margin-bottom: 7.3791vw !important; /* 29px gap */
+    margin-top: 0 !important; /* Remove any default browser/Bootstrap margin */
+    margin-bottom: 7.3791vw !important; /* 29px gap - title y:0 height:28, list y:57 → 29px gap */
     color: #000000 !important;
-    width: auto !important;
+    width: 62.3409vw !important; /* 245px matching Figma */
   }
 
   .project-launch-list {
     list-style: none !important;
     margin: 0 !important;
-    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
-    width: 77.0992vw !important; /* 303px */
+    padding: 0 0 0 7.3791vw !important; /* 29px - matches Figma list x:29 from container content edge */
+    width: 100% !important; /* Expand to fit 321px max item width */
     box-sizing: content-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1025,47 +1030,89 @@
   .project-launch-list li {
     position: relative !important;
     display: block !important;
-    min-height: 10.1781vw !important; /* 40px height from Figma */
-    width: 77.0992vw !important; /* 303px width from Figma */
+    min-height: 7.6335vw !important; /* 30px min-height from Figma text height */
+    width: 100% !important;
   }
 
-  /* Reset the n-th child desktop overrides */
-  .project-launch-list li:nth-child(n) {
-    height: auto !important;
-  }
-
-  .project-launch-list li:nth-child(n) .bullet-dot {
+  /* Base styles for all list items */
+  .project-launch-list li .bullet-dot {
     position: absolute !important;
-    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
-    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    left: -2.5445vw !important; /* Figma dot x:-10 */
     margin: 0 !important;
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-    min-height: 5px !important;
-    border-radius: 10px !important;
+    width: 1.2723vw !important; /* 5px */
+    height: 1.2723vw !important; /* 5px */
+    min-width: 1.2723vw !important;
+    min-height: 1.2723vw !important;
+    border-radius: 2.5445vw !important;
     background: #FFA726 !important;
   }
 
-  .project-launch-list li:nth-child(n) .bullet-text {
+  .project-launch-list li .bullet-text {
     margin: 0 !important;
-    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
     display: block !important;
-    width: auto !important; /* Inherits 303px from li */
+    width: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 3.3078vw !important; /* 13px */
-    line-height: 4.5802vw !important; /* 18px */
-    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    letter-spacing: 0 !important;
     color: #0B0B0B !important;
+  }
+
+  /* EXACT Figma specific alignments per item (mobile) */
+  .project-launch-list li:nth-child(1) { height: 10.1781vw !important; /* 40px */ }
+  .project-launch-list li:nth-child(1) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .project-launch-list li:nth-child(1) .bullet-text {
+    margin-top: 0.7634vw !important; /* 3px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 81.6793vw !important; /* 321px */
+  }
+
+  .project-launch-list li:nth-child(2) { height: 8.1425vw !important; /* 32px */ }
+  .project-launch-list li:nth-child(2) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .project-launch-list li:nth-child(2) .bullet-text {
+    margin-top: 0.2545vw !important; /* 1px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .project-launch-list li:nth-child(3) { height: 10.1781vw !important; /* 40px */ }
+  .project-launch-list li:nth-child(3) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .project-launch-list li:nth-child(3) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 5.0891vw !important; /* 20px */
+    width: 77.3536vw !important; /* 304px */
+  }
+
+  .project-launch-list li:nth-child(4) { height: 8.1425vw !important; /* 32px */ }
+  .project-launch-list li:nth-child(4) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .project-launch-list li:nth-child(4) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 4.0712vw !important; /* 16px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .project-launch-list li:nth-child(5) { height: 10.1781vw !important; /* 40px */ }
+  .project-launch-list li:nth-child(5) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .project-launch-list li:nth-child(5) .bullet-text {
+    margin-top: 1.2723vw !important; /* 5px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 81.6793vw !important; /* 321px */
   }
 
   .project-launch-right {
     width: 100% !important;
     display: flex !important;
-    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
-    margin-top: 7.6335vw !important; /* 30px */
-    margin-left: 0 !important;
+    justify-content: center !important;
+    margin-top: 7.1247vw !important; /* 28px gap from list */
+    margin-left: 0 !important; /* Centered in container handles the 32px gap */
+    padding-top: 0 !important;
+    order: 2 !important; /* Image comes last */
+    box-sizing: border-box !important;
   }
 
   .project-launch-img {
@@ -1080,13 +1127,14 @@
      4. GROUND BREAKING SECTION (MOBILE)
      ============================================== */
   .events-ground-breaking-section {
-    padding-top: 10.1781vw !important; /* 40px */
+    padding-top: 7.8880vw !important; /* 31px - matches Figma title y:31 */
     padding-bottom: 10.1781vw !important; /* 40px */
+    background: #E9EAEB !important;
   }
 
   .events-ground-breaking-container {
     width: 100% !important;
-    padding: 0 6.3613vw !important; /* 25px */
+    padding: 0 6.6157vw !important; /* 26px - matches Figma title x:26 */
     box-sizing: border-box !important;
   }
 
@@ -1096,14 +1144,15 @@
     line-height: 7.1246vw !important; /* 28px */
     font-weight: 700 !important;
     letter-spacing: 0.01em !important; /* 1% matching Figma */
-    margin-bottom: 7.3791vw !important; /* 29px gap */
+    margin-bottom: 7.1246vw !important; /* 28px gap to list (title bottom ~87px, list starts ~115px) */
     color: #000000 !important;
-    width: auto !important;
+    width: 88.8295vw !important; /* 349px matching Figma */
   }
 
   .ground-breaking-content {
+    display: flex !important; /* Required for order to work - desktop flex is inside min-width:992px so doesn't apply here */
     width: 100% !important;
-    flex-direction: column !important; /* title → list → image (natural order) */
+    flex-direction: column !important;
     align-items: flex-start !important;
   }
 
@@ -1117,17 +1166,20 @@
   .ground-breaking-left {
     width: 100% !important;
     display: flex !important;
-    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    justify-content: flex-start !important; /* Left-aligned */
+    margin-left: 3.0534vw !important; /* 12px additional for 38px total gap from left edge */
+    padding-left: 0 !important;
     margin-top: 7.6335vw !important; /* 30px */
-    margin-left: 0 !important;
+    flex-shrink: 1 !important; /* Override desktop flex-shrink: 0 */
     order: 2 !important; /* image comes after list */
+    box-sizing: border-box !important;
   }
 
   .ground-breaking-list {
     list-style: none !important;
     margin: 0 !important;
-    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
-    width: 77.0992vw !important; /* 303px */
+    padding: 0 0 0 7.1246vw !important; /* 28px - positions list at Figma x:54 from section (26px container + 28px padding) */
+    width: 100% !important; /* Accommodate precise child widths */
     box-sizing: content-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1137,38 +1189,78 @@
   .ground-breaking-list li {
     position: relative !important;
     display: block !important;
-    min-height: 10.1781vw !important; /* 40px height from Figma */
-    width: 77.0992vw !important; /* 303px width from Figma */
+    min-height: 7.6335vw !important; /* 30px min-height from Figma text height */
+    width: 100% !important;
   }
 
-  .ground-breaking-list li:nth-child(n) {
-    height: auto !important;
-  }
-
-  .ground-breaking-list li:nth-child(n) .bullet-dot {
+  /* Base styles for all list items */
+  .ground-breaking-list li .bullet-dot {
     position: absolute !important;
-    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
-    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    left: -2.5445vw !important; /* Figma dot x:-10 */
     margin: 0 !important;
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-    min-height: 5px !important;
-    border-radius: 10px !important;
+    width: 1.2723vw !important; /* 5px */
+    height: 1.2723vw !important; /* 5px */
+    min-width: 1.2723vw !important;
+    min-height: 1.2723vw !important;
+    border-radius: 2.5445vw !important;
     background: #FFA726 !important;
   }
 
-  .ground-breaking-list li:nth-child(n) .bullet-text {
+  .ground-breaking-list li .bullet-text {
     margin: 0 !important;
-    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
     display: block !important;
-    width: auto !important; /* Inherits 303px from li */
+    width: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 3.3078vw !important; /* 13px */
-    line-height: 4.5802vw !important; /* 18px */
-    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    letter-spacing: 0 !important;
     color: #0B0B0B !important;
+  }
+
+  /* EXACT Figma specific alignments per item (mobile) */
+  .ground-breaking-list li:nth-child(1) { height: 10.1781vw !important; /* 40px */ }
+  .ground-breaking-list li:nth-child(1) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .ground-breaking-list li:nth-child(1) .bullet-text {
+    margin-top: 0.7634vw !important; /* 3px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 70.4834vw !important; /* 277px */
+  }
+
+  .ground-breaking-list li:nth-child(2) { height: 8.1425vw !important; /* 32px */ }
+  .ground-breaking-list li:nth-child(2) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .ground-breaking-list li:nth-child(2) .bullet-text {
+    margin-top: 0.2545vw !important; /* 1px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .ground-breaking-list li:nth-child(3) { height: 10.1781vw !important; /* 40px */ }
+  .ground-breaking-list li:nth-child(3) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .ground-breaking-list li:nth-child(3) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 5.0891vw !important; /* 20px */
+    width: 77.3536vw !important; /* 304px */
+  }
+
+  .ground-breaking-list li:nth-child(4) { height: 8.1425vw !important; /* 32px */ }
+  .ground-breaking-list li:nth-child(4) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .ground-breaking-list li:nth-child(4) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 4.0712vw !important; /* 16px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .ground-breaking-list li:nth-child(5) { height: 10.1781vw !important; /* 40px */ }
+  .ground-breaking-list li:nth-child(5) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .ground-breaking-list li:nth-child(5) .bullet-text {
+    margin-top: 1.2723vw !important; /* 5px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 74.8091vw !important; /* 294px */
   }
 
   .ground-breaking-img {
@@ -1193,6 +1285,7 @@
   }
 
   .events-broker-content {
+    display: flex !important; /* Required for order to work on mobile */
     width: 100% !important;
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -1200,6 +1293,7 @@
 
   .events-broker-left {
     width: 100% !important;
+    order: 1 !important; /* Title + list first */
   }
 
   .events-broker-title {
@@ -1208,16 +1302,16 @@
     line-height: 7.1246vw !important; /* 28px */
     font-weight: 700 !important;
     letter-spacing: 0.01em !important; /* 1% matching Figma */
-    margin-bottom: 7.3791vw !important; /* 29px gap */
+    margin-bottom: 7.3791vw !important; /* 29px gap - title y:0, list y:57, title height 28 → 29px gap */
     color: #000000 !important;
-    width: auto !important;
+    width: 62.5955vw !important; /* 246px matching Figma */
   }
 
   .events-broker-list {
     list-style: none !important;
     margin: 0 !important;
-    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
-    width: 77.0992vw !important; /* 303px */
+    padding: 0 0 0 7.3791vw !important; /* 29px - matches Figma list x:29 from section content edge */
+    width: 100% !important; /* Accommodate precise child widths */
     box-sizing: content-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1227,47 +1321,90 @@
   .events-broker-list li {
     position: relative !important;
     display: block !important;
-    min-height: 10.1781vw !important; /* 40px height from Figma */
-    width: 77.0992vw !important; /* 303px width from Figma */
+    min-height: 7.6335vw !important; /* 30px min-height from Figma text height */
+    width: 100% !important;
   }
 
-  .events-broker-list li:nth-child(n) {
-    height: auto !important;
-  }
-
-  .events-broker-list li:nth-child(n) .bullet-dot {
+  /* Base styles for all list items */
+  .events-broker-list li .bullet-dot {
     position: absolute !important;
-    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
-    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    left: -2.5445vw !important; /* Figma dot x:-10 */
     margin: 0 !important;
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-    min-height: 5px !important;
-    border-radius: 10px !important;
+    width: 1.2723vw !important; /* 5px */
+    height: 1.2723vw !important; /* 5px */
+    min-width: 1.2723vw !important;
+    min-height: 1.2723vw !important;
+    border-radius: 2.5445vw !important;
     background: #FFA726 !important;
   }
 
-  .events-broker-list li:nth-child(n) .bullet-text {
+  .events-broker-list li .bullet-text {
     margin: 0 !important;
-    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
     display: block !important;
-    width: auto !important; /* Inherits 303px from li */
+    width: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 3.3078vw !important; /* 13px */
-    line-height: 4.5802vw !important; /* 18px */
-    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    letter-spacing: 0 !important;
     color: #0B0B0B !important;
+  }
+
+  /* EXACT Figma specific alignments per item (mobile) */
+  .events-broker-list li:nth-child(1) { height: 10.1781vw !important; /* 40px */ }
+  .events-broker-list li:nth-child(1) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .events-broker-list li:nth-child(1) .bullet-text {
+    margin-top: 0.7634vw !important; /* 3px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 70.9923vw !important; /* 279px */
+  }
+
+  .events-broker-list li:nth-child(2) { height: 8.1425vw !important; /* 32px */ }
+  .events-broker-list li:nth-child(2) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .events-broker-list li:nth-child(2) .bullet-text {
+    margin-top: 0.2545vw !important; /* 1px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .events-broker-list li:nth-child(3) { height: 10.1781vw !important; /* 40px */ }
+  .events-broker-list li:nth-child(3) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .events-broker-list li:nth-child(3) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 5.0891vw !important; /* 20px */
+    width: 69.2111vw !important; /* 272px */
+  }
+
+  .events-broker-list li:nth-child(4) { height: 8.1425vw !important; /* 32px */ }
+  .events-broker-list li:nth-child(4) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .events-broker-list li:nth-child(4) .bullet-text {
+    margin-top: 0 !important; /* 0px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 4.0712vw !important; /* 16px */
+    width: 69.7201vw !important; /* 274px */
+  }
+
+  .events-broker-list li:nth-child(5) { height: 10.1781vw !important; /* 40px */ }
+  .events-broker-list li:nth-child(5) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .events-broker-list li:nth-child(5) .bullet-text {
+    margin-top: 1.2723vw !important; /* 5px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 71.2468vw !important; /* 280px */
   }
 
   .events-broker-right {
     width: 100% !important;
     display: flex !important;
-    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
-    margin-top: 7.6335vw !important; /* 30px */
-    margin-left: 0 !important;
+    justify-content: flex-start !important; /* Left-aligned */
+    padding-left: 0 !important;
+    margin-top: 7.6335vw !important; /* 30px gap */
+    margin-left: 3.5623vw !important; /* 14px added to 25px container padding = 39px from left edge */
     padding-top: 0 !important;
+    order: 2 !important; /* Image comes last */
+    box-sizing: border-box !important;
   }
 
   .events-broker-img {
@@ -1281,31 +1418,33 @@
      6. MEDIA & PR EVENTS SECTION (MOBILE)
      ============================================== */
   .events-media-section {
-    padding-top: 10.1781vw !important; /* 40px */
+    padding-top: 11.4504vw !important; /* 45px - matches Figma title y:45 */
     padding-bottom: 10.1781vw !important; /* 40px */
     margin-bottom: 0 !important;
+    background: #E9EAEB !important;
   }
 
   .events-media-container {
     width: 100% !important;
-    padding: 0 6.3613vw !important; /* 25px */
+    padding: 0 6.6157vw !important; /* 26px - matches Figma title x:26 */
     box-sizing: border-box !important;
   }
 
   .events-media-title {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 5.5979vw !important; /* 22px */
+    font-size: 5.8524vw !important; /* 23px - matches Figma */
     line-height: 7.1246vw !important; /* 28px */
     font-weight: 700 !important;
     letter-spacing: 0.01em !important; /* 1% matching Figma */
-    margin-bottom: 7.3791vw !important; /* 29px gap */
+    margin-bottom: 6.8702vw !important; /* 27px gap - title bottom ~73px, list starts ~100px */
     color: #000000 !important;
-    width: auto !important;
+    width: 76.5903vw !important; /* 301px matching Figma */
   }
 
   .events-media-content {
+    display: flex !important; /* Required for order to work - desktop flex is inside min-width:992px */
     width: 100% !important;
-    flex-direction: column !important; /* title → list → image (natural order) */
+    flex-direction: column !important;
     align-items: flex-start !important;
   }
 
@@ -1319,17 +1458,19 @@
   .events-media-left {
     width: 100% !important;
     display: flex !important;
-    justify-content: center !important; /* Centers 329px img in 343px container = 7px gap = 32px total from edge */
+    justify-content: flex-start !important; /* Left-aligned */
+    margin-left: 3.0534vw !important; /* 12px additional for 38px total gap from left edge */
+    padding-left: 0 !important;
     margin-top: 7.6335vw !important; /* 30px */
-    margin-left: 0 !important;
     order: 2 !important; /* image comes after list */
+    box-sizing: border-box !important;
   }
 
   .events-media-list {
     list-style: none !important;
     margin: 0 !important;
-    padding: 0 0 0 5.8524vw !important; /* 23px padding + 25px container = 48px absolute left for text */
-    width: 77.0992vw !important; /* 303px */
+    padding: 0 0 0 7.1246vw !important; /* 28px - positions list at Figma x:54 from section (26px container + 28px padding) */
+    width: 100% !important; /* Accommodate precise child widths */
     box-sizing: content-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1339,38 +1480,78 @@
   .events-media-list li {
     position: relative !important;
     display: block !important;
-    min-height: 10.1781vw !important; /* 40px height from Figma */
-    width: 77.0992vw !important; /* 303px width from Figma */
+    min-height: 7.6335vw !important; /* 30px min-height from Figma text height */
+    width: 100% !important;
   }
 
-  .events-media-list li:nth-child(n) {
-    height: auto !important;
-  }
-
-  .events-media-list li:nth-child(n) .bullet-dot {
+  /* Base styles for all list items */
+  .events-media-list li .bullet-dot {
     position: absolute !important;
-    top: 7px !important; /* Figma text Y=3, dot Y=10 -> relative gap is 7px */
-    left: -10px !important; /* 48px text - 10px = 38px absolute left for dot */
+    left: -2.5445vw !important; /* Figma dot x:-10 */
     margin: 0 !important;
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-    min-height: 5px !important;
-    border-radius: 10px !important;
+    width: 1.2723vw !important; /* 5px */
+    height: 1.2723vw !important; /* 5px */
+    min-width: 1.2723vw !important;
+    min-height: 1.2723vw !important;
+    border-radius: 2.5445vw !important;
     background: #FFA726 !important;
   }
 
-  .events-media-list li:nth-child(n) .bullet-text {
+  .events-media-list li .bullet-text {
     margin: 0 !important;
-    padding: 0 0 0 8px !important; /* EXACT 8px offset makes text start at 56px absolute */
     display: block !important;
-    width: auto !important; /* Inherits 303px from li */
+    width: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 3.3078vw !important; /* 13px */
-    line-height: 4.5802vw !important; /* 18px */
-    letter-spacing: -0.02em !important; /* Forces exact Figma line wrapping in 303px */
+    letter-spacing: 0 !important;
     color: #0B0B0B !important;
+  }
+
+  /* EXACT Figma specific alignments per item (mobile) */
+  .events-media-list li:nth-child(1) { height: 10.1781vw !important; /* 40px */ }
+  .events-media-list li:nth-child(1) .bullet-dot { top: 2.5445vw !important; /* 10px */ }
+  .events-media-list li:nth-child(1) .bullet-text {
+    margin-top: 0.7634vw !important; /* 3px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 70.4834vw !important; /* 277px */
+  }
+
+  .events-media-list li:nth-child(2) { height: 8.1425vw !important; /* 32px */ }
+  .events-media-list li:nth-child(2) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .events-media-list li:nth-child(2) .bullet-text {
+    margin-top: 0.2545vw !important; /* 1px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .events-media-list li:nth-child(3) { height: 10.1781vw !important; /* 40px */ }
+  .events-media-list li:nth-child(3) .bullet-dot { top: 4.0712vw !important; /* 16px */ }
+  .events-media-list li:nth-child(3) .bullet-text {
+    margin-top: 1.5267vw !important; /* 6px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 5.0891vw !important; /* 20px */
+    width: 77.3536vw !important; /* 304px */
+  }
+
+  .events-media-list li:nth-child(4) { height: 8.1425vw !important; /* 32px */ }
+  .events-media-list li:nth-child(4) .bullet-dot { top: 0.2545vw !important; /* 1px */ }
+  .events-media-list li:nth-child(4) .bullet-text {
+    margin-top: -1.2723vw !important; /* -5px */
+    padding-left: 2.0356vw !important; /* 8px */
+    line-height: 4.0712vw !important; /* 16px */
+    width: 75.0636vw !important; /* 295px */
+  }
+
+  .events-media-list li:nth-child(5) { height: 10.1781vw !important; /* 40px */ }
+  .events-media-list li:nth-child(5) .bullet-dot { top: 1.5267vw !important; /* 6px */ }
+  .events-media-list li:nth-child(5) .bullet-text {
+    margin-top: 0.2545vw !important; /* 1px */
+    padding-left: 2.2901vw !important; /* 9px */
+    line-height: 3.8168vw !important; /* 15px */
+    width: 74.8091vw !important; /* 294px */
   }
 
   .events-media-img {
@@ -1378,5 +1559,186 @@
     height: 85.7506vw !important; /* 337px */
     border-radius: 2.7989vw !important; /* 11px */
     object-fit: cover !important;
+  }
+
+  /* ==============================================
+     7. TESTIMONIALS SECTION (MOBILE)
+     ============================================== */
+  .events-page-body .testimonials-section {
+    margin-top: 14.4885vw !important; /* 56.94px gap above the section/title */
+  }
+  .events-page-body .testimonials-section .container {
+    height: auto !important;
+    margin-bottom: 11.7379vw !important; /* 46.13px gap to match Figma */
+  }
+
+  .events-page-body .testimonials-title {
+    height: auto !important;
+    font-size: 6.8702vw !important; /* 27px from Figma */
+    line-height: 12.9771vw !important; /* 51px from Figma */
+    background: linear-gradient(176.03deg, #B9B9B9 -17.2%, #FFFFFF 85.45%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+  }
+
+  .events-page-body .testimonials-title .mobile-break {
+    display: none !important; /* Keep on one line for events mobile */
+  }
+
+  /* ==============================================
+     8. FAQ SECTION (MOBILE)
+     ============================================== */
+  .events-faq-section {
+    background: #E9EAEB !important;
+    padding: 8.9058vw 0 !important; /* 35px top/bottom, 0 sides to override desktop padding */
+    margin-bottom: 0 !important;
+  }
+
+  .events-faq-section .faq-container {
+    width: 100% !important;
+    padding: 0 5.8524vw !important; /* 23px padding */
+    box-sizing: border-box !important;
+  }
+
+  .events-faq-section .faq-label-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2.2900vw !important; /* 9px */
+    height: auto !important;
+    width: auto !important;
+  }
+
+  .events-faq-section .faq-label-bar {
+    width: 0.5089vw !important; /* 2px */
+    height: 5.5979vw !important; /* 22px */
+    background: #FFA726 !important;
+  }
+
+  .events-faq-section .faq-label-text {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 5.0890vw !important; /* 20px */
+    line-height: 7.6335vw !important; /* 30px */
+    color: #FFA726 !important;
+  }
+
+  .events-faq-section .faq-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.2900vw !important; /* 9px */
+    margin-top: 9.1603vw !important; /* 36px */
+  }
+
+  .events-faq-section .faq-item {
+    padding: 2.5445vw 0 5.3435vw 0 !important; /* 10px top, 21px bottom */
+    border-bottom: 1px solid #EBEBEB !important;
+  }
+
+  .events-faq-section .faq-question-text {
+    font-size: 3.5623vw !important; /* 14px */
+    line-height: 5.0890vw !important; /* 20px */
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+  }
+
+  .events-faq-section .faq-answer p {
+    font-size: 3.5623vw !important; /* 14px */
+    line-height: 5.0890vw !important; /* 20px */
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+    color: #3A3939 !important;
+  }
+
+  /* ==============================================
+     8. EVENTS PRE-FOOTER (MOBILE)
+     ============================================== */
+  .events-page-body .pre-footer {
+    height: auto !important; /* adapt to content */
+    background-color: #263238 !important;
+    padding: 0 !important;
+  }
+
+  .events-page-body .pre-footer-inner {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 15.2188vw 5.8524vw 20.6106vw 5.8524vw !important; /* 59.81px top, 23px left/right, 81px bottom */
+    gap: 5.7353vw !important; /* 22.54px (Compensates for 9.5px invisible text line-height leading to make visual gap 32.04px) */
+    box-sizing: border-box !important;
+  }
+
+  .events-page-body .pre-footer-title {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .events-page-body .events-mobile-pre-footer-title {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 9.1603vw !important; /* 36px */
+    line-height: 13.9949vw !important; /* 55px */
+    color: #FFFFFF !important;
+    text-align: left !important;
+    display: block !important;
+    text-transform: none !important; /* Override uppercase from desktop */
+  }
+
+  .events-page-body .btn-pre-footer {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: 60.8142vw !important; /* 239px */
+    height: 10.6870vw !important; /* 42px */
+    background: #FFFFFF !important;
+    border-radius: 7.3791vw !important; /* 29px */
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .events-page-body .btn-pre-footer .icon-circle {
+    position: absolute !important;
+    left: 2.0356vw !important; /* 8px */
+    top: 1.2722vw !important; /* 5px */
+    width: 8.1424vw !important; /* 32px */
+    height: 8.1424vw !important; /* 32px */
+    background: #FFA726 !important;
+    border-radius: 6.1068vw !important; /* 24px */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .events-page-body .btn-pre-footer .icon-circle img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+  }
+
+  .events-page-body .btn-pre-footer .btn-text {
+    position: absolute !important;
+    left: 11.7048vw !important; /* 46px */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 4.0712vw !important; /* 16px */
+    line-height: 7.6335vw !important; /* 30px */
+    letter-spacing: 0.01em !important;
+    color: #1B3834 !important;
+    white-space: nowrap !important;
   }
 }

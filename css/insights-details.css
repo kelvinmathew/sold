@@ -134,8 +134,8 @@
   .insights-details-paragraph {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 2.2917vw; /* 33/1440 */
-    line-height: 2.9167vw; /* 42/1440 */
+    font-size: 1.8056vw; /* 26/1440 */
+    line-height: 2.6389vw; /* 38/1440 */
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -160,7 +160,7 @@
     padding-left: 2.0833vw; /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 2.2917vw; /* 33/1440 */
+    font-size: 1.9444vw; /* 28/1440 */
     line-height: 2.9167vw; /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
@@ -294,7 +294,7 @@
   .insights-related-cards-container {
     width: 91.7361vw; /* 1321/1440 */
     margin: 0 auto;
-    margin-top: 8.0167vw; /* 115.44/1440 gap between title and cards */
+    margin-top: 6.0028vw; /* 86.44/1440 gap between title and cards */
   }
 
   .insights-related-cards-row {
@@ -539,23 +539,24 @@
   }
 
   .insights-details-content {
-    padding: 30px 29px 0 29px !important; /* Top 30px, Left/Right 29px to match x:29, y:882 (882-852=30) */
+    padding: 7.6336vw 0 0 0 !important; /* Top 30px */
     display: flex !important;
     justify-content: center !important;
   }
 
   .insights-details-body {
-    width: 100%;
+    width: 85.4962vw !important; /* Exactly 336px relative to 393px */
     display: flex;
     flex-direction: column;
-    gap: 33px !important;
+    gap: 4.0712vw !important; /* 16px relative to 393px */
   }
 
   .insights-details-paragraph {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 16px !important;
-    line-height: 22px !important;
+    font-size: 4.0712vw !important; /* 16px relative to 393px */
+    line-height: 5.5980vw !important; /* 22px relative to 393px */
+    letter-spacing: 0.01em !important;
     color: #000000 !important;
     margin: 0 !important;
   }
@@ -563,20 +564,21 @@
   .insights-details-subtitle {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 22px !important;
-    line-height: 28px !important;
+    font-size: 5.5979vw !important; /* 22px relative to 393px */
+    line-height: 7.1246vw !important; /* 28px relative to 393px */
+    letter-spacing: 0.01em !important;
     color: #000000 !important;
-    margin: 0 !important;
-    margin-bottom: 3px !important; /* 33px gap + 3px margin = 36px total gap */
+    margin: 5.3435vw 0 0 0 !important; /* 21px top margin + 16px gap = 37px total gap from first paragraph */
   }
 
   .insights-details-list {
     margin: 0 !important;
-    padding-left: 20px !important;
+    padding-left: 5.0890vw !important; /* 20px */
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 16px !important;
-    line-height: 22px !important;
+    font-size: 4.0712vw !important; /* 16px */
+    line-height: 5.5980vw !important; /* 22px */
+    letter-spacing: 0.01em !important;
     color: #000000 !important;
     list-style-type: none !important;
   }
@@ -586,9 +588,9 @@
   }
 
   .insights-details-list li::before {
-    content: '•' !important;
+    content: '•' !important; /* Reverted to dot per user request */
     position: absolute !important;
-    left: -12px !important; /* tighten gap */
+    left: -3.0534vw !important; /* -12px */
     color: #000000 !important;
   }
 
@@ -596,9 +598,9 @@
     width: 100% !important;
     display: flex !important;
     justify-content: center !important;
-    margin-top: 36px !important; /* Exact gap from list */
+    margin-top: 9.1603vw !important; /* 36px */
     margin-bottom: 0 !important;
-    padding: 0 29px !important; /* Align with text container */
+    padding: 0 7.3791vw !important; /* 29px */
   }
 
   .insights-details-full-image {
@@ -609,33 +611,61 @@
   }
 
   .insights-details-image-wrapper + .insights-details-content {
-    padding-top: 12px !important; /* Exact gap below image */
+    padding-top: 3.0534vw !important; /* 12px gap from image to next paragraph */
   }
 
   /* --- Related Insights Section Mobile Overrides --- */
   .insights-details-page-body .insights-section {
-    background: #F4F5F5 !important;
+    background: #FFFFFF !important;
+    padding-top: 33px !important; /* Exact gap from content above */
+    padding-bottom: 55px !important; /* Gap between Load More and pre-footer */
+    margin-bottom: 0 !important;
   }
   .insights-details-page-body .insights-header-top {
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    height: auto !important;
+    width: 100% !important;
     max-width: 100% !important;
-    padding: 0 30px !important;
+    margin: 0 !important; /* Override the 27px left margin from global styles */
+    padding: 0 30px !important; /* Exact 30px gap to screen edges */
+    box-sizing: border-box !important;
     gap: 20px !important;
   }
 
   .insights-details-page-body .insights-label-wrap {
-    width: 152px !important;
-    height: 35px !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
     margin-bottom: 0 !important; /* gap handles spacing */
     padding: 0 !important; /* prevent padding from shrinking text space */
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  .insights-details-page-body .insights-label-wrap::before {
+    display: none !important;
   }
   
   .insights-details-page-body .insights-label {
+    width: auto !important;
     font-size: 0 !important;
+    line-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .insights-details-page-body .insights-label::before {
+    content: "" !important;
+    display: block !important;
+    width: 3.77px !important;
+    height: 31px !important;
+    background: #FFA726 !important;
+    margin-right: 7.83px !important; /* Creates the exact gap between bar and text */
   }
   
   .insights-details-page-body .insights-label::after {
@@ -649,8 +679,12 @@
   }
 
   .insights-details-page-body .insights-title {
+    position: static !important;
     width: 100% !important;
+    height: auto !important;
     font-size: 0 !important;
+    line-height: 0 !important;
+    margin-top: 0 !important; /* Prevent default heading margins from inflating gap */
     margin-bottom: 0 !important; /* gap handles spacing */
   }
   
@@ -663,6 +697,11 @@
     line-height: 24px !important;
     color: #000000 !important;
     display: block !important;
+  }
+  
+  .insights-details-page-body .btn-discover-now-insights {
+    position: static !important;
+    margin-top: 20px !important; /* optional separation for button */
   }
 
   .insights-details-page-body .btn-discover-now-insights {
@@ -678,7 +717,7 @@
   .insights-related-cards-container {
     width: 100% !important;
     padding: 0 17px !important; /* Centered padding (393 - 359 = 34 / 2) */
-    margin-top: 24px !important;
+    margin-top: 27px !important; /* Exact 27px gap from header */
   }
 
   .insights-related-cards-row {
@@ -688,6 +727,21 @@
     justify-content: space-between !important;
     gap: 11px !important; /* 11px gap between cards */
     padding: 0 !important;
+  }
+
+  .insights-related-load-more {
+    margin-top: 41px !important;
+    text-align: center !important;
+  }
+
+  .insights-related-load-more a {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 24px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+    text-decoration: none !important;
   }
 
   .insights-related-card {
@@ -794,7 +848,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    padding-top: 59.36px !important;
+    padding-top: 59.81px !important;
     padding-left: 0 !important; /* Move spacing to margins for strict pixel control */
     background: #263238 !important; 
   }
