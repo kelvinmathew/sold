@@ -178,33 +178,26 @@
     width: 91.6667vw; /* 1320/1440 */
     display: flex;
     justify-content: space-between; /* Ensures content touches both left and right bounds exactly */
+    align-items: flex-start; /* Lock top to exactly 110px margin-top */
   }
 
   .insights-blogs-label {
     width: 18.3611vw; /* 264.4/1440 (line 4 + gap 11 + text 249.4) */
-    height: 2.0833vw; /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
     font-size: 2.0833vw; /* 30/1440 */
     line-height: 2.0833vw; /* 30/1440 */
     letter-spacing: 0;
     color: #FFA726;
-    display: flex;
-    align-items: center; /* vertical-align: middle */
-    gap: 0.7639vw; /* 11/1440 gap between line and text */
-  }
-
-  .insights-blogs-label::before {
-    content: '';
-    display: block;
-    width: 0.2778vw; /* 4/1440 */
-    height: 100%;
-    background: #FFA726;
+    display: block; /* Export correct baseline for text */
+    border-left: 0.2778vw solid #FFA726; /* Replaces ::before */
+    padding-left: 0.7639vw;
+    box-sizing: border-box;
+    margin-top: 0;
   }
 
   .insights-blogs-text {
     width: 68.2639vw; /* 983/1440 */
-    height: 8.75vw; /* 126/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 500;
     font-size: 2.2222vw; /* 32/1440 */
@@ -212,6 +205,7 @@
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
+    margin-top: -0.4167vw; /* -6px to pull up baseline so it aligns with label without pushing container down */
   }
 
   /* --- Featured Story Section --- */
@@ -220,42 +214,51 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    margin-top: 6.875vw; /* 99px gap from Blogs section above */
   }
 
   .insights-featured-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 1867-1934 centers children */
+    align-items: center;
     width: 91.7361vw; /* 1321/1440 */
-    gap: 2.2222vw; /* 32/1440 */
-    margin-top: 6.875vw !important; /* 99px precisely */
+    gap: 1.5278vw; /* 22px / 1440 - gap between title and card */
+    margin-top: 0 !important;
     margin-bottom: 0;
   }
 
   .insights-featured-title {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.125vw; /* 45/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: clamp(24px, 2.6vw, 45px); /* responsive but capped */
+    line-height: 1.15;
     letter-spacing: 0.01em;
     color: #000000;
     text-align: center;
     margin: 0;
+    flex-shrink: 0;
   }
 
   .insights-featured-card {
     display: flex;
     flex-direction: column;
-    width: 83.125vw; /* 1197/1440 */
+    width: 75vw; /* reduced width for tighter layout */
     background-color: #E9EAEB;
     border-radius: 1.3194vw; /* 19/1440 */
-    padding: 1.1806vw 1.9444vw 3.0556vw 1.9444vw; /* 17px 28px 44px 28px */
-    gap: 2.2917vw; /* 33/1440 */
+    padding: 1.5vh 1.9444vw 1.2vh 1.9444vw;
+    padding: 1.5dvh 1.9444vw 1.2dvh 1.9444vw;
+    gap: 2vh;
+    gap: 2dvh;
+    flex: 0 1 auto;
   }
 
   .insights-featured-img-wrap {
     width: 100%;
-    height: 26.6667vw; /* 384/1440 */
+    height: 45vh;
+    height: 45dvh;
+    min-height: 15vw;
+    max-height: 26.6667vw; /* cap at original Figma size on wide screens */
     border-radius: 1.8056vw; /* 26/1440 */
     overflow: hidden;
   }
@@ -270,7 +273,9 @@
     display: flex;
     flex-direction: column;
     padding-left: 1.8056vw; /* 26/1440 */
-    gap: 0.9028vw; /* 13/1440 */
+    gap: 0.6vh;
+    gap: 0.6dvh;
+    flex-shrink: 0;
   }
 
   .insights-featured-date {
@@ -279,22 +284,22 @@
     gap: 0.4861vw; /* 7/1440 */
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.3889vw; /* 20/1440 */
-    line-height: 3.6111vw; /* 52/1440 */
+    font-size: clamp(12px, 1.1vw, 20px);
+    line-height: 1.6;
     color: #000000;
   }
 
   .insights-calendar-icon {
-    width: 2.3611vw; /* 34/1440 */
-    height: 2.2222vw; /* 32/1440 */
+    width: clamp(16px, 1.6vw, 34px);
+    height: clamp(15px, 1.5vw, 32px);
     object-fit: contain;
   }
 
   .insights-featured-headline {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.125vw; /* 45/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: clamp(20px, 2.4vw, 40px);
+    line-height: 1.2;
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -303,19 +308,19 @@
   .insights-featured-excerpt {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5972vw; /* 23/1440 */
-    line-height: 2.0139vw; /* 29/1440 */
+    font-size: clamp(12px, 1.25vw, 21px);
+    line-height: 1.5;
     letter-spacing: 0.01em;
     color: #292626;
     margin: 0;
-    width: 79.375vw; /* 1143/1440 */
+    width: 100%; /* fill available card width */
   }
 
   .insights-featured-readmore {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.4583vw; /* 21/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: clamp(13px, 1.2vw, 21px);
+    line-height: 1.6;
     letter-spacing: 0.01em;
     color: #000000;
     text-decoration: none;
@@ -334,10 +339,10 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-left: 4.1667vw; /* 60/1440 */
-    width: 91.7361vw; /* 1321/1440 (leaves 59px on the right) */
+    margin-left: 4.1667%; /* 60/1440 - use % so scrollbar doesn't skew right gap */
+    width: 91.7361%; /* 1321/1440 - leaves exactly 59px (4.0972%) on the right */
     gap: 4.3056vw; /* 62/1440 gap between title and grid */
-    margin-top: 6.8056vw; /* 98/1440 */
+    margin-top: 6.875vw; /* 99/1440 gap to featured story section */
     margin-bottom: 0;
   }
 
@@ -345,7 +350,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.7639vw; /* 11/1440 */
+    gap: 1vh; /* 11/1440 */
+    gap: 1dvh;
   }
 
   .insights-latest-bar {
@@ -357,17 +363,19 @@
   .insights-latest-title {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
-    font-size: 2.0833vw; /* 30/1440 */
-    line-height: 2.0833vw;
+    font-size: clamp(20px, 2.1vw, 30px); /* 30/1440 */
+    line-height: 1.1;
     color: #FFA726;
     margin: 0;
   }
 
   .insights-latest-grid {
     display: grid;
+    width: 100%; /* span full container to respect 60/59 side gaps */
     grid-template-columns: 1fr 1fr; /* 2 columns */
-    column-gap: 2.9167vw; /* 42/1440 */
-    row-gap: 2.2222vw; /* 32/1440 */
+    column-gap: 1.9167vw; /* 42/1440 */
+    row-gap: 3vh; /* separate rows into viewports */
+    row-gap: 4dvh;
   }
 
   .insights-latest-card {
@@ -375,13 +383,19 @@
     flex-direction: column;
     background-color: #E9EAEB;
     border-radius: 1.3194vw; /* 19/1440 */
-    padding: 1.1806vw 1.3889vw 3.0556vw 1.3889vw; /* 17px 20px 44px */
-    gap: 2.2917vw; /* 33/1440 */
+    padding: 1.5vh 1.3889vw 2vh 1.3889vw; /* 17px 20px 44px */
+    padding: 1.5dvh 1.3889vw 2dvh 1.3889vw;
+    gap: 2vh; /* 33/1440 */
+    gap: 2dvh;
+    flex: 0 1 auto;
   }
 
   .insights-latest-img-wrap {
     width: 100%;
-    height: 23.2639vw; /* 335/1440 */
+    height: 35vh; /* 335/1440 */
+    height: 35dvh;
+    min-height: 15vw;
+    max-height: 23.2639vw;
     border-radius: 1.8056vw; /* 26/1440 */
     overflow: hidden;
   }
@@ -396,7 +410,8 @@
     display: flex;
     flex-direction: column;
     padding-left: 0; /* Removing the 26px padding that was only for Featured Story */
-    gap: 0.9028vw; /* 13/1440 */
+    gap: 1vh; /* 13/1440 */
+    gap: 1dvh;
   }
 
   .insights-latest-date {
@@ -405,22 +420,22 @@
     gap: 0.4861vw; /* 7/1440 */
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.3889vw; /* 20/1440 */
-    line-height: 3.6111vw; /* 52/1440 */
+    font-size: clamp(12px, 1vw, 20px); /* 20/1440 */
+    line-height: 1.5;
     color: #000000;
   }
 
   .insights-latest-icon {
-    width: 2.3611vw; /* 34/1440 */
-    height: 2.2222vw; /* 32/1440 */
+    width: clamp(16px, 1.5vw, 34px); /* 34/1440 */
+    height: clamp(15px, 1.4vw, 32px); /* 32/1440 */
     object-fit: contain;
   }
 
   .insights-latest-headline {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 2.2222vw; /* 32/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: clamp(20px, 2vw, 32px); /* 32/1440 */
+    line-height: 1.2;
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -429,8 +444,8 @@
   .insights-latest-excerpt {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.25vw; /* 18/1440 */
-    line-height: 1.5972vw; /* 23/1440 */
+    font-size: clamp(12px, 1.1vw, 18px); /* 18/1440 */
+    line-height: 1.5;
     letter-spacing: 0.01em;
     color: #292626;
     margin: 0;
@@ -440,8 +455,8 @@
   .insights-latest-readmore {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.4583vw; /* 21/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: clamp(13px, 1.2vw, 21px); /* 21/1440 */
+    line-height: 1.6;
     letter-spacing: 0.01em;
     color: #000000;
     text-decoration: none;
@@ -460,10 +475,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Align contents to left edge */
-    margin-left: 4.1667vw; /* 60/1440 */
-    width: 91.7361vw; /* 1321/1440 (leaves exactly 59px on the right edge) */
+    margin-left: 4.1667%; /* 60/1440 - use % so scrollbar doesn't skew */
+    width: 91.7361%; /* 1321/1440 (leaves exactly 59px on the right edge) */
     gap: 4.5833vw; /* 66/1440 */
-    margin-top: 6.8056vw; /* 98/1440 gap between latest blogs and lorem blogs */
+    margin-top: 8.8757vw; /* 127.81/1440 strict gap from Latest Blogs */
     margin-bottom: 4.1535vw; /* 59.81/1440 gap to pre-footer */
   }
 
@@ -507,7 +522,8 @@
   }
 
   .insights-feed-main-content .insights-featured-card {
-    margin-left: 2.7778vw; /* 40/1440. Total to screen = 60 + 40 = 100px */
+    margin-left: 3.028%; /* 40/1321 relative to parent. Total left gap to screen = 100px */
+    width: 90.6132%; /* 1197/1321 relative to parent. Total right gap to screen = 143px */
   }
 
   .insights-feed-filter-wrap {
