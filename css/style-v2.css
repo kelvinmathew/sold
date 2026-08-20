@@ -215,8 +215,8 @@ h6 {
 .hero-section {
   position: relative;
   width: 100cqi;
-  height: 57.2916cqi;
-  /* 825px */
+  height: 100vh;
+  min-height: 500px;
   background: #141619;
   overflow: hidden;
   color: #fff;
@@ -227,7 +227,7 @@ h6 {
   top: 0;
   left: 0;
   width: 100cqi;
-  height: 57.2916cqi;
+  height: 100%;
   object-fit: fill;
   /* Exact 1440x825 aspect ratio will be maintained */
   z-index: 1;
@@ -6541,8 +6541,8 @@ h6 {
 .services-hero {
   position: relative;
   width: 100%;
-  height: 57.2917cqi;
-  /* 825/1440 */
+  height: 100vh;
+  min-height: 500px;
   background: #FFFFFF;
   overflow: hidden;
 }
@@ -6727,8 +6727,7 @@ h6 {
 /* Breadcrumb (Bottom Left) */
 .services-hero-breadcrumb {
   position: absolute;
-  top: 49.2361cqi;
-  /* 709/1440 */
+  bottom: 4.1667cqi; /* Anchored to bottom */
   left: 7.2222cqi;
   /* 104/1440 */
   width: 16.3889cqi;
@@ -6800,8 +6799,8 @@ h6 {
 /* Responsive Overrides */
 @media (max-width: 991px) {
   .services-hero {
-    height: auto;
-    min-height: 100vh;
+    height: 100svh !important;
+    min-height: 500px !important;
   }
 
   .services-hero-content {
@@ -6925,9 +6924,10 @@ h6 {
 
   .services-hero-breadcrumb,
   .ws-hero-breadcrumb {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: absolute !important;
+    top: auto !important;
+    bottom: 20px !important;
+    left: 20px !important;
     width: auto;
     height: auto;
     font-size: 16px;
@@ -8151,32 +8151,32 @@ body.why-sold-page-body,
   }
 
   /* FAQ Section Mobile */
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-section-mobile {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-section-mobile {
     width: 100% !important;
     padding-top: 56px !important;
     padding-bottom: 0 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-container {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-container {
     padding: 0 9.92vw !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 9.16vw !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-header {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-header {
     display: flex !important;
     align-items: center !important;
     gap: 2.29vw !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-bar {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-bar {
     width: 0.51vw !important;
     height: 5.6vw !important;
     background: #FFA726 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-label {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-label {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
     font-size: 5.09vw !important;
@@ -8185,7 +8185,7 @@ body.why-sold-page-body,
     margin: 0 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-list {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-list {
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
@@ -8193,7 +8193,7 @@ body.why-sold-page-body,
     padding: 0 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-item {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item {
     padding-top: 2.54vw !important;
     padding-bottom: 5.34vw !important;
     border-bottom: 1px solid #EBEBEB !important;
@@ -8203,11 +8203,11 @@ body.why-sold-page-body,
     margin-bottom: 0 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-item:last-child {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item:last-child {
     border-bottom: none !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-question {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-question {
     width: 100% !important;
     background: none !important;
     border: none !important;
@@ -8217,11 +8217,11 @@ body.why-sold-page-body,
     text-align: left !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-question:focus {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-question:focus {
     outline: none !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-question-text {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-question-text {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
     font-size: 3.56vw !important;
@@ -8231,7 +8231,7 @@ body.why-sold-page-body,
     display: block !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-answer {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-answer {
     display: none !important;
     max-height: none !important;
     overflow: visible !important;
@@ -8239,12 +8239,12 @@ body.why-sold-page-body,
     margin-top: 0 !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-item.active .faq-mobile-answer {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item.active .faq-mobile-answer {
     display: block !important;
     margin-top: 3.05vw !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body, .insights-page-body) .faq-mobile-answer p {
+  :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-answer p {
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 3.56vw !important;

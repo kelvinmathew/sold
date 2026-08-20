@@ -211,8 +211,8 @@ h6 {
 .hero-section {
   position: relative;
   width: 100cqi;
-  height: 57.2916cqi;
-  /* 825px */
+  height: 100vh;
+  min-height: 500px;
   background: #141619;
   overflow: hidden;
   color: #fff;
@@ -223,7 +223,7 @@ h6 {
   top: 0;
   left: 0;
   width: 100cqi;
-  height: 57.2916cqi;
+  height: 100%;
   object-fit: fill;
   /* Exact 1440x825 aspect ratio will be maintained */
   z-index: 1;
@@ -6661,8 +6661,8 @@ h6 {
 .services-hero {
   position: relative;
   width: 100%;
-  height: 57.2917cqi;
-  /* 825/1440 */
+  height: 100vh;
+  min-height: 500px;
   background: #FFFFFF;
   overflow: hidden;
 }
@@ -6847,8 +6847,7 @@ h6 {
 /* Breadcrumb (Bottom Left) */
 .services-hero-breadcrumb {
   position: absolute;
-  top: 49.2361cqi;
-  /* 709/1440 */
+  bottom: 4.1667cqi; /* Anchored to bottom */
   left: 7.2222cqi;
   /* 104/1440 */
   width: 16.3889cqi;
@@ -6920,8 +6919,8 @@ h6 {
 /* Responsive Overrides */
 @media (max-width: 991px) {
   .services-hero {
-    height: auto;
-    min-height: 100vh;
+    height: 100svh !important;
+    min-height: 500px !important;
   }
 
   .services-hero-content {
@@ -7012,9 +7011,10 @@ h6 {
 
   .services-hero-breadcrumb,
   .ws-hero-breadcrumb {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: absolute !important;
+    top: auto !important;
+    bottom: 20px !important;
+    left: 20px !important;
     width: auto;
     height: auto;
     font-size: 16px;

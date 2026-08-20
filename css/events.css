@@ -38,7 +38,8 @@
   .events-hero {
     position: relative;
     width: 100%;
-    height: 57.2917cqi; /* 825/1440 */
+    height: 100vh; 
+    min-height: 500px;
     background: #ffffff;
     overflow: hidden;
   }
@@ -167,7 +168,7 @@
   /* Breadcrumb (Bottom Left) */
   .events-hero-breadcrumb {
     position: absolute;
-    top: 49.2361cqi; /* 709/1440 */
+    bottom: 4.1667cqi; /* Anchored to bottom instead of top */
     left: 7.2222cqi; /* 104/1440 */
     width: 16.3889cqi;
     height: 2.0139cqi;
@@ -690,6 +691,11 @@
   /* ==============================================
      1. HERO SECTION (MOBILE)
      ============================================== */
+  .events-hero {
+    height: 100svh !important;
+    min-height: 500px !important;
+  }
+
   .events-hero-content {
     position: absolute !important;
     top: 0 !important;
@@ -732,8 +738,8 @@
 
   .events-hero-breadcrumb {
     position: absolute !important;
-    top: 130cqi !important; /* ~510px, placed after the title text */
-    bottom: auto !important;
+    top: auto !important;
+    bottom: 8cqi !important; /* Anchor to bottom on mobile */
     left: 6.3613cqi !important; /* 25 / 393 * 100 */
     display: flex !important;
     align-items: center !important;

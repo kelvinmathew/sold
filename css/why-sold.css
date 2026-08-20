@@ -6,7 +6,7 @@
 /* --- Hero Breadcrumb --- */
 .ws-hero-breadcrumb {
   position: absolute;
-  top: 49.2361cqi; /* 709/1440 */
+  bottom: 4.1667cqi; /* Anchored to bottom */
   left: 7.2222cqi; /* 104/1440 */
   width: 16.3889cqi; /* 236/1440 */
   height: 2.0139cqi; /* 29/1440 */

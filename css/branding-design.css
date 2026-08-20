@@ -1,0 +1,1090 @@
+/* 
+  ==============================================
+  BRANDING & DESIGN PAGE STYLES (Responsive)
+  ==============================================
+*/
+
+body.branding-page-body {
+  margin: 0;
+  padding: 0;
+  background-color: #F4F5F5;
+}
+
+/* Apply Root Container Query */
+.branding-page-body .page-container {
+  container-type: inline-size;
+  container-name: page;
+  max-width: 100%; 
+  margin: 0 auto;
+}
+
+/* Base resets for fluid sections */
+.branding-page-body .vw-fluid-section {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Apply Root Container Query */
+.branding-page-body .page-container {
+  container-type: inline-size;
+  container-name: page;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ==============================================
+   1. HERO SECTION
+   ============================================== */
+
+/* Desktop & Tablet Styles (Min-width: 992px) */
+@media (min-width: 992px) {
+  .branding-hero {
+    position: relative;
+    width: 100%;
+    /* Use explicit 100vh to ensure it never exceeds one viewport on Windows/Linux/Mac */
+    height: 100vh; 
+    min-height: 500px; /* Safety fallback for extremely short landscape screens */
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Push content from the bottom */
+  }
+
+  .branding-hero .hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .branding-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Exact #0000001A overlay */
+    z-index: 2;
+  }
+
+  .branding-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    /* Remove height 100% and let it shrink-wrap at the bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Match container width mapping */
+    padding-left: 4.4444cqi; /* 64/1440 */
+    padding-bottom: 4.1667cqi; /* 60px bottom padding for the whole content block */
+  }
+
+  /* Title & Subtitle Container */
+  .branding-hero-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* No artificial gap; let natural line heights dictate spacing */
+    max-width: 80cqi;
+    margin-bottom: 9.7222cqi; /* 140/1440 gap between title block and breadcrumb */
+  }
+
+  .branding-hero-title {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 4.6528cqi, 67px); /* 67/1440 */
+    line-height: clamp(42px, 4.7917cqi, 69px); /* 69/1440 */
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .branding-hero-subtitle {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.0833cqi, 30px); /* 30/1440 */
+    line-height: 1;
+    color: #ffa726;
+    margin: 0;
+  }
+
+  /* Breadcrumb */
+  .branding-hero-breadcrumb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5556cqi; /* 8px */
+    margin-bottom: 0;
+  }
+
+  .branding-hero-breadcrumb a {
+    text-decoration: none;
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1.25cqi; /* 18/1440 */
+    line-height: 2.0139cqi; /* 29/1440 */
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+  }
+
+  .branding-hero-breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .breadcrumb-icon {
+    width: 1.5972cqi; /* 23/1440 */
+    height: 1.0417cqi; /* 15/1440 */
+  }
+
+  .breadcrumb-current-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-current-wrapper .current {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1.25cqi; /* 18/1440 */
+    line-height: 2.0139cqi;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+  }
+
+  /* ==============================================
+     2. INTRO SECTION
+     ============================================== */
+  .branding-intro-section {
+    width: 100%;
+    padding-top: 6.9444cqi; /* 100/1440 */
+    padding-bottom: 0; /* Let the next section handle the exact gap */
+    display: flex;
+    justify-content: center;
+    background-color: #F4F5F5;
+  }
+
+  .branding-intro-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .branding-intro-row {
+    width: 91.6667cqi; /* 1320/1440 */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5.2083cqi; /* 75px */
+  }
+
+  .branding-intro-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7639cqi; /* 11/1440 */
+  }
+
+  .branding-intro-bar {
+    width: 0.2778cqi; /* 4/1440 */
+    height: 2.4438cqi; /* 35.19/1440 */
+  }
+
+  .branding-intro-heading {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 600;
+    font-size: 2.0833cqi; /* 30/1440 */
+    line-height: 2.0833cqi; /* 30/1440 */
+    color: #ffa726;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .branding-intro-right {
+    display: flex;
+  }
+
+  .branding-intro-desc {
+    width: 68.2639cqi; /* 983/1440 */
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 500;
+    font-size: 2.2222cqi; /* 32/1440 */
+    line-height: 2.9167cqi; /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* ==============================================
+     3. FULL VIEWPORT SECTION
+     ============================================== */
+  .branding-full-viewport-section {
+    width: 100%;
+    height: auto;
+    padding-top: 5.9722cqi; /* Exactly 86px gap (86/1440) from the previous text */
+    padding-bottom: 1.3194cqi; /* Exactly 19px gap to the bottom section */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #F4F5F5;
+    overflow: hidden;
+  }
+
+  .branding-full-viewport-container {
+    position: relative;
+    width: 100%;
+    height: 41.6528cqi; /* 599/1440 (Exactly fits the image: top 7.0 + height 34.6528) */
+  }
+
+  .branding-full-viewport-heading {
+    position: absolute;
+    top: 0;
+    left: 4.9306cqi; /* 71/1440 (Exact left margin) */
+    width: 49.9306cqi; /* 719/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 3.1250cqi, 45px); /* Caps at exactly 45px on large screens */
+    line-height: clamp(36px, 3.4722cqi, 50px); /* Caps at exactly 50px */
+    letter-spacing: 0.01em; /* 1% from Figma */
+    color: #263238;
+    margin: 0;
+  }
+
+  .branding-full-viewport-points {
+    position: absolute;
+    top: 8.1250cqi; /* 117/1440 */
+    left: 8.1250cqi; /* 71 + 46 = 117/1440 */
+    width: 36.3889cqi; /* 524/1440 */
+    display: flex;
+    flex-direction: column;
+    gap: 1.9444cqi; /* 28/1440 */
+  }
+
+  .branding-point {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5556cqi; /* 8/1440 */
+  }
+
+  .branding-point-title {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.9444cqi; /* 28/1440 */
+    line-height: 2.5000cqi; /* 36/1440 (Matches Figma bounding box height to fix gap) */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .branding-point-desc {
+    width: 29.8611cqi; /* 430/1440 (Matches Figma line breaks) */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.5278cqi; /* 22/1440 */
+    line-height: 1.8056cqi; /* 26/1440 */
+    letter-spacing: 0.01em;
+    color: #696969;
+    margin: 0;
+  }
+
+  .branding-full-viewport-right {
+    position: absolute;
+    top: 7.0cqi; /* 117/1440 (Moved down to align with points) */
+    right: 0; /* Flush to the right edge */
+    width: 53.4722cqi; /* 770/1440 */
+    height: 34.6528cqi; /* 499/1440 */
+  }
+
+  .branding-full-viewport-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* CMS Safeguard: prevents distortion and cropping of uploaded images */
+    object-position: right center; /* Forces the image to sit entirely flush with the right edge */
+  }
+
+  /* ==============================================
+     4. BRANDING SERVICES SECTION
+     ============================================== */
+  .branding-services-section {
+    background-color: #E9EAEB;
+    width: 100%;
+    padding-top: 5.3472cqi; /* 77/1440 */
+    padding-bottom: 7.0139cqi;
+    display: flex;
+    justify-content: center;
+  }
+
+  .branding-services-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .branding-services-heading {
+    margin-left: 6.4583cqi; /* 93/1440 */
+    margin-bottom: 4.7917cqi; /* 69/1440 */
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.7500cqi; /* 54/1440 */
+    line-height: 4.0972cqi; /* 59/1440 */
+    letter-spacing: 0.01em;
+    color: #263238;
+  }
+
+  .branding-services-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .branding-services-image-wrapper {
+    margin-left: 8.3333cqi; /* 120/1440 */
+    width: 29.0278cqi; /* 418/1440 */
+    height: 35.7639cqi; /* 515/1440 */
+    border-radius: 0; /* Figma spec: sharp corners on desktop */
+    overflow: hidden;
+  }
+
+  .branding-services-img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* CMS Safeguard: prevents distortion and cropping of uploaded images */
+    object-position: center;
+  }
+
+  .branding-services-list {
+    margin-left: 10.6944cqi; /* 154/1440 */
+    margin-top: 2.1528cqi; /* 31/1440 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5556cqi; /* 8/1440 */
+  }
+
+  .branding-services-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.1111cqi; /* 16/1440 */
+  }
+
+  .branding-services-circle {
+    width: 1.2500cqi; /* 18/1440 */
+    height: 1.2500cqi; /* 18/1440 */
+    background-color: #FFA726;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .branding-services-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.8056cqi; /* 26/1440 */
+    line-height: 2.7778cqi; /* 40/1440 */
+    color: #0B0B0B;
+  }
+
+  /* ==============================================
+     5. HOW WE BUILD SECTION
+     ============================================== */
+  .branding-build-section {
+    background-color: #F4F5F5;
+    width: 100%;
+    padding-top: 6.3889cqi; /* Exactly 92px (92/1440) gap to top */
+    padding-bottom: 10.9722cqi; /* Exactly 158px gap to testimonials */
+    padding-left: 10.4861cqi; /* Exactly 151px left gap */
+    padding-right: 10.4167cqi; /* Exactly 150px right gap */
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .branding-build-container {
+    width: 100%; /* Automatically fills the 1139px remaining space */
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 39.0278cqi; /* 562/1440 */
+  }
+
+  .branding-build-left {
+    position: relative;
+    width: 49.9306cqi; /* 719/1440 */
+  }
+
+  .branding-build-heading {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 3.1250cqi, 45px); /* Caps at exactly 45px */
+    line-height: clamp(36px, 3.4722cqi, 50px); /* Caps at exactly 50px */
+    letter-spacing: 0.01em;
+    color: #263238;
+  }
+
+  .branding-build-list {
+    margin-top: clamp(80px, 7.5000cqi, 108px); /* Caps at exactly 108px gap */
+    display: flex;
+    flex-direction: column;
+    gap: 1.6667cqi; /* 24/1440 */
+    width: auto; /* Allow items to define width */
+  }
+
+  .branding-build-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .branding-build-item-title {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 1.9444cqi, 28px); /* Caps at exactly 28px */
+    line-height: clamp(36px, 3.4722cqi, 50px); /* Caps at exactly 50px */
+    letter-spacing: 0.01em;
+    color: #000000;
+  }
+
+  .branding-build-item-title .highlight {
+    color: #FFA726;
+  }
+
+  .branding-build-item-desc {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.5278cqi, 22px); /* Caps at exactly 22px */
+    line-height: clamp(20px, 1.8056cqi, 26px); /* Caps at exactly 26px */
+    letter-spacing: 0.01em;
+    color: #292626;
+  }
+
+  .branding-build-right {
+    position: absolute;
+    top: 6.3889cqi; /* 92/1440 */
+    right: 0;
+    width: 32.7083cqi; /* 471/1440 */
+    height: 32.6389cqi; /* 470/1440 */
+    border-radius: 0; /* Figma spec: sharp corners */
+    overflow: hidden;
+  }
+
+  .branding-build-img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* CMS Safeguard: prevents distortion and cropping of uploaded images */
+    object-position: center;
+  }
+
+} /* End Desktop Media Query */
+
+/* ==============================================
+   MOBILE STYLES (Max-width: 991px)
+   ============================================== */
+@media (max-width: 991px) {
+  .branding-hero {
+    position: relative;
+    width: 100%;
+    height: 100svh; /* Explicit height to prevent stretching past one viewport */
+    min-height: 500px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from flex-end */
+  }
+
+  .branding-hero .hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .branding-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+
+  .branding-hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 242px 24px 40px 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .branding-hero-text-container {
+    margin-bottom: 60px; /* 385px (breadcrumb) - 325px (bottom of text) = 60px */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Figma gap is 10px */
+  }
+
+  .branding-hero-title {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 700;
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    margin: 0;
+    text-align: left;
+  }
+
+  .branding-hero-subtitle {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    color: #ffa726;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* Breadcrumb Mobile */
+  .branding-hero-breadcrumb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 6px; /* Text at 24px, breadcrumb at 30px -> diff is 6px */
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .branding-hero-breadcrumb a,
+  .breadcrumb-current-wrapper .current {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+  }
+
+  .breadcrumb-icon {
+    width: 18px;
+    height: auto;
+  }
+
+  /* ==============================================
+     2. INTRO SECTION (MOBILE)
+     ============================================== */
+  .branding-intro-section {
+    background-color: #F4F5F5 !important;
+    padding-top: 10.178cqi !important; /* ~40px */
+    padding-bottom: 10.178cqi !important;
+  }
+
+  .branding-intro-container {
+    width: 100% !important;
+    padding: 0 5.2162cqi !important; /* ~20px */
+    box-sizing: border-box !important;
+  }
+
+  .branding-intro-row {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3.8167cqi !important; /* ~15px gap */
+  }
+
+  .branding-intro-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2cqi !important; /* ~8px gap */
+  }
+
+  .branding-intro-bar {
+    width: 1.0178cqi !important; /* 4px */
+    height: 7.8880cqi !important; /* 31px */
+  }
+
+  .branding-intro-heading {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 5.0890cqi !important; /* 20px */
+    line-height: 7.6335cqi !important; /* 30px */
+    color: #FFA726 !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+
+  .branding-intro-right {
+    width: 100% !important;
+  }
+
+  .branding-intro-desc {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 4.0712cqi !important; /* 16px */
+    line-height: 6.1068cqi !important; /* 24px */
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ==============================================
+     3. FULL VIEWPORT SECTION (MOBILE)
+     ============================================== */
+  .branding-full-viewport-section {
+    background-color: #FFFFFF !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 60px 0 !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  .branding-full-viewport-container {
+    position: static !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 15px !important; /* User requested exactly 15px gap on left side */
+    box-sizing: border-box !important;
+    gap: 0 !important;
+  }
+
+  /* Heading aligns exactly with the 15px container padding */
+  .branding-full-viewport-heading {
+    position: static !important;
+    width: 100% !important;
+    max-width: 265px !important;
+    height: auto !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    white-space: normal !important;
+    text-align: left !important;
+    margin-left: 0 !important; /* Aligns with 15px padding */
+    margin-bottom: 23px !important;
+  }
+
+  /* Figma: Points are 16px further right than the heading (x=20 vs x=4) */
+  .branding-full-viewport-points {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 23px !important;
+    margin-left: 16px !important; /* Indent 16px from the heading */
+  }
+
+  /* Each point: column, gap=4px */
+  .branding-point {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  /* Figma: Inter Semi Bold 600, 14/15, #0B0B0B */
+  .branding-point-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 15px !important;
+    font-weight: 600 !important;
+    color: #0B0B0B !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 321px !important;
+  }
+
+  /* Figma: Inter Regular 400, 13/15, #696969 */
+  .branding-point-desc {
+    font-family: 'Inter', sans-serif !important;
+    width: 100% !important;
+    max-width: 321px !important;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    font-weight: 400 !important;
+    color: #696969 !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+  }
+
+  /* Image goes edge-to-edge: negative margins to break out of 15px padding */
+  .branding-full-viewport-right {
+    position: static !important;
+    width: calc(100% + 30px) !important; /* 100% + 15px left + 15px right */
+    height: auto !important;
+    margin-left: -15px !important; /* Pull left to screen edge */
+    margin-top: 31px !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide desktop image on mobile, show only mobile image */
+  .branding-full-viewport-img.d-none {
+    display: none !important;
+  }
+
+  .branding-full-viewport-img.d-lg-none {
+    display: block !important;
+  }
+
+  .branding-full-viewport-img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    object-fit: scale-down !important; /* CMS Safeguard */
+    object-position: center center !important;
+  }
+
+  /* ==============================================
+     4. BRANDING SERVICES SECTION (MOBILE)
+     ============================================== */
+  .branding-services-section {
+    background-color: #E9EAEB !important;
+    padding: 40px 0 !important;
+    overflow: hidden !important;
+  }
+
+  .branding-services-container {
+    padding: 0 !important; /* Reset padding, children positioned individually */
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* Figma: x=26, Mona Sans 22/28 Bold, width 349 */
+  .branding-services-heading {
+    margin: 0 0 22px 26px !important;
+    width: 349px !important;
+    max-width: calc(100% - 26px) !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: left !important;
+  }
+
+  .branding-services-content {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 30px !important;
+  }
+
+  /* Force list to appear before image on mobile */
+  .branding-services-list {
+    order: 1 !important;
+    margin: 0 0 0 55px !important; /* Figma: x=55 */
+    width: calc(100% - 75px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important; /* Figma gap between items */
+  }
+
+  .branding-services-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important; /* Figma gap between circle and text */
+  }
+
+  .branding-services-circle {
+    display: block !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+    background-color: #FFA726 !important;
+    border-radius: 10px !important;
+  }
+
+  /* Figma: Inter Regular 13/15, #0B0B0B */
+  .branding-services-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    font-weight: 400 !important;
+    color: #0B0B0B !important;
+  }
+
+  /* Image is ordered after list. User requested 37px gap on BOTH left and right */
+  .branding-services-image-wrapper {
+    order: 2 !important;
+    margin: 10px 37px 0 37px !important; /* 37px on left and right */
+    width: calc(100% - 74px) !important; /* Fill space leaving exactly 37px on each side */
+    height: 325px !important; /* Force exact height */
+    overflow: hidden !important;
+  }
+
+  .branding-services-img.d-lg-none {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important; /* Fill exactly the 318x325 wrapper */
+    object-fit: scale-down !important; /* CMS Safeguard */
+    object-position: center !important;
+  }
+
+  /* ==============================================
+     5. HOW WE BUILD SECTION (MOBILE)
+     ============================================== */
+  .branding-build-section {
+    padding: 60px 0 !important; /* Top/bottom padding */
+    background-color: #FFFFFF !important;
+  }
+
+  .branding-build-container {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 20px !important; /* 20px safe area */
+    position: static !important;
+    gap: 0 !important;
+  }
+
+  .branding-build-left {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: static !important;
+  }
+
+  /* Figma: x=0 inside the 20px padded container */
+  .branding-build-heading {
+    margin: 0 0 31px 0 !important; /* gap from heading bottom to list top is 31px */
+    width: 100% !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: left !important;
+  }
+
+  /* Figma: x=22 inside the 20px padded container */
+  .branding-build-list {
+    margin: 0 0 0 22px !important; /* Indent 22px */
+    width: calc(100% - 22px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 23px !important; /* Figma gap between items */
+  }
+
+  .branding-build-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important; /* Gap between title and desc */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Title: Inter Semi Bold 600, 14/15, #0B0B0B */
+  .branding-build-item-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 15px !important;
+    font-weight: 600 !important;
+    color: #0B0B0B !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 321px !important;
+  }
+  
+  .branding-build-item-title .highlight {
+    color: #FFA726 !important;
+  }
+
+  /* Desc: Inter Regular 400, 13/15, #0B0B0B */
+  .branding-build-item-desc {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    font-weight: 400 !important;
+    color: #0B0B0B !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 321px !important;
+  }
+
+  /* Figma: Image gap to left screen edge 38px, right screen edge 37px. 
+     Container padding is 20px, so left margin=18px, right margin=17px */
+  .branding-build-right {
+    position: static !important;
+    margin: 60px 17px 0 18px !important; /* 18px left, 17px right */
+    width: calc(100% - 35px) !important; /* dynamically fill the gap */
+    height: 317px !important;
+    overflow: hidden !important;
+  }
+
+  .branding-build-img.d-lg-none {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: scale-down !important; /* CMS Safeguard */
+    object-position: center !important;
+  }
+
+  /* ==============================================
+     6. TESTIMONIALS SECTION OVERRIDES (MOBILE)
+     ============================================== */
+  .branding-page-body .testimonials-title {
+    margin-bottom: 5px !important; /* Gap to card is 5px */
+    font-size: 27px !important;
+    line-height: 51px !important;
+    height: auto !important; /* Kill the 144px fixed height from global CSS */
+    white-space: nowrap !important; /* Strictly force to one line */
+    background: linear-gradient(177.09deg, #B9B9B9 -18.17%, #FFFFFF 110.39%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .branding-page-body .testimonials-section .container {
+    margin-bottom: 0 !important; /* Kill the 25px gap from global CSS */
+    height: auto !important; /* Kill the 144px fixed height on the container */
+  }
+
+  .branding-page-body .testimonials-title .mobile-break {
+    display: none !important; /* Hide old breaks just in case */
+  }
+
+  .branding-page-body .testimonials-carousel-wrapper {
+    margin-top: 0 !important; /* Ensure gap is strictly controlled by the title margin */
+  }
+
+  /* ==============================================
+     7. PRE-FOOTER OVERRIDES (MOBILE)
+     ============================================== */
+  .branding-page-body .pre-footer {
+    height: 328px !important;
+    background-color: #263238 !important;
+    position: relative !important;
+  }
+
+  .branding-page-body .pre-footer-title {
+    position: absolute !important;
+    top: 47.61px !important;
+    left: 30.58px !important; /* Exact Figma gap to left */
+    width: calc(100% - 47.79px) !important; /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
+    height: auto !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-size: 36px !important;
+    line-height: 46px !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    text-align: left !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+
+  .branding-page-body .btn-pre-footer {
+    position: absolute !important;
+    top: 237px !important;
+    left: 31px !important;
+    width: 239px !important;
+    height: 39px !important;
+    background-color: #FFFFFF !important;
+    border-radius: 29px !important;
+    display: block !important;
+    text-decoration: none !important;
+  }
+
+  .branding-page-body .btn-pre-footer .icon-circle {
+    position: absolute !important;
+    top: 4.64px !important;
+    left: 5px !important;
+    width: 32px !important;
+    height: 29.71px !important;
+    background-color: transparent !important;
+  }
+
+  .branding-page-body .btn-pre-footer .btn-text {
+    position: absolute !important;
+    top: 4px !important; 
+    left: 46.47px !important;
+    width: 186.95px !important;
+    height: 30px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 30px !important;
+    font-weight: 600 !important;
+    color: #1B3834 !important;
+    letter-spacing: 0.01em !important;
+    text-decoration: none !important;
+  }
+
+} /* End Mobile Media Query */
+
+/* ==============================================
+   GLOBAL OVERRIDES FOR BRANDING PAGE
+   ============================================== */
+@media (min-width: 992px) {
+  .branding-page-body .faq-section {
+    background-color: #E9EAEB !important;
+    padding: 5.6250cqi 0 !important; /* 81/1440 */
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* Pre-footer Overrides */
+  .branding-page-body .pre-footer {
+    height: 17.6389cqi !important; /* 254/1440 */
+  }
+
+  .branding-page-body .pre-footer-title {
+    width: 52.0138cqi !important; /* 749/1440 */
+    top: 6.2910cqi !important; /* 90.59/1440 */
+    height: auto !important;
+  }
+
+  .branding-page-body .btn-pre-footer {
+    width: 25.2778cqi !important; /* 364/1440 */
+    height: 3.5770cqi !important; /* 51.51/1440 */
+    top: 11.2868cqi !important; /* 162.53/1440 */
+    right: auto !important;
+    left: 69.2361cqi !important; /* 997/1440 */
+  }
+
+  .branding-page-body .btn-pre-footer .icon-circle {
+    top: 0.3506cqi !important; /* 5.05/1440 */
+    left: 0.7944cqi !important; /* 11.44/1440 */
+    width: 3.0333cqi !important; /* 43.68/1440 */
+    height: 2.8055cqi !important; /* 40.4/1440 */
+  }
+
+  .branding-page-body .btn-pre-footer .btn-text {
+    top: 0.7638cqi !important; /* 11/1440 */
+    left: 5.0555cqi !important; /* 72.8/1440 */
+  }
+}
+
+.branding-page-body .faq-section-mobile {
+  background-color: #E9EAEB !important;
+}
+
+.branding-page-body .faq-section .faq-container {
+  margin: 0 !important;
+}

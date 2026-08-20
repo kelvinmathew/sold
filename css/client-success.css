@@ -9,7 +9,8 @@
   .client-success-hero {
     position: relative;
     width: 100%;
-    height: 57.2917vw; /* 825/1440 */
+    height: 100vh; 
+    min-height: 500px;
     background: #FFFFFF;
     overflow: hidden;
   }
@@ -108,7 +109,7 @@
   /* Breadcrumb (Bottom Left) */
   .client-success-hero-breadcrumb {
     position: absolute;
-    top: 49.2361vw; /* 709/1440 */
+    bottom: 4.1667vw; /* Anchored to bottom */
     left: 7.2222vw; /* 104/1440 */
     width: 16.3889vw;
     height: 2.0139vw;
@@ -573,8 +574,8 @@
   }
 
   .client-success-hero {
-    height: auto;
-    min-height: 100vh;
+    height: 100svh !important;
+    min-height: 500px !important;
   }
 
   .client-success-hero-content {
@@ -667,7 +668,8 @@
 
   .client-success-hero-breadcrumb {
     position: absolute !important;
-    top: 533px !important;
+    top: auto !important;
+    bottom: 20px !important;
     left: 30px !important;
     width: 174px !important;
     height: 29px !important;

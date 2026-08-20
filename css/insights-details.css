@@ -9,7 +9,8 @@
   .insights-details-hero {
     position: relative;
     width: 100%;
-    height: 57.2917vw; /* 825/1440 */
+    height: 100vh;
+    min-height: 500px;
     overflow: hidden;
   }
 
@@ -54,7 +55,7 @@
 
   .insights-details-hero-meta {
     position: absolute;
-    top: 45.9722vw; /* 662/1440 */
+    bottom: 11.3195vw; /* Anchored near bottom */
     left: 4.4444vw; /* 64/1440 */
     padding-left: 0.9028vw; /* 13/1440 */
     display: flex;
@@ -449,8 +450,8 @@
   .insights-details-hero {
     position: relative;
     width: 100%;
-    height: 852px !important; /* Full height from Figma */
-    min-height: auto;
+    height: 100svh !important; 
+    min-height: 500px !important;
     overflow: hidden;
     display: block !important;
     padding: 0 !important;
@@ -499,7 +500,8 @@
 
   .insights-details-hero-meta {
     position: absolute !important;
-    top: 533px !important;
+    top: auto !important;
+    bottom: 20px !important;
     left: 30px !important;
     display: flex !important;
     align-items: center !important;
