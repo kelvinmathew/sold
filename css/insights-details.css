@@ -5,6 +5,7 @@
 
 /* For Desktop (Web screens) - Fluid scaling based on 1440px */
 @media (min-width: 992px) {
+
   /* --- Hero Section --- */
   .insights-details-hero {
     position: relative;
@@ -17,8 +18,10 @@
   .insights-details-hero-bg {
     position: absolute;
     top: 0;
-    left: -1.5972vw; /* -23/1440 */
-    width: 102.7778vw; /* 1480/1440 */
+    left: -1.5972vw;
+    /* -23/1440 */
+    width: 102.7778vw;
+    /* 1480/1440 */
     height: 100%;
     background: linear-gradient(135.16deg, #000000 -4.05%, rgba(0, 0, 0, 0) 75.07%), url('../assets/images/insightdetailsherp.png');
     background-size: cover;
@@ -35,60 +38,84 @@
     width: 100%;
     height: 100%;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding-left: 4.4444vw;
+    /* 64/1440 */
+    gap: 1.2917vw;
+    /* 33px gap between title and meta */
+  }
+
+  .insights-details-hero-content::before {
+    content: '';
+    flex: 511;
+    /* Proportionate top space per Figma */
+  }
+
+  .insights-details-hero-content::after {
+    content: '';
+    flex: 134;
+    /* Proportionate bottom space per Figma */
   }
 
   .insights-details-hero-title-container {
-    position: absolute;
-    top: 35.4861vw; /* 511/1440 */
-    left: 4.4444vw; /* 64/1440 */
+    position: static;
   }
 
   .insights-details-hero-title {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 4.6528vw; /* 67/1440 */
-    line-height: 4.7917vw; /* 69/1440 */
+    font-size: 4.6528vw;
+    /* 67/1440 */
+    line-height: 4.7917vw;
+    /* 69/1440 */
     letter-spacing: 0.01em;
     color: #FFFFFF;
     margin: 0;
   }
 
   .insights-details-hero-meta {
-    position: absolute;
-    bottom: 11.3195vw; /* Anchored near bottom */
-    left: 4.4444vw; /* 64/1440 */
-    padding-left: 0.9028vw; /* 13/1440 */
+    position: static;
+    padding-left: 0.9028vw;
+    /* 13/1440 */
     display: flex;
     align-items: center;
-    gap: 1.1111vw; /* 16/1440 */
+    gap: 1.1111vw;
+    /* 16/1440 */
   }
 
   .meta-item {
     display: flex;
     align-items: center;
-    gap: 0.4167vw; /* 6/1440 */
+    gap: 0.4167vw;
+    /* 6/1440 */
   }
 
   .meta-item span {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.25vw; /* 18/1440 */
-    line-height: 2.0139vw; /* 29/1440 */
+    font-size: 1.25vw;
+    /* 18/1440 */
+    line-height: 2.0139vw;
+    /* 29/1440 */
     letter-spacing: 0.01em;
     color: #FFA726;
   }
 
   .meta-item i {
     color: #FFA726;
-    font-size: 1.3889vw; /* 20/1440 */
+    font-size: 1.3889vw;
+    /* 20/1440 */
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .meta-calendar-icon {
-    width: 1.3889vw; /* 20/1440 */
-    height: 1.3889vw; /* 20/1440 */
+    width: 1.3889vw;
+    /* 20/1440 */
+    height: 1.3889vw;
+    /* 20/1440 */
     object-fit: contain;
   }
 
@@ -96,14 +123,16 @@
   .insights-details-section {
     width: 100%;
     background: #F4F5F5;
-    padding-top: 5.9028vw; /* 85/1440 gap between hero and content */
+    padding-top: 5.9028vw;
+    /* 85/1440 gap between hero and content */
     padding-bottom: 0;
     display: flex;
     justify-content: center;
   }
 
   .insights-details-container {
-    width: 95.9028vw; /* 1381/1440 */
+    width: 95.9028vw;
+    /* 1381/1440 */
     max-width: 1381px;
     background: transparent;
     border-radius: 0;
@@ -116,7 +145,8 @@
   }
 
   .insights-details-content {
-    padding: 0 5.5556vw; /* 80/1440 horizontal padding only */
+    padding: 0 5.5556vw;
+    /* 80/1440 horizontal padding only */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -125,18 +155,22 @@
 
   .insights-details-body {
     width: 100%;
-    max-width: 84.7917vw; /* 1221/1440 - Figma node 1867-2252 width */
+    max-width: 84.7917vw;
+    /* 1221/1440 - Figma node 1867-2252 width */
     display: flex;
     flex-direction: column;
-    gap: 5.2083vw; /* 75/1440 - Figma gap */
+    gap: 5.2083vw;
+    /* 75/1440 - Figma gap */
     margin-top: 0 !important;
   }
 
   .insights-details-paragraph {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.8056vw; /* 26/1440 */
-    line-height: 2.6389vw; /* 38/1440 */
+    font-size: 1.8056vw;
+    /* 26/1440 */
+    line-height: 2.6389vw;
+    /* 38/1440 */
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -146,23 +180,31 @@
   .insights-details-subtitle {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.125vw; /* 45/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: 3.125vw;
+    /* 45/1440 */
+    line-height: 3.4722vw;
+    /* 50/1440 */
     letter-spacing: 0.01em;
     color: #000000;
-    width: 49.9305vw; /* 719/1440 */
+    width: 49.9305vw;
+    /* 719/1440 */
     margin: 0;
   }
 
   .insights-details-list {
-    width: 57.4305vw; /* 827/1440 */
+    width: 57.4305vw;
+    /* 827/1440 */
     margin: 0;
-    margin-left: 4.4583vw; /* Indent by 57px (167px total from screen edge) */
-    padding-left: 2.0833vw; /* 30/1440 */
+    margin-left: 4.4583vw;
+    /* Indent by 57px (167px total from screen edge) */
+    padding-left: 2.0833vw;
+    /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.9444vw; /* 28/1440 */
-    line-height: 2.9167vw; /* 42/1440 */
+    font-size: 1.9444vw;
+    /* 28/1440 */
+    line-height: 2.9167vw;
+    /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
     list-style-type: none;
@@ -175,7 +217,8 @@
   .insights-details-list li::before {
     content: '•';
     position: absolute;
-    left: -1.9333vw; /* 12/1440 - tighten gap to match Figma */
+    left: -1.9333vw;
+    /* 12/1440 - tighten gap to match Figma */
     color: #000000;
   }
 
@@ -183,76 +226,108 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 5.9722vw; /* 86/1440 gap from the list above */
-    padding-bottom: 5.5556vw; /* 80/1440 */
+    margin-top: 5.9722vw;
+    /* 86/1440 gap from the list above */
+    padding-bottom: 5.5556vw;
+    /* 80/1440 */
   }
 
   .insights-details-full-image {
-    width: 89.5833vw; /* 1290/1440 */
-    height: 43.75vw; /* 630/1440 */
-    border-radius: 1.4583vw; /* 21/1440 */
+    width: 89.5833vw;
+    /* 1290/1440 */
+    height: 43.75vw;
+    /* 630/1440 */
+    border-radius: 1.4583vw;
+    /* 21/1440 */
     object-fit: cover;
   }
 
   /* --- Related Insights Section VW Overrides --- */
   .insights-details-page-body .insights-section {
-    padding-top: 6.9444vw !important; /* 100/1440 gap from details content */
-    padding-bottom: 7.6083vw !important; /* 109.56/1440 */
+    padding-top: 6.9444vw !important;
+    /* 100/1440 gap from details content */
+    padding-bottom: 7.6083vw !important;
+    /* 109.56/1440 */
   }
 
   .insights-details-page-body .insights-label {
-    font-size: 2.0833vw !important; /* 30/1440 */
+    font-size: 2.0833vw !important;
+    /* 30/1440 */
     line-height: 2.0833vw !important;
   }
 
   .insights-details-page-body .insights-label-wrap svg,
   .insights-details-page-body .insights-label-wrap img {
-    width: 0.3937vw !important; /* 5.67/1440 */
-    height: 1.9541vw !important; /* 28.14/1440 */
+    width: 0.3937vw !important;
+    /* 5.67/1440 */
+    height: 1.9541vw !important;
+    /* 28.14/1440 */
   }
 
   .insights-details-page-body .insights-title {
-    font-size: 2.8472vw !important; /* 41/1440 */
-    line-height: 3.2638vw !important; /* 47/1440 */
-    width: 35.0694vw !important; /* 505/1440 */
+    font-size: 2.8472vw !important;
+    /* 41/1440 */
+    line-height: 3.2638vw !important;
+    /* 47/1440 */
+    width: 35.0694vw !important;
+    /* 505/1440 */
   }
 
   .insights-details-page-body .btn-discover-now-insights {
-    width: 18.75vw !important; /* 270/1440 */
-    height: 3.75vw !important; /* 54/1440 */
-    border-radius: 2.0138vw !important; /* 29/1440 */
+    width: 18.75vw !important;
+    /* 270/1440 */
+    height: 3.75vw !important;
+    /* 54/1440 */
+    border-radius: 2.0138vw !important;
+    /* 29/1440 */
     padding: 0 !important;
   }
 
   .insights-details-page-body .btn-discover-now-insights .btn-text {
-    font-size: 1.6666vw !important; /* 24/1440 */
-    line-height: 2.0833vw !important; /* 30/1440 */
-    top: 0.8708vw !important; /* 12.54/1440 */
-    left: 4.7493vw !important; /* 68.39/1440 */
-    width: 12.8vw !important; /* 184.32/1440 */
-    height: 2.2097vw !important; /* 31.82/1440 */
+    font-size: 1.6666vw !important;
+    /* 24/1440 */
+    line-height: 2.0833vw !important;
+    /* 30/1440 */
+    top: 0.8708vw !important;
+    /* 12.54/1440 */
+    left: 4.7493vw !important;
+    /* 68.39/1440 */
+    width: 12.8vw !important;
+    /* 184.32/1440 */
+    height: 2.2097vw !important;
+    /* 31.82/1440 */
   }
 
   .insights-details-page-body .btn-discover-now-insights .icon-circle {
-    top: 0.3472vw !important; /* 5/1440 */
-    left: 0.4166vw !important; /* 6/1440 */
-    width: 3.0784vw !important; /* 44.33/1440 */
-    height: 3.0555vw !important; /* 44/1440 */
+    top: 0.3472vw !important;
+    /* 5/1440 */
+    left: 0.4166vw !important;
+    /* 6/1440 */
+    width: 3.0784vw !important;
+    /* 44.33/1440 */
+    height: 3.0555vw !important;
+    /* 44/1440 */
   }
 
   .insights-details-page-body .btn-discover-now-insights .discover-arrow-img {
-    width: 3.0784vw !important; /* 44.33/1440 */
-    height: 3.0555vw !important; /* 44/1440 */
-    border-radius: 1.6666vw !important; /* 24/1440 */
+    width: 3.0784vw !important;
+    /* 44.33/1440 */
+    height: 3.0555vw !important;
+    /* 44/1440 */
+    border-radius: 1.6666vw !important;
+    /* 24/1440 */
   }
 
   .insights-details-page-body .insights-header-top {
     position: relative !important;
     display: block !important;
-    width: 90.4861vw !important; /* 1303/1440 */
+    width: 90.4861vw !important;
+    /* 1303/1440 */
     max-width: 90.4861vw !important;
-    height: 5.6528vw !important; /* 81.4/1440 - enough to contain all children */
-    margin: 0 4.7222vw 0 4.7917vw !important; /* 0 68px 0 69px */
+    height: 5.6528vw !important;
+    /* 81.4/1440 - enough to contain all children */
+    margin: 0 4.7222vw 0 4.7917vw !important;
+    /* 0 68px 0 69px */
     padding: 0 !important;
   }
 
@@ -260,21 +335,27 @@
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    width: 32.8472vw !important; /* 473/1440 */
-    height: 2.7208vw !important; /* 39.18/1440 */
+    width: 32.8472vw !important;
+    /* 473/1440 */
+    height: 2.7208vw !important;
+    /* 39.18/1440 */
     display: flex !important;
     align-items: center !important;
     gap: 0.5555vw !important;
     margin: 0 !important;
-    padding-left: 3.75vw !important; /* 54/1440 - bar starts at x:54 in Figma */
+    padding-left: 3.75vw !important;
+    /* 54/1440 - bar starts at x:54 in Figma */
     box-sizing: border-box !important;
   }
 
   .insights-details-page-body .insights-title {
     position: absolute !important;
-    top: 0.4444vw !important; /* 6.4/1440 */
-    left: 30.9028vw !important; /* 445/1440 */
-    width: 35.0694vw !important; /* 505/1440 */
+    top: 0.4444vw !important;
+    /* 6.4/1440 */
+    left: 30.9028vw !important;
+    /* 445/1440 */
+    width: 35.0694vw !important;
+    /* 505/1440 */
     height: auto !important;
     margin: 0 !important;
     text-align: left !important;
@@ -282,39 +363,51 @@
 
   .insights-details-page-body .btn-discover-now-insights {
     position: absolute !important;
-    top: 1.9444vw !important; /* 28/1440 */
-    left: 71.7361vw !important; /* 1033/1440 */
-    width: 18.75vw !important; /* 270/1440 */
-    height: 3.75vw !important; /* 54/1440 */
-    border-radius: 2.0138vw !important; /* 29/1440 */
+    top: 1.9444vw !important;
+    /* 28/1440 */
+    left: 71.7361vw !important;
+    /* 1033/1440 */
+    width: 18.75vw !important;
+    /* 270/1440 */
+    height: 3.75vw !important;
+    /* 54/1440 */
+    border-radius: 2.0138vw !important;
+    /* 29/1440 */
     padding: 0 !important;
     margin: 0 !important;
   }
 
   /* --- Related Insights Cards --- */
   .insights-related-cards-container {
-    width: 91.7361vw; /* 1321/1440 */
+    width: 91.7361vw;
+    /* 1321/1440 */
     margin: 0 auto;
-    margin-top: 6.0028vw; /* 86.44/1440 gap between title and cards */
+    margin-top: 6.0028vw;
+    /* 86.44/1440 gap between title and cards */
   }
 
   .insights-related-cards-row {
     display: flex;
-    gap: 0.8333vw; /* 12/1440 */
+    gap: 0.8333vw;
+    /* 12/1440 */
     align-items: stretch;
   }
 
   .insights-related-card {
     background: #E9EAEB;
-    border-radius: 1.3194vw; /* 19/1440 */
-    padding: 1.1805vw 1.3888vw 3.0555vw; /* 17px 20px 44px */
+    border-radius: 1.3194vw;
+    /* 19/1440 */
+    padding: 1.1805vw 1.3888vw 3.0555vw;
+    /* 17px 20px 44px */
     display: flex;
     flex-direction: column;
-    gap: 2.2916vw; /* 33/1440 */
+    gap: 2.2916vw;
+    /* 33/1440 */
   }
 
   .insights-related-card-large {
-    width: 37.9861vw; /* 547/1440 */
+    width: 37.9861vw;
+    /* 547/1440 */
     flex-shrink: 0;
   }
 
@@ -324,8 +417,10 @@
 
   .insights-related-card-img {
     width: 100%;
-    height: 18.4027vw; /* 265/1440 */
-    border-radius: 1.4583vw; /* 21/1440 */
+    height: 18.4027vw;
+    /* 265/1440 */
+    border-radius: 1.4583vw;
+    /* 21/1440 */
     overflow: hidden;
   }
 
@@ -333,32 +428,38 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1.4583vw; /* 21/1440 */
+    border-radius: 1.4583vw;
+    /* 21/1440 */
   }
 
   .insights-related-card-body {
     display: flex;
     flex-direction: column;
-    gap: 0.9027vw; /* 13/1440 */
+    gap: 0.9027vw;
+    /* 13/1440 */
     flex: 1;
   }
 
   .insights-related-card-date {
     display: flex;
     align-items: center;
-    gap: 0.4861vw; /* 7/1440 */
+    gap: 0.4861vw;
+    /* 7/1440 */
   }
 
   .insights-related-cal-icon {
-    width: 1.8055vw; /* 26/1440 */
-    height: 1.7361vw; /* 25/1440 */
+    width: 1.8055vw;
+    /* 26/1440 */
+    height: 1.7361vw;
+    /* 25/1440 */
     object-fit: contain;
   }
 
   .insights-related-card-date span {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.25vw; /* 18/1440 */
+    font-size: 1.25vw;
+    /* 18/1440 */
     line-height: 1;
     color: #000000;
   }
@@ -366,7 +467,8 @@
   .insights-related-card-title {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.5972vw; /* 23/1440 */
+    font-size: 1.5972vw;
+    /* 23/1440 */
     line-height: 1;
     letter-spacing: 0.01em;
     color: #000000;
@@ -374,14 +476,17 @@
   }
 
   .insights-related-card-title-large {
-    font-size: 1.9444vw; /* 28/1440 */
+    font-size: 1.9444vw;
+    /* 28/1440 */
   }
 
   .insights-related-card-desc {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 0.9722vw; /* 14/1440 */
-    line-height: 1.3888vw; /* 20/1440 */
+    font-size: 0.9722vw;
+    /* 14/1440 */
+    line-height: 1.3888vw;
+    /* 20/1440 */
     letter-spacing: 0.01em;
     color: #292626;
     margin: 0;
@@ -390,7 +495,8 @@
   .insights-related-read-more {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.4583vw; /* 21/1440 */
+    font-size: 1.4583vw;
+    /* 21/1440 */
     line-height: 1;
     letter-spacing: 0.01em;
     color: #000000;
@@ -404,53 +510,75 @@
 
   /* --- Pre-footer VW Overrides --- */
   .insights-details-page-body .pre-footer {
-    height: 19.8611vw !important; /* 286/1440 */
+    height: 19.8611vw !important;
+    /* 286/1440 */
   }
 
   .insights-details-page-body .pre-footer-title {
-    top: 7.0833vw !important; /* 102/1440 */
-    left: 5.1388vw !important; /* 74/1440 */
-    width: 52.0138vw !important; /* 749/1440 */
-    height: 7.6388vw !important; /* 110/1440 */
-    font-size: 3.4027vw !important; /* 49/1440 */
-    line-height: 3.8194vw !important; /* 55/1440 */
+    top: 7.0833vw !important;
+    /* 102/1440 */
+    left: 5.1388vw !important;
+    /* 74/1440 */
+    width: 52.0138vw !important;
+    /* 749/1440 */
+    height: 7.6388vw !important;
+    /* 110/1440 */
+    font-size: 3.4027vw !important;
+    /* 49/1440 */
+    line-height: 3.8194vw !important;
+    /* 55/1440 */
   }
 
   .insights-details-page-body .btn-pre-footer {
-    top: 12.7083vw !important; /* 183/1440 */
+    top: 12.7083vw !important;
+    /* 183/1440 */
     right: auto !important;
-    left: 69.2361vw !important; /* 997/1440 */
-    width: 25.2777vw !important; /* 364/1440 */
-    height: 4.0277vw !important; /* 58/1440 */
-    border-radius: 2.0138vw !important; /* 29/1440 */
+    left: 69.2361vw !important;
+    /* 997/1440 */
+    width: 25.2777vw !important;
+    /* 364/1440 */
+    height: 4.0277vw !important;
+    /* 58/1440 */
+    border-radius: 2.0138vw !important;
+    /* 29/1440 */
   }
 
   .insights-details-page-body .btn-pre-footer .icon-circle {
-    left: 0.7944vw !important; /* 11.44/1440 */
-    top: 0.3951vw !important; /* 5.69/1440 */
-    width: 3.0333vw !important; /* 43.68/1440 */
-    height: 3.1590vw !important; /* 45.49/1440 */
-    border-radius: 1.6666vw !important; /* 24/1440 */
+    left: 0.7944vw !important;
+    /* 11.44/1440 */
+    top: 0.3951vw !important;
+    /* 5.69/1440 */
+    width: 3.0333vw !important;
+    /* 43.68/1440 */
+    height: 3.1590vw !important;
+    /* 45.49/1440 */
+    border-radius: 1.6666vw !important;
+    /* 24/1440 */
   }
 
   .insights-details-page-body .btn-pre-footer .btn-text {
-    left: 5.0555vw !important; /* 72.8/1440 */
-    top: 0.9722vw !important; /* 14/1440 */
+    left: 5.0555vw !important;
+    /* 72.8/1440 */
+    top: 0.9722vw !important;
+    /* 14/1440 */
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
-    font-size: 1.7361vw !important; /* 25/1440 */
-    line-height: 2.0833vw !important; /* 30/1440 */
+    font-size: 1.7361vw !important;
+    /* 25/1440 */
+    line-height: 2.0833vw !important;
+    /* 30/1440 */
     color: #1B3834 !important;
   }
 }
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout */
 @media (max-width: 991px) {
+
   /* --- Hero Section --- */
   .insights-details-hero {
     position: relative;
     width: 100%;
-    height: 100svh !important; 
+    height: 100svh !important;
     min-height: 500px !important;
     overflow: hidden;
     display: block !important;
@@ -483,16 +611,21 @@
   .insights-details-hero-title-container {
     position: absolute !important;
     top: 333px !important;
-    left: 6.3613vw !important; /* 25px */
-    width: calc(100% - 12.7226vw) !important; /* Fluid width */
-    max-width: 278px !important; /* Cap at Figma value */
+    left: 6.3613vw !important;
+    /* 25px */
+    width: calc(100% - 12.7226vw) !important;
+    /* Fluid width */
+    max-width: 278px !important;
+    /* Cap at Figma value */
   }
 
   .insights-details-hero-title {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 9.7201vw !important; /* 38.2px */
-    line-height: 10.9415vw !important; /* 43px */
+    font-size: 9.7201vw !important;
+    /* 38.2px */
+    line-height: 10.9415vw !important;
+    /* 43px */
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
     margin: 0 !important;
@@ -531,8 +664,10 @@
   /* --- Details Body Section --- */
   .insights-details-section {
     width: 100% !important;
-    background: #FFFFFF !important; /* Figma uses #FFFFFF for body */
-    padding: 0 !important; /* Reset */
+    background: #FFFFFF !important;
+    /* Figma uses #FFFFFF for body */
+    padding: 0 !important;
+    /* Reset */
   }
 
   .insights-details-container {
@@ -544,23 +679,28 @@
   }
 
   .insights-details-content {
-    padding: 7.6336vw 0 0 0 !important; /* Top 30px */
+    padding: 7.6336vw 0 0 0 !important;
+    /* Top 30px */
     display: flex !important;
     justify-content: center !important;
   }
 
   .insights-details-body {
-    width: 85.4962vw !important; /* Exactly 336px relative to 393px */
+    width: 85.4962vw !important;
+    /* Exactly 336px relative to 393px */
     display: flex;
     flex-direction: column;
-    gap: 4.0712vw !important; /* 16px relative to 393px */
+    gap: 4.0712vw !important;
+    /* 16px relative to 393px */
   }
 
   .insights-details-paragraph {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.0712vw !important; /* 16px relative to 393px */
-    line-height: 5.5980vw !important; /* 22px relative to 393px */
+    font-size: 4.0712vw !important;
+    /* 16px relative to 393px */
+    line-height: 5.5980vw !important;
+    /* 22px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
     margin: 0 !important;
@@ -569,20 +709,26 @@
   .insights-details-subtitle {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 5.5979vw !important; /* 22px relative to 393px */
-    line-height: 7.1246vw !important; /* 28px relative to 393px */
+    font-size: 5.5979vw !important;
+    /* 22px relative to 393px */
+    line-height: 7.1246vw !important;
+    /* 28px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
-    margin: 5.3435vw 0 0 0 !important; /* 21px top margin + 16px gap = 37px total gap from first paragraph */
+    margin: 5.3435vw 0 0 0 !important;
+    /* 21px top margin + 16px gap = 37px total gap from first paragraph */
   }
 
   .insights-details-list {
     margin: 0 !important;
-    padding-left: 5.0890vw !important; /* 20px */
+    padding-left: 5.0890vw !important;
+    /* 20px */
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.0712vw !important; /* 16px */
-    line-height: 5.5980vw !important; /* 22px */
+    font-size: 4.0712vw !important;
+    /* 16px */
+    line-height: 5.5980vw !important;
+    /* 22px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
     list-style-type: none !important;
@@ -593,9 +739,11 @@
   }
 
   .insights-details-list li::before {
-    content: '•' !important; /* Reverted to dot per user request */
+    content: '•' !important;
+    /* Reverted to dot per user request */
     position: absolute !important;
-    left: -3.0534vw !important; /* -12px */
+    left: -3.0534vw !important;
+    /* -12px */
     color: #000000 !important;
   }
 
@@ -603,29 +751,37 @@
     width: 100% !important;
     display: flex !important;
     justify-content: center !important;
-    margin-top: 9.1603vw !important; /* 36px */
+    margin-top: 9.1603vw !important;
+    /* 36px */
     margin-bottom: 0 !important;
-    padding: 0 7.3791vw !important; /* 29px */
+    padding: 0 7.3791vw !important;
+    /* 29px */
   }
 
   .insights-details-full-image {
     width: 100% !important;
-    height: 233px !important; /* Exact height */
+    height: 233px !important;
+    /* Exact height */
     object-fit: cover !important;
-    border-radius: 4px !important; /* Exact radius */
+    border-radius: 4px !important;
+    /* Exact radius */
   }
 
-  .insights-details-image-wrapper + .insights-details-content {
-    padding-top: 3.0534vw !important; /* 12px gap from image to next paragraph */
+  .insights-details-image-wrapper+.insights-details-content {
+    padding-top: 3.0534vw !important;
+    /* 12px gap from image to next paragraph */
   }
 
   /* --- Related Insights Section Mobile Overrides --- */
   .insights-details-page-body .insights-section {
     background: #FFFFFF !important;
-    padding-top: 33px !important; /* Exact gap from content above */
-    padding-bottom: 55px !important; /* Gap between Load More and pre-footer */
+    padding-top: 33px !important;
+    /* Exact gap from content above */
+    padding-bottom: 55px !important;
+    /* Gap between Load More and pre-footer */
     margin-bottom: 0 !important;
   }
+
   .insights-details-page-body .insights-header-top {
     display: flex !important;
     flex-direction: column !important;
@@ -633,8 +789,10 @@
     height: auto !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 !important; /* Override the 27px left margin from global styles */
-    padding: 0 30px !important; /* Exact 30px gap to screen edges */
+    margin: 0 !important;
+    /* Override the 27px left margin from global styles */
+    padding: 0 30px !important;
+    /* Exact 30px gap to screen edges */
     box-sizing: border-box !important;
     gap: 20px !important;
   }
@@ -643,19 +801,21 @@
     position: static !important;
     width: auto !important;
     height: auto !important;
-    margin-bottom: 0 !important; /* gap handles spacing */
-    padding: 0 !important; /* prevent padding from shrinking text space */
+    margin-bottom: 0 !important;
+    /* gap handles spacing */
+    padding: 0 !important;
+    /* prevent padding from shrinking text space */
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     background: transparent !important;
     border: none !important;
   }
-  
+
   .insights-details-page-body .insights-label-wrap::before {
     display: none !important;
   }
-  
+
   .insights-details-page-body .insights-label {
     width: auto !important;
     font-size: 0 !important;
@@ -663,16 +823,17 @@
     display: flex !important;
     align-items: center !important;
   }
-  
+
   .insights-details-page-body .insights-label::before {
     content: "" !important;
     display: block !important;
     width: 3.77px !important;
     height: 31px !important;
     background: #FFA726 !important;
-    margin-right: 7.83px !important; /* Creates the exact gap between bar and text */
+    margin-right: 7.83px !important;
+    /* Creates the exact gap between bar and text */
   }
-  
+
   .insights-details-page-body .insights-label::after {
     content: "Lorem Blogs" !important;
     font-family: 'Mona Sans', sans-serif !important;
@@ -680,7 +841,8 @@
     font-size: 20px !important;
     line-height: 30px !important;
     color: #FFA726 !important;
-    white-space: nowrap !important; /* Force text to stay on one line */
+    white-space: nowrap !important;
+    /* Force text to stay on one line */
   }
 
   .insights-details-page-body .insights-title {
@@ -689,10 +851,12 @@
     height: auto !important;
     font-size: 0 !important;
     line-height: 0 !important;
-    margin-top: 0 !important; /* Prevent default heading margins from inflating gap */
-    margin-bottom: 0 !important; /* gap handles spacing */
+    margin-top: 0 !important;
+    /* Prevent default heading margins from inflating gap */
+    margin-bottom: 0 !important;
+    /* gap handles spacing */
   }
-  
+
   .insights-details-page-body .insights-title::after {
     content: "Lorem ipsum dolor sit amet\A consectetur adipiscing elit" !important;
     white-space: pre-wrap !important;
@@ -703,17 +867,18 @@
     color: #000000 !important;
     display: block !important;
   }
-  
+
   .insights-details-page-body .btn-discover-now-insights {
     position: static !important;
-    margin-top: 20px !important; /* optional separation for button */
+    margin-top: 20px !important;
+    /* optional separation for button */
   }
 
   .insights-details-page-body .btn-discover-now-insights {
     display: none !important;
   }
 
-  .insights-details-page-body .insights-header-top > div:last-child {
+  .insights-details-page-body .insights-header-top>div:last-child {
     margin-left: 0 !important;
     width: 100% !important;
   }
@@ -721,16 +886,21 @@
   /* --- Related Insights Cards Mobile --- */
   .insights-related-cards-container {
     width: 100% !important;
-    padding: 0 17px !important; /* Centered padding (393 - 359 = 34 / 2) */
-    margin-top: 27px !important; /* Exact 27px gap from header */
+    padding: 0 17px !important;
+    /* Centered padding (393 - 359 = 34 / 2) */
+    margin-top: 27px !important;
+    /* Exact 27px gap from header */
   }
 
   .insights-related-cards-row {
     display: flex !important;
-    flex-direction: row !important; /* Figma uses side-by-side */
-    flex-wrap: wrap !important; /* Wrap to new line */
+    flex-direction: row !important;
+    /* Figma uses side-by-side */
+    flex-wrap: wrap !important;
+    /* Wrap to new line */
     justify-content: space-between !important;
-    gap: 11px !important; /* 11px gap between cards */
+    gap: 11px !important;
+    /* 11px gap between cards */
     padding: 0 !important;
   }
 
@@ -750,18 +920,21 @@
   }
 
   .insights-related-card {
-    background: #E9EAEB !important; /* User said card bg is fine */
+    background: #E9EAEB !important;
+    /* User said card bg is fine */
     border-radius: 5px !important;
     padding: 7px 8px 14px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 6px !important;
     width: calc(50% - 5.5px) !important;
-    min-width: unset !important; /* Allow flex to shrink if needed */
+    min-width: unset !important;
+    /* Allow flex to shrink if needed */
   }
 
   .insights-related-card-large {
-    width: calc(50% - 5.5px) !important; /* Reset large card class override */
+    width: calc(50% - 5.5px) !important;
+    /* Reset large card class override */
   }
 
   .insights-related-card-img {
@@ -838,12 +1011,15 @@
     color: #000000 !important;
     text-decoration: none !important;
   }
+
   /* Insights Details Mobile Pre-Footer Overrides */
   .insights-details-page-body .cs-pre-footer {
     height: auto !important;
     padding-bottom: 60px !important;
-    width: 100% !important; /* Reset 100vw */
-    margin-left: 0 !important; /* Remove negative calc margin pulling section left */
+    width: 100% !important;
+    /* Reset 100vw */
+    margin-left: 0 !important;
+    /* Remove negative calc margin pulling section left */
     margin-right: 0 !important;
   }
 
@@ -854,28 +1030,31 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     padding-top: 59.81px !important;
-    padding-left: 0 !important; /* Move spacing to margins for strict pixel control */
-    background: #263238 !important; 
+    padding-left: 0 !important;
+    /* Move spacing to margins for strict pixel control */
+    background: #263238 !important;
   }
 
   .insights-details-page-body .cs-pre-footer .pre-footer-title {
     position: relative !important;
     top: auto !important;
-    bottom: auto !important; 
+    bottom: auto !important;
     left: auto !important;
     right: auto !important;
-    width: 88.0941vw !important; /* 346.21px fluid */
-    max-width: 346.21px !important; /* Cap at Figma value */
+    width: 88.0941vw !important;
+    /* 346.21px fluid */
+    max-width: 346.21px !important;
+    /* Cap at Figma value */
     height: auto !important;
     font-size: 36px !important;
     line-height: 55px !important;
     text-align: left !important;
     margin-top: 0 !important;
-    margin-bottom: 32.04px !important; 
+    margin-bottom: 32.04px !important;
     margin-left: 30px !important;
     margin-right: auto !important;
     padding: 0 !important;
-    color: #FFFFFF !important; 
+    color: #FFFFFF !important;
   }
 
   .insights-details-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
@@ -888,7 +1067,8 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    width: 60.8142vw !important; /* 239px fluid */
+    width: 60.8142vw !important;
+    /* 239px fluid */
     max-width: 239px !important;
     height: 42px !important;
     margin-top: 0 !important;
@@ -896,15 +1076,17 @@
     margin-left: 30px !important;
     margin-right: auto !important;
     padding: 0 !important;
-    background: #FFFFFF !important; 
+    background: #FFFFFF !important;
     display: block !important;
   }
-  
+
   .insights-details-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
     position: absolute !important;
     top: 5px !important;
-    left: 8px !important; /* Matches exactly with Figma */
-    width: 32px !important; /* Matches exactly with Figma */
+    left: 8px !important;
+    /* Matches exactly with Figma */
+    width: 32px !important;
+    /* Matches exactly with Figma */
     height: 32px !important;
     background: #FFA726 !important;
     border-radius: 24px !important;
@@ -920,13 +1102,16 @@
   .insights-details-page-body .cs-pre-footer .btn-pre-footer .btn-text {
     position: absolute !important;
     top: 5px !important;
-    left: 46.47px !important; /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
+    left: 46.47px !important;
+    /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
     width: 186.95px !important;
     height: 30px !important;
     font-size: 16px !important;
     line-height: 30px !important;
-    color: #1B3834 !important; /* Text inside button should be green */
-    text-align: center !important; /* Center text within Figma's bounding box */
+    color: #1B3834 !important;
+    /* Text inside button should be green */
+    text-align: center !important;
+    /* Center text within Figma's bounding box */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;

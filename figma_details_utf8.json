@@ -1,0 +1,292 @@
+﻿{
+    "1867:2229":  {
+                      "document":  {
+                                       "id":  "1867:2229",
+                                       "name":  "Delivering Results for Leading Real Estate Brands",
+                                       "type":  "TEXT",
+                                       "scrollBehavior":  "SCROLLS",
+                                       "blendMode":  "PASS_THROUGH",
+                                       "fills":  [
+                                                     {
+                                                         "blendMode":  "NORMAL",
+                                                         "type":  "SOLID",
+                                                         "color":  {
+                                                                       "r":  1.0,
+                                                                       "g":  1.0,
+                                                                       "b":  1.0,
+                                                                       "a":  1.0
+                                                                   }
+                                                     }
+                                                 ],
+                                       "strokes":  [
+
+                                                   ],
+                                       "strokeWeight":  1.0,
+                                       "strokeAlign":  "OUTSIDE",
+                                       "absoluteBoundingBox":  {
+                                                                   "x":  8857.0,
+                                                                   "y":  13374.0,
+                                                                   "width":  933.0,
+                                                                   "height":  118.0
+                                                               },
+                                       "absoluteRenderBounds":  {
+                                                                    "x":  8861.6230468750,
+                                                                    "y":  13374.68847656250,
+                                                                    "width":  915.12402343750,
+                                                                    "height":  130.17089843750
+                                                                },
+                                       "constraints":  {
+                                                           "vertical":  "TOP",
+                                                           "horizontal":  "LEFT"
+                                                       },
+                                       "layoutAlign":  "INHERIT",
+                                       "layoutGrow":  0.0,
+                                       "layoutSizingHorizontal":  "FIXED",
+                                       "layoutSizingVertical":  "FIXED",
+                                       "characters":  "Delivering Results for\nLeading Real Estate Brands",
+                                       "characterStyleOverrides":  [
+
+                                                                   ],
+                                       "styleOverrideTable":  {
+
+                                                              },
+                                       "lineTypes":  [
+                                                         "NONE",
+                                                         "NONE"
+                                                     ],
+                                       "lineIndentations":  [
+                                                                0,
+                                                                0
+                                                            ],
+                                       "style":  {
+                                                     "fontFamily":  "Mona Sans",
+                                                     "fontPostScriptName":  "MonaSans-Bold",
+                                                     "fontStyle":  "Bold",
+                                                     "fontWeight":  700,
+                                                     "fontSize":  67.0,
+                                                     "textAlignHorizontal":  "LEFT",
+                                                     "textAlignVertical":  "CENTER",
+                                                     "letterSpacing":  0.67000000000000004,
+                                                     "lineHeightPx":  69.0,
+                                                     "lineHeightPercent":  73.03906250,
+                                                     "lineHeightPercentFontSize":  102.98507690429688,
+                                                     "lineHeightUnit":  "PIXELS"
+                                                 },
+                                       "layoutVersion":  5,
+                                       "effects":  [
+
+                                                   ],
+                                       "interactions":  [
+
+                                                        ],
+                                       "complexStrokeProperties":  {
+                                                                       "strokeType":  "BASIC"
+                                                                   }
+                                   },
+                      "components":  {
+
+                                     },
+                      "componentSets":  {
+
+                                        },
+                      "schemaVersion":  0,
+                      "styles":  {
+
+                                 }
+                  },
+    "1867:2231":  {
+                      "document":  {
+                                       "id":  "1867:2231",
+                                       "name":  "Frame 173",
+                                       "type":  "FRAME",
+                                       "scrollBehavior":  "SCROLLS",
+                                       "children":  [
+                                                        {
+                                                            "id":  "1867:2232",
+                                                            "name":  "Frame 276",
+                                                            "type":  "FRAME",
+                                                            "scrollBehavior":  "SCROLLS",
+                                                            "children":  [
+                                                                             "@{id=1867:2233; name=Icon; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=True; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=FIXED; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}",
+                                                                             "@{id=1867:2236; name=6 min; type=TEXT; scrollBehavior=SCROLLS; blendMode=PASS_THROUGH; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=OUTSIDE; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=HUG; characters=6 min; characterStyleOverrides=System.Object[]; styleOverrideTable=; lineTypes=System.Object[]; lineIndentations=System.Object[]; style=; layoutVersion=5; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}"
+                                                                         ],
+                                                            "blendMode":  "PASS_THROUGH",
+                                                            "clipsContent":  false,
+                                                            "background":  [
+
+                                                                           ],
+                                                            "fills":  [
+
+                                                                      ],
+                                                            "strokes":  [
+
+                                                                        ],
+                                                            "strokeWeight":  1.0,
+                                                            "strokeAlign":  "INSIDE",
+                                                            "backgroundColor":  {
+                                                                                    "r":  0.0,
+                                                                                    "g":  0.0,
+                                                                                    "b":  0.0,
+                                                                                    "a":  0.0
+                                                                                },
+                                                            "layoutMode":  "HORIZONTAL",
+                                                            "counterAxisAlignItems":  "CENTER",
+                                                            "itemSpacing":  6.0,
+                                                            "layoutWrap":  "NO_WRAP",
+                                                            "absoluteBoundingBox":  {
+                                                                                        "x":  8870.0,
+                                                                                        "y":  13525.0,
+                                                                                        "width":  81.0,
+                                                                                        "height":  29.0
+                                                                                    },
+                                                            "absoluteRenderBounds":  {
+                                                                                         "x":  8870.0,
+                                                                                         "y":  13525.0,
+                                                                                         "width":  81.0,
+                                                                                         "height":  29.0
+                                                                                     },
+                                                            "constraints":  {
+                                                                                "vertical":  "TOP",
+                                                                                "horizontal":  "LEFT"
+                                                                            },
+                                                            "layoutAlign":  "INHERIT",
+                                                            "layoutGrow":  0.0,
+                                                            "layoutSizingHorizontal":  "HUG",
+                                                            "layoutSizingVertical":  "HUG",
+                                                            "effects":  [
+
+                                                                        ],
+                                                            "interactions":  [
+
+                                                                             ],
+                                                            "complexStrokeProperties":  {
+                                                                                            "strokeType":  "BASIC"
+                                                                                        }
+                                                        },
+                                                        {
+                                                            "id":  "1867:2237",
+                                                            "name":  "Frame 277",
+                                                            "type":  "FRAME",
+                                                            "scrollBehavior":  "SCROLLS",
+                                                            "children":  [
+                                                                             "@{id=1867:2238; name=Frame; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=True; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=FIXED; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}",
+                                                                             "@{id=1867:2249; name=Frame 172; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=False; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=FIXED; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}"
+                                                                         ],
+                                                            "blendMode":  "PASS_THROUGH",
+                                                            "clipsContent":  false,
+                                                            "background":  [
+
+                                                                           ],
+                                                            "fills":  [
+
+                                                                      ],
+                                                            "strokes":  [
+
+                                                                        ],
+                                                            "strokeWeight":  1.0,
+                                                            "strokeAlign":  "INSIDE",
+                                                            "backgroundColor":  {
+                                                                                    "r":  0.0,
+                                                                                    "g":  0.0,
+                                                                                    "b":  0.0,
+                                                                                    "a":  0.0
+                                                                                },
+                                                            "layoutMode":  "HORIZONTAL",
+                                                            "counterAxisAlignItems":  "CENTER",
+                                                            "itemSpacing":  6.0,
+                                                            "layoutWrap":  "NO_WRAP",
+                                                            "absoluteBoundingBox":  {
+                                                                                        "x":  8967.0,
+                                                                                        "y":  13525.0,
+                                                                                        "width":  172.0,
+                                                                                        "height":  29.0
+                                                                                    },
+                                                            "absoluteRenderBounds":  {
+                                                                                         "x":  8967.0,
+                                                                                         "y":  13525.0,
+                                                                                         "width":  172.0,
+                                                                                         "height":  29.0
+                                                                                     },
+                                                            "constraints":  {
+                                                                                "vertical":  "TOP",
+                                                                                "horizontal":  "LEFT"
+                                                                            },
+                                                            "layoutAlign":  "INHERIT",
+                                                            "layoutGrow":  0.0,
+                                                            "layoutSizingHorizontal":  "HUG",
+                                                            "layoutSizingVertical":  "HUG",
+                                                            "effects":  [
+
+                                                                        ],
+                                                            "interactions":  [
+
+                                                                             ],
+                                                            "complexStrokeProperties":  {
+                                                                                            "strokeType":  "BASIC"
+                                                                                        }
+                                                        }
+                                                    ],
+                                       "blendMode":  "PASS_THROUGH",
+                                       "clipsContent":  false,
+                                       "background":  [
+
+                                                      ],
+                                       "fills":  [
+
+                                                 ],
+                                       "strokes":  [
+
+                                                   ],
+                                       "strokeWeight":  1.0,
+                                       "strokeAlign":  "INSIDE",
+                                       "backgroundColor":  {
+                                                               "r":  0.0,
+                                                               "g":  0.0,
+                                                               "b":  0.0,
+                                                               "a":  0.0
+                                                           },
+                                       "layoutMode":  "HORIZONTAL",
+                                       "counterAxisAlignItems":  "CENTER",
+                                       "paddingLeft":  13.0,
+                                       "itemSpacing":  16.0,
+                                       "layoutWrap":  "NO_WRAP",
+                                       "absoluteBoundingBox":  {
+                                                                   "x":  8857.0,
+                                                                   "y":  13525.0,
+                                                                   "width":  282.0,
+                                                                   "height":  29.0
+                                                               },
+                                       "absoluteRenderBounds":  {
+                                                                    "x":  8857.0,
+                                                                    "y":  13525.0,
+                                                                    "width":  282.0,
+                                                                    "height":  29.0
+                                                                },
+                                       "constraints":  {
+                                                           "vertical":  "TOP",
+                                                           "horizontal":  "LEFT"
+                                                       },
+                                       "layoutSizingHorizontal":  "HUG",
+                                       "layoutSizingVertical":  "HUG",
+                                       "effects":  [
+
+                                                   ],
+                                       "interactions":  [
+
+                                                        ],
+                                       "complexStrokeProperties":  {
+                                                                       "strokeType":  "BASIC"
+                                                                   }
+                                   },
+                      "components":  {
+
+                                     },
+                      "componentSets":  {
+
+                                        },
+                      "schemaVersion":  0,
+                      "styles":  {
+
+                                 }
+                  }
+}

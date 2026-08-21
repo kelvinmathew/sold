@@ -245,8 +245,8 @@ h6 {
 
 .hero-text-block {
   position: absolute;
-  top: 13.5416cqi;
-  /* 195px */
+  top: 23.636%;
+  /* 195/825 proportion relative to exact hero height */
   left: 7.0833cqi;
   /* 102px */
   width: 31.1111cqi;
@@ -324,12 +324,11 @@ h6 {
 
 .hero-title-container {
   position: absolute;
-  top: 41.5277cqi;
-  /* 598px - exact distance from top of hero banner (leaving bottom: 71px) */
-  left: 21.3194cqi;
-  /* 307px - exact distance from left screen edge (leaving right: 40px) */
-  width: 75.9027cqi;
-  /* 1093px (1440 - 307 - 40 = 1093px) */
+  top: 72.484%;
+  /* 598/825 proportion mapped vertically to perfectly fit within any screen aspect ratio */
+  left: 0;
+  /* 0px - full width anchor frame */
+  width: 100cqi;
   height: 10.8333cqi;
   /* 156px (825 - 598 - 71 = 156px) */
   pointer-events: none;
@@ -339,13 +338,12 @@ h6 {
   position: absolute;
   top: 0;
   /* 0px relative to container (598px from screen top) */
-  left: 0;
-  /* 0px relative to container (307px from screen left) */
-  width: 75.9027cqi;
-  /* 1093px */
+  left: 52.0138cqi;
+  /* 749px direct Figma X coordinate */
   height: 5.4166cqi;
   /* 78px */
   margin: 0;
+  padding: 0;
   font-family: "Mona Sans", var(--font-heading);
   font-size: 4.6527cqi;
   /* 67px */
@@ -354,7 +352,7 @@ h6 {
   color: #FFA726;
   white-space: nowrap;
   display: block;
-  text-align: right;
+  text-align: left;
 }
 
 .hero-title-top .orange-text {
@@ -380,13 +378,12 @@ h6 {
   position: absolute;
   top: 5.4166cqi;
   /* 78px relative to container (676px from screen top) */
-  left: 0;
-  /* 0px relative to container (307px from screen left) */
-  width: 75.9027cqi;
-  /* 1093px */
+  left: 21.3194cqi;
+  /* 307px direct Figma X coordinate */
   height: 5.4166cqi;
   /* 78px */
   margin: 0;
+  padding: 0;
   font-family: "Mona Sans", var(--font-heading);
   font-weight: 700;
   font-size: 4.7916cqi;
@@ -397,7 +394,7 @@ h6 {
   color: #FFFFFF;
   white-space: nowrap;
   display: block;
-  text-align: right;
+  text-align: left;
 }
 
 /* ============================
@@ -6847,7 +6844,8 @@ h6 {
 /* Breadcrumb (Bottom Left) */
 .services-hero-breadcrumb {
   position: absolute;
-  bottom: 4.1667cqi; /* Anchored to bottom */
+  bottom: 4.1667cqi;
+  /* Anchored to bottom */
   left: 7.2222cqi;
   /* 104/1440 */
   width: 16.3889cqi;

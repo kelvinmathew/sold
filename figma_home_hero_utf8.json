@@ -1,0 +1,714 @@
+﻿{
+    "1712:543":  {
+                     "document":  {
+                                      "id":  "1712:543",
+                                      "name":  "The UAE’s Leading",
+                                      "type":  "TEXT",
+                                      "scrollBehavior":  "SCROLLS",
+                                      "blendMode":  "PASS_THROUGH",
+                                      "fills":  [
+                                                    {
+                                                        "blendMode":  "NORMAL",
+                                                        "type":  "SOLID",
+                                                        "color":  {
+                                                                      "r":  1.0,
+                                                                      "g":  1.0,
+                                                                      "b":  1.0,
+                                                                      "a":  1.0
+                                                                  }
+                                                    }
+                                                ],
+                                      "strokes":  [
+
+                                                  ],
+                                      "strokeWeight":  1.0,
+                                      "strokeAlign":  "OUTSIDE",
+                                      "absoluteBoundingBox":  {
+                                                                  "x":  5338.0,
+                                                                  "y":  503.0,
+                                                                  "width":  632.0,
+                                                                  "height":  78.0
+                                                              },
+                                      "absoluteRenderBounds":  {
+                                                                   "x":  5339.474121093750,
+                                                                   "y":  518.48699951171875,
+                                                                   "width":  618.73144531250,
+                                                                   "height":  61.304992675781250
+                                                               },
+                                      "constraints":  {
+                                                          "vertical":  "SCALE",
+                                                          "horizontal":  "SCALE"
+                                                      },
+                                      "characters":  "The UAE’s Leading",
+                                      "characterStyleOverrides":  [
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      96,
+                                                                      77,
+                                                                      88,
+                                                                      88,
+                                                                      88,
+                                                                      88,
+                                                                      88,
+                                                                      88,
+                                                                      88
+                                                                  ],
+                                      "styleOverrideTable":  {
+                                                                 "96":  {
+                                                                            "fontFamily":  "Mona Sans",
+                                                                            "fontPostScriptName":  "MonaSans-Bold",
+                                                                            "fontStyle":  "Bold",
+                                                                            "fontWeight":  700,
+                                                                            "fontSize":  67.0,
+                                                                            "letterSpacing":  1.3400000000000001,
+                                                                            "fills":  [
+                                                                                          "@{blendMode=NORMAL; type=SOLID; color=}"
+                                                                                      ]
+                                                                        },
+                                                                 "88":  {
+                                                                            "fontFamily":  "Mona Sans",
+                                                                            "fontPostScriptName":  "MonaSans-BoldItalic",
+                                                                            "fontStyle":  "Bold Italic",
+                                                                            "italic":  true,
+                                                                            "fontWeight":  700,
+                                                                            "letterSpacing":  0.67000000000000004,
+                                                                            "fills":  [
+                                                                                          "@{blendMode=NORMAL; type=SOLID; color=}"
+                                                                                      ]
+                                                                        },
+                                                                 "77":  {
+                                                                            "fontFamily":  "Mona Sans",
+                                                                            "fontPostScriptName":  "MonaSans-Bold",
+                                                                            "fontStyle":  "Bold",
+                                                                            "fontWeight":  700,
+                                                                            "fontSize":  67.0
+                                                                        }
+                                                             },
+                                      "lineTypes":  [
+                                                        "NONE"
+                                                    ],
+                                      "lineIndentations":  [
+                                                               0
+                                                           ],
+                                      "style":  {
+                                                    "fontFamily":  "Poppins",
+                                                    "fontPostScriptName":  "Poppins-SemiBold",
+                                                    "fontStyle":  "SemiBold",
+                                                    "fontWeight":  600,
+                                                    "fontSize":  67.0,
+                                                    "textAlignHorizontal":  "LEFT",
+                                                    "textAlignVertical":  "CENTER",
+                                                    "letterSpacing":  4.0199999999999996,
+                                                    "lineHeightPx":  30.0,
+                                                    "lineHeightPercent":  29.850746154785156,
+                                                    "lineHeightPercentFontSize":  44.776119232177734,
+                                                    "lineHeightUnit":  "PIXELS"
+                                                },
+                                      "layoutVersion":  5,
+                                      "effects":  [
+
+                                                  ],
+                                      "interactions":  [
+
+                                                       ],
+                                      "complexStrokeProperties":  {
+                                                                      "strokeType":  "BASIC"
+                                                                  }
+                                  },
+                     "components":  {
+
+                                    },
+                     "componentSets":  {
+
+                                       },
+                     "schemaVersion":  0,
+                     "styles":  {
+
+                                }
+                 },
+    "1712:544":  {
+                     "document":  {
+                                      "id":  "1712:544",
+                                      "name":  "Real Estate Marketing Agency",
+                                      "type":  "TEXT",
+                                      "scrollBehavior":  "SCROLLS",
+                                      "blendMode":  "PASS_THROUGH",
+                                      "fills":  [
+                                                    {
+                                                        "blendMode":  "NORMAL",
+                                                        "type":  "SOLID",
+                                                        "color":  {
+                                                                      "r":  1.0,
+                                                                      "g":  1.0,
+                                                                      "b":  1.0,
+                                                                      "a":  1.0
+                                                                  }
+                                                    }
+                                                ],
+                                      "strokes":  [
+
+                                                  ],
+                                      "strokeWeight":  1.0,
+                                      "strokeAlign":  "OUTSIDE",
+                                      "absoluteBoundingBox":  {
+                                                                  "x":  4896.0,
+                                                                  "y":  581.0,
+                                                                  "width":  1093.0,
+                                                                  "height":  78.0
+                                                              },
+                                      "absoluteRenderBounds":  {
+                                                                   "x":  4900.761230468750,
+                                                                   "y":  596.21600341796875,
+                                                                   "width":  1049.3652343750,
+                                                                   "height":  62.997009277343750
+                                                               },
+                                      "constraints":  {
+                                                          "vertical":  "SCALE",
+                                                          "horizontal":  "SCALE"
+                                                      },
+                                      "characters":  "Real Estate Marketing Agency",
+                                      "characterStyleOverrides":  [
+
+                                                                  ],
+                                      "styleOverrideTable":  {
+
+                                                             },
+                                      "lineTypes":  [
+                                                        "NONE"
+                                                    ],
+                                      "lineIndentations":  [
+                                                               0
+                                                           ],
+                                      "style":  {
+                                                    "fontFamily":  "Mona Sans",
+                                                    "fontPostScriptName":  "MonaSans-Bold",
+                                                    "fontStyle":  "Bold",
+                                                    "fontWeight":  700,
+                                                    "fontSize":  69.0,
+                                                    "textAlignHorizontal":  "LEFT",
+                                                    "textAlignVertical":  "CENTER",
+                                                    "letterSpacing":  1.3800000000000001,
+                                                    "lineHeightPx":  30.0,
+                                                    "lineHeightPercent":  30.835645675659180,
+                                                    "lineHeightPercentFontSize":  43.478260040283203,
+                                                    "lineHeightUnit":  "PIXELS"
+                                                },
+                                      "layoutVersion":  5,
+                                      "effects":  [
+
+                                                  ],
+                                      "interactions":  [
+
+                                                       ],
+                                      "complexStrokeProperties":  {
+                                                                      "strokeType":  "BASIC"
+                                                                  }
+                                  },
+                     "components":  {
+
+                                    },
+                     "componentSets":  {
+
+                                       },
+                     "schemaVersion":  0,
+                     "styles":  {
+
+                                }
+                 },
+    "1712:523":  {
+                     "document":  {
+                                      "id":  "1712:523",
+                                      "name":  "Wireframe - 1",
+                                      "type":  "FRAME",
+                                      "scrollBehavior":  "SCROLLS",
+                                      "children":  [
+                                                       {
+                                                           "id":  "1712:524",
+                                                           "name":  "Frame 1",
+                                                           "type":  "FRAME",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "children":  [
+                                                                            "@{id=1712:525; name=Frame 3; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=False; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; layoutMode=HORIZONTAL; primaryAxisSizingMode=FIXED; counterAxisAlignItems=CENTER; itemSpacing=63.0; layoutWrap=NO_WRAP; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=STRETCH; layoutGrow=0.0; layoutSizingHorizontal=FILL; layoutSizingVertical=HUG; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}"
+                                                                        ],
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "clipsContent":  true,
+                                                           "background":  [
+                                                                              "@{opacity=0.20000000298023224; blendMode=NORMAL; type=SOLID; color=}"
+                                                                          ],
+                                                           "fills":  [
+                                                                         "@{opacity=0.20000000298023224; blendMode=NORMAL; type=SOLID; color=}"
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "cornerRadius":  118.0,
+                                                           "cornerSmoothing":  0.0,
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "INSIDE",
+                                                           "backgroundColor":  {
+                                                                                   "r":  1.0,
+                                                                                   "g":  1.0,
+                                                                                   "b":  1.0,
+                                                                                   "a":  0.20000000298023224
+                                                                               },
+                                                           "layoutMode":  "VERTICAL",
+                                                           "counterAxisSizingMode":  "FIXED",
+                                                           "counterAxisAlignItems":  "CENTER",
+                                                           "primaryAxisAlignItems":  "CENTER",
+                                                           "paddingLeft":  40.0,
+                                                           "paddingRight":  40.0,
+                                                           "paddingTop":  15.0,
+                                                           "paddingBottom":  15.0,
+                                                           "itemSpacing":  10.0,
+                                                           "layoutWrap":  "NO_WRAP",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  4863.0,
+                                                                                       "y":  -49.50,
+                                                                                       "width":  849.0,
+                                                                                       "height":  53.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  4863.0,
+                                                                                        "y":  -49.50,
+                                                                                        "width":  849.0,
+                                                                                        "height":  53.0
+                                                                                    },
+                                                           "constraints":  {
+                                                                               "vertical":  "CENTER",
+                                                                               "horizontal":  "SCALE"
+                                                                           },
+                                                           "layoutSizingHorizontal":  "FIXED",
+                                                           "layoutSizingVertical":  "HUG",
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       },
+                                                       {
+                                                           "id":  "1712:532",
+                                                           "name":  "Frame 1",
+                                                           "type":  "FRAME",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "children":  [
+                                                                            "@{id=1712:533; name=Frame 2; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=False; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; layoutMode=HORIZONTAL; primaryAxisSizingMode=FIXED; counterAxisAlignItems=CENTER; primaryAxisAlignItems=CENTER; itemSpacing=18.0; layoutWrap=NO_WRAP; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=STRETCH; layoutGrow=0.0; layoutSizingHorizontal=FILL; layoutSizingVertical=HUG; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}"
+                                                                        ],
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "clipsContent":  true,
+                                                           "background":  [
+                                                                              "@{opacity=0.20000000298023224; blendMode=NORMAL; type=SOLID; color=}"
+                                                                          ],
+                                                           "fills":  [
+                                                                         "@{opacity=0.20000000298023224; blendMode=NORMAL; type=SOLID; color=}"
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "cornerRadius":  118.0,
+                                                           "cornerSmoothing":  0.0,
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "INSIDE",
+                                                           "backgroundColor":  {
+                                                                                   "r":  1.0,
+                                                                                   "g":  1.0,
+                                                                                   "b":  1.0,
+                                                                                   "a":  0.20000000298023224
+                                                                               },
+                                                           "layoutMode":  "VERTICAL",
+                                                           "counterAxisSizingMode":  "FIXED",
+                                                           "counterAxisAlignItems":  "CENTER",
+                                                           "primaryAxisAlignItems":  "CENTER",
+                                                           "paddingLeft":  40.0,
+                                                           "paddingRight":  40.0,
+                                                           "paddingTop":  15.0,
+                                                           "paddingBottom":  15.0,
+                                                           "itemSpacing":  10.0,
+                                                           "layoutWrap":  "NO_WRAP",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  5782.0,
+                                                                                       "y":  -49.50,
+                                                                                       "width":  207.0,
+                                                                                       "height":  53.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  5782.0,
+                                                                                        "y":  -49.50,
+                                                                                        "width":  207.0,
+                                                                                        "height":  53.0
+                                                                                    },
+                                                           "constraints":  {
+                                                                               "vertical":  "CENTER",
+                                                                               "horizontal":  "SCALE"
+                                                                           },
+                                                           "layoutSizingHorizontal":  "FIXED",
+                                                           "layoutSizingVertical":  "HUG",
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       },
+                                                       {
+                                                           "id":  "1712:536",
+                                                           "name":  "Frame 9",
+                                                           "type":  "FRAME",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "children":  [
+                                                                            "@{id=1712:537; name=We drive off-plan real estate sales with full-service marketing that accelerates revenue for property and hospitality brands in the UAE and beyond.; type=TEXT; scrollBehavior=SCROLLS; blendMode=PASS_THROUGH; fills=System.Object[]; strokes=System.Object[]; strokeWeight=1.0; strokeAlign=OUTSIDE; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=HUG; characters=We drive off-plan real estate sales with full-service marketing that accelerates revenue for property and hospitality brands in the UAE and beyond.; characterStyleOverrides=System.Object[]; styleOverrideTable=; lineTypes=System.Object[]; lineIndentations=System.Object[]; style=; layoutVersion=5; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}",
+                                                                            "@{id=1712:538; name=Frame 5; type=FRAME; scrollBehavior=SCROLLS; children=System.Object[]; blendMode=PASS_THROUGH; clipsContent=True; background=System.Object[]; fills=System.Object[]; strokes=System.Object[]; cornerRadius=29.0; cornerSmoothing=0.0; strokeWeight=1.0; strokeAlign=INSIDE; backgroundColor=; absoluteBoundingBox=; absoluteRenderBounds=; constraints=; layoutAlign=INHERIT; layoutGrow=0.0; layoutSizingHorizontal=FIXED; layoutSizingVertical=FIXED; effects=System.Object[]; interactions=System.Object[]; complexStrokeProperties=}"
+                                                                        ],
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "clipsContent":  false,
+                                                           "background":  [
+
+                                                                          ],
+                                                           "fills":  [
+
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "INSIDE",
+                                                           "backgroundColor":  {
+                                                                                   "r":  0.0,
+                                                                                   "g":  0.0,
+                                                                                   "b":  0.0,
+                                                                                   "a":  0.0
+                                                                               },
+                                                           "layoutMode":  "VERTICAL",
+                                                           "counterAxisSizingMode":  "FIXED",
+                                                           "itemSpacing":  67.0,
+                                                           "layoutWrap":  "NO_WRAP",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  4691.0,
+                                                                                       "y":  100.0,
+                                                                                       "width":  448.0,
+                                                                                       "height":  238.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  4691.0,
+                                                                                        "y":  100.0,
+                                                                                        "width":  448.0,
+                                                                                        "height":  238.0
+                                                                                    },
+                                                           "constraints":  {
+                                                                               "vertical":  "TOP",
+                                                                               "horizontal":  "LEFT"
+                                                                           },
+                                                           "layoutSizingHorizontal":  "FIXED",
+                                                           "layoutSizingVertical":  "HUG",
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       },
+                                                       {
+                                                           "id":  "1712:543",
+                                                           "name":  "The UAE’s Leading",
+                                                           "type":  "TEXT",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "fills":  [
+                                                                         "@{blendMode=NORMAL; type=SOLID; color=}"
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "OUTSIDE",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  5338.0,
+                                                                                       "y":  503.0,
+                                                                                       "width":  632.0,
+                                                                                       "height":  78.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  5339.474121093750,
+                                                                                        "y":  518.48699951171875,
+                                                                                        "width":  618.73144531250,
+                                                                                        "height":  61.304992675781250
+                                                                                    },
+                                                           "constraints":  {
+                                                                               "vertical":  "SCALE",
+                                                                               "horizontal":  "SCALE"
+                                                                           },
+                                                           "characters":  "The UAE’s Leading",
+                                                           "characterStyleOverrides":  [
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           96,
+                                                                                           77,
+                                                                                           88,
+                                                                                           88,
+                                                                                           88,
+                                                                                           88,
+                                                                                           88,
+                                                                                           88,
+                                                                                           88
+                                                                                       ],
+                                                           "styleOverrideTable":  {
+                                                                                      "96":  "@{fontFamily=Mona Sans; fontPostScriptName=MonaSans-Bold; fontStyle=Bold; fontWeight=700; fontSize=67.0; letterSpacing=1.3400000000000001; fills=System.Object[]}",
+                                                                                      "88":  "@{fontFamily=Mona Sans; fontPostScriptName=MonaSans-BoldItalic; fontStyle=Bold Italic; italic=True; fontWeight=700; letterSpacing=0.67000000000000004; fills=System.Object[]}",
+                                                                                      "77":  "@{fontFamily=Mona Sans; fontPostScriptName=MonaSans-Bold; fontStyle=Bold; fontWeight=700; fontSize=67.0}"
+                                                                                  },
+                                                           "lineTypes":  [
+                                                                             "NONE"
+                                                                         ],
+                                                           "lineIndentations":  [
+                                                                                    0
+                                                                                ],
+                                                           "style":  {
+                                                                         "fontFamily":  "Poppins",
+                                                                         "fontPostScriptName":  "Poppins-SemiBold",
+                                                                         "fontStyle":  "SemiBold",
+                                                                         "fontWeight":  600,
+                                                                         "fontSize":  67.0,
+                                                                         "textAlignHorizontal":  "LEFT",
+                                                                         "textAlignVertical":  "CENTER",
+                                                                         "letterSpacing":  4.0199999999999996,
+                                                                         "lineHeightPx":  30.0,
+                                                                         "lineHeightPercent":  29.850746154785156,
+                                                                         "lineHeightPercentFontSize":  44.776119232177734,
+                                                                         "lineHeightUnit":  "PIXELS"
+                                                                     },
+                                                           "layoutVersion":  5,
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       },
+                                                       {
+                                                           "id":  "1712:544",
+                                                           "name":  "Real Estate Marketing Agency",
+                                                           "type":  "TEXT",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "fills":  [
+                                                                         "@{blendMode=NORMAL; type=SOLID; color=}"
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "OUTSIDE",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  4896.0,
+                                                                                       "y":  581.0,
+                                                                                       "width":  1093.0,
+                                                                                       "height":  78.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  4900.761230468750,
+                                                                                        "y":  596.21600341796875,
+                                                                                        "width":  1049.3652343750,
+                                                                                        "height":  62.997009277343750
+                                                                                    },
+                                                           "constraints":  {
+                                                                               "vertical":  "SCALE",
+                                                                               "horizontal":  "SCALE"
+                                                                           },
+                                                           "characters":  "Real Estate Marketing Agency",
+                                                           "characterStyleOverrides":  [
+
+                                                                                       ],
+                                                           "styleOverrideTable":  {
+
+                                                                                  },
+                                                           "lineTypes":  [
+                                                                             "NONE"
+                                                                         ],
+                                                           "lineIndentations":  [
+                                                                                    0
+                                                                                ],
+                                                           "style":  {
+                                                                         "fontFamily":  "Mona Sans",
+                                                                         "fontPostScriptName":  "MonaSans-Bold",
+                                                                         "fontStyle":  "Bold",
+                                                                         "fontWeight":  700,
+                                                                         "fontSize":  69.0,
+                                                                         "textAlignHorizontal":  "LEFT",
+                                                                         "textAlignVertical":  "CENTER",
+                                                                         "letterSpacing":  1.3800000000000001,
+                                                                         "lineHeightPx":  30.0,
+                                                                         "lineHeightPercent":  30.835645675659180,
+                                                                         "lineHeightPercentFontSize":  43.478260040283203,
+                                                                         "lineHeightUnit":  "PIXELS"
+                                                                     },
+                                                           "layoutVersion":  5,
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       },
+                                                       {
+                                                           "id":  "1712:545",
+                                                           "name":  "image 1",
+                                                           "type":  "RECTANGLE",
+                                                           "scrollBehavior":  "SCROLLS",
+                                                           "blendMode":  "PASS_THROUGH",
+                                                           "fills":  [
+                                                                         "@{blendMode=NORMAL; visible=False; type=IMAGE; scaleMode=FILL; imageRef=09fdac6607bb075eadf344475e4b7beddde043c8}",
+                                                                         "@{blendMode=NORMAL; type=IMAGE; scaleMode=FILL; imageRef=1512913e42806fa0bf89392cc4ef0da92371ba64}"
+                                                                     ],
+                                                           "strokes":  [
+
+                                                                       ],
+                                                           "strokeWeight":  1.0,
+                                                           "strokeAlign":  "INSIDE",
+                                                           "absoluteBoundingBox":  {
+                                                                                       "x":  4648.0,
+                                                                                       "y":  -64.0,
+                                                                                       "width":  145.0,
+                                                                                       "height":  82.0
+                                                                                   },
+                                                           "absoluteRenderBounds":  {
+                                                                                        "x":  4648.0,
+                                                                                        "y":  -64.0,
+                                                                                        "width":  145.0,
+                                                                                        "height":  82.0
+                                                                                    },
+                                                           "preserveRatio":  true,
+                                                           "targetAspectRatio":  {
+                                                                                     "x":  666.0,
+                                                                                     "y":  375.0
+                                                                                 },
+                                                           "constraints":  {
+                                                                               "vertical":  "TOP",
+                                                                               "horizontal":  "SCALE"
+                                                                           },
+                                                           "effects":  [
+
+                                                                       ],
+                                                           "interactions":  [
+
+                                                                            ],
+                                                           "complexStrokeProperties":  {
+                                                                                           "strokeType":  "BASIC"
+                                                                                       }
+                                                       }
+                                                   ],
+                                      "blendMode":  "PASS_THROUGH",
+                                      "clipsContent":  true,
+                                      "background":  [
+                                                         {
+                                                             "blendMode":  "NORMAL",
+                                                             "type":  "IMAGE",
+                                                             "scaleMode":  "FILL",
+                                                             "imageRef":  "10d19a79505f7df2ae815b33b3f9022cd03b4813"
+                                                         },
+                                                         {
+                                                             "opacity":  0.10000000149011612,
+                                                             "blendMode":  "NORMAL",
+                                                             "type":  "SOLID",
+                                                             "color":  {
+                                                                           "r":  0.0,
+                                                                           "g":  0.0,
+                                                                           "b":  0.0,
+                                                                           "a":  1.0
+                                                                       }
+                                                         }
+                                                     ],
+                                      "fills":  [
+                                                    {
+                                                        "blendMode":  "NORMAL",
+                                                        "type":  "IMAGE",
+                                                        "scaleMode":  "FILL",
+                                                        "imageRef":  "10d19a79505f7df2ae815b33b3f9022cd03b4813"
+                                                    },
+                                                    {
+                                                        "opacity":  0.10000000149011612,
+                                                        "blendMode":  "NORMAL",
+                                                        "type":  "SOLID",
+                                                        "color":  {
+                                                                      "r":  0.0,
+                                                                      "g":  0.0,
+                                                                      "b":  0.0,
+                                                                      "a":  1.0
+                                                                  }
+                                                    }
+                                                ],
+                                      "strokes":  [
+
+                                                  ],
+                                      "strokeWeight":  1.0,
+                                      "strokeAlign":  "INSIDE",
+                                      "backgroundColor":  {
+                                                              "r":  0.0,
+                                                              "g":  0.0,
+                                                              "b":  0.0,
+                                                              "a":  0.0
+                                                          },
+                                      "absoluteBoundingBox":  {
+                                                                  "x":  4589.0,
+                                                                  "y":  -95.0,
+                                                                  "width":  1440.0,
+                                                                  "height":  825.0
+                                                              },
+                                      "absoluteRenderBounds":  {
+                                                                   "x":  4589.0,
+                                                                   "y":  -95.0,
+                                                                   "width":  1440.0,
+                                                                   "height":  825.0
+                                                               },
+                                      "constraints":  {
+                                                          "vertical":  "TOP",
+                                                          "horizontal":  "CENTER"
+                                                      },
+                                      "effects":  [
+
+                                                  ],
+                                      "interactions":  [
+
+                                                       ],
+                                      "complexStrokeProperties":  {
+                                                                      "strokeType":  "BASIC"
+                                                                  }
+                                  },
+                     "components":  {
+
+                                    },
+                     "componentSets":  {
+
+                                       },
+                     "schemaVersion":  0,
+                     "styles":  {
+
+                                }
+                 }
+}
