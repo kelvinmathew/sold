@@ -5,11 +5,11 @@
 
 /* For Desktop (Web screens) - Fluid scaling based on 1440px */
 @media (min-width: 992px) {
-  
+
   .client-success-hero {
     position: relative;
     width: 100%;
-    height: 100vh; 
+    height: 100vh;
     min-height: 500px;
     background: #FFFFFF;
     overflow: hidden;
@@ -35,14 +35,20 @@
 
   .client-success-hero-title {
     position: absolute;
-    top: 16.5972vw; /* 239/1440 */
-    left: 4.4444vw; /* 64/1440 */
-    width: 54.5139vw; /* 785/1440 */
-    height: 8.1944vw; /* 118/1440 */
+    top: 16.5972vw;
+    /* 239/1440 */
+    left: 4.4444vw;
+    /* 64/1440 */
+    width: 54.5139vw;
+    /* 785/1440 */
+    height: 8.1944vw;
+    /* 118/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 4.6528vw; /* 67/1440 */
-    line-height: 4.7917vw; /* 69/1440 */
+    font-size: 4.6528vw;
+    /* 67/1440 */
+    line-height: 4.7917vw;
+    /* 69/1440 */
     letter-spacing: 0.01em;
     color: #FFFFFF;
     margin: 0;
@@ -51,14 +57,20 @@
   /* --- Text Paragraph (Right) --- */
   .client-success-hero-desc {
     position: absolute;
-    bottom: 13.75vw; /* 198/1440 */
-    right: 5.6944vw; /* 82/1440 */
-    width: 33.3333vw; /* 480/1440 */
-    height: 10.0694vw; /* 145/1440 */
+    bottom: 13.75vw;
+    /* 198/1440 */
+    right: 5.6944vw;
+    /* 82/1440 */
+    width: 33.3333vw;
+    /* 480/1440 */
+    height: 10.0694vw;
+    /* 145/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5972vw; /* 23/1440 */
-    line-height: 2.0139vw; /* 29/1440 */
+    font-size: 1.5972vw;
+    /* 23/1440 */
+    line-height: 2.0139vw;
+    /* 29/1440 */
     letter-spacing: 0.01em;
     color: #FFFFFF;
     margin: 0;
@@ -67,11 +79,16 @@
   /* --- Button (Right) --- */
   .client-success-hero-btn {
     position: absolute;
-    bottom: 6.0417vw; /* 87/1440 */
-    right: 16.1806vw; /* 233/1440 */
-    width: 22.8472vw; /* 329/1440 */
-    height: 3.8194vw; /* 55/1440 */
-    border-radius: 2.0139vw; /* 29/1440 */
+    bottom: 6.0417vw;
+    /* 87/1440 */
+    right: 16.1806vw;
+    /* 233/1440 */
+    width: 22.8472vw;
+    /* 329/1440 */
+    height: 3.8194vw;
+    /* 55/1440 */
+    border-radius: 2.0139vw;
+    /* 29/1440 */
     background: #FFFFFF;
     text-decoration: none;
     display: block;
@@ -85,7 +102,8 @@
     height: 2.0833vw;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 1.7361vw; /* 25/1440 */
+    font-size: 1.7361vw;
+    /* 25/1440 */
     line-height: 2.0833vw;
     letter-spacing: 0.01em;
     color: #1B3834;
@@ -99,8 +117,10 @@
     position: absolute;
     top: 0.3743vw;
     left: 0.7181vw;
-    width: 2.7417vw; /* 39.48/1440 */
-    height: 2.9958vw; /* 43.14/1440 */
+    width: 2.7417vw;
+    /* 39.48/1440 */
+    height: 2.9958vw;
+    /* 43.14/1440 */
     border-radius: 1.6667vw;
     background: #FFA726;
     margin: 0;
@@ -109,8 +129,10 @@
   /* Breadcrumb (Bottom Left) */
   .client-success-hero-breadcrumb {
     position: absolute;
-    bottom: 4.1667vw; /* Anchored to bottom */
-    left: 7.2222vw; /* 104/1440 */
+    bottom: 4.1667vw;
+    /* Anchored to bottom */
+    left: 7.2222vw;
+    /* 104/1440 */
     width: 16.3889vw;
     height: 2.0139vw;
     display: flex;
@@ -123,7 +145,8 @@
     height: 2.0139vw;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.25vw; /* 18/1440 */
+    font-size: 1.25vw;
+    /* 18/1440 */
     line-height: 2.0139vw;
     letter-spacing: 0.01em;
     color: #FFFFFF;
@@ -135,7 +158,7 @@
   .client-success-hero-breadcrumb .breadcrumb-icon {
     width: 1.5972vw;
     height: 1.0417vw;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .client-success-hero-breadcrumb .breadcrumb-services-wrapper {
@@ -150,13 +173,15 @@
     height: 2.0139vw;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.25vw; /* 18/1440 */
+    font-size: 1.25vw;
+    /* 18/1440 */
     line-height: 2.0139vw;
     letter-spacing: 0.01em;
     color: #FFFFFF;
     display: flex;
     align-items: flex-end;
   }
+
   /* =========================================================================
      Intro Section
      ========================================================================= */
@@ -164,45 +189,60 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 7.6389vw; /* 935px absolute top - 825px hero height = 110px margin-top */
-    margin-bottom: 7.6389vw; /* Symmetrical margin for spacing */
+    margin-top: 7.6389vw;
+    /* 935px absolute top - 825px hero height = 110px margin-top */
+    margin-bottom: 7.6389vw;
+    /* Symmetrical margin for spacing */
   }
 
   .cs-intro-container {
-    width: 91.6667vw; /* 1320/1440 */
+    width: 91.6667vw;
+    /* 1320/1440 */
     display: flex;
-    justify-content: space-between; /* Ensures content touches both left and right bounds exactly */
+    justify-content: space-between;
+    /* Ensures content touches both left and right bounds exactly */
   }
 
   .cs-intro-label {
-    width: 18.3611vw; /* 264.4/1440 (line 4 + gap 11 + text 249.4) */
-    height: 2.0833vw; /* 30/1440 */
+    width: 18.3611vw;
+    /* 264.4/1440 (line 4 + gap 11 + text 249.4) */
+    height: 2.0833vw;
+    /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
-    font-size: 2.0833vw; /* 30/1440 */
-    line-height: 2.0833vw; /* 30/1440 */
+    font-size: 2.0833vw;
+    /* 30/1440 */
+    line-height: 2.0833vw;
+    /* 30/1440 */
     letter-spacing: 0;
     color: #FFA726;
     display: flex;
-    align-items: center; /* vertical-align: middle */
-    gap: 0.7639vw; /* 11/1440 gap between line and text */
+    align-items: center;
+    /* vertical-align: middle */
+    gap: 0.7639vw;
+    /* 11/1440 gap between line and text */
   }
 
   .cs-intro-label::before {
     content: '';
     display: block;
-    width: 0.2778vw; /* 4/1440 */
+    width: 0.2778vw;
+    /* 4/1440 */
     height: 100%;
     background: #FFA726;
   }
 
   .cs-intro-text {
-    width: 68.2639vw; /* 983/1440 */
-    height: 8.75vw; /* 126/1440 */
+    width: 68.2639vw;
+    /* 983/1440 */
+    height: 8.75vw;
+    /* 126/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 500;
-    font-size: 2.2222vw; /* 32/1440 */
-    line-height: 2.9167vw; /* 42/1440 */
+    font-size: 2.2222vw;
+    /* 32/1440 */
+    line-height: 2.9167vw;
+    /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -215,16 +255,20 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Figma parent: alignItems center */
-    margin-top: 8.0556vw; /* 116px gap to the above section */
-    gap: 7.3611vw; /* 106/1440 gap between boxes */
+    align-items: center;
+    /* Figma parent: alignItems center */
+    margin-top: 8.0556vw;
+    /* 116px gap to the above section */
+    gap: 7.3611vw;
+    /* 106/1440 gap between boxes */
   }
 
   /* --- White card wrapper (default) --- */
   .cs-card-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center; /* Center the hug-width card */
+    justify-content: center;
+    /* Center the hug-width card */
     box-sizing: border-box;
   }
 
@@ -232,7 +276,8 @@
   .cs-card-wrapper.bg-grey {
     background: #E9EAEB;
     position: relative;
-    height: 37.6389vw; /* 542/1440 fixed height */
+    height: 37.6389vw;
+    /* 542/1440 fixed height */
   }
 
   /* Grey card inner content positioned absolutely inside the grey wrapper */
@@ -241,17 +286,44 @@
   }
 
   /* Default grey card content position: x:126, y:113 */
-  .cs-card-2 .cs-card { left: 8.75vw; top: 7.8472vw; } /* 126/1440, 113/1440 */
-  .cs-card-4 .cs-card { left: 8.75vw; top: 8.0903vw; } /* 126/1440, 116.5/1440 */
-  .cs-card-6 .cs-card { left: 8.75vw; top: 7.8125vw; } /* 126/1440, 112.5/1440 */
-  .cs-card-8 .cs-card { left: 8.6806vw; top: 7.0139vw; } /* 125/1440, 101/1440 */
-  .cs-card-10 .cs-card { left: 8.0903vw; top: 7.0139vw; } /* 116.5/1440, 101/1440 */
+  .cs-card-2 .cs-card {
+    left: 8.75vw;
+    top: 7.8472vw;
+  }
+
+  /* 126/1440, 113/1440 */
+  .cs-card-4 .cs-card {
+    left: 8.75vw;
+    top: 8.0903vw;
+  }
+
+  /* 126/1440, 116.5/1440 */
+  .cs-card-6 .cs-card {
+    left: 8.75vw;
+    top: 7.8125vw;
+  }
+
+  /* 126/1440, 112.5/1440 */
+  .cs-card-8 .cs-card {
+    left: 8.6806vw;
+    top: 7.0139vw;
+  }
+
+  /* 125/1440, 101/1440 */
+  .cs-card-10 .cs-card {
+    left: 8.0903vw;
+    top: 7.0139vw;
+  }
+
+  /* 116.5/1440, 101/1440 */
 
   /* --- Card row (inner flex container) --- */
   .cs-card {
     display: flex;
-    gap: 8.8889vw; /* 128/1440 */
-    align-items: flex-end; /* Default: flex-end */
+    gap: 8.8889vw;
+    /* 128/1440 */
+    align-items: flex-end;
+    /* Default: flex-end */
   }
 
   /* Card 5: no alignItems (default stretch/start) */
@@ -266,94 +338,121 @@
 
   /* --- Left column --- */
   .cs-card-left {
-    width: 34.7917vw; /* 501/1440 */
+    width: 34.7917vw;
+    /* 501/1440 */
     display: flex;
     flex-direction: column;
-    gap: 3.6111vw; /* 52/1440 default */
+    gap: 3.6111vw;
+    /* 52/1440 default */
   }
 
   /* Card 5: left column gap 115px, fixed height 358px */
   .cs-card-5 .cs-card-left {
-    gap: 7.9861vw; /* 115/1440 */
-    height: 24.8611vw; /* 358/1440 */
+    gap: 7.9861vw;
+    /* 115/1440 */
+    height: 24.8611vw;
+    /* 358/1440 */
   }
 
   /* Card 9: left column gap 100px */
   .cs-card-9 .cs-card-left {
-    gap: 6.9444vw; /* 100/1440 */
+    gap: 6.9444vw;
+    /* 100/1440 */
   }
 
   /* --- Logo dimensions per card (Figma exact) --- */
   .cs-card-logo {
-    object-fit: contain;
+    object-fit: cover !important;
     object-position: left;
   }
 
   /* Card 1: Mered - 235×176 */
   .cs-card-1 .cs-card-logo {
-    width: 16.3194vw; /* 235/1440 */
-    height: 12.2222vw; /* 176/1440 */
+    width: 16.3194vw;
+    /* 235/1440 */
+    height: 12.2222vw;
+    /* 176/1440 */
   }
 
   /* Card 2: Ellington - 253×114 */
   .cs-card-2 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 7.9167vw; /* 114/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 7.9167vw;
+    /* 114/1440 */
   }
 
   /* Card 3: Jubail Island - 253×157 */
   .cs-card-3 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 10.9028vw; /* 157/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 10.9028vw;
+    /* 157/1440 */
   }
 
   /* Card 4: Knight Frank - 253×107 */
   .cs-card-4 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 7.4306vw; /* 107/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 7.4306vw;
+    /* 107/1440 */
   }
 
   /* Card 5: Beyond - 310×79 */
   .cs-card-5 .cs-card-logo {
-    width: 21.5278vw; /* 310/1440 */
-    height: 5.4861vw; /* 79/1440 */
+    width: 21.5278vw;
+    /* 310/1440 */
+    height: 5.4861vw;
+    /* 79/1440 */
   }
 
   /* Card 6: Banyan Group - 253×115 */
   .cs-card-6 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 7.9861vw; /* 115/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 7.9861vw;
+    /* 115/1440 */
   }
 
   /* Card 7: Regus - 253×114 */
   .cs-card-7 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 7.9167vw; /* 114/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 7.9167vw;
+    /* 114/1440 */
   }
 
   /* Card 8: Masaraj - 253×131 */
   .cs-card-8 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 9.0972vw; /* 131/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 9.0972vw;
+    /* 131/1440 */
   }
 
   /* Card 9: Better Homes - 306×54 */
   .cs-card-9 .cs-card-logo {
-    width: 21.25vw; /* 306/1440 */
-    height: 3.75vw; /* 54/1440 */
+    width: 21.25vw;
+    /* 306/1440 */
+    height: 3.75vw;
+    /* 54/1440 */
   }
 
   /* Card 10: Ayat - 253×94 */
   .cs-card-10 .cs-card-logo {
-    width: 17.5694vw; /* 253/1440 */
-    height: 6.5278vw; /* 94/1440 */
+    width: 17.5694vw;
+    /* 253/1440 */
+    height: 6.5278vw;
+    /* 94/1440 */
   }
 
   .cs-card-title {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 2.7083vw; /* 39/1440 */
-    line-height: 3.4722vw; /* 50/1440 */
+    font-size: 2.7083vw;
+    /* 39/1440 */
+    line-height: 3.4722vw;
+    /* 50/1440 */
     letter-spacing: 0.01em;
     color: #263238;
     margin: 0;
@@ -362,22 +461,27 @@
   /* Cards 2, 6 have title width 445px */
   .cs-card-2 .cs-card-title,
   .cs-card-6 .cs-card-title {
-    width: 30.9028vw; /* 445/1440 */
+    width: 30.9028vw;
+    /* 445/1440 */
   }
 
   /* Cards 7, 9 have title width 471px */
   .cs-card-7 .cs-card-title,
   .cs-card-9 .cs-card-title {
-    width: 32.7083vw; /* 471/1440 */
+    width: 32.7083vw;
+    /* 471/1440 */
   }
 
   /* --- Right column --- */
   .cs-card-right {
-    width: 39.0278vw; /* 562/1440 */
+    width: 39.0278vw;
+    /* 562/1440 */
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Figma: button aligns to the right side */
-    gap: 7.0833vw; /* 102/1440 default */
+    align-items: flex-end;
+    /* Figma: button aligns to the right side */
+    gap: 7.0833vw;
+    /* 102/1440 default */
   }
 
   /* Cards 7, 8, 9, 10: right column gap 78px */
@@ -385,7 +489,8 @@
   .cs-card-8 .cs-card-right,
   .cs-card-9 .cs-card-right,
   .cs-card-10 .cs-card-right {
-    gap: 5.4167vw; /* 78/1440 */
+    gap: 5.4167vw;
+    /* 78/1440 */
   }
 
   /* Cards 7, 9: right column button uses full-width wrapper with flex-end alignment */
@@ -396,7 +501,8 @@
 
   /* Card 10: right column width 581px */
   .cs-card-10 .cs-card-right {
-    width: 40.3472vw; /* 581/1440 */
+    width: 40.3472vw;
+    /* 581/1440 */
   }
 
   /* Cards 6, 7, 8, 9: desc width 521px */
@@ -404,7 +510,8 @@
   .cs-card-7 .cs-card-desc,
   .cs-card-8 .cs-card-desc,
   .cs-card-9 .cs-card-desc {
-    width: 36.1806vw; /* 521/1440 */
+    width: 36.1806vw;
+    /* 521/1440 */
   }
 
   .cs-card-desc {
@@ -412,8 +519,10 @@
     align-self: stretch;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5972vw; /* 23/1440 */
-    line-height: 2.0139vw; /* 29/1440 */
+    font-size: 1.5972vw;
+    /* 23/1440 */
+    line-height: 2.0139vw;
+    /* 29/1440 */
     letter-spacing: 0.01em;
     color: #292626;
     margin: 0;
@@ -422,9 +531,12 @@
 
   .cs-card-btn {
     position: relative;
-    width: 21.3889vw; /* 308/1440 */
-    height: 4.0972vw; /* 59/1440 */
-    border-radius: 3.8194vw; /* 55/1440 */
+    width: 21.3889vw;
+    /* 308/1440 */
+    height: 4.0972vw;
+    /* 59/1440 */
+    border-radius: 3.8194vw;
+    /* 55/1440 */
     background: #263238;
     text-decoration: none;
     display: block;
@@ -432,14 +544,20 @@
 
   .cs-card-btn-text {
     position: absolute;
-    width: 15.9431vw; /* 229.58/1440 */
-    height: 2.0833vw; /* 30/1440 */
-    top: 1.0417vw; /* 15/1440 */
-    left: 5.525vw; /* 79.56/1440 */
+    width: 15.9431vw;
+    /* 229.58/1440 */
+    height: 2.0833vw;
+    /* 30/1440 */
+    top: 1.0417vw;
+    /* 15/1440 */
+    left: 5.525vw;
+    /* 79.56/1440 */
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 1.7361vw; /* 25/1440 */
-    line-height: 2.0833vw; /* 30/1440 */
+    font-size: 1.7361vw;
+    /* 25/1440 */
+    line-height: 2.0833vw;
+    /* 30/1440 */
     color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -447,11 +565,16 @@
 
   .cs-card-btn-icon {
     position: absolute;
-    width: 3.3333vw; /* 48/1440 */
-    height: 3.3333vw; /* 48/1440 */
-    top: 0.3472vw; /* 5/1440 */
-    left: 0.4861vw; /* 7/1440 */
-    border-radius: 1.6667vw; /* 24/1440 */
+    width: 3.3333vw;
+    /* 48/1440 */
+    height: 3.3333vw;
+    /* 48/1440 */
+    top: 0.3472vw;
+    /* 5/1440 */
+    left: 0.4861vw;
+    /* 7/1440 */
+    border-radius: 1.6667vw;
+    /* 24/1440 */
     background: #FFA726;
     display: flex;
     justify-content: center;
@@ -466,12 +589,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 8.6111vw; /* 124px gap from cards section */
+  padding-top: 8.6111vw;
+  /* 124px gap from cards section */
 }
 
 .sf-container {
   width: 100%;
-  max-width: 1440px; /* Constrain on ultra-wide screens */
+  max-width: 1440px;
+  /* Constrain on ultra-wide screens */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -482,48 +607,65 @@
 .sf-header {
   position: relative;
   width: 100%;
-  height: 12vw; /* ~172px space before timeline starts */
+  height: 12vw;
+  /* ~172px space before timeline starts */
 }
 
 .sf-title-wrapper {
   position: absolute;
-  top: 1.0417vw; /* 15px */
-  left: 25.0694vw; /* 361px left gap */
-  width: 50.0694vw; /* 721px */
-  height: 4.0972vw; /* 59px */
+  top: 1.0417vw;
+  /* 15px */
+  left: 25.0694vw;
+  /* 361px left gap */
+  width: 50.0694vw;
+  /* 721px */
+  height: 4.0972vw;
+  /* 59px */
   display: flex;
   justify-content: center;
-  gap: .9vw; /* Tightly pack elements to match Figma design */
-  align-items: baseline; /* perfectly aligns logo bottom to text baseline */
+  gap: .9vw;
+  /* Tightly pack elements to match Figma design */
+  align-items: baseline;
+  /* perfectly aligns logo bottom to text baseline */
 }
 
 .sf-title-part {
   font-family: 'Mona Sans', sans-serif;
   font-weight: 800;
-  font-size: 3.6111vw; /* 52/1440 */
-  line-height: 4.0972vw; /* 59/1440 */
+  font-size: 3.6111vw;
+  /* 52/1440 */
+  line-height: 4.0972vw;
+  /* 59/1440 */
   letter-spacing: 0.01em;
   color: #263238;
   margin: 0;
 }
 
 .sf-title-logo {
-  width: 9.375vw; /* 135px */
-  height: 3.3333vw; /* 48px */
-  object-fit: contain;
-  transform: translateY(0.4vw); /* Nudge down slightly relative to text baseline */
+  width: 9.375vw;
+  /* 135px */
+  height: 3.3333vw;
+  /* 48px */
+  object-fit: cover !important;
+  transform: translateY(0.4vw);
+  /* Nudge down slightly relative to text baseline */
 }
 
 .sf-subtitle {
   position: absolute;
-  top: 6.3889vw; /* 92px */
-  left: 30vw; /* 432px */
-  width: 40.0694vw; /* 577px */
+  top: 6.3889vw;
+  /* 92px */
+  left: 30vw;
+  /* 432px */
+  width: 40.0694vw;
+  /* 577px */
   text-align: center;
   font-family: 'Mona Sans', sans-serif;
   font-weight: 600;
-  font-size: 1.1806vw; /* 17/1440 */
-  line-height: 1.7361vw; /* 25/1440 */
+  font-size: 1.1806vw;
+  /* 17/1440 */
+  line-height: 1.7361vw;
+  /* 25/1440 */
   letter-spacing: 0.02em;
   color: #000000;
   margin: 0;
@@ -536,14 +678,19 @@
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
 .cs-pre-footer .pre-footer-title {
-  top: 7.0833vw; /* 102/1440 */
-  left: 5.1389vw; /* 74/1440 */
-  width: 52.0139vw; /* 749/1440 */
-  height: 7.6389vw; /* 110/1440 */
+  top: 7.0833vw;
+  /* 102/1440 */
+  left: 5.1389vw;
+  /* 74/1440 */
+  width: 52.0139vw;
+  /* 749/1440 */
+  height: 7.6389vw;
+  /* 110/1440 */
 }
 
 .cs-pre-footer .btn-pre-footer {
-  width: 25.0833vw; /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
+  width: 25.0833vw;
+  /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
 }
 
 .cs-pre-footer .btn-pre-footer .btn-text {
@@ -553,11 +700,14 @@
 /* --- Plus Divider Override for Client Success Page --- */
 .client-success-page-body .plus-btn-divider {
   position: relative !important;
-  width: 83.9583vw !important; /* 1209/1440 */
-  left: 9.0278vw !important; /* 130/1440 */
+  width: 83.9583vw !important;
+  /* 1209/1440 */
+  left: 9.0278vw !important;
+  /* 130/1440 */
   margin: 0.9028vw 0 2.9861vw 0 !important;
   justify-content: flex-start !important;
-  padding-left: 40.2431vw !important; /* 579.5/1440 */
+  padding-left: 40.2431vw !important;
+  /* 579.5/1440 */
   box-sizing: border-box !important;
   max-width: none !important;
 }
@@ -569,6 +719,47 @@
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .client-success-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+
+  .client-success-hero-breadcrumb a,
+  .client-success-hero-breadcrumb .current,
+  .client-success-hero-breadcrumb .ws-breadcrumb-current,
+  .client-success-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .client-success-hero-breadcrumb img.breadcrumb-icon,
+  .client-success-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .client-success-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .client-success-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .client-success-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .client-success-page-body {
     background-color: #FFFFFF !important;
   }
@@ -582,10 +773,13 @@
     position: relative;
     transform: none;
     left: 0;
-    padding: 0; /* Remove padding for absolute positioning of children */
+    padding: 0;
+    /* Remove padding for absolute positioning of children */
     height: auto;
-    display: block; /* Changed from flex to block */
-    z-index: 3 !important; /* Ensure it stays above the absolute background image */
+    display: block;
+    /* Changed from flex to block */
+    z-index: 3 !important;
+    /* Ensure it stays above the absolute background image */
   }
 
   .client-success-hero-title-container {
@@ -602,12 +796,16 @@
   .client-success-hero-title {
     position: absolute !important;
     top: 342px !important;
-    left: 6.3613vw !important; /* 25px */
-    width: calc(100% - 12.7226vw) !important; /* Full width minus left+right margins */
+    left: 6.3613vw !important;
+    /* 25px */
+    width: calc(100% - 12.7226vw) !important;
+    /* Full width minus left+right margins */
     height: auto !important;
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 9.7201vw !important; /* 38.2px */
-    line-height: 10.9415vw !important; /* 43px */
+    font-size: 9.7201vw !important;
+    /* 38.2px */
+    line-height: 10.9415vw !important;
+    /* 43px */
     letter-spacing: 0.02em !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
@@ -629,11 +827,13 @@
   }
 
   .client-success-hero-desc {
-    display: none !important; /* Hidden on mobile as per Figma */
+    display: none !important;
+    /* Hidden on mobile as per Figma */
   }
 
   .client-success-hero-btn {
-    display: none !important; /* Hidden on mobile as per Figma */
+    display: none !important;
+    /* Hidden on mobile as per Figma */
   }
 
   .client-success-hero-btn .btn-text-custom {
@@ -668,14 +868,13 @@
 
   .client-success-hero-breadcrumb {
     position: absolute !important;
-    top: auto !important;
-    bottom: 20px !important;
-    left: 30px !important;
-    width: 174px !important;
+    top: 533px !important;
+    left: 26px !important;
+    width: max-content !important;
     height: 29px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 11px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -690,6 +889,7 @@
     color: #FFFFFF !important;
     height: auto !important;
     width: auto !important;
+    white-space: nowrap !important;
     text-decoration: none !important;
   }
 
@@ -702,20 +902,22 @@
   /* Intro Section Mobile */
   .cs-intro-section {
     position: relative !important;
-    height: 298px !important; /* text bottom (227) + gap (71) = 298px */
+    height: 298px !important;
+    /* text bottom (227) + gap (71) = 298px */
     padding: 0 !important;
     background: transparent !important;
   }
-  
+
   .cs-intro-container {
     display: block !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-  
+
   .cs-intro-label {
     position: absolute !important;
-    top: 54px !important; /* 906px - 852px (hero height) = 54px */
+    top: 54px !important;
+    /* 906px - 852px (hero height) = 54px */
     left: 22px !important;
     width: max-content !important;
     height: 35px !important;
@@ -727,10 +929,11 @@
     color: #FFA726 !important;
     display: flex !important;
     align-items: center !important;
-    gap: 11px !important; /* Gap for the vertical bar */
+    gap: 11px !important;
+    /* Gap for the vertical bar */
     margin: 0 !important;
   }
-  
+
   .cs-intro-label::before {
     content: '' !important;
     display: block !important;
@@ -738,24 +941,30 @@
     height: 31px !important;
     background: #FFA726 !important;
   }
-  
+
   .cs-intro-text {
     position: absolute !important;
-    top: 117px !important; /* 969px - 852px = 117px */
-    left: 5.3435vw !important; /* 21px */
-    width: calc(100% - 10.6870vw) !important; /* Full width minus left+right */
+    top: 117px !important;
+    /* 969px - 852px = 117px */
+    left: 5.3435vw !important;
+    /* 21px */
+    width: calc(100% - 10.6870vw) !important;
+    /* Full width minus left+right */
     height: auto !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.0712vw !important; /* 16px */
-    line-height: 5.5980vw !important; /* 22px */
+    font-size: 4.0712vw !important;
+    /* 16px */
+    line-height: 5.5980vw !important;
+    /* 22px */
     letter-spacing: 0.01em !important;
     color: #0B0B0B !important;
     margin: 0 !important;
   }
-  
+
   .cs-intro-text br {
-    display: none !important; /* Let text wrap naturally on mobile */
+    display: none !important;
+    /* Let text wrap naturally on mobile */
   }
 
   /* Cards Section Mobile */
@@ -763,8 +972,10 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 70px !important; /* Exactly 70px gap between the wrappers per Figma */
-    margin-top: 0 !important; /* Removed to ensure exact 71px gap from text to card */
+    gap: 70px !important;
+    /* Exactly 70px gap between the wrappers per Figma */
+    margin-top: 0 !important;
+    /* Removed to ensure exact 71px gap from text to card */
     padding: 0 !important;
     width: 100% !important;
   }
@@ -773,7 +984,8 @@
     padding: 0 !important;
     width: 100% !important;
     display: flex !important;
-    justify-content: center !important; /* Centers the 356px card */
+    justify-content: center !important;
+    /* Centers the 356px card */
     height: auto !important;
   }
 
@@ -785,7 +997,8 @@
     background: #E9EAEB !important;
     height: auto !important;
     position: static !important;
-    padding-top: 49px !important; /* Exact 49px gap from gray background top to content top */
+    padding-top: 49px !important;
+    /* Exact 49px gap from gray background top to content top */
     padding-bottom: 49px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -794,73 +1007,118 @@
   .cs-card-wrapper.bg-grey .cs-card {
     position: static !important;
   }
-  
+
   .cs-card {
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: stretch !important;
     gap: 33px !important;
-    width: 100% !important; /* Fill available space within padded wrapper */
-    max-width: 90.5852vw !important; /* 356px cap on 393px screens */
+    width: 100% !important;
+    /* Fill available space within padded wrapper */
+    max-width: 90.5852vw !important;
+    /* 356px cap on 393px screens */
     height: auto !important;
     min-height: auto !important;
   }
-  
+
   .cs-card-left {
     display: flex !important;
     flex-direction: column !important;
     gap: 20px !important;
     width: 100% !important;
   }
-  
+
   .cs-card-right {
     display: flex !important;
     flex-direction: column !important;
     gap: 57px !important;
     width: 100% !important;
   }
-  
+
   .cs-card-logo {
     object-fit: contain !important;
     object-position: left !important;
     margin: 0 !important;
     padding: 0 !important;
   }
-  
-  .cs-card-1 .cs-card-logo { width: 99px !important; height: 74px !important; }
-  .cs-card-2 .cs-card-logo { width: 110px !important; height: 50px !important; }
-  .cs-card-3 .cs-card-logo { width: 99px !important; height: 62px !important; }
-  .cs-card-4 .cs-card-logo { width: 125px !important; height: 53px !important; }
-  .cs-card-5 .cs-card-logo { width: 172px !important; height: 44px !important; }
-  .cs-card-6 .cs-card-logo { width: 156px !important; height: 71px !important; }
-  .cs-card-7 .cs-card-logo { width: 131px !important; height: 59px !important; }
-  .cs-card-8 .cs-card-logo { width: 151px !important; height: 78px !important; }
-  .cs-card-9 .cs-card-logo { width: 188px !important; height: 33px !important; }
-  .cs-card-10 .cs-card-logo { width: 124px !important; height: 46px !important; }
-  
+
+  .cs-card-1 .cs-card-logo {
+    width: 99px !important;
+    height: 74px !important;
+  }
+
+  .cs-card-2 .cs-card-logo {
+    width: 110px !important;
+    height: 50px !important;
+  }
+
+  .cs-card-3 .cs-card-logo {
+    width: 99px !important;
+    height: 62px !important;
+  }
+
+  .cs-card-4 .cs-card-logo {
+    width: 125px !important;
+    height: 53px !important;
+  }
+
+  .cs-card-5 .cs-card-logo {
+    width: 172px !important;
+    height: 44px !important;
+  }
+
+  .cs-card-6 .cs-card-logo {
+    width: 156px !important;
+    height: 71px !important;
+  }
+
+  .cs-card-7 .cs-card-logo {
+    width: 131px !important;
+    height: 59px !important;
+  }
+
+  .cs-card-8 .cs-card-logo {
+    width: 151px !important;
+    height: 78px !important;
+  }
+
+  .cs-card-9 .cs-card-logo {
+    width: 188px !important;
+    height: 33px !important;
+  }
+
+  .cs-card-10 .cs-card-logo {
+    width: 124px !important;
+    height: 46px !important;
+  }
+
   .cs-card-title {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 7.1247vw !important; /* 28px relative to 393px */
-    line-height: 10.1781vw !important; /* 40px relative to 393px */
+    font-size: 7.1247vw !important;
+    /* 28px relative to 393px */
+    line-height: 10.1781vw !important;
+    /* 40px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   .cs-card-desc {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.5802vw !important; /* 18px relative to 393px */
-    line-height: 6.8702vw !important; /* 27px relative to 393px */
+    font-size: 4.5802vw !important;
+    /* 18px relative to 393px */
+    line-height: 6.8702vw !important;
+    /* 27px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #292626 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   .cs-card-btn {
     position: relative !important;
     width: 249px !important;
@@ -872,7 +1130,7 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   .cs-card-btn-text {
     position: absolute !important;
     top: 7px !important;
@@ -889,7 +1147,7 @@
     align-items: center !important;
     margin: 0 !important;
   }
-  
+
   .cs-card-btn-icon {
     position: absolute !important;
     width: 35px !important;
@@ -904,11 +1162,13 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   /* Success Formula Mobile */
   .cs-success-formula-section {
-    padding: 60px 20px 0 20px !important; /* Bottom padding removed to control gap via plus button */
+    padding: 60px 20px 0 20px !important;
+    /* Bottom padding removed to control gap via plus button */
   }
+
   .sf-title-wrapper {
     position: relative !important;
     top: auto !important;
@@ -918,9 +1178,12 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 8px !important; /* Adjust gap to mimic Figma's single line */
-    margin-bottom: 0 !important; /* Spacing handled by subtitle margin */
+    gap: 11px !important;
+    /* Adjust gap to mimic Figma's single line */
+    margin-bottom: 0 !important;
+    /* Spacing handled by subtitle margin */
   }
+
   .sf-title-part {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 800 !important;
@@ -930,11 +1193,13 @@
     color: #263238 !important;
     text-align: center !important;
   }
+
   .sf-title-logo {
     width: 57px !important;
     height: 20px !important;
     object-fit: contain !important;
   }
+
   .sf-subtitle-mobile {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 500 !important;
@@ -943,9 +1208,11 @@
     letter-spacing: 0.01em !important;
     color: #5D5C5C !important;
     text-align: center !important;
-    margin: 15px auto 30px auto !important; /* 15px top gap from title */
+    margin: 15px auto 30px auto !important;
+    /* 15px top gap from title */
     width: 100% !important;
-    max-width: 298px !important; /* Matches Figma text width */
+    max-width: 298px !important;
+    /* Matches Figma text width */
   }
 
   /* Steps Timeline Mobile Overrides for Client Success Page */
@@ -953,7 +1220,8 @@
     width: 100% !important;
     left: 0 !important;
     height: auto !important;
-    padding: 0 6.87vw !important; /* Removed top/bottom padding to ensure exact container height */
+    padding: 0 6.87vw !important;
+    /* Removed top/bottom padding to ensure exact container height */
     display: grid !important;
     grid-template-columns: 100% !important;
     gap: 0 !important;
@@ -982,17 +1250,25 @@
     justify-self: center !important;
     transition: background-color 0.4s ease !important;
   }
-  
+
   .step-circle-1.filled,
   .step-circle-2.filled,
   .step-circle-3.filled,
   .step-circle.filled {
     background-color: #FFA726 !important;
   }
-  
-  .step-circle-1 { grid-row: 3 !important; }
-  .step-circle-2 { grid-row: 5 !important; }
-  .step-circle-3 { grid-row: 7 !important; }
+
+  .step-circle-1 {
+    grid-row: 3 !important;
+  }
+
+  .step-circle-2 {
+    grid-row: 5 !important;
+  }
+
+  .step-circle-3 {
+    grid-row: 7 !important;
+  }
 
   .step-circle-1 span,
   .step-circle-2 span,
@@ -1074,17 +1350,19 @@
     transition: none !important;
   }
 
-  .step-card-1 { 
+  .step-card-1 {
     grid-row: 4 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 12.21vw !important;
   }
-  .step-card-2 { 
+
+  .step-card-2 {
     grid-row: 6 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 8.91vw !important;
   }
-  .step-card-3 { 
+
+  .step-card-3 {
     grid-row: 8 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 10.69vw !important;
@@ -1162,8 +1440,10 @@
     left: 0 !important;
     padding-left: 0 !important;
     justify-content: center !important;
-    margin-top: 12px !important; /* Exactly 12px gap from section above per Figma */
-    margin-bottom: 72px !important; /* 72px + 11px (SVG height) + 12px (margin-top) = 95px total gap */
+    margin-top: 12px !important;
+    /* Exactly 12px gap from section above per Figma */
+    margin-bottom: 72px !important;
+    /* 72px + 11px (SVG height) + 12px (margin-top) = 95px total gap */
   }
 
   /* FAQ Section Mobile */
@@ -1174,7 +1454,8 @@
   }
 
   .faq-mobile-container {
-    padding: 0 5.8524vw !important; /* 23px */
+    padding: 0 5.8524vw !important;
+    /* 23px */
     display: flex !important;
     flex-direction: column !important;
     gap: 9.16vw !important;
@@ -1240,8 +1521,10 @@
   .faq-mobile-question-text {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
-    font-size: 3.5623vw !important; /* 14px relative to 393px */
-    line-height: 5.0891vw !important; /* 20px relative to 393px */
+    font-size: 3.5623vw !important;
+    /* 14px relative to 393px */
+    line-height: 5.0891vw !important;
+    /* 20px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000 !important;
     display: block !important;
@@ -1263,8 +1546,10 @@
   .faq-mobile-answer p {
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 3.5623vw !important; /* 14px relative to 393px */
-    line-height: 5.0891vw !important; /* 20px relative to 393px */
+    font-size: 3.5623vw !important;
+    /* 14px relative to 393px */
+    line-height: 5.0891vw !important;
+    /* 20px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #3A3939 !important;
     margin: 0 !important;
@@ -1274,8 +1559,10 @@
   .client-success-page-body .cs-pre-footer {
     height: auto !important;
     padding-bottom: 60px !important;
-    width: 100% !important; /* Reset 100vw */
-    margin-left: 0 !important; /* Remove negative calc margin pulling section left */
+    width: 100% !important;
+    /* Reset 100vw */
+    margin-left: 0 !important;
+    /* Remove negative calc margin pulling section left */
     margin-right: 0 !important;
   }
 
@@ -1286,30 +1573,33 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     padding-top: 59.81px !important;
-    padding-left: 0 !important; /* Move spacing to margins for strict pixel control */
-    background: #263238 !important; 
+    padding-left: 0 !important;
+    /* Move spacing to margins for strict pixel control */
+    background: #263238 !important;
   }
 
   .client-success-page-body .cs-pre-footer .pre-footer-title {
     position: relative !important;
     top: auto !important;
-    bottom: auto !important; 
+    bottom: auto !important;
     left: auto !important;
     right: auto !important;
-    width: 88.0941vw !important; /* 346.21px fluid */
-    max-width: 346.21px !important; /* Cap at Figma value */
+    width: 88.0941vw !important;
+    /* 346.21px fluid */
+    max-width: 346.21px !important;
+    /* Cap at Figma value */
     height: auto !important;
     font-size: 36px !important;
     line-height: 55px !important;
     text-align: left !important;
     margin-top: 0 !important;
-    margin-bottom: 32.04px !important; 
+    margin-bottom: 32.04px !important;
     margin-left: 30px !important;
     margin-right: auto !important;
     padding: 0 !important;
-    color: #FFFFFF !important; 
+    color: #FFFFFF !important;
   }
-  
+
   .client-success-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
     color: #FFFFFF !important;
   }
@@ -1320,7 +1610,8 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    width: 60.8142vw !important; /* 239px fluid */
+    width: 60.8142vw !important;
+    /* 239px fluid */
     max-width: 239px !important;
     height: 42px !important;
     margin-top: 0 !important;
@@ -1328,14 +1619,16 @@
     margin-left: 30px !important;
     margin-right: auto !important;
     padding: 0 !important;
-    background: #FFFFFF !important; 
+    background: #FFFFFF !important;
   }
-  
+
   .client-success-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
     position: absolute !important;
     top: 5px !important;
-    left: 8px !important; /* Matches exactly with Figma */
-    width: 32px !important; /* Matches exactly with Figma */
+    left: 8px !important;
+    /* Matches exactly with Figma */
+    width: 32px !important;
+    /* Matches exactly with Figma */
     height: 32px !important;
     background: #FFA726 !important;
     border-radius: 24px !important;
@@ -1351,18 +1644,21 @@
   .client-success-page-body .cs-pre-footer .btn-pre-footer .btn-text {
     position: absolute !important;
     top: 5px !important;
-    left: 46.47px !important; /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
+    left: 46.47px !important;
+    /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
     width: 186.95px !important;
     height: 30px !important;
     font-size: 16px !important;
     line-height: 30px !important;
-    color: #1B3834 !important; /* Text inside button should be green */
-    text-align: center !important; /* Center text within Figma's bounding box */
+    color: #1B3834 !important;
+    /* Text inside button should be green */
+    text-align: center !important;
+    /* Center text within Figma's bounding box */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
-  
+
   /* Mobile padding overrides for Client Success Cards to ensure exactly 18px edge gap */
   .client-success-page-body .cs-cards-section .cs-card-wrapper {
     padding-left: 18px !important;

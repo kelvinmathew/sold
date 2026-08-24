@@ -759,7 +759,7 @@ h6 {
 }
 
 .placeholder-svg-icon {
-  object-fit: contain;
+  object-fit: cover !important;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
@@ -1027,7 +1027,7 @@ h6 {
   /* 743px */
   height: 29.0972cqi;
   /* 419px - Figma exact height */
-  object-fit: contain;
+  object-fit: cover !important;
   z-index: 1;
 }
 
@@ -1122,7 +1122,7 @@ h6 {
 }
 
 .client-logo {
-  object-fit: contain;
+  object-fit: cover !important;
   object-position: left top;
   position: absolute;
   z-index: 0;
@@ -1242,7 +1242,7 @@ h6 {
 .testi-quote-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 /* Custom Carousel Controls */
@@ -1905,7 +1905,7 @@ h6 {
   box-sizing: border-box;
   padding: 0.8333cqi 1.9791cqi;
   /* 12px 28.5px - optical padding so logo letter size matches exact 74px font size of surrounding text */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .who-header-top {
@@ -2209,7 +2209,7 @@ h6 {
   /* 18px */
   height: 1.25cqi;
   /* 18px */
-  object-fit: contain;
+  object-fit: cover !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2318,7 +2318,7 @@ h6 {
   /* 15px */
   height: 1.0416cqi;
   /* 15px */
-  object-fit: contain;
+  object-fit: cover !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2846,7 +2846,7 @@ h6 {
 .footer-logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain !important;
   object-position: left center;
 }
 
@@ -3068,7 +3068,7 @@ h6 {
 }
 
 .social-icon {
-  object-fit: contain;
+  object-fit: cover !important;
   display: block;
 }
 
@@ -3627,7 +3627,7 @@ h6 {
     letter-spacing: 0.01em !important;
     padding: 4px 4px 4px 7.29px !important;
     box-sizing: border-box !important;
-    gap: 8px !important;
+    gap: 11px !important;
   }
 
   .btn-get-started .icon-circle {
@@ -4150,7 +4150,7 @@ h6 {
     letter-spacing: 0.01em !important;
     padding: 4px !important;
     box-sizing: border-box !important;
-    gap: 8px !important;
+    gap: 11px !important;
   }
 
   .btn-get-started .icon-circle {
@@ -5904,7 +5904,7 @@ h6 {
     left: 0 !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 11px !important;
     width: 86.88px !important;
     height: 30px !important;
     margin: 0 !important;
@@ -6883,7 +6883,7 @@ h6 {
   /* 23/1440 */
   height: 1.0417cqi;
   /* 15/1440 */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .services-hero-breadcrumb .breadcrumb-services-wrapper {
@@ -6917,6 +6917,47 @@ h6 {
 
 /* Responsive Overrides */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .services-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+
+  .services-hero-breadcrumb a,
+  .services-hero-breadcrumb .current,
+  .services-hero-breadcrumb .ws-breadcrumb-current,
+  .services-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .services-hero-breadcrumb img.breadcrumb-icon,
+  .services-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .services-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .services-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .services-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .services-hero {
     height: 100svh !important;
     min-height: 500px !important;
@@ -7228,7 +7269,7 @@ h6 {
   /* 135/1440 */
   height: 3.3333cqi;
   /* 48/1440 */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .steps-title-row {
@@ -7313,7 +7354,7 @@ h6 {
     /* 135/1440 */
     height: 3.3333cqi;
     /* 48/1440 */
-    object-fit: contain;
+    object-fit: cover !important;
     margin: 0;
     display: block;
   }
@@ -7325,7 +7366,7 @@ h6 {
     /* Shifted slightly left to balance gap */
     width: 9.375cqi;
     height: 3.3333cqi;
-    object-fit: contain;
+    object-fit: cover !important;
     margin: 0;
     display: block;
   }

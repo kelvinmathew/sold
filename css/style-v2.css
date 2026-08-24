@@ -766,7 +766,7 @@ h6 {
 }
 
 .placeholder-svg-icon {
-  object-fit: contain;
+  object-fit: cover !important;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
@@ -1034,7 +1034,7 @@ h6 {
   /* 743px */
   height: 29.0972cqi;
   /* 419px - Figma exact height */
-  object-fit: contain;
+  object-fit: cover !important;
   z-index: 1;
 }
 
@@ -1129,7 +1129,7 @@ h6 {
 }
 
 .client-logo {
-  object-fit: contain;
+  object-fit: cover !important;
   object-position: left top;
   position: absolute;
   z-index: 0;
@@ -1249,7 +1249,7 @@ h6 {
 .testi-quote-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 /* Custom Carousel Controls */
@@ -1912,7 +1912,7 @@ h6 {
   box-sizing: border-box;
   padding: 0.8333cqi 1.9791cqi;
   /* 12px 28.5px - optical padding so logo letter size matches exact 74px font size of surrounding text */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .who-header-top {
@@ -2216,7 +2216,7 @@ h6 {
   /* 18px */
   height: 1.25cqi;
   /* 18px */
-  object-fit: contain;
+  object-fit: cover !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2325,7 +2325,7 @@ h6 {
   /* 15px */
   height: 1.0416cqi;
   /* 15px */
-  object-fit: contain;
+  object-fit: cover !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2728,7 +2728,7 @@ h6 {
 .footer-logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain !important;
   object-position: left center;
 }
 
@@ -2950,7 +2950,7 @@ h6 {
 }
 
 .social-icon {
-  object-fit: contain;
+  object-fit: cover !important;
   display: block;
 }
 
@@ -3509,7 +3509,7 @@ h6 {
     letter-spacing: 0.01em !important;
     padding: 4px 4px 4px 7.29px !important;
     box-sizing: border-box !important;
-    gap: 8px !important;
+    gap: 11px !important;
   }
 
   .btn-get-started .icon-circle {
@@ -4032,7 +4032,7 @@ h6 {
     letter-spacing: 0.01em !important;
     padding: 4px !important;
     box-sizing: border-box !important;
-    gap: 8px !important;
+    gap: 11px !important;
   }
 
   .btn-get-started .icon-circle {
@@ -5804,7 +5804,7 @@ h6 {
     left: 0 !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 11px !important;
     width: 86.88px !important;
     height: 30px !important;
     margin: 0 !important;
@@ -6783,7 +6783,7 @@ h6 {
   /* 23/1440 */
   height: 1.0417cqi;
   /* 15/1440 */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .services-hero-breadcrumb .breadcrumb-services-wrapper {
@@ -6817,6 +6817,47 @@ h6 {
 
 /* Responsive Overrides */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .services-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+
+  .services-hero-breadcrumb a,
+  .services-hero-breadcrumb .current,
+  .services-hero-breadcrumb .ws-breadcrumb-current,
+  .services-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .services-hero-breadcrumb img.breadcrumb-icon,
+  .services-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .services-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .services-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .services-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .services-hero {
     height: 100svh !important;
     min-height: 500px !important;
@@ -7258,7 +7299,7 @@ h6 {
   /* 135/1440 */
   height: 3.3333cqi;
   /* 48/1440 */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .steps-title-row {
@@ -7343,7 +7384,7 @@ h6 {
     /* 135/1440 */
     height: 3.3333cqi;
     /* 48/1440 */
-    object-fit: contain;
+    object-fit: cover !important;
     margin: 0;
     display: block;
   }
@@ -7355,7 +7396,7 @@ h6 {
     /* Shifted slightly left to balance gap */
     width: 9.375cqi;
     height: 3.3333cqi;
-    object-fit: contain;
+    object-fit: cover !important;
     margin: 0;
     display: block;
   }
@@ -8015,7 +8056,7 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body) .step-circle-1 span,
   :is(.services-page-body, .why-sold-page-body) .step-circle-2 span,
   :is(.services-page-body, .why-sold-page-body) .step-circle-3 span {
-    font-size: 5.09vw !important;
+    font-size: 20px !important;
     color: #263238 !important;
     font-weight: 800 !important;
     line-height: 1 !important;
@@ -8221,33 +8262,33 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-section-mobile {
     width: 100% !important;
     padding-top: 56px !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 56px !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-container {
-    padding: 0 9.92vw !important;
+    padding: 0 22.5px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 9.16vw !important;
+    gap: 36px !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-header {
     display: flex !important;
     align-items: center !important;
-    gap: 2.29vw !important;
+    gap: 9px !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-bar {
-    width: 0.51vw !important;
-    height: 5.6vw !important;
+    width: 2px !important;
+    height: 22px !important;
     background: #FFA726 !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-label {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 5.09vw !important;
-    line-height: 7.63vw !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
     color: #FFA726 !important;
     margin: 0 !important;
   }
@@ -8255,14 +8296,14 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0 !important;
+    gap: 9px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item {
-    padding-top: 2.54vw !important;
-    padding-bottom: 5.34vw !important;
+    padding-top: 10px !important;
+    padding-bottom: 21px !important;
     border-bottom: 1px solid #EBEBEB !important;
     display: flex !important;
     flex-direction: column !important;
@@ -8291,8 +8332,8 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-question-text {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
-    font-size: 3.56vw !important;
-    line-height: 5.09vw !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
     letter-spacing: 0.01em !important;
     color: #000 !important;
     display: block !important;
@@ -8308,14 +8349,14 @@ body.why-sold-page-body,
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item.active .faq-mobile-answer {
     display: block !important;
-    margin-top: 3.05vw !important;
+    margin-top: 12px !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-answer p {
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 3.56vw !important;
-    line-height: 5.09vw !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
     letter-spacing: 0.01em !important;
     color: #3A3939 !important;
     margin: 0 !important;

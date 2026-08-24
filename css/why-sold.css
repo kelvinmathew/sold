@@ -27,7 +27,7 @@
 .ws-hero-breadcrumb .ws-breadcrumb-icon {
   width: 1.5972cqi; /* 23/1440 */
   height: 1.0417cqi; /* 15/1440 */
-  object-fit: contain;
+  object-fit: cover !important;
 }
 
 .ws-hero-breadcrumb .ws-breadcrumb-current {
@@ -116,6 +116,40 @@
 
 /* Mobile text styling for About SOLD */
 @media (max-width: 991px) {
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .ws-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+  .ws-hero-breadcrumb a,
+  .ws-hero-breadcrumb .current,
+  .ws-hero-breadcrumb .ws-breadcrumb-current,
+  .ws-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  .ws-hero-breadcrumb img.breadcrumb-icon,
+  .ws-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+  .ws-hero-content {
+    margin-bottom: 24px !important; /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+  .ws-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+  .ws-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .ws-about-text-mobile {
     display: flex;
     flex-direction: column;
@@ -832,7 +866,7 @@
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 }
 
@@ -845,7 +879,7 @@
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 }
 
@@ -900,9 +934,9 @@
   margin-bottom: 17px;
 }
 
-.ws-icon-img-1 { width: 66px; height: 62px; object-fit: contain; transition: filter 0.4s ease-out; }
-.ws-icon-img-2 { width: 70px; height: 62px; object-fit: contain; transition: filter 0.4s ease-out; }
-.ws-icon-img-3 { width: 70px; height: 56px; object-fit: contain; transition: filter 0.4s ease-out; }
+.ws-icon-img-1 { width: 66px; height: 62px; object-fit: cover !important; transition: filter 0.4s ease-out; }
+.ws-icon-img-2 { width: 70px; height: 62px; object-fit: cover !important; transition: filter 0.4s ease-out; }
+.ws-icon-img-3 { width: 70px; height: 56px; object-fit: cover !important; transition: filter 0.4s ease-out; }
 
 .ws-info-card:hover .ws-info-icon img {
   filter: brightness(0);
@@ -1118,7 +1152,7 @@
 .ws-client-inner img {
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;
+  object-fit: cover !important;
   filter: brightness(0) invert(1);
 }
 
@@ -1224,7 +1258,7 @@
   .ws-quote-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .ws-testimonial-text {
@@ -1272,7 +1306,7 @@
   .ws-stars-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   /* --- Testimonial Click Animations --- */

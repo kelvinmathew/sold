@@ -173,6 +173,25 @@ body.social-page-body {
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE INTRO OVERRIDES */
+  .social-intro-left {
+    gap: 11px !important;
+  }
+
+  .social-intro-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .social-intro-desc {
+    max-width: 352px !important;
+    line-height: 22px !important;
+    /* Force explicit figma text bound */
+  }
+
+
+
   .social-hero {
     position: relative;
     width: 100%;
@@ -217,18 +236,20 @@ body.social-page-body {
   }
 
   .social-hero-text-container {
-    margin-bottom: 60px;
+    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    width: 325px;
+    max-width: 100%;
   }
 
   .social-hero-title {
     font-family: "Mona Sans", sans-serif;
     font-weight: 700;
-    font-size: 34.2px !important;
-    line-height: 43px !important;
+    font-size: 34.2px;
+    line-height: 43px;
     letter-spacing: 0.02em;
     color: #ffffff;
     margin: 0;
@@ -238,8 +259,8 @@ body.social-page-body {
   .social-hero-subtitle {
     font-family: "Mona Sans", sans-serif;
     font-weight: 600;
-    font-size: 16px !important;
-    line-height: 30px !important;
+    font-size: 16px;
+    line-height: 30px;
     color: #ffa726;
     margin: 0;
     text-align: left;
@@ -251,7 +272,7 @@ body.social-page-body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 6px;
+    margin-left: 0;
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -260,16 +281,88 @@ body.social-page-body {
   .breadcrumb-current-wrapper .current {
     font-family: "Mona Sans", sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 29px;
     letter-spacing: 0.01em;
     color: #ffffff;
     text-decoration: none;
   }
 
   .breadcrumb-icon {
-    width: 18px;
-    height: auto;
+    width: 23px;
+    height: 15px;
+  }
+
+  /* ==============================================
+     SOCIAL FEATURES SECTION (MOBILE)
+     ============================================== */
+  .social-features-section {
+    padding-top: 74px;
+    padding-bottom: 43px;
+    background-color: #F4F5F5;
+  }
+
+  .social-features-main-heading {
+    margin: 0 0 21px 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    color: #263238;
+    max-width: 226px;
+  }
+
+  .social-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    margin-left: 16px;
+    margin-bottom: 43px;
+  }
+
+  .social-features-list>.social-feature-item:nth-child(1) .social-feature-desc {
+    max-width: 307px;
+  }
+
+  .social-features-list>.social-feature-item:nth-child(1) .social-feature-title {
+    max-width: 224px;
+  }
+
+  .social-feature-desc {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: #696969;
+    width: 100%;
+    max-width: 321px;
+  }
+
+  .social-feature-title {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 15px;
+    color: #0B0B0B;
+    width: 100%;
+    max-width: 321px;
+  }
+
+  .social-feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .social-features-image-wrapper {
+    width: 163px;
+    height: 317px;
+    margin-left: 103px;
+    border-radius: 12px;
+    overflow: hidden;
   }
 }
 
@@ -459,7 +552,7 @@ body.social-page-body {
   .social-features-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
     /* Shows full image without cropping */
   }
 
@@ -815,9 +908,6 @@ body.social-page-body {
      SOCIAL FEATURES SECTION (MOBILE)
      ============================================== */
   .social-features-section {
-    padding-top: 0;
-    /* Gap handled by previous section */
-    padding-bottom: 60px;
     background-color: #ffffff;
   }
 
@@ -922,14 +1012,14 @@ body.social-page-body {
   }
 
   .social-services-heading {
-    margin: 43px 0 38px 26px;
-    /* Matches Figma: y=43, x=26, 38px gap to list */
+    margin: 43px 0 20px 26px;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.01em;
     color: #263238;
+    max-width: 279px;
   }
 
   .social-services-grid {
@@ -942,8 +1032,7 @@ body.social-page-body {
   .social-services-list-col {
     display: flex;
     flex-direction: column;
-    margin-left: 55px;
-    /* Matches Figma: x=55 for the list */
+    margin-left: 48px;
   }
 
   .social-services-list {
@@ -977,15 +1066,10 @@ body.social-page-body {
 
   .social-services-image-col {
     order: 2;
-    /* Move image below list on mobile */
-    width: calc(100% + 9px);
-    /* Stretches slightly past right edge to maintain Figma intent */
-    height: 333px;
-    /* Mobile height */
-    margin-left: -5px;
-    /* Figma image x=-5 */
+    width: 329px;
+    height: 282px;
+    margin-left: 32px;
     margin-top: 0;
-    /* Gap handled by parent grid */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -993,7 +1077,7 @@ body.social-page-body {
   .social-services-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
     object-position: center;
     image-rendering: high-quality;
   }
@@ -1017,15 +1101,14 @@ body.social-page-body {
   }
 
   .social-success-heading {
-    margin: 0 0 35px 0;
-    /* Space from title to list */
+    margin: 0 0 41px 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 22px;
     line-height: 28px;
     letter-spacing: 0.01em;
     color: #263238;
-    max-width: 206px;
+    max-width: 202px;
   }
 
   .social-success-grid {
@@ -1082,10 +1165,22 @@ body.social-page-body {
     /* Force text wrapping to match Figma exact width */
   }
 
+  .social-success-list>.social-success-item:nth-child(1) .social-success-item-desc {
+    max-width: 307px;
+  }
+
+  .social-success-list>.social-success-item:nth-child(3) .social-success-item-desc {
+    max-width: 301px;
+  }
+
+  .social-success-list>.social-success-item:nth-child(4) .social-success-item-desc {
+    max-width: 309px;
+  }
+
   .social-success-image-col {
-    width: 100%;
+    width: 335px;
     height: 334px;
-    /* Mobile height */
+    margin-left: 9px;
     border-radius: 12px;
     overflow: hidden;
   }
@@ -1223,12 +1318,12 @@ body.social-page-body {
 
   .social-page-body .pre-footer-title {
     position: absolute !important;
-    top: 47.61px !important;
-    left: 30.58px !important;
-    /* Exact Figma gap to left */
-    width: calc(100% - 47.79px) !important;
-    /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
-    height: auto !important;
+    top: 34px !important;
+    left: 31px !important;
+    width: 346px !important;
+    height: 187px !important;
+    display: flex !important;
+    align-items: center !important;
     font-family: 'Mona Sans', sans-serif !important;
     font-size: 36px !important;
     line-height: 46px !important;

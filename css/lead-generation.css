@@ -173,6 +173,63 @@ body.social-page-body {
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE INTRO OVERRIDES */
+  .social-intro-left {
+    gap: 11px !important;
+  }
+
+  .social-intro-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .social-intro-desc {
+    max-width: 352px !important;
+    line-height: 22px !important;
+    /* Force explicit figma text bound */
+  }
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .social-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 8px !important;
+  }
+
+  .social-hero-breadcrumb a,
+  .social-hero-breadcrumb .current,
+  .social-hero-breadcrumb .ws-breadcrumb-current,
+  .social-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .social-hero-breadcrumb img.breadcrumb-icon,
+  .social-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .social-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .social-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .social-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .social-hero {
     position: relative;
     width: 100%;
@@ -467,7 +524,7 @@ body.social-page-body {
   .social-features-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
     /* Shows full image without cropping */
   }
 
@@ -868,14 +925,14 @@ body.social-page-body {
   }
 
   .social-features-main-heading {
-    margin: 14px 0 37px 4px;
-    /* Matches Figma: y=14, x=4, 37px gap to list */
+    margin: 0 0 23px 4px;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 22px;
     line-height: 28px;
     letter-spacing: 0.01em;
     color: #263238;
+    max-width: 179px;
   }
 
   .social-features-list {
@@ -883,9 +940,7 @@ body.social-page-body {
     flex-direction: column;
     gap: 23px;
     margin-left: 20px;
-    /* Matches Figma: x=20 */
-    margin-bottom: 20px;
-    /* Natural gap before image */
+    margin-bottom: 36px;
   }
 
   .social-feature-item {
@@ -918,10 +973,13 @@ body.social-page-body {
     /* Figma exact width to force text wrap */
   }
 
+  .social-features-list>.social-feature-item:nth-of-type(1) .social-feature-desc {
+    max-width: 307px;
+  }
+
   .social-features-image-wrapper {
     width: 163px;
-    /* Match mobile Figma image width */
-    height: 316px;
+    height: 317px;
     /* Match mobile Figma image height */
     margin-left: 100px;
     /* Matches Figma: x=100 */
@@ -941,7 +999,7 @@ body.social-page-body {
      ============================================== */
   .social-services-section {
     padding-top: 0;
-    padding-bottom: 18px;
+    padding-bottom: 43px;
     background-color: #E9EAEB;
   }
 
@@ -956,28 +1014,26 @@ body.social-page-body {
   }
 
   .social-services-heading {
-    margin: 43px 0 38px 26px;
-    /* Matches Figma: y=43, x=26, 38px gap to list */
+    margin: 43px 0 39px 26px;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.01em;
     color: #263238;
+    max-width: 349px;
   }
 
   .social-services-grid {
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    /* Matches exact Figma gap of 22px between list and image */
+    gap: 20px;
   }
 
   .social-services-list-col {
     display: flex;
     flex-direction: column;
-    margin-left: 55px;
-    /* Matches Figma: x=55 for the list */
+    margin-left: 44px;
   }
 
   .social-services-list {
@@ -1011,15 +1067,10 @@ body.social-page-body {
 
   .social-services-image-col {
     order: 2;
-    /* Move image below list on mobile */
-    width: calc(100% + 9px);
-    /* Stretches slightly past right edge to maintain Figma intent */
-    height: 333px;
-    /* Mobile height */
-    margin-left: -5px;
-    /* Figma image x=-5 */
+    width: 329px;
+    height: 282px;
+    margin-left: 32px;
     margin-top: 0;
-    /* Gap handled by parent grid */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -1027,7 +1078,7 @@ body.social-page-body {
   .social-services-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
     object-position: center;
     image-rendering: high-quality;
   }
@@ -1051,7 +1102,7 @@ body.social-page-body {
   }
 
   .social-success-heading {
-    margin: 0 0 35px 0;
+    margin: 8px 0 35px 0;
     /* Space from title to list */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
@@ -1065,7 +1116,7 @@ body.social-page-body {
   .social-success-grid {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 24px;
     /* Space from list to image matches Figma perfectly */
   }
 
@@ -1116,9 +1167,23 @@ body.social-page-body {
     /* Force text wrapping to match Figma exact width */
   }
 
+  /* Specific overriding bound based on Figma */
+  .social-success-list .social-success-item:nth-child(1) .social-success-item-desc {
+    max-width: 307px;
+  }
+
+  .social-success-list .social-success-item:nth-child(3) .social-success-item-desc {
+    max-width: 301px;
+  }
+
+  .social-success-list .social-success-item:nth-child(4) .social-success-item-desc {
+    max-width: 309px;
+  }
+
   .social-success-image-col {
-    width: 100%;
+    width: 335px;
     height: 334px;
+    margin-left: 9px;
     /* Mobile height */
     border-radius: 12px;
     overflow: hidden;
@@ -1259,10 +1324,10 @@ body.social-page-body {
     position: absolute !important;
     top: 47.61px !important;
     left: 30.58px !important;
-    /* Exact Figma gap to left */
-    width: calc(100% - 47.79px) !important;
-    /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
-    height: auto !important;
+    width: 346.21px !important;
+    height: 156.06px !important;
+    display: flex !important;
+    align-items: center !important;
     font-family: 'Mona Sans', sans-serif !important;
     font-size: 36px !important;
     line-height: 46px !important;

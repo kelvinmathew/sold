@@ -173,7 +173,7 @@
   .insights-hero-breadcrumb .breadcrumb-icon {
     width: 1.5972vw;
     height: 1.0417vw;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .insights-hero-breadcrumb .breadcrumb-services-wrapper {
@@ -349,7 +349,7 @@
   .insights-calendar-icon {
     width: clamp(16px, 1.6vw, 34px);
     height: clamp(15px, 1.5vw, 32px);
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .insights-featured-headline {
@@ -510,7 +510,7 @@
     /* 34/1440 */
     height: clamp(15px, 1.4vw, 32px);
     /* 32/1440 */
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .insights-latest-headline {
@@ -734,7 +734,7 @@
     /* 26/1440 */
     height: 1.7361vw;
     /* 25/1440 */
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .insights-blog-headline {
@@ -901,7 +901,7 @@
 
   /* --- Logo dimensions per card (Figma exact) --- */
   .cs-card-logo {
-    object-fit: contain;
+    object-fit: cover !important;
     object-position: left;
   }
 
@@ -1185,7 +1185,7 @@
   /* 135px */
   height: 3.3333vw;
   /* 48px */
-  object-fit: contain;
+  object-fit: cover !important;
   transform: translateY(0.4vw);
   /* Nudge down slightly relative to text baseline */
 }
@@ -1260,6 +1260,47 @@
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .insights-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+
+  .insights-hero-breadcrumb a,
+  .insights-hero-breadcrumb .current,
+  .insights-hero-breadcrumb .ws-breadcrumb-current,
+  .insights-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .insights-hero-breadcrumb img.breadcrumb-icon,
+  .insights-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .insights-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .insights-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .insights-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .insights-page-body {
     background-color: #FFFFFF !important;
   }
@@ -1317,6 +1358,42 @@
     /* Hide CTA button on mobile insights page */
   }
 
+  /* Mobile Breadcrumb Injection */
+  .insights-hero-breadcrumb-mobile {
+    position: absolute !important;
+    top: 533px !important;
+    left: 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    z-index: 4 !important;
+  }
+
+  .insights-hero-breadcrumb-mobile .breadcrumb-home {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    line-height: 29px !important;
+    letter-spacing: 0.01em !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+  }
+
+  .insights-hero-breadcrumb-mobile .breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: contain !important;
+  }
+
+  .insights-hero-breadcrumb-mobile .current {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    line-height: 29px !important;
+    letter-spacing: 0.01em !important;
+    color: #FFFFFF !important;
+  }
+
   /* Target both standard and mobile-specific breadcrumbs if any exist */
   .insights-hero-breadcrumb {
     position: absolute !important;
@@ -1328,7 +1405,7 @@
     display: flex !important;
     /* Override d-none */
     align-items: center !important;
-    gap: 8px !important;
+    gap: 11px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1601,7 +1678,7 @@
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     /* 2 columns on mobile */
-    column-gap: 8px !important;
+    column-gap: 11px !important;
     row-gap: 11px !important;
   }
 

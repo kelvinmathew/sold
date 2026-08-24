@@ -581,6 +581,53 @@ body.branding-page-body {
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
 @media (max-width: 991px) {
+  /* UNIVERSAL MOBILE INTRO OVERRIDES */
+  .branding-intro-left {
+    gap: 11px !important;
+  }
+  .branding-intro-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .branding-intro-desc {
+    max-width: 352px !important;
+    line-height: 22px !important; /* Force explicit figma text bound */
+  }
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .branding-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 11px !important;
+  }
+  .branding-hero-breadcrumb a,
+  .branding-hero-breadcrumb .current,
+  .branding-hero-breadcrumb .ws-breadcrumb-current,
+  .branding-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  .branding-hero-breadcrumb img.breadcrumb-icon,
+  .branding-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+  .branding-hero-text-container {
+    margin-bottom: 24px !important; /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+  .branding-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+  .branding-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .branding-hero {
     position: relative;
     width: 100%;
@@ -672,22 +719,23 @@ body.branding-page-body {
   .breadcrumb-current-wrapper .current {
     font-family: "Mona Sans", sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px !important;
+    line-height: 29px !important;
     letter-spacing: 0.01em;
     color: #ffffff;
+    text-decoration: none !important;
   }
 
   .breadcrumb-icon {
-    width: 18px;
-    height: auto;
+    width: 23px !important;
+    height: 15px !important;
   }
 
   /* ==============================================
      2. INTRO SECTION (MOBILE)
      ============================================== */
   .branding-intro-section {
-    background-color: #F4F5F5 !important;
+    background-color: #FFFFFF !important;
     padding-top: 10.178cqi !important;
     /* ~40px */
     padding-bottom: 10.178cqi !important;
@@ -705,8 +753,7 @@ body.branding-page-body {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 3.8167cqi !important;
-    /* ~15px gap */
+    gap: 20px !important;
   }
 
   .branding-intro-left {
@@ -741,14 +788,12 @@ body.branding-page-body {
   }
 
   .branding-intro-desc {
-    font-family: 'Mona Sans', sans-serif !important;
-    font-weight: 500 !important;
-    font-size: 4.0712cqi !important;
-    /* 16px */
-    line-height: 6.1068cqi !important;
-    /* 24px */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
     letter-spacing: 0.01em !important;
-    color: #000000 !important;
+    color: #0B0B0B !important;
     margin: 0 !important;
     width: 100% !important;
   }
@@ -763,7 +808,7 @@ body.branding-page-body {
     padding: 60px 0 !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
   .branding-full-viewport-container {
@@ -772,8 +817,7 @@ body.branding-page-body {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    padding: 0 15px !important;
-    /* User requested exactly 15px gap on left side */
+    padding: 0 !important;
     box-sizing: border-box !important;
     gap: 0 !important;
   }
@@ -792,8 +836,7 @@ body.branding-page-body {
     color: #263238 !important;
     white-space: normal !important;
     text-align: left !important;
-    margin-left: 0 !important;
-    /* Aligns with 15px padding */
+    margin-left: 28px !important;
     margin-bottom: 23px !important;
   }
 
@@ -804,8 +847,7 @@ body.branding-page-body {
     flex-direction: column !important;
     width: 100% !important;
     gap: 23px !important;
-    margin-left: 16px !important;
-    /* Indent 16px from the heading */
+    margin-left: 44px !important;
   }
 
   /* Each point: column, gap=4px */
@@ -841,14 +883,16 @@ body.branding-page-body {
     margin: 0 !important;
   }
 
-  /* Image goes edge-to-edge: negative margins to break out of 15px padding */
+  .branding-point:nth-child(1) .branding-point-desc {
+    max-width: 307px !important;
+  }
+
+  /* Image sits naturally within the remaining container bounding box bleeding to the right edge */
   .branding-full-viewport-right {
     position: static !important;
-    width: calc(100% + 30px) !important;
-    /* 100% + 15px left + 15px right */
+    width: calc(100% - 24px) !important;
     height: auto !important;
-    margin-left: -15px !important;
-    /* Pull left to screen edge */
+    margin-left: 24px !important;
     margin-top: 31px !important;
     overflow: hidden !important;
   }
@@ -864,11 +908,11 @@ body.branding-page-body {
 
   .branding-full-viewport-img {
     width: 100% !important;
+    max-width: none !important;
     height: auto !important;
     border-radius: 0 !important;
-    object-fit: scale-down !important;
-    /* CMS Safeguard */
-    object-position: center center !important;
+    object-fit: cover !important;
+    object-position: left center !important;
   }
 
   /* ==============================================
@@ -907,7 +951,7 @@ body.branding-page-body {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    gap: 30px !important;
+    gap: 0 !important;
   }
 
   /* Force list to appear before image on mobile */
@@ -951,7 +995,7 @@ body.branding-page-body {
   /* Image is ordered after list. User requested 37px gap on BOTH left and right */
   .branding-services-image-wrapper {
     order: 2 !important;
-    margin: 10px 37px 0 37px !important;
+    margin: 42px 37px 0 37px !important;
     /* 37px on left and right */
     width: calc(100% - 74px) !important;
     /* Fill space leaving exactly 37px on each side */
@@ -965,8 +1009,7 @@ body.branding-page-body {
     width: 100% !important;
     height: 100% !important;
     /* Fill exactly the 318x325 wrapper */
-    object-fit: scale-down !important;
-    /* CMS Safeguard */
+    object-fit: cover !important;
     object-position: center !important;
   }
 
@@ -1058,14 +1101,24 @@ body.branding-page-body {
     max-width: 321px !important;
   }
 
+  .branding-build-item:nth-child(1) .branding-build-item-desc {
+    max-width: 307px !important;
+  }
+
+  .branding-build-item:nth-child(3) .branding-build-item-desc {
+    max-width: 301px !important;
+  }
+
+  .branding-build-item:nth-child(4) .branding-build-item-desc {
+    max-width: 309px !important;
+  }
+
   /* Figma: Image gap to left screen edge 38px, right screen edge 37px. 
      Container padding is 20px, so left margin=18px, right margin=17px */
   .branding-build-right {
     position: static !important;
-    margin: 60px 17px 0 18px !important;
-    /* 18px left, 17px right */
+    margin: 42px 17px 0 18px !important;
     width: calc(100% - 35px) !important;
-    /* dynamically fill the gap */
     height: 317px !important;
     overflow: hidden !important;
   }
@@ -1074,8 +1127,7 @@ body.branding-page-body {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: scale-down !important;
-    /* CMS Safeguard */
+    object-fit: cover !important;
     object-position: center !important;
   }
 
@@ -1175,6 +1227,51 @@ body.branding-page-body {
     color: #1B3834 !important;
     letter-spacing: 0.01em !important;
     text-decoration: none !important;
+  }
+
+  /* ==============================================
+     8. FAQ OVERRIDES (MOBILE)
+     ============================================== */
+  .branding-page-body .faq-mobile-container {
+    padding: 0 22.5px !important;
+    gap: 36px !important;
+  }
+
+  .branding-page-body .faq-mobile-header {
+    gap: 9px !important;
+  }
+
+  .branding-page-body .faq-mobile-bar {
+    width: 2px !important;
+    height: 22px !important;
+  }
+
+  .branding-page-body .faq-mobile-label {
+    font-size: 20px !important;
+    line-height: 30px !important;
+  }
+
+  .branding-page-body .faq-mobile-list {
+    gap: 9px !important;
+  }
+
+  .branding-page-body .faq-mobile-item {
+    padding-top: 10px !important;
+    padding-bottom: 21px !important;
+  }
+
+  .branding-page-body .faq-mobile-question-text {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  .branding-page-body .faq-mobile-answer p {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  .branding-page-body .faq-mobile-item.active .faq-mobile-answer {
+    margin-top: 12px !important;
   }
 
 }

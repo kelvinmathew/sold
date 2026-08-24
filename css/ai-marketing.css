@@ -173,6 +173,63 @@ body.social-page-body {
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
 @media (max-width: 991px) {
+
+  /* UNIVERSAL MOBILE INTRO OVERRIDES */
+  .social-intro-left {
+    gap: 11px !important;
+  }
+
+  .social-intro-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .social-intro-desc {
+    max-width: 352px !important;
+    line-height: 22px !important;
+    /* Force explicit figma text bound */
+  }
+
+  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
+  .social-hero-breadcrumb {
+    margin-left: 0 !important;
+    gap: 8px !important;
+  }
+
+  .social-hero-breadcrumb a,
+  .social-hero-breadcrumb .current,
+  .social-hero-breadcrumb .ws-breadcrumb-current,
+  .social-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .social-hero-breadcrumb img.breadcrumb-icon,
+  .social-hero-breadcrumb img.ws-breadcrumb-icon {
+    width: 23px !important;
+    height: 15px !important;
+    object-fit: fill !important;
+  }
+
+  .social-hero-text-container {
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
+    gap: 10px !important;
+  }
+
+  .social-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .social-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
   .social-hero {
     position: relative;
     width: 100%;
@@ -562,7 +619,7 @@ body.social-page-body {
   .ai-prospects-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
   }
 
   .ai-prospects-list-col {
@@ -819,6 +876,35 @@ body.social-page-body {
     background-color: #ffffff;
   }
 
+  /* ==============================================
+     HERO TYPOGRAPHY OVERRIDES (MOBILE)
+     ============================================== */
+  .social-page-body .social-hero-title {
+    font-size: 34.2px !important;
+    line-height: 43px !important;
+  }
+
+  .social-page-body .social-hero-subtitle {
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+
+  .social-page-body .social-hero-text-container {
+    gap: 10px !important;
+    margin-bottom: 60px !important;
+  }
+
+  .social-page-body .social-hero-breadcrumb {
+    gap: 8px !important;
+  }
+
+  .social-page-body .breadcrumb-current-wrapper .current {
+    font-size: 13px !important;
+    line-height: 29px !important;
+    text-transform: capitalize !important;
+    /* overrides generic uppercase if any */
+  }
+
   .social-intro-section {
     padding-top: 60px;
     padding-bottom: 34px;
@@ -886,7 +972,7 @@ body.social-page-body {
   .social-features-section {
     padding-top: 0;
     /* Gap handled by previous section */
-    padding-bottom: 60px;
+    padding-bottom: 27px;
     background-color: #ffffff;
   }
 
@@ -903,8 +989,8 @@ body.social-page-body {
   }
 
   .social-features-main-heading {
-    margin: 14px 0 37px 4px;
-    /* Matches Figma: y=14, x=4, 37px gap to list */
+    margin: 0 0 23px 4px;
+    max-width: 179px;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 22px;
@@ -919,8 +1005,8 @@ body.social-page-body {
     gap: 23px;
     margin-left: 20px;
     /* Matches Figma: x=20 */
-    margin-bottom: 20px;
-    /* Natural gap before image */
+    margin-bottom: 61px;
+    /* Matches Figma: Image y=333 - List y=79 - list_height(193) = 61px */
   }
 
   .social-feature-item {
@@ -949,17 +1035,14 @@ body.social-page-body {
     line-height: 15px;
     color: #696969;
     width: 100%;
-    max-width: 321px;
+    max-width: 307px;
     /* Figma exact width to force text wrap */
   }
 
   .social-features-image-wrapper {
     width: 163px;
-    /* Match mobile Figma image width */
-    height: 316px;
-    /* Match mobile Figma image height */
-    margin-left: 100px;
-    /* Matches Figma: x=100 */
+    height: 317px;
+    margin-left: 107px;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -991,8 +1074,8 @@ body.social-page-body {
   }
 
   .ai-prospects-heading {
-    margin: 43px 0 38px 26px;
-    /* Matches Figma: y=43, x=26, 38px gap to list */
+    margin: 43px 0 56px 26px;
+    max-width: 349px;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 24px;
@@ -1005,14 +1088,12 @@ body.social-page-body {
     display: flex;
     flex-direction: column;
     gap: 22px;
-    /* Matches exact Figma gap of 22px between list and image */
   }
 
   .ai-prospects-list-col {
     display: flex;
     flex-direction: column;
-    margin-left: 55px;
-    /* Matches Figma: x=55 for the list */
+    margin-left: 36px;
   }
 
   .ai-prospects-list {
@@ -1049,21 +1130,20 @@ body.social-page-body {
     color: #0B0B0B;
     width: 100%;
     max-width: 307px;
-    /* Figma mobile width */
     margin: 0;
+  }
+
+  .ai-prospects-item:nth-child(2) .ai-prospects-desc,
+  .ai-prospects-item:nth-child(3) .ai-prospects-desc {
+    max-width: 321px;
   }
 
   .ai-prospects-image-col {
     order: 2;
-    /* Move image below list on mobile */
-    width: calc(100% + 9px);
-    /* Stretches slightly past right edge to maintain Figma intent */
+    width: 329px;
     height: 282px;
-    /* Fixed mobile height matching Figma node 2473:7542 */
-    margin-left: -5px;
-    /* Figma image x=-5 */
+    margin-left: 32px;
     margin-top: 0;
-    /* Gap handled by parent grid */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -1071,7 +1151,7 @@ body.social-page-body {
   .ai-prospects-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
     object-position: center;
     image-rendering: high-quality;
   }
@@ -1303,10 +1383,10 @@ body.social-page-body {
     position: absolute !important;
     top: 47.61px !important;
     left: 30.58px !important;
-    /* Exact Figma gap to left */
-    width: calc(100% - 47.79px) !important;
-    /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
-    height: auto !important;
+    width: 346.21px !important;
+    height: 156.06px !important;
+    display: flex !important;
+    align-items: center !important;
     font-family: 'Mona Sans', sans-serif !important;
     font-size: 36px !important;
     line-height: 46px !important;

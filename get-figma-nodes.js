@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const API_KEY = process.env.FIGMA_TOKEN;
 const FILE_KEY = 'GHTvpoM4HvoxzVgNA4ebt6';
-const NODE_IDS = '2444:3898,2444:3901,2444:3904,2444:3907,2473:7542';
+const NODE_IDS = '2740:10285,2473:7345,2473:7360,2473:7241,2473:7242';
 
 const options = {
     hostname: 'api.figma.com',
