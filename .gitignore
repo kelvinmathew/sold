@@ -2,3 +2,16 @@
 .vscode/cline_mcp_settings.json
 .gemini/mcp.json
 .cursor/mcp.json
+node_modules/
+figma*
+git_err*
+temp*
+vercel*
+*.log
+.env
+node_modules/
+figma*
+git_err*
+temp*
+vercel*
+*.log

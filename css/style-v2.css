@@ -4741,30 +4741,39 @@ h6 {
 
   .who-header-top {
     position: relative !important;
-    height: 24.43vw !important; /* 96px */
+    height: 24.43vw !important;
+    /* 96px */
     display: block !important;
-    margin: 0 0 7.12vw 0 !important; /* 28px */
+    margin: 0 0 7.12vw 0 !important;
+    /* 28px */
   }
 
   .who-title-wrapper {
     position: absolute !important;
-    width: 100vw !important; /* Increased from 88.55vw to prevent wrapping */
-    height: 24.43vw !important; /* 96px */
-    left: 0.25vw !important; /* 1px */
+    width: 100vw !important;
+    /* Increased from 88.55vw to prevent wrapping */
+    height: 24.43vw !important;
+    /* 96px */
+    left: 0.25vw !important;
+    /* 1px */
     top: 0 !important;
     display: block !important;
   }
 
   .who-title {
     position: absolute !important;
-    width: 100% !important; /* Increased from 88.80vw */
-    height: 17.35vw !important; /* 68.17px */
+    width: 100% !important;
+    /* Increased from 88.80vw */
+    height: 17.35vw !important;
+    /* 68.17px */
     left: 0 !important;
     top: 0 !important;
     font-family: "Mona Sans", var(--font-heading) !important;
     font-weight: 700 !important;
-    font-size: 8.91vw !important; /* 35px */
-    line-height: 11.70vw !important; /* 46px */
+    font-size: 8.91vw !important;
+    /* 35px */
+    line-height: 11.70vw !important;
+    /* 46px */
     color: #263238 !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -4773,17 +4782,23 @@ h6 {
 
   .who-title-logo {
     position: absolute !important;
-    width: 28.50vw !important; /* 112px */
-    height: 9.67vw !important; /* 38px */
-    top: 12.98vw !important; /* 51px */
-    left: -1.53vw !important; /* -6px */
+    width: 28.50vw !important;
+    /* 112px */
+    height: 9.67vw !important;
+    /* 38px */
+    top: 12.98vw !important;
+    /* 51px */
+    left: -1.53vw !important;
+    /* -6px */
     box-sizing: border-box !important;
-    padding: 1.44vw 3.43vw !important; /* Optical padding scaled down from desktop to match the 35px text cap-height perfectly */
+    padding: 1.44vw 3.43vw !important;
+    /* Optical padding scaled down from desktop to match the 35px text cap-height perfectly */
   }
 
   .logo-spacer {
     display: inline-block !important;
-    width: 25.5vw !important; /* Increased from 23.5vw to move WORK slightly to the right */
+    width: 25.5vw !important;
+    /* Increased from 23.5vw to move WORK slightly to the right */
   }
 
   .who-line-two {
@@ -4792,7 +4807,8 @@ h6 {
   }
 
   .with-text {
-    display: inline !important; /* Ensures WITH? stays on the same line as WORK */
+    display: inline !important;
+    /* Ensures WITH? stays on the same line as WORK */
   }
 
   .audience-cards-container {
@@ -4802,7 +4818,8 @@ h6 {
     /* 240px * 4 + 12px * 3 */
     gap: 12px !important;
     position: absolute !important;
-    top: 124px !important; /* 96px title + 28px gap */
+    top: 124px !important;
+    /* 96px title + 28px gap */
     left: 12px !important;
     /* 11px parent + 12px = exactly 23px from screen left */
     margin: 0 !important;
@@ -5425,11 +5442,12 @@ h6 {
   .service-content-col .title {
     font-family: "Mona Sans", var(--font-heading) !important;
     font-weight: 500 !important;
-    font-size: 22px !important;
+    font-size: min(22px, 5.3vw) !important;
     line-height: 54px !important;
     color: #FFFFFF !important;
     margin: 0 !important;
     display: block !important;
+    white-space: nowrap !important;
   }
 
   /* Service body hidden by default (closed state) */
@@ -6727,7 +6745,8 @@ h6 {
 /* Breadcrumb (Bottom Left) */
 .services-hero-breadcrumb {
   position: absolute;
-  bottom: 4.1667cqi; /* Anchored to bottom */
+  bottom: 4.1667cqi;
+  /* Anchored to bottom */
   left: 7.2222cqi;
   /* 104/1440 */
   width: 16.3889cqi;
@@ -6819,7 +6838,8 @@ h6 {
     left: auto;
     width: 100%;
     height: auto;
-    margin-bottom: 23px; /* Gap between title and desc */
+    margin-bottom: 23px;
+    /* Gap between title and desc */
     display: flex;
     flex-direction: column;
   }
@@ -6877,7 +6897,8 @@ h6 {
     font-size: 16px;
     line-height: 26px;
     letter-spacing: 0.01em;
-    margin: 0 0 41px 0; /* Gap between desc and button */
+    margin: 0 0 41px 0;
+    /* Gap between desc and button */
   }
 
   .services-hero-btn {
@@ -7033,7 +7054,7 @@ h6 {
     left: auto;
     transform: none;
   }
-  
+
   .step-circle span {
     font-family: "Mona Sans", var(--font-heading);
     font-size: 20px;
@@ -7041,9 +7062,17 @@ h6 {
     color: #24323a;
   }
 
-  .step-circle-1 { grid-row: 3; }
-  .step-circle-2 { grid-row: 5; }
-  .step-circle-3 { grid-row: 7; }
+  .step-circle-1 {
+    grid-row: 3;
+  }
+
+  .step-circle-2 {
+    grid-row: 5;
+  }
+
+  .step-circle-3 {
+    grid-row: 7;
+  }
 
   .step-line-1 {
     grid-row: 3 / 9;
@@ -7086,9 +7115,23 @@ h6 {
     align-items: center;
   }
 
-  .step-card-1 { grid-row: 4; margin-top: 147px; margin-bottom: 48px; }
-  .step-card-2 { grid-row: 6; margin-top: 147px; margin-bottom: 35px; }
-  .step-card-3 { grid-row: 8; margin-top: 147px; margin-bottom: 42px; }
+  .step-card-1 {
+    grid-row: 4;
+    margin-top: 147px;
+    margin-bottom: 48px;
+  }
+
+  .step-card-2 {
+    grid-row: 6;
+    margin-top: 147px;
+    margin-bottom: 35px;
+  }
+
+  .step-card-3 {
+    grid-row: 8;
+    margin-top: 147px;
+    margin-bottom: 42px;
+  }
 
   .step-card-inner,
   .step-card-inner-2,
@@ -7822,13 +7865,24 @@ body.why-sold-page-body,
 }
 
 /* Responsive Line Breaks */
-.br-mobile { display: none; }
-.br-desktop { display: inline; }
+.br-mobile {
+  display: none;
+}
+
+.br-desktop {
+  display: inline;
+}
 
 /* Mobile Overrides for Services Page - 3 Steps Typography Layout */
 @media (max-width: 767px) {
-  .br-mobile { display: inline !important; }
-  .br-desktop { display: none !important; }
+  .br-mobile {
+    display: inline !important;
+  }
+
+  .br-desktop {
+    display: none !important;
+  }
+
   :is(.services-page-body, .why-sold-page-body) .steps-title-wrapper {
     position: relative;
     width: 74.81vw;
@@ -7900,13 +7954,13 @@ body.why-sold-page-body,
   }
 
   /* Services Page Mobile Overrides for Steps Timeline */
-  
+
   /* Reset container */
   :is(.services-page-body, .why-sold-page-body) .steps-container {
     width: 100% !important;
     left: 0 !important;
     height: auto !important;
-    padding: 5.09vw 6.87vw !important; 
+    padding: 5.09vw 6.87vw !important;
     display: grid !important;
     grid-template-columns: 100% !important;
     gap: 0 !important;
@@ -7924,7 +7978,8 @@ body.why-sold-page-body,
     margin: 0 !important;
     width: 9.16vw !important;
     height: 9.16vw !important;
-    background-color: #FFFFFF !important; /* Starts white */
+    background-color: #FFFFFF !important;
+    /* Starts white */
     border: none !important;
     border-radius: 50% !important;
     display: flex !important;
@@ -7936,17 +7991,26 @@ body.why-sold-page-body,
     justify-self: center !important;
     transition: background-color 0.4s ease !important;
   }
-  
+
   :is(.services-page-body, .why-sold-page-body) .step-circle-1.filled,
   :is(.services-page-body, .why-sold-page-body) .step-circle-2.filled,
   :is(.services-page-body, .why-sold-page-body) .step-circle-3.filled,
   :is(.services-page-body, .why-sold-page-body) .step-circle.filled {
-    background-color: #FFA726 !important; /* Becomes yellow when active */
+    background-color: #FFA726 !important;
+    /* Becomes yellow when active */
   }
-  
-  :is(.services-page-body, .why-sold-page-body) .step-circle-1 { grid-row: 3 !important; }
-  :is(.services-page-body, .why-sold-page-body) .step-circle-2 { grid-row: 5 !important; }
-  :is(.services-page-body, .why-sold-page-body) .step-circle-3 { grid-row: 7 !important; }
+
+  :is(.services-page-body, .why-sold-page-body) .step-circle-1 {
+    grid-row: 3 !important;
+  }
+
+  :is(.services-page-body, .why-sold-page-body) .step-circle-2 {
+    grid-row: 5 !important;
+  }
+
+  :is(.services-page-body, .why-sold-page-body) .step-circle-3 {
+    grid-row: 7 !important;
+  }
 
   :is(.services-page-body, .why-sold-page-body) .step-circle-1 span,
   :is(.services-page-body, .why-sold-page-body) .step-circle-2 span,
@@ -7984,7 +8048,8 @@ body.why-sold-page-body,
     left: auto !important;
     transform: none !important;
     width: 3px !important;
-    height: 0; /* Removed !important so JS can override it */
+    height: 0;
+    /* Removed !important so JS can override it */
     background-color: #FFA726 !important;
     border: none !important;
     border-left: none !important;
@@ -8032,17 +8097,19 @@ body.why-sold-page-body,
     transition: none !important;
   }
 
-  :is(.services-page-body, .why-sold-page-body) .step-card-1 { 
+  :is(.services-page-body, .why-sold-page-body) .step-card-1 {
     grid-row: 4 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 12.21vw !important;
   }
-  :is(.services-page-body, .why-sold-page-body) .step-card-2 { 
+
+  :is(.services-page-body, .why-sold-page-body) .step-card-2 {
     grid-row: 6 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 8.91vw !important;
   }
-  :is(.services-page-body, .why-sold-page-body) .step-card-3 { 
+
+  :is(.services-page-body, .why-sold-page-body) .step-card-3 {
     grid-row: 8 !important;
     margin-top: 37.4vw !important;
     margin-bottom: 10.69vw !important;
@@ -8256,29 +8323,40 @@ body.why-sold-page-body,
 
   /* Services Hero Title Mobile Exact Overrides */
   .services-page-body .services-hero-content {
-    padding-top: 65.65vw !important; /* 258px */
-    padding-left: 7.12vw !important; /* 28px */
-    padding-right: 13.49vw !important; /* 53px */
-    padding-bottom: 82.19vw !important; /* 323px bottom gap after the button */
+    padding-top: 65.65vw !important;
+    /* 258px */
+    padding-left: 7.12vw !important;
+    /* 28px */
+    padding-right: 13.49vw !important;
+    /* 53px */
+    padding-bottom: 82.19vw !important;
+    /* 323px bottom gap after the button */
   }
 
   .services-page-body .services-hero-title-container {
-    width: 100% !important; /* 100% of the padded container = 312px exactly */
+    width: 100% !important;
+    /* 100% of the padded container = 312px exactly */
     margin: 0 !important;
     padding: 0 !important;
-    margin-bottom: 8.14vw !important; /* Creates exact 357px top offset for description */
+    margin-bottom: 8.14vw !important;
+    /* Creates exact 357px top offset for description */
   }
 
   .services-page-body .services-hero-desc {
     margin: 0 !important;
-    margin-left: -0.51vw !important; /* 28px parent padding - 2px = 26px left gap exactly */
-    width: 84.48vw !important; /* 332px exactly */
+    margin-left: -0.51vw !important;
+    /* 28px parent padding - 2px = 26px left gap exactly */
+    width: 84.48vw !important;
+    /* 332px exactly */
     max-width: none !important;
-    height: auto !important; /* Will perfectly hit 88px height natively */
+    height: auto !important;
+    /* Will perfectly hit 88px height natively */
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.07vw !important; /* 16px */
-    line-height: 5.60vw !important; /* 22px */
+    font-size: 4.07vw !important;
+    /* 16px */
+    line-height: 5.60vw !important;
+    /* 22px */
     letter-spacing: 0.01em !important;
     color: #FFFFFF !important;
   }
@@ -8289,8 +8367,10 @@ body.why-sold-page-body,
 
   .services-page-body .services-hero-title-top {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     letter-spacing: 0.02em !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
@@ -8300,20 +8380,26 @@ body.why-sold-page-body,
   .services-page-body .services-hero-title-bottom {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 1.5vw !important; /* Adds the missing space between 'Experts' and 'on Your Team' */
+    gap: 1.5vw !important;
+    /* Adds the missing space between 'Experts' and 'on Your Team' */
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     letter-spacing: 0.02em !important;
     color: #FFFFFF !important;
     margin: 0 !important;
-    margin-top: -3.31vw !important; /* Pulls the second line up by ~13px to match Figma's 27px top placement despite 40px line-height */
+    margin-top: -3.31vw !important;
+    /* Pulls the second line up by ~13px to match Figma's 27px top placement despite 40px line-height */
   }
 
   .services-page-body .services-hero-title-bottom .orange-italic {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     font-weight: 700 !important;
     font-style: italic !important;
     color: #FFA726 !important;
@@ -8321,8 +8407,10 @@ body.why-sold-page-body,
 
   .services-page-body .services-hero-title-bottom .white-bold {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     font-weight: 700 !important;
     color: #FFFFFF !important;
   }
@@ -8332,8 +8420,10 @@ body.why-sold-page-body,
     bottom: auto !important;
     right: auto !important;
     margin: 0 !important;
-    margin-top: 10.43vw !important; /* (486px top - 445px desc bottom) = 41px gap exactly */
-    margin-left: -0.51vw !important; /* 28px parent padding - 2px = 26px left gap exactly */
+    margin-top: 10.43vw !important;
+    /* (486px top - 445px desc bottom) = 41px gap exactly */
+    margin-left: -0.51vw !important;
+    /* 28px parent padding - 2px = 26px left gap exactly */
     width: 225px !important;
     height: 43px !important;
     display: block !important;
@@ -8377,29 +8467,40 @@ body.why-sold-page-body,
   /* Why Sold Hero Mobile Overrides */
   /* Services Hero Title Mobile Exact Overrides */
   .why-sold-page-body .services-hero-content {
-    padding-top: 65.65vw !important; /* 258px */
-    padding-left: 7.12vw !important; /* 28px */
-    padding-right: 13.49vw !important; /* 53px */
-    padding-bottom: 82.19vw !important; /* 323px bottom gap after the button */
+    padding-top: 65.65vw !important;
+    /* 258px */
+    padding-left: 7.12vw !important;
+    /* 28px */
+    padding-right: 13.49vw !important;
+    /* 53px */
+    padding-bottom: 82.19vw !important;
+    /* 323px bottom gap after the button */
   }
 
   .why-sold-page-body .services-hero-title-container {
-    width: 100% !important; /* 100% of the padded container = 312px exactly */
+    width: 100% !important;
+    /* 100% of the padded container = 312px exactly */
     margin: 0 !important;
     padding: 0 !important;
-    margin-bottom: 8.14vw !important; /* Creates exact 357px top offset for description */
+    margin-bottom: 8.14vw !important;
+    /* Creates exact 357px top offset for description */
   }
 
   .why-sold-page-body .services-hero-desc {
     margin: 0 !important;
-    margin-left: -0.51vw !important; /* 28px parent padding - 2px = 26px left gap exactly */
-    width: 84.48vw !important; /* 332px exactly */
+    margin-left: -0.51vw !important;
+    /* 28px parent padding - 2px = 26px left gap exactly */
+    width: 84.48vw !important;
+    /* 332px exactly */
     max-width: none !important;
-    height: auto !important; /* Will perfectly hit 88px height natively */
+    height: auto !important;
+    /* Will perfectly hit 88px height natively */
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 4.07vw !important; /* 16px */
-    line-height: 5.60vw !important; /* 22px */
+    font-size: 4.07vw !important;
+    /* 16px */
+    line-height: 5.60vw !important;
+    /* 22px */
     letter-spacing: 0.01em !important;
     color: #FFFFFF !important;
   }
@@ -8410,8 +8511,10 @@ body.why-sold-page-body,
 
   .why-sold-page-body .services-hero-title-top {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     letter-spacing: 0.02em !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
@@ -8421,20 +8524,26 @@ body.why-sold-page-body,
   .why-sold-page-body .services-hero-title-bottom {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 1.5vw !important; /* Adds the missing space between 'Experts' and 'on Your Team' */
+    gap: 1.5vw !important;
+    /* Adds the missing space between 'Experts' and 'on Your Team' */
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     letter-spacing: 0.02em !important;
     color: #FFFFFF !important;
     margin: 0 !important;
-    margin-top: -3.31vw !important; /* Pulls the second line up by ~13px to match Figma's 27px top placement despite 40px line-height */
+    margin-top: -3.31vw !important;
+    /* Pulls the second line up by ~13px to match Figma's 27px top placement despite 40px line-height */
   }
 
   .why-sold-page-body .services-hero-title-bottom .orange-italic {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     font-weight: 700 !important;
     font-style: italic !important;
     color: #FFA726 !important;
@@ -8442,8 +8551,10 @@ body.why-sold-page-body,
 
   .why-sold-page-body .services-hero-title-bottom .white-bold {
     font-family: 'Mona Sans', sans-serif !important;
-    font-size: 6.92vw !important; /* 27.2px */
-    line-height: 10.18vw !important; /* 40px */
+    font-size: 6.92vw !important;
+    /* 27.2px */
+    line-height: 10.18vw !important;
+    /* 40px */
     font-weight: 700 !important;
     color: #FFFFFF !important;
   }
@@ -8453,8 +8564,10 @@ body.why-sold-page-body,
     bottom: auto !important;
     right: auto !important;
     margin: 0 !important;
-    margin-top: 10.43vw !important; /* (486px top - 445px desc bottom) = 41px gap exactly */
-    margin-left: -0.51vw !important; /* 28px parent padding - 2px = 26px left gap exactly */
+    margin-top: 10.43vw !important;
+    /* (486px top - 445px desc bottom) = 41px gap exactly */
+    margin-left: -0.51vw !important;
+    /* 28px parent padding - 2px = 26px left gap exactly */
     width: 225px !important;
     height: 43px !important;
     display: block !important;

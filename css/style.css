@@ -5542,11 +5542,12 @@ h6 {
   .service-content-col .title {
     font-family: "Mona Sans", var(--font-heading) !important;
     font-weight: 500 !important;
-    font-size: 22px !important;
+    font-size: min(22px, 5.3vw) !important;
     line-height: 54px !important;
     color: #FFFFFF !important;
     margin: 0 !important;
     display: block !important;
+    white-space: nowrap !important;
   }
 
   /* Service body hidden by default (closed state) */

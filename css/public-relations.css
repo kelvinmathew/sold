@@ -14,7 +14,7 @@ body.social-page-body {
 .social-page-body .page-container {
   container-type: inline-size;
   container-name: page;
-  max-width: 100%; 
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -35,13 +35,15 @@ body.social-page-body {
     position: relative;
     width: 100%;
     /* Use explicit 100vh to ensure it never exceeds one viewport on Windows/Linux/Mac */
-    height: 100vh; 
-    min-height: 500px; /* Safety fallback for extremely short landscape screens */
+    height: 100vh;
+    min-height: 500px;
+    /* Safety fallback for extremely short landscape screens */
     background: #ffffff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Push content from the bottom */
+    justify-content: flex-end;
+    /* Push content from the bottom */
   }
 
   .social-hero .hero-bg-img {
@@ -60,7 +62,8 @@ body.social-page-body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1); /* Exact #0000001A overlay */
+    background: rgba(0, 0, 0, 0.1);
+    /* Exact #0000001A overlay */
     z-index: 2;
   }
 
@@ -72,24 +75,30 @@ body.social-page-body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left: 4.4444cqi; /* 64/1440 */
-    padding-bottom: 4.1667cqi; /* 60px bottom padding for the whole content block, keeps breadcrumb at bottom */
+    padding-left: 4.4444cqi;
+    /* 64/1440 */
+    padding-bottom: 4.1667cqi;
+    /* 60px bottom padding for the whole content block, keeps breadcrumb at bottom */
   }
 
   /* Title & Subtitle Container */
   .social-hero-text-container {
     display: flex;
     flex-direction: column;
-    gap: 0.9722cqi; /* 14/1440 exact gap between title block and subtitle */
+    gap: 0.9722cqi;
+    /* 14/1440 exact gap between title block and subtitle */
     max-width: 80cqi;
-    margin-bottom: 11.5278cqi; /* 166/1440 pushes titles up independently of breadcrumb */
+    margin-bottom: 11.5278cqi;
+    /* 166/1440 pushes titles up independently of breadcrumb */
   }
 
   .social-hero-title {
     font-family: "Mona Sans", sans-serif;
     font-weight: 700;
-    font-size: clamp(40px, 4.6528cqi, 67px); /* 67/1440 */
-    line-height: clamp(42px, 4.7917cqi, 69px); /* 69/1440 */
+    font-size: clamp(40px, 4.6528cqi, 67px);
+    /* 67/1440 */
+    line-height: clamp(42px, 4.7917cqi, 69px);
+    /* 69/1440 */
     letter-spacing: 0.01em;
     color: #ffffff;
     margin: 0;
@@ -98,7 +107,8 @@ body.social-page-body {
   .social-hero-subtitle {
     font-family: "Mona Sans", sans-serif;
     font-weight: 600;
-    font-size: clamp(20px, 2.0833cqi, 30px); /* 30/1440 */
+    font-size: clamp(20px, 2.0833cqi, 30px);
+    /* 30/1440 */
     line-height: 1;
     color: #ffa726;
     margin: 0;
@@ -109,7 +119,8 @@ body.social-page-body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5556cqi; /* 8px */
+    gap: 0.5556cqi;
+    /* 8px */
     margin-bottom: 0;
   }
 
@@ -117,8 +128,10 @@ body.social-page-body {
     text-decoration: none;
     font-family: "Mona Sans", sans-serif;
     font-weight: 400;
-    font-size: 1.25cqi; /* 18/1440 */
-    line-height: 2.0139cqi; /* 29/1440 */
+    font-size: 1.25cqi;
+    /* 18/1440 */
+    line-height: 2.0139cqi;
+    /* 29/1440 */
     letter-spacing: 0.01em;
     color: #ffffff;
     transition: opacity 0.3s ease;
@@ -129,8 +142,10 @@ body.social-page-body {
   }
 
   .breadcrumb-icon {
-    width: 1.5972cqi; /* 23/1440 */
-    height: 1.0417cqi; /* 15/1440 */
+    width: 1.5972cqi;
+    /* 23/1440 */
+    height: 1.0417cqi;
+    /* 15/1440 */
   }
 
   .breadcrumb-current-wrapper {
@@ -141,13 +156,18 @@ body.social-page-body {
   .breadcrumb-current-wrapper .current {
     font-family: "Mona Sans", sans-serif;
     font-weight: 400;
-    font-size: 1.25cqi; /* 18/1440 */
-    line-height: 2.0139cqi; /* 29/1440 */
+    font-size: 1.25cqi;
+    /* 18/1440 */
+    line-height: 2.0139cqi;
+    /* 29/1440 */
     letter-spacing: 0.01em;
     color: #ffffff;
-    opacity: 1; /* Match Figma 100% white */
+    opacity: 1;
+    /* Match Figma 100% white */
   }
-} /* End Desktop Media Query */
+}
+
+/* End Desktop Media Query */
 
 /* ==============================================
    MOBILE STYLES (Max-width: 991px)
@@ -156,7 +176,8 @@ body.social-page-body {
   .social-hero {
     position: relative;
     width: 100%;
-    height: 100svh; /* Explicit height to prevent stretching past one viewport */
+    height: 100svh;
+    /* Explicit height to prevent stretching past one viewport */
     min-height: 500px;
     background: #ffffff;
     display: flex;
@@ -258,8 +279,10 @@ body.social-page-body {
 @media (min-width: 992px) {
   .social-intro-section {
     width: 100%;
-    padding-top: 4.9306cqi; /* 71/1440 exactly matching requested gap from Hero */
-    padding-bottom: 0; /* Gap handled by next section */
+    padding-top: 4.9306cqi;
+    /* 71/1440 exactly matching requested gap from Hero */
+    padding-bottom: 0;
+    /* Gap handled by next section */
     background-color: #F4F5F5;
     display: flex;
     justify-content: center;
@@ -272,24 +295,30 @@ body.social-page-body {
   }
 
   .social-intro-row {
-    width: 91.6667cqi; /* 1320/1440 */
+    width: 91.6667cqi;
+    /* 1320/1440 */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 15.0694cqi; /* 217/1440 (Matches Figma gap) */
+    gap: 15.0694cqi;
+    /* 217/1440 (Matches Figma gap) */
   }
 
   .social-intro-left {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.7639cqi; /* 11/1440 */
-    width: 21.6667cqi; /* 312/1440 (Fixed width for left column to force wrap) */
+    gap: 0.7639cqi;
+    /* 11/1440 */
+    width: 21.6667cqi;
+    /* 312/1440 (Fixed width for left column to force wrap) */
   }
 
   .social-intro-bar {
-    width: 0.2778cqi; /* 4/1440 */
-    height: 4.1667cqi; /* ~60/1440 fixed height to match 2-line title */
+    width: 0.2778cqi;
+    /* 4/1440 */
+    height: 2.0833cqi;
+    /* 30/1440 fixed height to match 1-line title per Figma */
     background-color: #FFA726;
     border-radius: 0;
   }
@@ -298,8 +327,10 @@ body.social-page-body {
     margin: 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
-    font-size: 2.0833cqi; /* 30/1440 */
-    line-height: 2.0833cqi; /* 30/1440 */
+    font-size: 2.0833cqi;
+    /* 30/1440 */
+    line-height: 2.0833cqi;
+    /* 30/1440 */
     color: #FFA726;
   }
 
@@ -309,11 +340,14 @@ body.social-page-body {
   }
 
   .social-intro-desc {
-    width: 50.3472cqi; /* 725/1440 */
+    width: 50.3472cqi;
+    /* 725/1440 */
     font-family: "Mona Sans", sans-serif;
     font-weight: 500;
-    font-size: 2.2222cqi; /* 32/1440 */
-    line-height: 2.9167cqi; /* 42/1440 */
+    font-size: 2.2222cqi;
+    /* 32/1440 */
+    line-height: 2.9167cqi;
+    /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
@@ -326,8 +360,10 @@ body.social-page-body {
     width: 100%;
     position: relative;
     background-color: #F4F5F5;
-    padding-top: 6.8056cqi; /* 98/1440 exact gap from Intro section */
-    padding-bottom: 4.1667cqi; /* ~60/1440 bottom padding */
+    padding-top: 6.8056cqi;
+    /* 98/1440 exact gap from Intro section */
+    padding-bottom: 4.1667cqi;
+    /* ~60/1440 bottom padding */
   }
 
   .social-features-container {
@@ -339,19 +375,24 @@ body.social-page-body {
   }
 
   .social-features-content {
-    margin-left: 4.1667cqi; /* 60/1440 */
-    width: 49.9306cqi; /* 719/1440 (Matches Figma title width #2427:1990) */
+    margin-left: 4.1667cqi;
+    /* 60/1440 */
+    width: 49.9306cqi;
+    /* 719/1440 (Matches Figma title width #2427:1990) */
     display: flex;
     flex-direction: column;
     z-index: 2;
   }
 
   .social-features-main-heading {
-    margin: 0 0 4.6528cqi 0; /* 67/1440 margin to list */
+    margin: 0 0 4.6528cqi 0;
+    /* 67/1440 margin to list */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.125cqi; /* 45/1440 */
-    line-height: 3.4722cqi; /* 50/1440 */
+    font-size: 3.125cqi;
+    /* 45/1440 */
+    line-height: 3.4722cqi;
+    /* 50/1440 */
     letter-spacing: 0.01em;
     color: #263238;
   }
@@ -359,24 +400,30 @@ body.social-page-body {
   .social-features-list {
     display: flex;
     flex-direction: column;
-    gap: 1.9444cqi; /* 28/1440 */
+    gap: 3.0556cqi;
+    /* 44/1440 (Matches Figma gap exactly for PR page) */
     /* Exact Figma bounds: Left 46, Bottom 83 (Top 117 handled via title margin) */
-    margin-left: 3.1944cqi; /* 46/1440 */
-    margin-bottom: 5.7639cqi; /* 83/1440 */
+    margin-left: 3.1944cqi;
+    /* 46/1440 */
+    margin-bottom: 5.7639cqi;
+    /* 83/1440 */
   }
 
   .social-feature-item {
     display: flex;
     flex-direction: column;
-    gap: 0.5556cqi; /* 8/1440 */
+    gap: 0.5556cqi;
+    /* 8/1440 */
   }
 
   .social-feature-title {
     margin: 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.9444cqi; /* 28/1440 */
-    line-height: 1.2; /* Removed 50px line-height to fix visual gaps */
+    font-size: 1.9444cqi;
+    /* 28/1440 */
+    line-height: 1.2;
+    /* Removed 50px line-height to fix visual gaps */
     letter-spacing: 0.01em;
     color: #000000;
   }
@@ -385,28 +432,25 @@ body.social-page-body {
     margin: 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5278cqi; /* 22/1440 */
-    line-height: 1.8056cqi; /* 26/1440 */
+    font-size: 1.5278cqi;
+    /* 22/1440 */
+    line-height: 1.8056cqi;
+    /* 26/1440 */
     letter-spacing: 0.01em;
     color: #696969;
   }
 
-  /* Specific precise widths to match Figma word wrapping on desktop */
-  .social-feature-item:nth-child(1) .social-feature-desc {
-    max-width: 35.2083cqi; /* 507/1440 */
-  }
-  .social-feature-item:nth-child(2) .social-feature-desc {
-    max-width: 36.3889cqi; /* 524/1440 */
-  }
-  .social-feature-item:nth-child(3) .social-feature-desc {
-    max-width: 34.7222cqi; /* 500/1440 */
-  }
-
   .social-features-image-wrapper {
-    width: 25.0694cqi; /* 361/1440 */
-    height: 48.75cqi; /* 702/1440 */
-    margin-left: 2.3611cqi; /* 34/1440 places image exactly at 813px from left screen edge */
-    border-radius: 16px;
+    width: 37.2917cqi;
+    /* 537/1440 (Figma image exactly matches this size) */
+    height: 37.7778cqi;
+    /* 544/1440 */
+    margin-top: 1.0417cqi;
+    /* 15/1440 drop relative to title */
+    margin-left: 3.2639cqi;
+    /* 47/1440 correctly placing it exactly at x=766 against the 719px list */
+    border-radius: 132px;
+    /* Huge border radius from Figma natively */
     overflow: hidden;
     z-index: 1;
     position: relative;
@@ -415,7 +459,8 @@ body.social-page-body {
   .social-features-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Shows full image without cropping */
+    object-fit: contain;
+    /* Shows full image without cropping */
   }
 
   /* ==============================================
@@ -424,8 +469,10 @@ body.social-page-body {
   .social-services-section {
     width: 100%;
     background-color: #E9EAEB;
-    padding-top: 5.3472cqi; /* 77/1440 from top of section to title */
-    padding-bottom: 7.9167cqi; /* ~114/1440 */
+    padding-top: 5.3472cqi;
+    /* 77/1440 from top of section to title */
+    padding-bottom: 7.9167cqi;
+    /* ~114/1440 */
   }
 
   .social-services-container {
@@ -436,11 +483,14 @@ body.social-page-body {
   }
 
   .social-services-heading {
-    margin: 0 0 1.9444cqi 6.4583cqi; /* margin-left: 93/1440 */
+    margin: 0 0 1.9444cqi 6.4583cqi;
+    /* margin-left: 93/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.75cqi; /* 54/1440 */
-    line-height: 4.0972cqi; /* 59/1440 */
+    font-size: 3.75cqi;
+    /* 54/1440 */
+    line-height: 4.0972cqi;
+    /* 59/1440 */
     letter-spacing: 0.01em;
     color: #263238;
   }
@@ -450,13 +500,17 @@ body.social-page-body {
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
-    gap: 7.0833cqi; /* Roughly 102/1440 between image and text */
+    gap: 4.1667cqi;
+    /* Exactly 60/1440 between image and text per Figma */
   }
 
   .social-services-image-col {
-    margin-left: 4.4444cqi; /* 64/1440 */
-    width: 44.7222cqi; /* 644/1440 */
-    height: 38.4028cqi; /* 553/1440 */
+    margin-left: 5.3472cqi;
+    /* 77/1440 exact Figma location (y: 141) */
+    width: 44.7222cqi;
+    /* 644/1440 */
+    height: 37.0139cqi;
+    /* 533/1440 */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -468,7 +522,8 @@ body.social-page-body {
   }
 
   .social-services-list-col {
-    padding-top: 2.7778cqi; /* ~40/1440 */
+    padding-top: 5.6944cqi;
+    /* 82/1440 aligning correctly against the image (y: 223 - 141) */
     display: flex;
     flex-direction: column;
   }
@@ -476,19 +531,23 @@ body.social-page-body {
   .social-services-list {
     display: flex;
     flex-direction: column;
-    gap: 1.4583cqi; /* 21/1440 */
+    gap: 0.8333cqi;
+    /* 12/1440 strictly matching Figma list gap */
   }
 
   .social-services-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3.0556cqi; /* 44/1440 */
+    gap: 3.0556cqi;
+    /* 44/1440 */
   }
 
   .social-services-icon {
-    width: 1.25cqi; /* 18/1440 */
-    height: 1.25cqi; /* 18/1440 */
+    width: 1.25cqi;
+    /* 18/1440 */
+    height: 1.25cqi;
+    /* 18/1440 */
     background-color: #FFA726;
     border-radius: 50%;
     flex-shrink: 0;
@@ -497,8 +556,10 @@ body.social-page-body {
   .social-services-text {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.8056cqi; /* 26/1440 */
-    line-height: 2.7778cqi; /* 40/1440 */
+    font-size: 1.8056cqi;
+    /* 26/1440 */
+    line-height: 2.7778cqi;
+    /* 40/1440 */
     color: #0B0B0B;
   }
 
@@ -508,8 +569,10 @@ body.social-page-body {
   .social-success-section {
     width: 100%;
     background-color: #F4F5F5;
-    padding-top: 4.1667cqi; /* ~60/1440 tightened to fit in viewport */
-    padding-bottom: 4.1667cqi; /* ~60/1440 tightened to fit in viewport */
+    padding-top: 4.1667cqi;
+    /* ~60/1440 tightened to fit in viewport */
+    padding-bottom: 4.1667cqi;
+    /* ~60/1440 tightened to fit in viewport */
   }
 
   .social-success-container {
@@ -517,16 +580,21 @@ body.social-page-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 6.4583cqi; /* ~93/1440 offset from left edge */
-    padding-right: 6.4583cqi; /* ~93/1440 offset from right edge */
+    padding-left: 6.4583cqi;
+    /* ~93/1440 offset from left edge */
+    padding-right: 6.4583cqi;
+    /* ~93/1440 offset from right edge */
   }
 
   .social-success-heading {
-    margin: 0 0 7.5cqi 0; /* 108/1440 actual gap from title bottom to list top */
+    margin: 0 0 5.4167cqi 0;
+    /* 78/1440 explicit PR Figma gap */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.125cqi; /* 45/1440 */
-    line-height: 3.4722cqi; /* 50/1440 */
+    font-size: 3.3333cqi;
+    /* 48/1440 explicitly mapped for PR page */
+    line-height: 3.4722cqi;
+    /* 50/1440 */
     letter-spacing: 0.01em;
     color: #263238;
   }
@@ -539,7 +607,8 @@ body.social-page-body {
   }
 
   .social-success-list-col {
-    width: 36.3889cqi; /* 524/1440 */
+    width: 36.3889cqi;
+    /* 524/1440 */
     display: flex;
     flex-direction: column;
   }
@@ -547,7 +616,8 @@ body.social-page-body {
   .social-success-list {
     display: flex;
     flex-direction: column;
-    gap: 1.6667cqi; /* 24/1440 */
+    gap: 1.6667cqi;
+    /* 24/1440 */
   }
 
   .social-success-item {
@@ -556,11 +626,14 @@ body.social-page-body {
   }
 
   .social-success-item-title {
-    margin: 0 0 0.2778cqi 0; /* 4/1440 visual gap */
+    margin: 0 0 0.2778cqi 0;
+    /* 4/1440 visual gap */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.9444cqi; /* 28/1440 */
-    line-height: 1.2; /* Removed the 50px line-height which caused massive gaps */
+    font-size: 1.9444cqi;
+    /* 28/1440 */
+    line-height: 1.2;
+    /* Removed the 50px line-height which caused massive gaps */
     letter-spacing: 0.01em;
     color: #000000;
   }
@@ -573,18 +646,29 @@ body.social-page-body {
     margin: 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5278cqi; /* 22/1440 */
-    line-height: 1.8056cqi; /* 26/1440 */
+    font-size: 1.5278cqi;
+    /* 22/1440 */
+    line-height: 1.8056cqi;
+    /* 26/1440 */
     letter-spacing: 0.01em;
     color: #292626;
-    max-width: 34.9306cqi; /* 503/1440 */
+  }
+
+  /* Specific overriding bound based on Figma strict fixed scaling for this single item */
+  .social-success-item:nth-child(2) .social-success-item-desc {
+    max-width: 34.9306cqi;
+    /* 503/1440 */
   }
 
   .social-success-image-col {
-    margin-left: 4.7222cqi; /* ~68/1440 distance from list */
-    margin-top: -1.9444cqi; /* -28/1440 to align with top of list */
-    width: 37.9861cqi; /* 547/1440 */
-    height: 37.9167cqi; /* 546/1440 */
+    margin-left: 4.7222cqi;
+    /* ~68/1440 distance from list */
+    margin-top: -1.9444cqi;
+    /* -28/1440 to align with top of list */
+    width: 37.9861cqi;
+    /* 547/1440 */
+    height: 37.9167cqi;
+    /* 546/1440 */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -601,9 +685,63 @@ body.social-page-body {
   .faq-section .faq-item {
     border-bottom: 1px solid rgba(162, 162, 162, 0.32);
   }
-  
+
   .faq-section .faq-item:last-child {
     border-bottom: none;
+  }
+
+  /* ==============================================
+     7. PRE-FOOTER OVERRIDES (DESKTOP)
+     ============================================== */
+  body.social-page-body .pre-footer {
+    height: 17.3611cqi !important;
+    /* 250/1440 */
+    overflow: hidden !important;
+  }
+
+  body.social-page-body .pre-footer-title {
+    width: 52.0138cqi !important;
+    /* 749/1440 */
+    top: 4.9778cqi !important;
+    /* 71.68/1440 gap */
+    left: 5.1389cqi !important;
+    /* 74/1440 strict absolute lock */
+    height: auto !important;
+    position: absolute !important;
+  }
+
+  body.social-page-body .btn-pre-footer {
+    width: 25.2778cqi !important;
+    /* 364/1440 */
+    height: 3.3938cqi !important;
+    /* 48.87/1440 */
+    top: 9.8944cqi !important;
+    /* 142.48/1440 (Figma exact) */
+    right: auto !important;
+    left: 69.2361cqi !important;
+    /* 997/1440 */
+    position: absolute !important;
+    background: #F0EEEA !important;
+  }
+
+  body.social-page-body .btn-pre-footer .icon-circle {
+    top: 0.3326cqi !important;
+    /* 4.79/1440 */
+    left: 0.7944cqi !important;
+    /* 11.44/1440 */
+    width: 3.0333cqi !important;
+    /* 43.68/1440 */
+    height: 2.6618cqi !important;
+    /* 38.33/1440 */
+    position: absolute !important;
+  }
+
+  body.social-page-body .btn-pre-footer .btn-text {
+    top: 0.6250cqi !important;
+    /* 9/1440 */
+    left: 5.0555cqi !important;
+    /* 72.8/1440 */
+    position: absolute !important;
   }
 }
 
@@ -614,7 +752,8 @@ body.social-page-body {
 
   .social-intro-section {
     padding-top: 60px;
-    padding-bottom: 34px; /* 34px + 14px (heading margin) = 48px total gap to next section */
+    padding-bottom: 34px;
+    /* 34px + 14px (heading margin) = 48px total gap to next section */
     background-color: #ffffff;
   }
 
@@ -627,7 +766,8 @@ body.social-page-body {
   .social-intro-row {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Distance between Title group and Desc */
+    gap: 20px;
+    /* Distance between Title group and Desc */
   }
 
   .social-intro-left {
@@ -658,7 +798,8 @@ body.social-page-body {
   }
 
   .social-intro-desc {
-    font-family: "Inter", sans-serif; /* Figma uses Inter for Mobile */
+    font-family: "Inter", sans-serif;
+    /* Figma uses Inter for Mobile */
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
@@ -666,14 +807,16 @@ body.social-page-body {
     color: #0B0B0B;
     margin: 0;
     width: 100%;
-    max-width: 352px; /* Figma mobile exact width to force precise text wrapping */
+    max-width: 352px;
+    /* Figma mobile exact width to force precise text wrapping */
   }
 
   /* ==============================================
      SOCIAL FEATURES SECTION (MOBILE)
      ============================================== */
   .social-features-section {
-    padding-top: 0; /* Gap handled by previous section */
+    padding-top: 0;
+    /* Gap handled by previous section */
     padding-bottom: 60px;
     background-color: #ffffff;
   }
@@ -691,7 +834,8 @@ body.social-page-body {
   }
 
   .social-features-main-heading {
-    margin: 14px 0 37px 4px; /* Matches Figma: y=14, x=4, 37px gap to list */
+    margin: 14px 0 37px 4px;
+    /* Matches Figma: y=14, x=4, 37px gap to list */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 22px;
@@ -704,8 +848,10 @@ body.social-page-body {
     display: flex;
     flex-direction: column;
     gap: 23px;
-    margin-left: 20px; /* Matches Figma: x=20 */
-    margin-bottom: 20px; /* Natural gap before image */
+    margin-left: 20px;
+    /* Matches Figma: x=20 */
+    margin-bottom: 20px;
+    /* Natural gap before image */
   }
 
   .social-feature-item {
@@ -722,7 +868,8 @@ body.social-page-body {
     line-height: 15px;
     color: #0B0B0B;
     width: 100%;
-    max-width: 321px; /* Figma exact width to force text wrap */
+    max-width: 321px;
+    /* Figma exact width to force text wrap */
   }
 
   .social-feature-desc {
@@ -733,13 +880,17 @@ body.social-page-body {
     line-height: 15px;
     color: #696969;
     width: 100%;
-    max-width: 321px; /* Figma exact width to force text wrap */
+    max-width: 321px;
+    /* Figma exact width to force text wrap */
   }
 
   .social-features-image-wrapper {
-    width: 163px; /* Match mobile Figma image width */
-    height: 316px; /* Match mobile Figma image height */
-    margin-left: 100px; /* Matches Figma: x=100 */
+    width: 163px;
+    /* Match mobile Figma image width */
+    height: 316px;
+    /* Match mobile Figma image height */
+    margin-left: 100px;
+    /* Matches Figma: x=100 */
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -766,11 +917,13 @@ body.social-page-body {
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden; /* Prevent horizontal scroll from negative image margin */
+    overflow: hidden;
+    /* Prevent horizontal scroll from negative image margin */
   }
 
   .social-services-heading {
-    margin: 43px 0 38px 26px; /* Matches Figma: y=43, x=26, 38px gap to list */
+    margin: 43px 0 38px 26px;
+    /* Matches Figma: y=43, x=26, 38px gap to list */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 24px;
@@ -782,13 +935,15 @@ body.social-page-body {
   .social-services-grid {
     display: flex;
     flex-direction: column;
-    gap: 22px; /* Matches exact Figma gap of 22px between list and image */
+    gap: 22px;
+    /* Matches exact Figma gap of 22px between list and image */
   }
 
   .social-services-list-col {
     display: flex;
     flex-direction: column;
-    margin-left: 55px; /* Matches Figma: x=55 for the list */
+    margin-left: 55px;
+    /* Matches Figma: x=55 for the list */
   }
 
   .social-services-list {
@@ -821,11 +976,16 @@ body.social-page-body {
   }
 
   .social-services-image-col {
-    order: 2; /* Move image below list on mobile */
-    width: calc(100% + 9px); /* Stretches slightly past right edge to maintain Figma intent */
-    height: 333px; /* Mobile height */
-    margin-left: -5px; /* Figma image x=-5 */
-    margin-top: 0; /* Gap handled by parent grid */
+    order: 2;
+    /* Move image below list on mobile */
+    width: calc(100% + 9px);
+    /* Stretches slightly past right edge to maintain Figma intent */
+    height: 333px;
+    /* Mobile height */
+    margin-left: -5px;
+    /* Figma image x=-5 */
+    margin-top: 0;
+    /* Gap handled by parent grid */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -848,14 +1008,17 @@ body.social-page-body {
   }
 
   .social-success-container {
-    padding-left: 29px; /* Matches Figma gap to screen edge */
-    padding-right: 29px; /* Matches Figma gap to screen edge */
+    padding-left: 29px;
+    /* Matches Figma gap to screen edge */
+    padding-right: 29px;
+    /* Matches Figma gap to screen edge */
     display: flex;
     flex-direction: column;
   }
 
   .social-success-heading {
-    margin: 0 0 35px 0; /* Space from title to list */
+    margin: 0 0 35px 0;
+    /* Space from title to list */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 22px;
@@ -868,13 +1031,15 @@ body.social-page-body {
   .social-success-grid {
     display: flex;
     flex-direction: column;
-    gap: 9px; /* Space from list to image matches Figma perfectly */
+    gap: 9px;
+    /* Space from list to image matches Figma perfectly */
   }
 
   .social-success-list-col {
     display: flex;
     flex-direction: column;
-    padding-left: 22px; /* Indent in Figma */
+    padding-left: 22px;
+    /* Indent in Figma */
   }
 
   .social-success-list {
@@ -897,7 +1062,8 @@ body.social-page-body {
     line-height: 15px;
     color: #0B0B0B;
     width: 100%;
-    max-width: 321px; /* Force text wrapping to match Figma exact width */
+    max-width: 321px;
+    /* Force text wrapping to match Figma exact width */
   }
 
   .social-success-number {
@@ -912,12 +1078,14 @@ body.social-page-body {
     line-height: 15px;
     color: #696969;
     width: 100%;
-    max-width: 321px; /* Force text wrapping to match Figma exact width */
+    max-width: 321px;
+    /* Force text wrapping to match Figma exact width */
   }
 
   .social-success-image-col {
     width: 100%;
-    height: 334px; /* Mobile height */
+    height: 334px;
+    /* Mobile height */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -932,11 +1100,14 @@ body.social-page-body {
      TESTIMONIALS SECTION OVERRIDES (MOBILE)
      ============================================== */
   .social-page-body .testimonials-title {
-    margin-bottom: 5px !important; /* Gap to card is 5px */
+    margin-bottom: 5px !important;
+    /* Gap to card is 5px */
     font-size: 27px !important;
     line-height: 51px !important;
-    height: auto !important; /* Kill the 144px fixed height from global CSS */
-    white-space: nowrap !important; /* Strictly force to one line */
+    height: auto !important;
+    /* Kill the 144px fixed height from global CSS */
+    white-space: nowrap !important;
+    /* Strictly force to one line */
     background: linear-gradient(177.09deg, #B9B9B9 -18.17%, #FFFFFF 110.39%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -944,33 +1115,41 @@ body.social-page-body {
   }
 
   .social-page-body .testimonials-section .container {
-    margin-bottom: 0 !important; /* Kill the 25px gap from global CSS */
-    height: auto !important; /* Kill the 144px fixed height on the container */
+    margin-bottom: 0 !important;
+    /* Kill the 25px gap from global CSS */
+    height: auto !important;
+    /* Kill the 144px fixed height on the container */
   }
 
   .social-page-body .testimonials-title .mobile-break {
-    display: none !important; /* Hide old breaks just in case */
+    display: none !important;
+    /* Hide old breaks just in case */
   }
 
   .social-page-body .testimonials-carousel-wrapper {
-    margin-top: 0 !important; /* Ensure gap is strictly controlled by the title margin */
+    margin-top: 0 !important;
+    /* Ensure gap is strictly controlled by the title margin */
   }
 
   /* ==============================================
      8. FAQ SECTION OVERRIDES (MOBILE)
      ============================================== */
   .faq-section-mobile {
-    padding-top: 47px !important; /* matches Figma gap from top to title */
+    padding-top: 47px !important;
+    /* matches Figma gap from top to title */
     padding-bottom: 40px !important;
     background-color: #E9EAEB !important;
   }
 
   .faq-mobile-container {
-    padding-left: 23px !important; /* Exact gap to left edge */
-    padding-right: 23px !important; /* Exact gap to right edge */
+    padding-left: 23px !important;
+    /* Exact gap to left edge */
+    padding-right: 23px !important;
+    /* Exact gap to right edge */
     display: flex !important;
     flex-direction: column !important;
-    gap: 36px !important; /* strict Figma gap from Title to List */
+    gap: 36px !important;
+    /* strict Figma gap from Title to List */
   }
 
   .faq-mobile-header {
@@ -978,7 +1157,8 @@ body.social-page-body {
     flex-direction: row !important;
     align-items: center !important;
     gap: 9px !important;
-    margin-bottom: 0 !important; /* Gap handled by parent container */
+    margin-bottom: 0 !important;
+    /* Gap handled by parent container */
   }
 
   .faq-mobile-bar {
@@ -1044,8 +1224,10 @@ body.social-page-body {
   .social-page-body .pre-footer-title {
     position: absolute !important;
     top: 47.61px !important;
-    left: 30.58px !important; /* Exact Figma gap to left */
-    width: calc(100% - 47.79px) !important; /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
+    left: 30.58px !important;
+    /* Exact Figma gap to left */
+    width: calc(100% - 47.79px) !important;
+    /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
     height: auto !important;
     font-family: 'Mona Sans', sans-serif !important;
     font-size: 36px !important;
@@ -1080,7 +1262,7 @@ body.social-page-body {
 
   .social-page-body .btn-pre-footer .btn-text {
     position: absolute !important;
-    top: 4px !important; 
+    top: 4px !important;
     left: 46.47px !important;
     width: 186.95px !important;
     height: 30px !important;
@@ -1100,40 +1282,54 @@ body.social-page-body {
 @media (min-width: 992px) {
   .social-page-body .faq-section {
     background-color: #E9EAEB !important;
-    padding: 5.6250cqi 0 !important; /* 81/1440 */
+    padding: 5.6250cqi 0 !important;
+    /* 81/1440 */
     display: flex !important;
     justify-content: center !important;
   }
 
   /* Pre-footer Overrides */
   .social-page-body .pre-footer {
-    height: 17.6389cqi !important; /* 254/1440 */
+    height: 17.6389cqi !important;
+    /* 254/1440 */
   }
 
   .social-page-body .pre-footer-title {
-    width: 52.0138cqi !important; /* 749/1440 */
-    top: 6.2910cqi !important; /* 90.59/1440 */
+    width: 52.0138cqi !important;
+    /* 749/1440 */
+    top: 6.2910cqi !important;
+    /* 90.59/1440 */
     height: auto !important;
   }
 
   .social-page-body .btn-pre-footer {
-    width: 25.2778cqi !important; /* 364/1440 */
-    height: 3.5770cqi !important; /* 51.51/1440 */
-    top: 11.2868cqi !important; /* 162.53/1440 */
+    width: 25.2778cqi !important;
+    /* 364/1440 */
+    height: 3.5770cqi !important;
+    /* 51.51/1440 */
+    top: 11.2868cqi !important;
+    /* 162.53/1440 */
     right: auto !important;
-    left: 69.2361cqi !important; /* 997/1440 */
+    left: 69.2361cqi !important;
+    /* 997/1440 */
   }
 
   .social-page-body .btn-pre-footer .icon-circle {
-    top: 0.3506cqi !important; /* 5.05/1440 */
-    left: 0.7944cqi !important; /* 11.44/1440 */
-    width: 3.0333cqi !important; /* 43.68/1440 */
-    height: 2.8055cqi !important; /* 40.4/1440 */
+    top: 0.3506cqi !important;
+    /* 5.05/1440 */
+    left: 0.7944cqi !important;
+    /* 11.44/1440 */
+    width: 3.0333cqi !important;
+    /* 43.68/1440 */
+    height: 2.8055cqi !important;
+    /* 40.4/1440 */
   }
 
   .social-page-body .btn-pre-footer .btn-text {
-    top: 0.7638cqi !important; /* 11/1440 */
-    left: 5.0555cqi !important; /* 72.8/1440 */
+    top: 0.7638cqi !important;
+    /* 11/1440 */
+    left: 5.0555cqi !important;
+    /* 72.8/1440 */
   }
 }
 
