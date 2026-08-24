@@ -5015,6 +5015,9 @@ h6 {
     height: 54.25px !important;
     left: 27px !important;
     top: 42px !important;
+    position: absolute !important;
+    object-fit: contain !important;
+    object-position: left center !important;
   }
 
   .testi-stars {
