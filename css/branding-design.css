@@ -581,17 +581,21 @@ body.branding-page-body {
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
 @media (max-width: 991px) {
+
   /* UNIVERSAL MOBILE INTRO OVERRIDES */
   .branding-intro-left {
     gap: 11px !important;
   }
+
   .branding-intro-container {
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
+
   .branding-intro-desc {
     max-width: 352px !important;
-    line-height: 22px !important; /* Force explicit figma text bound */
+    line-height: 22px !important;
+    /* Force explicit figma text bound */
   }
 
   /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
@@ -599,6 +603,7 @@ body.branding-page-body {
     margin-left: 0 !important;
     gap: 11px !important;
   }
+
   .branding-hero-breadcrumb a,
   .branding-hero-breadcrumb .current,
   .branding-hero-breadcrumb .ws-breadcrumb-current,
@@ -609,20 +614,25 @@ body.branding-page-body {
     color: #ffffff !important;
     opacity: 1 !important;
   }
+
   .branding-hero-breadcrumb img.breadcrumb-icon,
   .branding-hero-breadcrumb img.ws-breadcrumb-icon {
     width: 23px !important;
     height: 15px !important;
     object-fit: fill !important;
   }
+
   .branding-hero-text-container {
-    margin-bottom: 24px !important; /* True Figma Mobile Gap to Breadcrumb */
+    margin-bottom: 24px !important;
+    /* True Figma Mobile Gap to Breadcrumb */
     gap: 10px !important;
   }
+
   .branding-hero-title {
     font-size: 34.2px !important;
     line-height: 43px !important;
   }
+
   .branding-hero-subtitle {
     font-size: 16px !important;
     line-height: 30px !important;
@@ -736,9 +746,8 @@ body.branding-page-body {
      ============================================== */
   .branding-intro-section {
     background-color: #FFFFFF !important;
-    padding-top: 10.178cqi !important;
-    /* ~40px */
-    padding-bottom: 10.178cqi !important;
+    padding-top: 40px !important;
+    padding-bottom: 0 !important;
   }
 
   .branding-intro-container {
