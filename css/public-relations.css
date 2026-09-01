@@ -393,18 +393,16 @@ body.social-page-body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 15.0694cqi;
-    /* 217/1440 (Matches Figma gap) */
+    gap: 5.2083cqi;
+    /* 75px */
   }
 
   .social-intro-left {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.7639cqi;
     /* 11/1440 */
-    width: 21.6667cqi;
-    /* 312/1440 (Fixed width for left column to force wrap) */
   }
 
   .social-intro-bar {
@@ -433,8 +431,8 @@ body.social-page-body {
   }
 
   .social-intro-desc {
-    width: 50.3472cqi;
-    /* 725/1440 */
+    width: 68.2639cqi;
+    /* 983/1440 */
     font-family: "Mona Sans", sans-serif;
     font-weight: 500;
     font-size: 2.2222cqi;
@@ -444,6 +442,7 @@ body.social-page-body {
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
+    margin-top: -0.3472cqi;
   }
 
   /* ==============================================
@@ -795,7 +794,8 @@ body.social-page-body {
   body.social-page-body .pre-footer-title {
     width: 52.0138cqi !important;
     /* 749/1440 */
-    top: 4.9778cqi !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     /* 71.68/1440 gap */
     left: 5.1389cqi !important;
     /* 74/1440 strict absolute lock */
@@ -1086,7 +1086,7 @@ body.social-page-body {
      SOCIAL SUCCESS SECTION (MOBILE)
      ============================================== */
   .social-success-section {
-    padding-top: 40px;
+    padding-top: 31px;
     padding-bottom: 40px;
     background-color: #ffffff;
   }
@@ -1284,9 +1284,7 @@ body.social-page-body {
     gap: 12px;
   }
 
-  .faq-mobile-item:last-child {
-    border-bottom: none;
-  }
+
 
   .faq-mobile-question-text {
     font-family: 'Inter', sans-serif;
@@ -1308,70 +1306,6 @@ body.social-page-body {
   }
 
   /* ==============================================
-     7. PRE-FOOTER OVERRIDES (MOBILE)
-     ============================================== */
-  .social-page-body .pre-footer {
-    height: 328px !important;
-    background-color: #263238 !important;
-    position: relative !important;
-  }
-
-  .social-page-body .pre-footer-title {
-    position: absolute !important;
-    top: 34px !important;
-    left: 31px !important;
-    width: 346px !important;
-    height: 187px !important;
-    display: flex !important;
-    align-items: center !important;
-    font-family: 'Mona Sans', sans-serif !important;
-    font-size: 36px !important;
-    line-height: 46px !important;
-    font-weight: 700 !important;
-    color: #FFFFFF !important;
-    text-align: left !important;
-    text-transform: uppercase !important;
-    margin: 0 !important;
-  }
-
-  .social-page-body .btn-pre-footer {
-    position: absolute !important;
-    top: 237px !important;
-    left: 31px !important;
-    width: 239px !important;
-    height: 39px !important;
-    background-color: #FFFFFF !important;
-    border-radius: 29px !important;
-    display: block !important;
-    text-decoration: none !important;
-  }
-
-  .social-page-body .btn-pre-footer .icon-circle {
-    position: absolute !important;
-    top: 4.64px !important;
-    left: 5px !important;
-    width: 32px !important;
-    height: 29.71px !important;
-    background-color: transparent !important;
-  }
-
-  .social-page-body .btn-pre-footer .btn-text {
-    position: absolute !important;
-    top: 4px !important;
-    left: 46.47px !important;
-    width: 186.95px !important;
-    height: 30px !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 16px !important;
-    line-height: 30px !important;
-    font-weight: 600 !important;
-    color: #1B3834 !important;
-    letter-spacing: 0.01em !important;
-    text-decoration: none !important;
-  }
-}
-
-/* ==============================================
    GLOBAL OVERRIDES FOR SOCIAL MEDIA PAGE
    ============================================== */
 @media (min-width: 992px) {

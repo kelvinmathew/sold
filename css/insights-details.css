@@ -166,10 +166,10 @@
 
   .insights-details-paragraph {
     font-family: 'Mona Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.8056vw;
-    /* 26/1440 */
-    line-height: 2.6389vw;
+    font-weight: 300;
+    font-size: 1.29vw;
+    /* 18/1440 */
+    line-height: 2.0089vw;
     /* 38/1440 */
     letter-spacing: 0.01em;
     color: #000000;
@@ -200,10 +200,10 @@
     padding-left: 2.0833vw;
     /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.9444vw;
-    /* 28/1440 */
-    line-height: 2.9167vw;
+    font-weight: 300;
+    font-size: 1.29vw;
+    /* 18/1440 */
+    line-height: 2.5167vw;
     /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
@@ -515,7 +515,8 @@
   }
 
   .insights-details-page-body .pre-footer-title {
-    top: 7.0833vw !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     /* 102/1440 */
     left: 5.1388vw !important;
     /* 74/1440 */
@@ -1016,12 +1017,7 @@
     text-decoration: none !important;
   }
 
-  /* Insights Details Mobile Pre-Footer Overrides */
-  .insights-details-page-body .cs-pre-footer {
-    height: auto !important;
-    padding-bottom: 60px !important;
-    width: 100% !important;
-    /* Reset 100vw */
+  /* Reset 100vw */
     margin-left: 0 !important;
     /* Remove negative calc margin pulling section left */
     margin-right: 0 !important;
@@ -1042,7 +1038,7 @@
   .insights-details-page-body .cs-pre-footer .pre-footer-title {
     position: relative !important;
     top: auto !important;
-    bottom: auto !important;
+    transform: none !important;bottom: auto !important;
     left: auto !important;
     right: auto !important;
     width: 88.0941vw !important;
@@ -1068,7 +1064,7 @@
   .insights-details-page-body .cs-pre-footer .btn-pre-footer {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     right: auto !important;
     bottom: auto !important;
     width: 60.8142vw !important;

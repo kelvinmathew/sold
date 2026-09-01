@@ -1216,8 +1216,10 @@
 
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
+@media (min-width: 992px) {
 .cs-pre-footer .pre-footer-title {
-  top: 7.0833vw;
+  top: 50%;
+  transform: translateY(-50%);
   /* 102/1440 */
   left: 5.1389vw;
   /* 74/1440 */
@@ -1236,6 +1238,7 @@
   color: #1B3834;
 }
 
+}
 /* --- Plus Divider Override for Client Success Page --- */
 .insights-page-body .plus-btn-divider {
   position: relative !important;
@@ -2129,12 +2132,7 @@
     width: 100%;
   }
 
-  /* Insights Mobile Pre-Footer Overrides (Replicated from Client Success) */
-  .insights-page-body .cs-pre-footer {
-    height: auto !important;
-    padding-bottom: 60px !important;
-    width: 100% !important;
-    /* Reset 100vw */
+  /* Reset 100vw */
     margin-left: 0 !important;
     /* Remove negative calc margin pulling section left */
     margin-right: 0 !important;
@@ -2155,7 +2153,7 @@
   .insights-page-body .cs-pre-footer .pre-footer-title {
     position: relative !important;
     top: auto !important;
-    bottom: auto !important;
+    transform: none !important;bottom: auto !important;
     left: auto !important;
     right: auto !important;
     width: 346.21px !important;
@@ -2183,7 +2181,7 @@
   .insights-page-body .cs-pre-footer .btn-pre-footer {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     right: auto !important;
     bottom: auto !important;
     width: 239px !important;

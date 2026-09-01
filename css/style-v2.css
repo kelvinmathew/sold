@@ -1129,8 +1129,8 @@ h6 {
 }
 
 .client-logo {
-  object-fit: cover !important;
-  object-position: left top;
+  object-fit: contain !important;
+  object-position: left center;
   position: absolute;
   z-index: 0;
   /* Behind stars and quote box */
@@ -6187,7 +6187,7 @@ h6 {
     position: absolute !important;
     top: 305px !important;
     left: 24px !important;
-    width: 225px !important;
+    width: 270px !important;
     height: 43px !important;
     border-radius: 29px !important;
     opacity: 1 !important;
@@ -6201,8 +6201,9 @@ h6 {
     position: absolute !important;
     top: 6px !important;
     left: 51.04px !important;
-    width: 163.54px !important;
+    width: 210px !important;
     height: 30px !important;
+    white-space: nowrap !important;
     font-family: "Inter", var(--font-body) !important;
     font-weight: 600 !important;
     font-size: 16px !important;
@@ -6220,7 +6221,7 @@ h6 {
     width: 35.42px !important;
     height: 34px !important;
     border-radius: 24px !important;
-    background: transparent !important;
+    background: #FFA726 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -7040,6 +7041,51 @@ h6 {
     margin-top: 40px;
   }
 
+  /* --- Success Formula Title Mobile Overrides --- */
+  .sf-title-wrapper {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 11px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .sf-title-part {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 20px !important;
+    line-height: 12px !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: center !important;
+  }
+
+  .sf-title-logo {
+    width: 57px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+
+  .sf-subtitle-mobile {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    letter-spacing: 0.01em !important;
+    color: #5D5C5C !important;
+    text-align: center !important;
+    margin: 15px auto 30px auto !important;
+    width: 100% !important;
+    max-width: 298px !important;
+  }
+
   .steps-container {
     position: relative;
     width: 100%;
@@ -7242,6 +7288,71 @@ h6 {
   position: relative;
   width: 100%;
   margin: 0 auto;
+}
+
+/* ==========================================================================
+   Success Formula Title & Subtitle (Services + Why SOLD)
+   Mirrors client-success.css .sf-* styles, converted to cqi units
+   ========================================================================== */
+.sf-title-wrapper {
+  position: absolute;
+  top: 1.0417cqi;
+  /* 15px */
+  left: 25.0694cqi;
+  /* 361px */
+  width: 50.0694cqi;
+  /* 721px */
+  height: 4.0972cqi;
+  /* 59px */
+  display: flex;
+  justify-content: center;
+  gap: 0.9cqi;
+  align-items: baseline;
+}
+
+.sf-title-part {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 800;
+  font-size: 3.6111cqi;
+  /* 52/1440 */
+  line-height: 4.0972cqi;
+  /* 59/1440 */
+  letter-spacing: 0.01em;
+  color: #263238;
+  margin: 0;
+}
+
+.sf-title-logo {
+  width: 9.375cqi;
+  /* 135px */
+  height: 3.3333cqi;
+  /* 48px */
+  object-fit: cover !important;
+  transform: translateY(0.4cqi);
+}
+
+.sf-subtitle {
+  position: absolute;
+  top: 6.3889cqi;
+  /* 92px */
+  left: 30cqi;
+  /* 432px */
+  width: 40.0694cqi;
+  /* 577px */
+  text-align: center;
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.1806cqi;
+  /* 17/1440 */
+  line-height: 1.7361cqi;
+  /* 25/1440 */
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.sf-subtitle .orange-text {
+  color: #FFA726;
 }
 
 .steps-container {
@@ -8307,7 +8418,7 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-item {
     padding-top: 10px !important;
     padding-bottom: 21px !important;
-    border-bottom: 1px solid #EBEBEB !important;
+    border-bottom: 1px solid rgba(162, 162, 162, 0.32) !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;

@@ -204,7 +204,7 @@ body.branding-page-body {
   .branding-intro-left {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.7639cqi;
     /* 11/1440 */
   }
@@ -225,8 +225,6 @@ body.branding-page-body {
     /* 30/1440 */
     color: #ffa726;
     margin: 0;
-    display: flex;
-    align-items: center;
     white-space: nowrap;
   }
 
@@ -247,6 +245,8 @@ body.branding-page-body {
     color: #000000;
     text-align: left;
     margin: 0;
+    margin-top: -0.3472cqi;
+    /* ~5px offset to counter leading padding */
   }
 
   /* ==============================================
@@ -944,7 +944,7 @@ body.branding-page-body {
 
   /* Figma: x=26, Mona Sans 22/28 Bold, width 349 */
   .branding-services-heading {
-    margin: 0 0 22px 26px !important;
+    margin: 0 0 35px 26px !important;
     width: 349px !important;
     max-width: calc(100% - 26px) !important;
     font-family: 'Mona Sans', sans-serif !important;
@@ -1008,17 +1008,14 @@ body.branding-page-body {
     /* 37px on left and right */
     width: calc(100% - 74px) !important;
     /* Fill space leaving exactly 37px on each side */
-    height: 325px !important;
-    /* Force exact height */
+    height: auto !important;
     overflow: hidden !important;
   }
 
   .branding-services-img.d-lg-none {
     display: block !important;
     width: 100% !important;
-    height: 100% !important;
-    /* Fill exactly the 318x325 wrapper */
-    object-fit: cover !important;
+    height: auto !important;
     object-position: center !important;
   }
 
@@ -1026,8 +1023,8 @@ body.branding-page-body {
      5. HOW WE BUILD SECTION (MOBILE)
      ============================================== */
   .branding-build-section {
-    padding: 60px 0 !important;
-    /* Top/bottom padding */
+    padding-top: 31px !important;
+    padding-bottom: 60px !important;
     background-color: #FFFFFF !important;
   }
 
@@ -1176,69 +1173,6 @@ body.branding-page-body {
   }
 
   /* ==============================================
-     7. PRE-FOOTER OVERRIDES (MOBILE)
-     ============================================== */
-  .branding-page-body .pre-footer {
-    height: 328px !important;
-    background-color: #263238 !important;
-    position: relative !important;
-  }
-
-  .branding-page-body .pre-footer-title {
-    position: absolute !important;
-    top: 47.61px !important;
-    left: 30.58px !important;
-    /* Exact Figma gap to left */
-    width: calc(100% - 47.79px) !important;
-    /* dynamically forces exactly 17.21px right gap (30.58 + 17.21 = 47.79) */
-    height: auto !important;
-    font-family: 'Mona Sans', sans-serif !important;
-    font-size: 36px !important;
-    line-height: 46px !important;
-    font-weight: 700 !important;
-    color: #FFFFFF !important;
-    text-align: left !important;
-    text-transform: uppercase !important;
-    margin: 0 !important;
-  }
-
-  .branding-page-body .btn-pre-footer {
-    position: absolute !important;
-    top: 237px !important;
-    left: 31px !important;
-    width: 239px !important;
-    height: 39px !important;
-    background-color: #FFFFFF !important;
-    border-radius: 29px !important;
-    display: block !important;
-    text-decoration: none !important;
-  }
-
-  .branding-page-body .btn-pre-footer .icon-circle {
-    position: absolute !important;
-    top: 4.64px !important;
-    left: 5px !important;
-    width: 32px !important;
-    height: 29.71px !important;
-    background-color: transparent !important;
-  }
-
-  .branding-page-body .btn-pre-footer .btn-text {
-    position: absolute !important;
-    top: 4px !important;
-    left: 46.47px !important;
-    width: 186.95px !important;
-    height: 30px !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 16px !important;
-    line-height: 30px !important;
-    font-weight: 600 !important;
-    color: #1B3834 !important;
-    letter-spacing: 0.01em !important;
-    text-decoration: none !important;
-  }
-
-  /* ==============================================
      8. FAQ OVERRIDES (MOBILE)
      ============================================== */
   .branding-page-body .faq-mobile-container {
@@ -1325,7 +1259,8 @@ body.branding-page-body {
   .branding-page-body .pre-footer-title {
     width: 52.0138cqi !important;
     /* 749/1440 */
-    top: 6.2910cqi !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     /* 90.59/1440 */
     height: auto !important;
   }

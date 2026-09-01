@@ -1,0 +1,114 @@
+const fs = require('fs');
+const css = `
+
+/* ==============================================
+   HOME PAGE FAQ MOBILE SPECIFIC OVERRIDES
+   ============================================== */
+@media (max-width: 991px) {
+  .home-page-body .faq-section-mobile {
+    width: 100% !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .home-page-body .faq-mobile-container {
+    padding: 0 22.5px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+  }
+
+  .home-page-body .faq-mobile-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+  }
+
+  .home-page-body .faq-mobile-bar {
+    width: 2px !important;
+    height: 22px !important;
+    background: #FFA726 !important;
+  }
+
+  .home-page-body .faq-mobile-label {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
+    color: #FFA726 !important;
+    margin: 0 !important;
+  }
+
+  .home-page-body .faq-mobile-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 9px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .home-page-body .faq-mobile-item {
+    padding-top: 10px !important;
+    padding-bottom: 21px !important;
+    border-bottom: 1px solid #EBEBEB !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-page-body .faq-mobile-item:last-child {
+    border-bottom: none !important;
+  }
+
+  .home-page-body .faq-mobile-question {
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    text-align: left !important;
+  }
+
+  .home-page-body .faq-mobile-question:focus {
+    outline: none !important;
+  }
+
+  .home-page-body .faq-mobile-question-text {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    letter-spacing: 0.01em !important;
+    color: #000 !important;
+    display: block !important;
+  }
+
+  .home-page-body .faq-mobile-answer {
+    display: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+    margin-top: 0 !important;
+  }
+
+  .home-page-body .faq-mobile-item.active .faq-mobile-answer {
+    display: block !important;
+    margin-top: 12px !important;
+  }
+
+  .home-page-body .faq-mobile-answer p {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    letter-spacing: 0.01em !important;
+    color: #3A3939 !important;
+    margin: 0 !important;
+  }
+}
+`;
+
+fs.appendFileSync('c:/Users/HP/.gemini/antigravity-ide/scratch/sold/css/style.css', css);
+console.log('Done!');

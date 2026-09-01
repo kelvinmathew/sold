@@ -1,0 +1,219 @@
+[
+    {
+        "key": "group_client_success",
+        "title": "Client Success Page Content",
+        "fields": [
+            {
+                "key": "field_cs_hero",
+                "label": "Hero Section",
+                "name": "cs_hero",
+                "type": "group",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_h_t",
+                        "label": "Title",
+                        "name": "title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_h_ts",
+                        "label": "Mobile Subtitle",
+                        "name": "subtitle_mobile",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_h_d",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_h_bl",
+                        "label": "Button Link",
+                        "name": "btn_link",
+                        "type": "url"
+                    }
+                ]
+            },
+            {
+                "key": "field_cs_intro",
+                "label": "Intro Section",
+                "name": "cs_intro",
+                "type": "group",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_i_l",
+                        "label": "Label",
+                        "name": "label",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_i_t",
+                        "label": "Text",
+                        "name": "text",
+                        "type": "textarea"
+                    }
+                ]
+            },
+            {
+                "key": "field_cs_cards",
+                "label": "Success Cards",
+                "name": "cs_cards",
+                "type": "repeater",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_c_logo",
+                        "label": "Logo",
+                        "name": "logo",
+                        "type": "image",
+                        "return_format": "url"
+                    },
+                    {
+                        "key": "field_cs_c_t",
+                        "label": "Title",
+                        "name": "title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_c_d",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_c_bl",
+                        "label": "Button Link",
+                        "name": "btn_link",
+                        "type": "url"
+                    }
+                ]
+            },
+            {
+                "key": "field_cs_formula",
+                "label": "Success Formula",
+                "name": "cs_formula",
+                "type": "group",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_f_sd",
+                        "label": "Subtitle Desktop",
+                        "name": "subtitle_desk",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_f_sm",
+                        "label": "Subtitle Mobile",
+                        "name": "subtitle_mob",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_f_s1t",
+                        "label": "Step 1 Title",
+                        "name": "step_1_title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_f_s1d",
+                        "label": "Step 1 Desc",
+                        "name": "step_1_desc",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_f_s2t",
+                        "label": "Step 2 Title",
+                        "name": "step_2_title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_f_s2d",
+                        "label": "Step 2 Desc",
+                        "name": "step_2_desc",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_f_s3t",
+                        "label": "Step 3 Title",
+                        "name": "step_3_title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_f_s3d",
+                        "label": "Step 3 Desc",
+                        "name": "step_3_desc",
+                        "type": "textarea"
+                    }
+                ]
+            },
+            {
+                "key": "field_cs_faq",
+                "label": "FAQ Items",
+                "name": "cs_faq",
+                "type": "repeater",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_faq_q",
+                        "label": "Question",
+                        "name": "question",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_cs_faq_a",
+                        "label": "Answer",
+                        "name": "answer",
+                        "type": "textarea"
+                    }
+                ]
+            },
+            {
+                "key": "field_cs_prefoot",
+                "label": "Pre-Footer",
+                "name": "cs_prefoot",
+                "type": "group",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_cs_pref_td",
+                        "label": "Title Desktop",
+                        "name": "title_desk",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_pref_tm",
+                        "label": "Title Mobile",
+                        "name": "title_mob",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_cs_pref_b",
+                        "label": "Button Text",
+                        "name": "btn_text",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-client-success.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "modified": 1725200000
+    }
+]

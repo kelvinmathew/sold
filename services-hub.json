@@ -1,0 +1,78 @@
+[
+    {
+        "key": "group_services_hub",
+        "title": "Services Hub Content",
+        "fields": [
+            {
+                "key": "field_sh_hero",
+                "label": "Hero Section",
+                "name": "sh_hero",
+                "type": "group",
+                "sub_fields": [
+                    {
+                        "key": "field_sh_htl",
+                        "label": "Title Top Line",
+                        "name": "title_top",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_sh_hbl",
+                        "label": "Title Bottom Line",
+                        "name": "title_bottom",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_sh_hdesc",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_sh_hl",
+                        "label": "Button Link",
+                        "name": "btn_link",
+                        "type": "url"
+                    }
+                ]
+            },
+            {
+                "key": "field_sh_faq",
+                "label": "FAQ Items",
+                "name": "sh_faq",
+                "type": "repeater",
+                "sub_fields": [
+                    {
+                        "key": "field_sh_faq_q",
+                        "label": "Question",
+                        "name": "question",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_sh_faq_a",
+                        "label": "Answer",
+                        "name": "answer",
+                        "type": "textarea"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-services.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "modified": 1725200000
+    }
+]

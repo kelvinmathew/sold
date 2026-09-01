@@ -199,13 +199,13 @@
     width: 91.6667vw;
     /* 1320/1440 */
     display: flex;
-    justify-content: space-between;
-    /* Ensures content touches both left and right bounds exactly */
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5.2083vw;
+    /* 75px */
   }
 
   .cs-intro-label {
-    width: 18.3611vw;
-    /* 264.4/1440 (line 4 + gap 11 + text 249.4) */
     height: 2.0833vw;
     /* 30/1440 */
     font-family: 'Mona Sans', sans-serif;
@@ -217,7 +217,7 @@
     letter-spacing: 0;
     color: #FFA726;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     /* vertical-align: middle */
     gap: 0.7639vw;
     /* 11/1440 gap between line and text */
@@ -246,6 +246,7 @@
     letter-spacing: 0.01em;
     color: #000000;
     margin: 0;
+    margin-top: -0.3472vw;
   }
 
   /* =========================================================================
@@ -677,8 +678,10 @@
 
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
+@media (min-width: 992px) {
 .cs-pre-footer .pre-footer-title {
-  top: 7.0833vw;
+  top: 50%;
+  transform: translateY(-50%);
   /* 102/1440 */
   left: 5.1389vw;
   /* 74/1440 */
@@ -695,6 +698,7 @@
 
 .cs-pre-footer .btn-pre-footer .btn-text {
   color: #1B3834;
+}
 }
 
 /* --- Plus Divider Override for Client Success Page --- */
@@ -1172,7 +1176,7 @@
   .sf-title-wrapper {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     width: 100% !important;
     height: auto !important;
     display: flex !important;
@@ -1234,7 +1238,7 @@
   .step-circle-3 {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     margin: 0 !important;
     width: 9.16vw !important;
     height: 9.16vw !important;
@@ -1282,7 +1286,7 @@
   .step-line-1 {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     transform: none !important;
     height: calc(100% - 18px) !important;
     width: 3px !important;
@@ -1302,7 +1306,7 @@
   .step-highlight-line {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     transform: none !important;
     width: 3px !important;
     height: 0;
@@ -1331,7 +1335,7 @@
   .step-card-3 {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     margin: 0 !important;
     width: 339px !important;
     max-width: none !important;
@@ -1493,16 +1497,14 @@
   .faq-mobile-item {
     padding-top: 2.54vw !important;
     padding-bottom: 5.34vw !important;
-    border-bottom: 1px solid #EBEBEB !important;
+    border-bottom: 1px solid rgba(162, 162, 162, 0.32) !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
     margin-bottom: 0 !important;
   }
 
-  .faq-mobile-item:last-child {
-    border-bottom: none !important;
-  }
+
 
   .faq-mobile-question {
     width: 100% !important;
@@ -1581,7 +1583,7 @@
   .client-success-page-body .cs-pre-footer .pre-footer-title {
     position: relative !important;
     top: auto !important;
-    bottom: auto !important;
+    transform: none !important;bottom: auto !important;
     left: auto !important;
     right: auto !important;
     width: 88.0941vw !important;
@@ -1607,7 +1609,7 @@
   .client-success-page-body .cs-pre-footer .btn-pre-footer {
     position: relative !important;
     top: auto !important;
-    left: auto !important;
+    transform: none !important;left: auto !important;
     right: auto !important;
     bottom: auto !important;
     width: 60.8142vw !important;
