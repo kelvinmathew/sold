@@ -233,12 +233,13 @@
 
 .services-grid {
     display: grid;
-    grid-template-rows: auto auto;
-    grid-auto-flow: column;
+    grid-template-columns: 156px auto auto auto;
     column-gap: 21px;
-    row-gap: 15px;
+    row-gap: 0px;
     width: 484px;
+    height: 45px;
     justify-content: start;
+    align-items: center;
 }
 
 .service-checkbox {
@@ -259,8 +260,8 @@
 }
 
 .form-row.message-row {
-    margin-top: 10px;
-    /* Alignment gap for textarea at y:532 */
+    margin-top: 25px;
+    /* Gap from services grid based on Figma */
 }
 
 .message-group .form-control-custom {
@@ -271,8 +272,8 @@
 }
 
 .btn-send-message {
-    margin-top: 5px;
-    /* To reach y:672 from 532+107(639) plus standard gaps */
+    margin-top: 33px;
+    /* Gap from message box based on Figma */
     width: 180px;
     height: 40px;
     background: #263238;
@@ -280,8 +281,8 @@
     border: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-start;
+    padding-left: 7px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
