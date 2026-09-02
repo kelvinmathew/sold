@@ -1059,6 +1059,10 @@
     color: #FFFFFF !important;
   }
 
+  .insights-details-page-body .cs-pre-footer .insights-mobile-pre-footer-title {
+    color: #FFFFFF !important;
+  }
+
   .insights-details-page-body .cs-pre-footer .btn-pre-footer {
     position: absolute !important;
     top: 305px !important;
