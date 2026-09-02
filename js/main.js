@@ -101,73 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Popup Modal (Web Only) - opens over the current page instead of
-    // navigating away, so closing it returns to the same page/scroll position.
-    const contactModal = document.getElementById('contactModal');
-    if (contactModal) {
-        const contactTriggers = document.querySelectorAll('[data-contact-trigger]');
-        const contactClose = contactModal.querySelector('.contact-modal-close');
-        const DESKTOP_BREAKPOINT = 992;
-        let savedScrollY = 0;
-
-        // Lock the background page via position:fixed rather than overflow:hidden -
-        // toggling overflow alone resets window.scrollY to 0 on close in most browsers,
-        // which would break "return to the exact position" requirement.
-        const openContactModal = () => {
-            savedScrollY = window.scrollY || window.pageYOffset || 0;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${savedScrollY}px`;
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
-            contactModal.classList.add('active');
-        };
-        const closeContactModal = () => {
-            contactModal.classList.remove('active');
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.left = '';
-            document.body.style.right = '';
-            document.body.style.width = '';
-            window.scrollTo(0, savedScrollY);
-        };
-
-        contactTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                // Below the desktop breakpoint this trigger isn't shown (header-nav
-                // is hidden in favor of the mobile menu), but guard anyway.
-                if (window.innerWidth < DESKTOP_BREAKPOINT) return;
-                e.preventDefault();
-                openContactModal();
-            });
-        });
-
-        if (contactClose) {
-            contactClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                closeContactModal();
-            });
-        }
-
-        // Click on the dimmed backdrop (outside the modal card) closes it
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) closeContactModal();
-        });
-
-        // Escape key closes it
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
-                closeContactModal();
-            }
-        });
-
-        // Service interest checkboxes (same behavior as the standalone contact page)
-        contactModal.querySelectorAll('.service-checkbox').forEach(box => {
-            box.addEventListener('click', function () {
-                this.classList.toggle('selected');
-            });
-        });
-    }
+    // Contact Popup Modal (Web Only) - handled by js/contact-modal.js, which
+    // fetches the modal markup from contact.html so it only needs to be
+    // edited in one place.
 
     // Testimonials Carousel (Web Only)
     const track = document.querySelector('.testimonials-track');

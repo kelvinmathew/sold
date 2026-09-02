@@ -254,6 +254,85 @@ body.branding-page-body {
     /* ~5px offset to counter leading padding */
   }
 
+  /* 2a. INTRO SECTION (actual markup classes used in branding-design.html) —
+     mirrors .social-intro-* above so this page matches the other 6 service
+     pages' intro layout on desktop/web. */
+  .branding-intro-section {
+    width: 100%;
+    padding-top: 4.9306cqi;
+    /* 71/1440 exactly matching requested gap from Hero */
+    padding-bottom: 0;
+    background-color: #F4F5F5;
+    display: flex;
+    justify-content: center;
+  }
+
+  .branding-intro-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .branding-intro-row {
+    width: 91.6667cqi;
+    /* 1320/1440 */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5.2083cqi;
+    /* 75px */
+  }
+
+  .branding-intro-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.7639cqi;
+    /* 11/1440 */
+  }
+
+  .branding-intro-bar {
+    width: 0.2778cqi;
+    /* 4/1440 */
+    height: 2.0833cqi;
+    /* 30/1440 fixed height to match 1-line title */
+    display: block;
+  }
+
+  .branding-intro-heading {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833cqi;
+    /* 30/1440 */
+    line-height: 2.0833cqi;
+    /* 30/1440 */
+    color: #FFA726;
+    white-space: nowrap;
+  }
+
+  .branding-intro-right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .branding-intro-desc {
+    width: 100%;
+    /* Fill remaining row width so it stays flush with the row's right edge, matching the Home page intro */
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 500;
+    font-size: 2.2222cqi;
+    /* 32/1440 */
+    line-height: 2.9167cqi;
+    /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+    margin-top: -0.3472cqi;
+    /* ~5px offset to counter leading padding */
+  }
+
   /* ==============================================
      3. FULL VIEWPORT SECTION
      ============================================== */
