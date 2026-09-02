@@ -2585,8 +2585,8 @@ h6 {
    ============================ */
 .faq-section {
   background: var(--color-bg-light);
-  padding: 1.875cqi 8.0208cqi 5.625cqi;
-  /* top: 27px, left/right: 115.5px, bottom: 81px - matches the gap used on
+  padding: 1.875cqi 8.0208cqi 4.5139cqi;
+  /* top: 27px, left/right: 115.5px, bottom: 65px - matches the gap used on
      branding-design/ai-marketing/lead-generation/etc. so every page has the
      same spacing between the FAQ section and the pre-footer below it */
 }

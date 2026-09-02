@@ -1280,8 +1280,8 @@ body.social-page-body {
 @media (min-width: 992px) {
   .social-page-body .faq-section {
     background-color: #E9EAEB !important;
-    padding: 5.6250cqi 0 !important;
-    /* 81/1440 */
+    padding: 5.6250cqi 0 4.5139cqi !important;
+    /* 81/1440 top, 65/1440 bottom - FAQ-to-pre-footer gap */
     display: flex !important;
     justify-content: center !important;
   }

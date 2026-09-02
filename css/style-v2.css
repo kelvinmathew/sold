@@ -7957,8 +7957,8 @@ body.why-sold-page-body,
    ============================ */
 .faq-section {
   background: #FFFFFF;
-  padding: 1.875cqi 8.0208cqi 5.625cqi;
-  /* top: 27px, left/right: 115.5px, bottom: 81px - matches the gap used on
+  padding: 1.875cqi 8.0208cqi 4.5139cqi;
+  /* top: 27px, left/right: 115.5px, bottom: 65px - matches the gap used on
      branding-design/ai-marketing/lead-generation/etc. so every page has the
      same spacing between the FAQ section and the pre-footer below it */
 }
@@ -8440,7 +8440,7 @@ body.why-sold-page-body,
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-section-mobile {
     width: 100% !important;
     padding-top: 56px !important;
-    padding-bottom: 56px !important;
+    padding-bottom: 50px !important;
   }
 
   :is(.services-page-body, .why-sold-page-body, .insights-page-body, .branding-page-body, .social-page-body) .faq-mobile-container {
