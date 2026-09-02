@@ -7957,8 +7957,10 @@ body.why-sold-page-body,
    ============================ */
 .faq-section {
   background: #FFFFFF;
-  padding: 1.875cqi 8.0208cqi 1.6667cqi;
-  /* top: 27px (127px total gap minus Insights' 100px bottom padding), left/right: 115.5px, bottom: 24px */
+  padding: 1.875cqi 8.0208cqi 5.625cqi;
+  /* top: 27px, left/right: 115.5px, bottom: 81px - matches the gap used on
+     branding-design/ai-marketing/lead-generation/etc. so every page has the
+     same spacing between the FAQ section and the pre-footer below it */
 }
 
 .faq-container {

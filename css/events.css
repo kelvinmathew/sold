@@ -783,7 +783,8 @@
      ============================================== */
   .events-faq-section {
     background: #e9eaeb !important;
-    padding: 5cqi 0 !important;
+    padding: 5.625cqi 0 !important;
+    /* 81/1440 - matches the FAQ-to-pre-footer gap used on every other page */
     display: flex;
     justify-content: center;
   }
@@ -1729,8 +1730,9 @@
      ============================================== */
   .events-faq-section {
     background: #e9eaeb !important;
-    padding: 8.9058cqi 0 !important;
-    /* 35px top/bottom, 0 sides to override desktop padding */
+    padding: 8.9058cqi 0 56px !important;
+    /* 35px top, 0 sides to override desktop padding, 56px bottom -
+       matches the FAQ-to-pre-footer gap used on every other page */
     margin-bottom: 0 !important;
   }
 
