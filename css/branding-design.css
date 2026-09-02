@@ -175,23 +175,24 @@ body.branding-page-body {
   /* ==============================================
      2. INTRO SECTION
      ============================================== */
-  .branding-intro-section {
+  .social-intro-section {
     width: 100%;
-    padding-top: 6.9444cqi;
-    /* 100/1440 */
+    padding-top: 4.9306cqi;
+    /* 71/1440 exactly matching requested gap from Hero */
     padding-bottom: 0;
-    /* Let the next section handle the exact gap */
-    display: flex;
-    justify-content: center;
+    /* Gap handled by next section */
     background-color: #F4F5F5;
-  }
-
-  .branding-intro-container {
     display: flex;
     justify-content: center;
   }
 
-  .branding-intro-row {
+  .social-intro-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-intro-row {
     width: 91.6667cqi;
     /* 1320/1440 */
     display: flex;
@@ -201,7 +202,7 @@ body.branding-page-body {
     /* 75px */
   }
 
-  .branding-intro-left {
+  .social-intro-left {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -209,32 +210,37 @@ body.branding-page-body {
     /* 11/1440 */
   }
 
-  .branding-intro-bar {
+  .social-intro-bar {
     width: 0.2778cqi;
     /* 4/1440 */
-    height: 2.4438cqi;
-    /* 35.19/1440 */
+    height: 2.0833cqi;
+    /* 30/1440 fixed height to match 1-line title */
+    background-color: #FFA726;
+    border-radius: 0;
   }
 
-  .branding-intro-heading {
-    font-family: "Mona Sans", sans-serif;
+  .social-intro-heading {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
     font-size: 2.0833cqi;
     /* 30/1440 */
     line-height: 2.0833cqi;
     /* 30/1440 */
-    color: #ffa726;
-    margin: 0;
+    color: #FFA726;
     white-space: nowrap;
+    /* "Branding & Design" is longer than the other page titles; keep it on one line */
   }
 
-  .branding-intro-right {
+  .social-intro-right {
     display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 
-  .branding-intro-desc {
-    width: 68.2639cqi;
-    /* 983/1440 */
+  .social-intro-desc {
+    width: 100%;
+    /* Fill remaining row width so it stays flush with the row's right edge, matching the Home page intro */
     font-family: "Mona Sans", sans-serif;
     font-weight: 500;
     font-size: 2.2222cqi;
@@ -243,7 +249,6 @@ body.branding-page-body {
     /* 42/1440 */
     letter-spacing: 0.01em;
     color: #000000;
-    text-align: left;
     margin: 0;
     margin-top: -0.3472cqi;
     /* ~5px offset to counter leading padding */
@@ -583,16 +588,16 @@ body.branding-page-body {
 @media (max-width: 991px) {
 
   /* UNIVERSAL MOBILE INTRO OVERRIDES */
-  .branding-intro-left {
+  .social-intro-left {
     gap: 11px !important;
   }
 
-  .branding-intro-container {
+  .social-intro-container {
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
 
-  .branding-intro-desc {
+  .social-intro-desc {
     max-width: 352px !important;
     line-height: 22px !important;
     /* Force explicit figma text bound */
@@ -744,20 +749,20 @@ body.branding-page-body {
   /* ==============================================
      2. INTRO SECTION (MOBILE)
      ============================================== */
-  .branding-intro-section {
+  .social-intro-section {
     background-color: #FFFFFF !important;
-    padding-top: 40px !important;
-    padding-bottom: 0 !important;
+    padding-top: 60px !important;
+    padding-bottom: 34px !important;
   }
 
-  .branding-intro-container {
+  .social-intro-container {
     width: 100% !important;
-    padding: 0 5.2162cqi !important;
-    /* ~20px */
+    padding-left: 24px !important;
+    padding-right: 24px !important;
     box-sizing: border-box !important;
   }
 
-  .branding-intro-row {
+  .social-intro-row {
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
@@ -765,38 +770,34 @@ body.branding-page-body {
     gap: 20px !important;
   }
 
-  .branding-intro-left {
+  .social-intro-left {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 2cqi !important;
-    /* ~8px gap */
+    gap: 11px !important;
   }
 
-  .branding-intro-bar {
-    width: 1.0178cqi !important;
-    /* 4px */
-    height: 7.8880cqi !important;
-    /* 31px */
+  .social-intro-bar {
+    width: 4px !important;
+    height: 31px !important;
+    background-color: #FFA726 !important;
   }
 
-  .branding-intro-heading {
+  .social-intro-heading {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 5.0890cqi !important;
-    /* 20px */
-    line-height: 7.6335cqi !important;
-    /* 30px */
+    font-size: 20px !important;
+    line-height: 30px !important;
     color: #FFA726 !important;
     margin: 0 !important;
     width: auto !important;
   }
 
-  .branding-intro-right {
+  .social-intro-right {
     width: 100% !important;
   }
 
-  .branding-intro-desc {
+  .social-intro-desc {
     font-family: 'Inter', sans-serif !important;
     font-weight: 400 !important;
     font-size: 16px !important;

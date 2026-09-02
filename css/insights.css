@@ -1185,7 +1185,7 @@
   /* 135px */
   height: 3.3333vw;
   /* 48px */
-  object-fit: cover !important;
+  object-fit: contain !important;
   transform: translateY(0.4vw);
   /* Nudge down slightly relative to text baseline */
 }

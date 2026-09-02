@@ -77,6 +77,13 @@
   letter-spacing: 0;
 }
 
+.ws-section-label-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+}
+
 /* ============================
    ABOUT SOLD SECTION
    ============================ */
@@ -182,6 +189,10 @@
     font-size: 5.09vw; /* 20px */
     line-height: 7.63vw; /* 30px */
   }
+
+  .ws-about-left .ws-section-label-logo {
+    height: 5.09vw; /* 20px, matches label text */
+  }
 }
 
 .ws-about-right {
@@ -222,23 +233,27 @@
     position: absolute;
     top: 0;
     left: 2.0833cqi;
-    width: 14.0826cqi;
+    width: 20cqi;
     height: 2.4437cqi;
     margin: 0;
     gap: 0.7028cqi;
   }
-  
+
   .ws-about-left .ws-section-label-bar {
     width: 0.3937cqi;
     height: 2.4437cqi;
   }
-  
+
   .ws-about-left .ws-section-label-text {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
     font-size: 2.0833cqi;
     line-height: 2.0833cqi;
     color: #FFA726;
+  }
+
+  .ws-about-left .ws-section-label-logo {
+    height: 2.0833cqi; /* matches label text line-height */
   }
 
   .ws-about-text {
@@ -1878,9 +1893,13 @@
     margin-left: 5.60vw !important; /* 22px left */
     margin-bottom: 7.12vw !important; /* 28px below to description */
     margin-top: 0 !important;
-    width: 38.68vw !important; /* 152px width */
+    width: 55vw !important; /* widened to fit logo alongside "About" */
     height: 8.91vw !important; /* 35px height */
     align-self: flex-start !important;
+  }
+
+  .ws-about-left .ws-section-label-logo {
+    height: 5.09vw !important; /* 20px, matches label text */
   }
 
   /* 2. Mobile Description */

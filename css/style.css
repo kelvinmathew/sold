@@ -1900,6 +1900,12 @@ h6 {
   object-fit: cover !important;
 }
 
+@media (min-width: 992px) {
+  .who-title-logo {
+    object-fit: contain !important;
+  }
+}
+
 .who-header-top {
   position: absolute;
   top: 0;
@@ -4917,6 +4923,7 @@ h6 {
     height: 48px !important;
     top: 60px !important;
     left: 13px !important;
+    object-fit: contain !important;
   }
 
   .logo-spacer {

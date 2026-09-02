@@ -1915,6 +1915,12 @@ h6 {
   object-fit: cover !important;
 }
 
+@media (min-width: 992px) {
+  .who-title-logo {
+    object-fit: contain !important;
+  }
+}
+
 .who-header-top {
   position: absolute;
   top: 0;
@@ -4814,6 +4820,7 @@ h6 {
     box-sizing: border-box !important;
     padding: 1.44vw 3.43vw !important;
     /* Optical padding scaled down from desktop to match the 35px text cap-height perfectly */
+    object-fit: contain !important;
   }
 
   .logo-spacer {
@@ -7385,7 +7392,7 @@ h6 {
   /* 135px */
   height: 3.3333cqi;
   /* 48px */
-  object-fit: cover !important;
+  object-fit: contain !important;
   transform: translateY(0.4cqi);
 }
 

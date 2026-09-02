@@ -76,8 +76,8 @@
     height: 100%;
     background: #263238;
     flex-shrink: 0;
-    padding: 122px 61px;
-    /* Origin y:122 x:61 */
+    padding: 122px 34px 122px 61px;
+    /* Adjusted right padding to 34px so content region is exactly 338px */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -114,8 +114,9 @@
 
 /* Specific start alignment for multi-line location block */
 .contact-info-item.align-start {
-    align-items: flex-start;
+    align-items: center;
     line-height: 20px;
+    gap: 29px;
 }
 
 .contact-icon {
@@ -172,7 +173,14 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    flex: 1;
+}
+
+.form-row .form-group:first-child {
+    flex: 0 0 280px;
+}
+
+.form-row .form-group:nth-child(2) {
+    flex: 0 0 257px;
 }
 
 .form-control-custom {
@@ -201,6 +209,11 @@
     background: #C8CDD1;
 }
 
+/* Specific paddings based on column position exactly matching Figma gaps */
+.form-row .form-group:first-child input.form-control-custom {
+    padding-left: 24px;
+}
+
 .services-interest {
     margin-top: 15px;
     /* Offset the 25px regular gap to reach 389 y coord */
@@ -219,12 +232,13 @@
 }
 
 .services-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
     column-gap: 21px;
     row-gap: 15px;
     width: 484px;
-    /* Figma bound */
+    justify-content: start;
 }
 
 .service-checkbox {
@@ -266,6 +280,7 @@
     border: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -283,7 +298,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 7px;
+    margin-left: 0;
 }
 
 .btn-send-message .btn-text {
@@ -294,7 +309,7 @@
     line-height: 30px;
     letter-spacing: 0.01em;
     color: #FFFFFF;
-    margin-left: 10px;
+    margin-left: 10.53px;
 }
 
 /* =========================================================

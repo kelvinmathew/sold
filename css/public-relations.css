@@ -427,12 +427,13 @@ body.social-page-body {
 
   .social-intro-right {
     display: flex;
+    flex: 1;
     flex-direction: column;
   }
 
   .social-intro-desc {
-    width: 68.2639cqi;
-    /* 983/1440 */
+    width: 100%;
+    /* Fill remaining row width so it stays flush with the row's right edge, matching the Home page intro */
     font-family: "Mona Sans", sans-serif;
     font-weight: 500;
     font-size: 2.2222cqi;
@@ -1318,7 +1319,7 @@ body.social-page-body {
   }
 
   .social-page-body .pre-footer-title {
-    top: 35.61px !important;
+    top: 47.61px !important;
     left: 30.58px !important;
     right: auto !important;
     bottom: auto !important;
