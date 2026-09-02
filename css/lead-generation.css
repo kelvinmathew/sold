@@ -1288,6 +1288,10 @@ body.social-page-body {
     gap: 12px;
   }
 
+  .faq-mobile-item:last-child {
+    border-bottom: none;
+  }
+
 
 
   .faq-mobile-question-text {
@@ -1307,6 +1311,46 @@ body.social-page-body {
     letter-spacing: 0.01em;
     color: #3A3939;
     margin: 0;
+  }
+
+  /* ==============================================
+     PRE-FOOTER OVERRIDES (MOBILE) — matches Branding & Design page
+     ============================================== */
+  .social-page-body .pre-footer {
+    height: 328px !important;
+  }
+
+  .social-page-body .pre-footer-title {
+    top: 47.61px !important;
+    left: 30.58px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 346px !important;
+    max-width: calc(100% - 45px) !important;
+    font-size: 36px !important;
+    line-height: 46px !important;
+    text-transform: uppercase !important;
+  }
+
+  .social-page-body .btn-pre-footer {
+    top: 237px !important;
+    left: 31px !important;
+    height: 39px !important;
+  }
+
+  .social-page-body .btn-pre-footer .icon-circle {
+    top: 4.64px !important;
+    left: 5px !important;
+    width: 32px !important;
+    height: 29.71px !important;
+  }
+
+  .social-page-body .btn-pre-footer .btn-text {
+    top: 4px !important;
+    left: 46.47px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    letter-spacing: 0.01em !important;
   }
 
   /* ==============================================

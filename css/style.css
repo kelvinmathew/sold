@@ -2554,8 +2554,8 @@ h6 {
   /* 173px - exact distance from top (leaving bottom: 21px) */
   left: 1.5972cqi;
   /* 23px - exact distance from left (leaving right: 64px) */
-  width: 21.8750cqi;
-  /* 315px */
+  width: calc(100% - 3.1944cqi);
+  /* Leaves exactly 1.5972cqi (23px) gap symmetrically on right and left regardless of card width */
   height: 9.0277cqi;
   /* 130px */
   font-family: "Inter", var(--font-body);
@@ -2645,6 +2645,10 @@ h6 {
   border-bottom: 1px solid rgba(162, 162, 162, 0.32);
   /* exact Figma stroke color */
   width: 100%;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
 }
 
 .faq-question {
@@ -3364,6 +3368,7 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
+    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
@@ -3890,6 +3895,7 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
+    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
@@ -4167,7 +4173,7 @@ h6 {
   .what-we-do-section {
     position: relative !important;
     width: 100% !important;
-    height: 1461px !important;
+    height: 1388px !important;
     margin: 0 auto !important;
     padding: 0 !important;
   }
@@ -4235,7 +4241,7 @@ h6 {
     position: absolute !important;
     width: 100% !important;
     height: 720.27px !important;
-    top: 372.73px !important;
+    top: 300px !important;
     left: 0 !important;
     bottom: 397px !important;
     right: 2px !important;
@@ -4388,7 +4394,7 @@ h6 {
     position: absolute !important;
     width: calc(100% - 60px) !important;
     height: 355px !important;
-    top: 1106px !important;
+    top: 1033px !important;
     left: 30px !important;
     bottom: 0 !important;
     right: 30px !important;
@@ -4465,6 +4471,7 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
+    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
@@ -6282,12 +6289,14 @@ h6 {
     padding: 0 !important;
   }
 
+  /* Pre-footer button: matches client-success.html's mobile button design
+     (used as the reference for a consistent button UI across all pages). */
   .btn-pre-footer {
     position: absolute !important;
     top: 305px !important;
     left: 24px !important;
-    width: 270px !important;
-    height: 43px !important;
+    width: 239px !important;
+    height: 42px !important;
     border-radius: 29px !important;
     opacity: 1 !important;
     background: #FFFFFF !important;
@@ -6299,8 +6308,8 @@ h6 {
   .btn-pre-footer .btn-text {
     position: absolute !important;
     top: 6px !important;
-    left: 51.04px !important;
-    width: 210px !important;
+    left: 46px !important;
+    width: 187px !important;
     height: 30px !important;
     white-space: nowrap !important;
     font-family: "Inter", var(--font-body) !important;
@@ -6308,23 +6317,58 @@ h6 {
     font-size: 16px !important;
     line-height: 30px !important;
     color: #1B3834 !important;
+    text-align: center !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: center !important;
   }
 
   .btn-pre-footer .icon-circle {
     position: absolute !important;
-    top: 4px !important;
-    left: 7.29px !important;
-    width: 35.42px !important;
-    height: 34px !important;
+    top: 5px !important;
+    left: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
     border-radius: 24px !important;
     background: #FFA726 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     opacity: 1 !important;
+  }
+
+  /* ==============================================
+     PRE-FOOTER OVERRIDES (HOME PAGE MOBILE)
+     ============================================== */
+  .home-page-body .pre-footer-title {
+    top: 56.34px !important;
+    left: 24px !important;
+    width: 346px !important;
+    max-width: calc(100% - 48px) !important;
+    font-size: 34px !important;
+    line-height: 55px !important;
+  }
+
+  .home-page-body .btn-pre-footer {
+    width: 225px !important;
+    height: 43px !important;
+  }
+
+  .home-page-body .btn-pre-footer .icon-circle {
+    top: 4px !important;
+    left: 7.29px !important;
+    width: 35.42px !important;
+    height: 34px !important;
+  }
+
+  .home-page-body .btn-pre-footer .btn-text {
+    top: 6px !important;
+    left: 52.18px !important;
+    /* 7.29 + 35.42 + 9.47 gap = 52.18px */
+    text-align: left !important;
+    justify-content: flex-start !important;
+    letter-spacing: 0.01em !important;
   }
 
   /* ============================

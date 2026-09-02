@@ -1217,6 +1217,46 @@ body.branding-page-body {
     margin-top: 12px !important;
   }
 
+  /* ==============================================
+     9. PRE-FOOTER OVERRIDES (MOBILE) — Figma node 2468:6072
+     ============================================== */
+  .branding-page-body .pre-footer {
+    height: 328px !important;
+  }
+
+  .branding-page-body .pre-footer-title {
+    top: 47.61px !important;
+    left: 30.58px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 346px !important;
+    max-width: calc(100% - 45px) !important;
+    font-size: 36px !important;
+    line-height: 46px !important;
+    text-transform: uppercase !important;
+  }
+
+  .branding-page-body .btn-pre-footer {
+    top: 237px !important;
+    left: 31px !important;
+    height: 39px !important;
+  }
+
+  .branding-page-body .btn-pre-footer .icon-circle {
+    top: 4.64px !important;
+    left: 5px !important;
+    width: 32px !important;
+    height: 29.71px !important;
+  }
+
+  .branding-page-body .btn-pre-footer .btn-text {
+    top: 4px !important;
+    left: 46.47px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    letter-spacing: 0.01em !important;
+  }
+
 }
 
 /* End Mobile Media Query */

@@ -27,6 +27,7 @@
   <link href="css/style-v2.css" rel="stylesheet" />
   <!-- Page-specific CSS -->
   <link href="css/why-sold.css?v=12" rel="stylesheet" />
+  <link href="css/contact.css" rel="stylesheet" />
 </head>
 
 <body class="why-sold-page-body">
@@ -47,7 +48,7 @@
             <a href="services.html" class="nav-link">Services</a>
             <a href="client-success.html" class="nav-link">Client Success</a>
             <a href="why-sold.html" class="nav-link active">Why SOLD?</a>
-            <a href="#" class="nav-link">Contact</a>
+            <a href="contact.html" class="nav-link" data-contact-trigger>Contact</a>
             <a href="insights.html" class="nav-link">Insights</a>
           </nav>
         </div>
@@ -746,6 +747,133 @@
                 stroke-linejoin="round" />
             </svg>
           </a>
+        </div>
+      </div>
+
+      <!-- Contact Popup Modal (Web Only) -->
+      <div class="contact-modal-overlay" id="contactModal">
+        <div class="contact-modal-wrapper">
+          <div class="contact-modal-container">
+            <!-- Close Button -->
+            <button class="contact-modal-close"
+              onclick="document.getElementById('contactModal').classList.remove('active')">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#1B3834" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <!-- Left Side (Dark Panel) -->
+            <div class="contact-modal-left">
+              <h2 class="contact-title">Contact <br>The Team</h2>
+
+              <div class="contact-info-list">
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M22 16.92V21.14C22 21.61 21.61 22 21.14 22C4.38 21.5 2.5 19.62 2 2.86C2 2.39 2.39 2 2.86 2H7.08C7.51 2 7.9 2.34 7.98 2.76C8.09 3.29 8.24 3.81 8.44 4.31C8.6 4.7 8.5 5.15 8.16 5.49L5.94 7.71C7.81 11.23 10.77 14.19 14.29 16.06L16.51 13.84C16.85 13.5 17.3 13.4 17.69 13.56C18.19 13.76 18.71 13.91 19.24 14.02C19.66 14.1 20 14.49 20 14.92V16.92H22Z"
+                        fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <span>+971 58 593 1979</span>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                        stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M22 6L12 13L2 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <span>growth@getsold.ae</span>
+                </div>
+                <div class="contact-info-item align-start">
+                  <div class="contact-icon" style="margin-top:2px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z"
+                        stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path
+                        d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                        stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <span>The Meydan Hotel | Grandstand |<br>Meydan Road, Dubai</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side (Form Panel) -->
+            <div class="contact-modal-right">
+              <img src="assets/images/logosold_dark.png" alt="SOLD Logo" class="contact-logo">
+
+              <form class="contact-form" onsubmit="event.preventDefault();">
+                <div class="form-row">
+                  <div class="form-group">
+                    <input type="text" class="form-control-custom" placeholder="First Name*">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control-custom" placeholder="Last Name*">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <input type="email" class="form-control-custom" placeholder="Email*">
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" class="form-control-custom" placeholder="Phone Number*">
+                  </div>
+                </div>
+
+                <div class="form-row full-row">
+                  <div class="form-group" style="width: 100%;">
+                    <input type="text" class="form-control-custom" placeholder="Company Name*">
+                  </div>
+                </div>
+
+                <div class="services-interest">
+                  <label class="services-label">What services are you interested in?</label>
+                  <div class="services-grid">
+                    <div class="service-checkbox">Events</div>
+                    <div class="service-checkbox selected">Design &amp; Branding</div>
+                    <div class="service-checkbox">Social Media</div>
+                    <div class="service-checkbox">Lead Generation</div>
+                    <div class="service-checkbox">SEO &amp; GEO</div>
+                    <div class="service-checkbox">PR &amp; Media</div>
+                    <div class="service-checkbox">Website</div>
+                  </div>
+                </div>
+
+                <div class="form-row full-row message-row">
+                  <div class="form-group message-group" style="width: 100%;">
+                    <textarea class="form-control-custom" placeholder="Message"></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-send-message">
+                  <span class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19M15 8L19 12L15 16" stroke="#FFFFFF" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="btn-text">SEND MESSAGE</span>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,326 @@
+/* =========================================================================
+   Contact Popup Modal - Web Only Desktop Implementation
+   Provides perfectly scaled identical output to Figma mockups globally
+   ========================================================================= */
+
+/* General Reset for the standalone wrapper, ensuring the backdrop sits fixed */
+.contact-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dimming background for focus */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Scaling Wrapper: guarantees it dynamically scales onto smaller 1366 / 1280 screens 
+   while strictly keeping aspect ratio and Figma constraints unmodified */
+.contact-modal-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* 1102x760 Exact Figma Container */
+.contact-modal-container {
+    width: 1102px;
+    height: 760px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    /* Subtle standard rounding as implied by web design popup standards */
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 4px 64px rgba(0, 0, 0, 0.15);
+    transform-origin: center center;
+}
+
+/* Close mark logic */
+.contact-modal-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    padding: 10px;
+    /* Expand hit area */
+}
+
+.contact-modal-close:hover path {
+    stroke: #FFA726;
+    transition: 0.3s;
+}
+
+/* Left Panel - Dark - 433px width */
+.contact-modal-left {
+    width: 433px;
+    height: 100%;
+    background: #263238;
+    flex-shrink: 0;
+    padding: 122px 61px;
+    /* Origin y:122 x:61 */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-title {
+    font-family: 'Mona Sans', var(--font-heading, sans-serif);
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 42px;
+    color: #FFA726;
+    margin: 0 0 125px 0;
+    /* 331 - 122 - 84 = 125 gap */
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-family: 'Mona Sans', var(--font-heading, sans-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+
+/* Specific start alignment for multi-line location block */
+.contact-info-item.align-start {
+    align-items: flex-start;
+    line-height: 20px;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right Panel - Form Base - White - remaining width (669px) */
+.contact-modal-right {
+    flex-grow: 1;
+    background: #FFFFFF;
+    padding: 55px 47px 55px 47px;
+    /* Figma Right Container Start is x:480 (480 - 433 leftPanel = 47px padding left) */
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-logo {
+    width: 173px;
+    height: 62px;
+    object-fit: contain;
+    object-position: left;
+    margin-bottom: 36px;
+    /* Gap to 153px top input: 153 - 55 - 62 = 36px */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* y gap between form blocks */
+    width: 578px;
+    /* Form block actual exact width per Figma */
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 41px;
+    width: 100%;
+}
+
+.form-row.full-row {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-control-custom {
+    width: 100%;
+    height: 51px;
+    background: #D1D5D9;
+    border: none;
+    padding: 0 17px;
+    box-sizing: border-box;
+    font-family: 'Inter', var(--font-body, sans-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #1B3834;
+    outline: none;
+}
+
+.form-control-custom::placeholder {
+    color: #1B3834;
+    opacity: 1;
+}
+
+.form-control-custom:focus {
+    background: #C8CDD1;
+}
+
+.services-interest {
+    margin-top: 15px;
+    /* Offset the 25px regular gap to reach 389 y coord */
+}
+
+.services-label {
+    display: block;
+    font-family: 'Inter', var(--font-body, sans-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #1B3834;
+    margin-bottom: 20px;
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 21px;
+    row-gap: 15px;
+    width: 484px;
+    /* Figma bound */
+}
+
+.service-checkbox {
+    font-family: 'Mona Sans', var(--font-heading, sans-serif);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+    color: #263238;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.service-checkbox.selected {
+    color: #FFA726;
+}
+
+.form-row.message-row {
+    margin-top: 10px;
+    /* Alignment gap for textarea at y:532 */
+}
+
+.message-group .form-control-custom {
+    width: 561px;
+    height: 107px;
+    padding-top: 18px;
+    resize: none;
+}
+
+.btn-send-message {
+    margin-top: 5px;
+    /* To reach y:672 from 532+107(639) plus standard gaps */
+    width: 180px;
+    height: 40px;
+    background: #263238;
+    border-radius: 55px;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-send-message:hover {
+    background: #101518;
+}
+
+.btn-send-message .icon-circle {
+    width: 24px;
+    height: 24px;
+    background: #FFA726;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 7px;
+}
+
+.btn-send-message .btn-text {
+    font-family: 'Inter', var(--font-body, sans-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
+/* =========================================================
+   SCALING FOR SINGLE VIEWPORT
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .contact-modal-container {
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 950px) {
+    .contact-modal-container {
+        transform: scale(0.75);
+    }
+}
+
+@media (max-height: 800px) {
+    .contact-modal-container {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-height: 650px) {
+    .contact-modal-container {
+        transform: scale(0.65);
+    }
+}

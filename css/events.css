@@ -1122,8 +1122,8 @@
      3. PROJECT LAUNCH SECTION (MOBILE)
      ============================================== */
   .events-project-launch-section {
-    padding-top: 18.8295cqi !important;
-    /* 74px total precise gap from intro text */
+    padding-top: 12.7226cqi !important;
+    /* 50px total gap from intro text (reduced from 74px) */
     padding-bottom: 10.1781cqi !important;
     /* 40px */
     background: #ffffff !important;
@@ -1783,6 +1783,10 @@
     border-bottom: 1px solid rgba(162, 162, 162, 0.32) !important;
   }
 
+  .events-faq-section .faq-item:last-child {
+    border-bottom: none !important;
+  }
+
   .events-faq-section .faq-question-text {
     font-size: 3.5623cqi !important;
     /* 14px */
@@ -1803,30 +1807,33 @@
     color: #3a3939 !important;
   }
 
-  /* adapt to content */
+  .events-page-body .pre-footer {
+    width: 100vw !important;
+    height: 424px !important;
     background-color: #263238 !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: 0 !important;
     padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .events-page-body .pre-footer-inner {
     position: relative !important;
     width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 15.2188cqi 5.8524cqi 20.6106cqi 5.8524cqi !important;
-    /* 59.81px top, 23px left/right, 81px bottom */
-    gap: 5.7353cqi !important;
-    /* 22.54px (Compensates for 9.5px invisible text line-height leading to make visual gap 32.04px) */
+    height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
   }
 
   .events-page-body .pre-footer-title {
-    position: relative !important;
-    left: 0 !important;
-    top: 0 !important;
+    position: absolute !important;
+    left: 24px !important;
+    top: 56.34px !important;
     transform: none !important;
-    width: 100% !important;
+    width: 346px !important;
+    max-width: calc(100% - 48px) !important;
     height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -1835,10 +1842,8 @@
   .events-page-body .events-mobile-pre-footer-title {
     font-family: "Mona Sans", sans-serif !important;
     font-weight: 700 !important;
-    font-size: 9.1603cqi !important;
-    /* 36px */
-    line-height: 13.9949cqi !important;
-    /* 55px */
+    font-size: 34px !important;
+    line-height: 55px !important;
     color: #ffffff !important;
     text-align: left !important;
     display: block !important;
@@ -1847,19 +1852,17 @@
   }
 
   .events-page-body .btn-pre-footer {
-    position: relative !important;
-    left: 0 !important;
-    top: 0 !important;
+    position: absolute !important;
+    left: 31px !important;
+    top: 305px !important;
+    /* using existing y 305px matching events heading flow */
     transform: none !important;
-    width: 60.8142cqi !important;
-    /* 239px */
-    height: 10.687cqi !important;
-    /* 42px */
+    width: 239px !important;
+    max-width: calc(100% - 48px) !important;
+    height: 39px !important;
     background: #ffffff !important;
-    border-radius: 7.3791cqi !important;
-    /* 29px */
-    display: flex !important;
-    align-items: center !important;
+    border-radius: 29px !important;
+    display: block !important;
     text-decoration: none !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -1867,41 +1870,40 @@
 
   .events-page-body .btn-pre-footer .icon-circle {
     position: absolute !important;
-    left: 2.0356cqi !important;
-    /* 8px */
-    top: 1.2722cqi !important;
-    /* 5px */
-    width: 8.1424cqi !important;
-    /* 32px */
-    height: 8.1424cqi !important;
-    /* 32px */
+    left: 5px !important;
+    top: 4.64px !important;
+    width: 32px !important;
+    height: 29.71px !important;
+    margin: 0 !important;
     background: #ffa726 !important;
-    border-radius: 6.1068cqi !important;
-    /* 24px */
+    border-radius: 24px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
   .events-page-body .btn-pre-footer .icon-circle img {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 50% !important;
-    object-fit: cover !important;
+    border-radius: 24px !important;
   }
 
   .events-page-body .btn-pre-footer .btn-text {
     position: absolute !important;
-    left: 11.7048cqi !important;
-    /* 46px */
+    top: 4px !important;
+    left: 46.47px !important;
+    width: 186.95px !important;
+    height: 30px !important;
     font-family: "Inter", sans-serif !important;
     font-weight: 600 !important;
-    font-size: 4.0712cqi !important;
-    /* 16px */
-    line-height: 7.6335cqi !important;
-    /* 30px */
+    font-size: 16px !important;
+    line-height: 30px !important;
     letter-spacing: 0.01em !important;
     color: #1b3834 !important;
     white-space: nowrap !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }

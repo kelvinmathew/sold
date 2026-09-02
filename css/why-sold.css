@@ -1647,7 +1647,7 @@
   /* What Our Clients Say - Mobile Overrides */
   .ws-clients-section {
     padding-top: 0 !important; /* Gap handled by previous section's padding-bottom (53px) */
-    padding-bottom: 10vw !important;
+    padding-bottom: 0 !important; /* Gap to steps-section now comes solely from its 51px margin-top, matches services.html */
     background: #FFFFFF !important;
     overflow: hidden !important; /* Prevent horizontal scrollbar from edge logos */
   }

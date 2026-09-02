@@ -569,8 +569,8 @@
     /* 66/1440 */
     margin-top: 8.8757vw;
     /* 127.81/1440 strict gap from Latest Blogs */
-    margin-bottom: 4.1535vw;
-    /* 59.81/1440 gap to pre-footer */
+    margin-bottom: 2vw;
+    /* Reduced from 59.81/1440 gap to pre-footer */
   }
 
   .insights-feed-title-wrap {
@@ -1217,28 +1217,29 @@
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
 @media (min-width: 992px) {
-.cs-pre-footer .pre-footer-title {
-  top: 50%;
-  transform: translateY(-50%);
-  /* 102/1440 */
-  left: 5.1389vw;
-  /* 74/1440 */
-  width: 52.0139vw;
-  /* 749/1440 */
-  height: 7.6389vw;
-  /* 110/1440 */
+  .cs-pre-footer .pre-footer-title {
+    top: 50%;
+    transform: translateY(-50%);
+    /* 102/1440 */
+    left: 5.1389vw;
+    /* 74/1440 */
+    width: 52.0139vw;
+    /* 749/1440 */
+    height: 7.6389vw;
+    /* 110/1440 */
+  }
+
+  .cs-pre-footer .btn-pre-footer {
+    width: 25.0833vw;
+    /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
+  }
+
+  .cs-pre-footer .btn-pre-footer .btn-text {
+    color: #1B3834;
+  }
+
 }
 
-.cs-pre-footer .btn-pre-footer {
-  width: 25.0833vw;
-  /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
-}
-
-.cs-pre-footer .btn-pre-footer .btn-text {
-  color: #1B3834;
-}
-
-}
 /* --- Plus Divider Override for Client Success Page --- */
 .insights-page-body .plus-btn-divider {
   position: relative !important;
@@ -2126,46 +2127,44 @@
   .sf-subtitle {
     position: relative;
     top: -10px;
-    left: auto;
     font-size: 16px;
     line-height: 24px;
     width: 100%;
   }
 
-  /* Reset 100vw */
-    margin-left: 0 !important;
-    /* Remove negative calc margin pulling section left */
+  .insights-page-body .cs-pre-footer {
+    width: 100vw !important;
+    height: 424px !important;
+    margin-left: calc(-50vw + 50%) !important;
     margin-right: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .insights-page-body .cs-pre-footer .pre-footer-inner {
     position: relative !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding-top: 59.81px !important;
-    padding-left: 0 !important;
-    /* Move spacing to margins for strict pixel control */
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
     background: #263238 !important;
   }
 
   .insights-page-body .cs-pre-footer .pre-footer-title {
-    position: relative !important;
-    top: auto !important;
-    transform: none !important;bottom: auto !important;
-    left: auto !important;
+    position: absolute !important;
+    top: 56.34px !important;
+    transform: none !important;
+    bottom: auto !important;
+    left: 24px !important;
     right: auto !important;
-    width: 346.21px !important;
+    width: 346px !important;
+    max-width: calc(100% - 48px) !important;
     height: auto !important;
-    font-size: 36px !important;
+    font-size: 34px !important;
     line-height: 55px !important;
     text-align: left !important;
-    margin-top: 0 !important;
-    margin-bottom: 32.04px !important;
-    margin-left: 30px !important;
-    /* Strict 30px gap to left screen */
-    margin-right: auto !important;
+    margin: 0 !important;
     padding: 0 !important;
     color: #FFFFFF !important;
   }
@@ -2179,32 +2178,30 @@
   }
 
   .insights-page-body .cs-pre-footer .btn-pre-footer {
-    position: relative !important;
-    top: auto !important;
-    transform: none !important;left: auto !important;
+    position: absolute !important;
+    top: 305px !important;
+    transform: none !important;
+    left: 24px !important;
     right: auto !important;
     bottom: auto !important;
-    width: 239px !important;
+    width: auto !important;
+    max-width: calc(100% - 48px) !important;
     height: 42px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 30px !important;
-    /* Strict 30px gap to left screen */
-    margin-right: 124px !important;
-    /* Strict right gap to match 125px request roughly */
-    padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 20px 0 8px !important;
     background: #FFFFFF !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
   .insights-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
-    position: absolute !important;
-    top: 5px !important;
-    left: 8px !important;
-    /* Matches exactly with Figma */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    flex: 0 0 auto !important;
     width: 32px !important;
-    /* Matches exactly with Figma */
     height: 32px !important;
+    margin-right: 6px !important;
     background: #FFA726 !important;
     border-radius: 24px !important;
     display: flex !important;
@@ -2217,21 +2214,18 @@
   }
 
   .insights-page-body .cs-pre-footer .btn-pre-footer .btn-text {
-    position: absolute !important;
-    top: 5px !important;
-    left: 46.47px !important;
-    /* 8 (left) + 32 (width) + 6.47 (gap) = 46.47px */
-    width: 186.95px !important;
-    height: 30px !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    white-space: nowrap !important;
     font-size: 16px !important;
     line-height: 30px !important;
     color: #1B3834 !important;
-    /* Text inside button should be green */
-    text-align: center !important;
-    /* Center text within Figma's bounding box */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    text-align: left !important;
+    letter-spacing: 0.01em !important;
+    display: block !important;
     margin: 0 !important;
     padding: 0 !important;
   }

@@ -54,7 +54,9 @@
         margin-bottom: 0 !important;
     }
 
-
+    .home-page-body .faq-mobile-item:last-child {
+        border-bottom: none !important;
+    }
 
     .home-page-body .faq-mobile-question {
         width: 100% !important;
