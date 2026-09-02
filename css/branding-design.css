@@ -1008,14 +1008,23 @@ body.branding-page-body {
     /* 37px on left and right */
     width: calc(100% - 74px) !important;
     /* Fill space leaving exactly 37px on each side */
+    /* Pin the box to the source image's own ratio (636x650) instead of
+       relying on height:auto alone - keeps the box a guaranteed, definite
+       size so the collage can never end up shrunk/clipped inside the
+       flex column on narrower phones or engines that size flex items
+       differently, matching the desktop CMS safeguard below. */
+    aspect-ratio: 636 / 650 !important;
     height: auto !important;
+    flex-shrink: 0 !important;
     overflow: hidden !important;
   }
 
   .branding-services-img.d-lg-none {
     display: block !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    /* CMS Safeguard (mobile): prevents distortion/cropping, mirrors desktop */
     object-position: center !important;
   }
 
