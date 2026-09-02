@@ -1160,7 +1160,7 @@ body.social-page-body {
      SOCIAL SUCCESS SECTION (MOBILE)
      ============================================== */
   .social-success-section {
-    padding-top: 31px;
+    padding-top: 41px;
     padding-bottom: 40px;
     background-color: #ffffff;
   }
@@ -1411,8 +1411,9 @@ body.social-page-body {
     justify-content: flex-start !important;
     letter-spacing: 0.01em !important;
   }
+}
 
-  /* ==============================================
+/* ==============================================
    GLOBAL OVERRIDES FOR SOCIAL MEDIA PAGE
    ============================================== */
 @media (min-width: 992px) {

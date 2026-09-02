@@ -845,8 +845,8 @@ body.social-page-body {
 
   .social-intro-section {
     padding-top: 60px;
-    padding-bottom: 34px;
-    /* 34px + 14px (heading margin) = 48px total gap to next section */
+    padding-bottom: 0;
+    /* Reduced gap to next section by removing 34px padding */
     background-color: #ffffff;
   }
 
@@ -909,6 +909,7 @@ body.social-page-body {
      ============================================== */
   .social-features-section {
     background-color: #ffffff;
+    padding-top: 32px !important;
   }
 
   .social-features-container {
@@ -1086,7 +1087,7 @@ body.social-page-body {
      SOCIAL SUCCESS SECTION (MOBILE)
      ============================================== */
   .social-success-section {
-    padding-top: 31px;
+    padding-top: 41px;
     padding-bottom: 40px;
     background-color: #ffffff;
   }

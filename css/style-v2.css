@@ -6252,6 +6252,34 @@ h6 {
     opacity: 1 !important;
   }
 
+  /* Services & Why SOLD pre-footer button (mobile): the base rule above is
+     a larger 239x42 box with a centered label, which reads bigger and has
+     a wider icon-to-text gap than index.html's button. Match index.html's
+     btn-pre-footer sizing/position exactly (225x43, left-aligned text). */
+  .services-page-body .btn-pre-footer,
+  .why-sold-page-body .btn-pre-footer {
+    width: 225px !important;
+    height: 43px !important;
+  }
+
+  .services-page-body .btn-pre-footer .icon-circle,
+  .why-sold-page-body .btn-pre-footer .icon-circle {
+    top: 4px !important;
+    left: 7.29px !important;
+    width: 35.42px !important;
+    height: 34px !important;
+  }
+
+  .services-page-body .btn-pre-footer .btn-text,
+  .why-sold-page-body .btn-pre-footer .btn-text {
+    top: 6px !important;
+    left: 52.18px !important;
+    /* 7.29 + 35.42 + 9.47 gap = 52.18px, matches index.html */
+    text-align: left !important;
+    justify-content: flex-start !important;
+    letter-spacing: 0.01em !important;
+  }
+
   /* ============================
      FOOTER - MOBILE
      ============================ */
@@ -7075,6 +7103,7 @@ h6 {
     width: 100% !important;
     height: auto !important;
     display: flex !important;
+    flex-wrap: nowrap !important;
     justify-content: center !important;
     align-items: center !important;
     gap: 11px !important;
@@ -7084,11 +7113,15 @@ h6 {
   .sf-title-part {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 800 !important;
-    font-size: 28px !important;
-    line-height: 34px !important;
+    /* Scales between 20px (320px screens) and 28px (430px+ screens) so
+       "The [logo] Success Formula" always fits on one line instead of
+       wrapping on narrower phones. */
+    font-size: clamp(20px, 7.2727vw - 3.2727px, 28px) !important;
+    line-height: 1.2 !important;
     letter-spacing: 0.01em !important;
     color: #263238 !important;
     text-align: center !important;
+    white-space: nowrap !important;
   }
 
   .sf-title-logo {
