@@ -590,8 +590,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 8.6111vw;
-  /* 124px gap from cards section */
+  padding-top: 5.2778vw;
+  /* 76px gap from cards section - matches services.html/why-sold.html .steps-section margin-top */
 }
 
 .sf-container {

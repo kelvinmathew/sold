@@ -3254,10 +3254,16 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
-    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+  }
+
+  /* Only the actual scrolling element (html) should suppress overscroll bounce -
+     applying this to body/.page-container too breaks wheel/touch scroll chaining
+     on mobile, since neither of those is the element that actually scrolls. */
+  html {
+    overscroll-behavior-y: none !important;
   }
 
   html::-webkit-scrollbar,
@@ -3780,10 +3786,16 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
-    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+  }
+
+  /* Only the actual scrolling element (html) should suppress overscroll bounce -
+     applying this to body/.page-container too breaks wheel/touch scroll chaining
+     on mobile, since neither of those is the element that actually scrolls. */
+  html {
+    overscroll-behavior-y: none !important;
   }
 
   html::-webkit-scrollbar,
@@ -4355,10 +4367,16 @@ h6 {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
-    overscroll-behavior-y: none !important;
     background-color: #F4F5F5 !important;
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+  }
+
+  /* Only the actual scrolling element (html) should suppress overscroll bounce -
+     applying this to body/.page-container too breaks wheel/touch scroll chaining
+     on mobile, since neither of those is the element that actually scrolls. */
+  html {
+    overscroll-behavior-y: none !important;
   }
 
   html::-webkit-scrollbar,
