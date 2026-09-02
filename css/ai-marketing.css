@@ -1256,41 +1256,6 @@ body.social-page-body {
   }
 
   /* ==============================================
-     TESTIMONIALS SECTION OVERRIDES (MOBILE)
-     ============================================== */
-  .social-page-body .testimonials-title {
-    margin-bottom: 5px !important;
-    /* Gap to card is 5px */
-    font-size: 27px !important;
-    line-height: 51px !important;
-    height: auto !important;
-    /* Kill the 144px fixed height from global CSS */
-    white-space: nowrap !important;
-    /* Strictly force to one line */
-    background: linear-gradient(177.09deg, #B9B9B9 -18.17%, #FFFFFF 110.39%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-  }
-
-  .social-page-body .testimonials-section .container {
-    margin-bottom: 0 !important;
-    /* Kill the 25px gap from global CSS */
-    height: auto !important;
-    /* Kill the 144px fixed height on the container */
-  }
-
-  .social-page-body .testimonials-title .mobile-break {
-    display: none !important;
-    /* Hide old breaks just in case */
-  }
-
-  .social-page-body .testimonials-carousel-wrapper {
-    margin-top: 0 !important;
-    /* Ensure gap is strictly controlled by the title margin */
-  }
-
-  /* ==============================================
      8. FAQ SECTION OVERRIDES (MOBILE)
      ============================================== */
   .faq-section-mobile {
