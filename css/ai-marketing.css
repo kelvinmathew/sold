@@ -1043,7 +1043,7 @@ body.social-page-body {
   .social-features-image-wrapper {
     width: 163px;
     height: 317px;
-    margin-left: 107px;
+    margin: 0 auto;
     position: relative;
     border-radius: 12px;
     overflow: hidden;

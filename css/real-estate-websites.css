@@ -917,7 +917,7 @@ body.social-page-body {
     /* Match mobile Figma image width */
     height: 316px;
     /* Match mobile Figma image height */
-    margin-left: 100px;
+    margin: 0 auto;
     /* Matches Figma: x=100 */
     position: relative;
     border-radius: 12px;
@@ -1405,7 +1405,7 @@ body.social-page-body {
   .social-features-image-wrapper {
     width: 163px;
     height: 317px;
-    margin-left: 100px;
+    margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
   }

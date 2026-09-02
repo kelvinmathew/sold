@@ -887,6 +887,70 @@ body.branding-page-body {
     width: 100% !important;
   }
 
+  /* 2a. INTRO SECTION (MOBILE) - actual markup classes used in
+     branding-design.html; mirrors .social-intro-* above so mobile matches
+     the other 6 service pages (bar + heading stay left, white section bg). */
+  .branding-intro-section {
+    background-color: #FFFFFF !important;
+    padding-top: 60px !important;
+    padding-bottom: 34px !important;
+  }
+
+  .branding-intro-container {
+    width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .branding-intro-row {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+
+  .branding-intro-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 11px !important;
+  }
+
+  .branding-intro-bar {
+    width: 4px !important;
+    height: 31px !important;
+    display: block !important;
+  }
+
+  .branding-intro-heading {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
+    color: #FFA726 !important;
+    margin: 0 !important;
+    width: auto !important;
+    white-space: nowrap !important;
+  }
+
+  .branding-intro-right {
+    width: 100% !important;
+  }
+
+  .branding-intro-desc {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 0.01em !important;
+    color: #0B0B0B !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 352px !important;
+  }
+
   /* ==============================================
      3. FULL VIEWPORT SECTION (MOBILE)
      ============================================== */
@@ -894,7 +958,8 @@ body.branding-page-body {
     background-color: #FFFFFF !important;
     height: auto !important;
     min-height: auto !important;
-    padding: 60px 0 !important;
+    padding-top: 36px !important;
+    padding-bottom: 60px !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
     overflow: hidden !important;

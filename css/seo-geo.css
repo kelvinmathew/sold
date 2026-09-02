@@ -966,7 +966,7 @@ body.social-page-body {
     /* Match mobile Figma image width */
     height: 316px;
     /* Match mobile Figma image height */
-    margin-left: 100px;
+    margin: 0 auto;
     /* Matches Figma: x=100 */
     position: relative;
     border-radius: 12px;
