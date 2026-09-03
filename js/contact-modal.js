@@ -76,11 +76,13 @@
 
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
-            // Below the desktop breakpoint this trigger isn't shown (header-nav
-            // is hidden in favor of the mobile menu), but guard anyway - let it
-            // fall through to the normal contact.html navigation on mobile.
-            if (window.innerWidth < DESKTOP_BREAKPOINT) return;
-            // If the fetch below hasn't resolved yet, also fall through to the
+            // Mobile has no Contact popup UI, so the button must do nothing at
+            // all - no popup, and no falling through to contact.html either.
+            if (window.innerWidth < DESKTOP_BREAKPOINT) {
+                e.preventDefault();
+                return;
+            }
+            // If the fetch below hasn't resolved yet, fall through to the
             // normal navigation rather than swallowing the click.
             if (!modalReady) return;
             e.preventDefault();
