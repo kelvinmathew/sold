@@ -31,8 +31,8 @@
     <div class="contact-modal-overlay active" id="contactModal">
         <div class="contact-modal-wrapper">
             <div class="contact-modal-container">
-                <!-- Close Button -->
-                <button class="contact-modal-close"
+                <!-- Close Button (Desktop) -->
+                <button class="contact-modal-close desktop-only"
                     onclick="document.getElementById('contactModal').classList.remove('active')">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18M6 6L18 18" stroke="#1B3834" stroke-width="2" stroke-linecap="round"
@@ -40,7 +40,7 @@
                     </svg>
                 </button>
 
-                <!-- Left Side (Dark Panel) -->
+                <!-- Left Side (Dark Panel) - Desktop only -->
                 <div class="contact-modal-left">
                     <h2 class="contact-title">Contact <br>The Team</h2>
 
@@ -64,16 +64,31 @@
                                 <img src="assets/images/Car.png" alt="Car"
                                     style="width: 24px; height: 24px; object-fit: contain;">
                             </div>
-                            <span style="max-width: 284px; width: 284px; display: inline-block;">The Meydan Hotel |
-                                Grandstand | Meydan Road, Dubai</span>
+                            <span style="max-width: 284px; width: 284px; display: inline-block;">Circle Mall, Level 2
+                                Jumeirah Village Circle, Dubai.</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Mobile Close Button (positioned in card container) -->
+                <button class="contact-modal-close-mobile"
+                    onclick="document.getElementById('contactModal').classList.remove('active')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#1B3834" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
                 <!-- Right Side (Form Panel) -->
                 <div class="contact-modal-right">
-                    <!-- Fallback path using dark logo found in assets -->
-                    <img src="assets/images/contactlogo.png" alt="SOLD Logo" class="contact-logo">
+                    <!-- Mobile Header (Logo + Title) -->
+                    <div class="mobile-contact-header mobile-only">
+                        <img src="assets/images/contactlogo.png" alt="SOLD Logo" class="mobile-contact-logo">
+                        <h2 class="mobile-contact-title">Contact The Team</h2>
+                    </div>
+
+                    <!-- Desktop Logo -->
+                    <img src="assets/images/contactlogo.png" alt="SOLD Logo" class="contact-logo desktop-only">
 
                     <form class="contact-form" onsubmit="event.preventDefault();">
                         <div class="form-row">
@@ -103,13 +118,13 @@
                         <div class="services-interest">
                             <label class="services-label">What services are you interested in?</label>
                             <div class="services-grid">
+                                <div class="service-checkbox selected">Design &amp; Branding</div>
                                 <div class="service-checkbox">Events</div>
-                                <div class="service-checkbox">Social Media</div>
-                                <div class="service-checkbox">SEO & GEO</div>
-                                <div class="service-checkbox">Website</div>
-                                <div class="service-checkbox selected">Design & Branding</div>
                                 <div class="service-checkbox">Lead Generation</div>
-                                <div class="service-checkbox">PR & Media</div>
+                                <div class="service-checkbox">SEO &amp; GEO</div>
+                                <div class="service-checkbox">PR &amp; Media</div>
+                                <div class="service-checkbox">Social Media</div>
+                                <div class="service-checkbox">Website</div>
                             </div>
                         </div>
 
@@ -127,6 +142,20 @@
                             <span class="btn-text">SEND MESSAGE</span>
                         </button>
                     </form>
+                </div>
+
+                <!-- Mobile Bottom Bar -->
+                <div class="mobile-contact-footer mobile-only">
+                    <div class="mobile-footer-info">
+                        <div class="mobile-footer-item">
+                            <img src="assets/images/Office.png" alt="Email" class="mobile-footer-icon">
+                            <span>growth@getsold.ae</span>
+                        </div>
+                        <div class="mobile-footer-item">
+                            <img src="assets/images/Call.png" alt="Call" class="mobile-footer-icon">
+                            <span>+971 58 593 1979</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

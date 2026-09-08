@@ -217,6 +217,8 @@
 .services-interest {
     margin-top: 15px;
     /* Offset the 25px regular gap to reach 389 y coord */
+    margin-left: 12px;
+    /* Nudged right of the other form rows so the gap from the left panel is 59px instead of 47px */
 }
 
 .services-label {
@@ -233,10 +235,14 @@
 
 .services-grid {
     display: grid;
-    grid-template-columns: 156px auto auto auto;
+    /* Was a fixed 484px with "auto" tracks, which left a large dead gap
+       between the grid and the form's right edge (every other row spans the
+       full 578px width) - stretch the last 3 columns so the row lines up
+       with the rest of the form instead. */
+    grid-template-columns: 156px repeat(3, 1fr);
     column-gap: 21px;
     row-gap: 0px;
-    width: 484px;
+    width: 100%;
     height: 45px;
     justify-content: start;
     align-items: center;
@@ -338,5 +344,305 @@
 @media (max-height: 650px) {
     .contact-modal-container {
         transform: scale(0.65);
+    }
+}
+
+/* =========================================================
+   VISIBILITY HELPERS – desktop vs mobile element toggling
+   ========================================================= */
+.mobile-only {
+    display: none !important;
+}
+
+/* Hide mobile-specific close button on desktop */
+.contact-modal-close-mobile {
+    display: none !important;
+}
+
+/* =========================================================
+   MOBILE LAYOUT – Figma-faithful single white card
+   Designed width 351px, scales fluid on all phones (320-430px+)
+   ========================================================= */
+@media (max-width: 767px) {
+
+    /* --- Visibility toggles --- */
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: flex !important;
+    }
+
+    /* --- Overlay: full-screen centered host --- */
+    .contact-modal-overlay {
+        background: rgba(0, 0, 0, 0.35);
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .contact-modal-wrapper {
+        align-items: center;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* --- Card: White rounded container --- */
+    .contact-modal-container {
+        transform: none;
+        width: calc(100% - 0px);
+        max-width: 351px;
+        height: auto;
+        min-height: auto;
+        border-radius: 17px;
+        flex-direction: column;
+        overflow: visible;
+        box-shadow: 0 4px 40px rgba(0, 0, 0, 0.12);
+        position: relative;
+    }
+
+    /* --- Hide the desktop left panel entirely --- */
+    .contact-modal-left {
+        display: none;
+    }
+
+    /* --- Mobile close button (top-right of card) --- */
+    .contact-modal-close-mobile {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+        padding: 4px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- Right panel becomes the only panel --- */
+    .contact-modal-right {
+        width: 100%;
+        background: #FFFFFF;
+        padding: 60px 24px 20px;
+        box-sizing: border-box;
+        border-radius: 17px 17px 0 0;
+        position: relative;
+    }
+
+    /* --- Mobile header: Logo + Title --- */
+    .mobile-contact-header {
+        display: flex !important;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .mobile-contact-logo {
+        width: 109px;
+        height: 39px;
+        object-fit: contain;
+        object-position: left;
+    }
+
+    .mobile-contact-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 19px;
+        line-height: 1.2em;
+        color: #1B3834;
+        margin: 0;
+        text-align: left;
+    }
+
+    /* --- Form: stacked single-column layout --- */
+    .contact-form {
+        width: 100%;
+        gap: 12px !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px !important;
+    }
+
+    .form-row .form-group:first-child,
+    .form-row .form-group:nth-child(2) {
+        flex: 1 1 auto;
+    }
+
+    /* Input fields: Figma 303×36px → responsive full-width */
+    .form-control-custom {
+        width: 100% !important;
+        height: 36px;
+        background: #D1D5D9;
+        border: none;
+        padding: 0 19px;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        color: #1B3834;
+    }
+
+    .form-control-custom::placeholder {
+        color: #1B3834;
+        opacity: 1;
+    }
+
+    /* Override any desktop-specific input padding */
+    .form-row .form-group:first-child input.form-control-custom {
+        padding-left: 19px;
+    }
+
+    /* --- Services section --- */
+    .services-interest {
+        margin-top: 16px;
+        /* 12px + 16px = 28px section gap */
+        margin-left: 0;
+    }
+
+    .services-label {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        color: #1B3834;
+        margin-bottom: 18px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: max-content max-content max-content;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+        row-gap: 12px;
+        column-gap: 0;
+    }
+
+    .service-checkbox {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        color: #1B3834;
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+        width: auto !important;
+        text-align: left !important;
+    }
+
+    /* Force column alignments to mimic flex space-between row edges */
+    .service-checkbox:nth-child(3n+1) {
+        justify-self: start;
+    }
+
+    .service-checkbox:nth-child(3n+2) {
+        justify-self: center;
+    }
+
+    .service-checkbox:nth-child(3n) {
+        justify-self: end;
+    }
+
+    .service-checkbox.selected {
+        color: #FFA726;
+    }
+
+    /* --- Message textarea --- */
+    .form-row.message-row {
+        margin-top: 16px;
+    }
+
+    .message-group .form-control-custom {
+        width: 100% !important;
+        height: 109px;
+        padding: 15px 19px;
+        resize: none;
+        font-size: 12px;
+    }
+
+    /* --- Send button: Figma 180×40px --- */
+    .btn-send-message {
+        margin-top: 16px;
+        width: 180px;
+        height: 40px;
+        background: #263238;
+        border-radius: 55px;
+        justify-content: flex-start;
+        padding-left: 7px;
+    }
+
+    .btn-send-message .icon-circle {
+        width: 24px;
+        height: 24px;
+        background: #FFA726;
+        border-radius: 24px;
+    }
+
+
+    .btn-send-message .btn-text {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 30px;
+        letter-spacing: 0.01em;
+        color: #FFFFFF;
+        margin-left: 10.53px;
+    }
+
+    /* --- Mobile bottom bar --- */
+    .mobile-contact-footer {
+        display: flex !important;
+        width: 100%;
+        background: #263238;
+        border-radius: 0 0 17px 17px;
+        padding: 13px 22px;
+        box-sizing: border-box;
+    }
+
+    .mobile-footer-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mobile-footer-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .mobile-footer-item span {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 29px;
+        letter-spacing: 0.01em;
+        color: #FFFFFF;
+    }
+
+    .mobile-footer-icon {
+        width: 12px;
+        height: 12px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    /* --- Contact logo (desktop version hidden, mobile header used instead) --- */
+    .contact-logo {
+        display: none;
     }
 }
