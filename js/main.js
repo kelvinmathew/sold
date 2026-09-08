@@ -101,6 +101,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Services Nav Dropdown (Desktop)
+    document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dropdown.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        document.querySelectorAll('.nav-item-dropdown.open').forEach(dropdown => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.nav-item-dropdown.open').forEach(dropdown => {
+                dropdown.classList.remove('open');
+                const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    // Services Offcanvas Dropdown (Mobile)
+    document.querySelectorAll('.offcanvas-item-dropdown').forEach(dropdown => {
+        const toggle = dropdown.querySelector('.offcanvas-dropdown-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dropdown.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+
     // Contact Popup Modal (Web Only) - handled by js/contact-modal.js, which
     // fetches the modal markup from contact.html so it only needs to be
     // edited in one place.

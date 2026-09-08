@@ -381,7 +381,7 @@
 
   .ws-founders-container {
     width: 79.5139cqi;
-    height: 68.75cqi;
+    height: 40.5556cqi; /* Sized for the single remaining founder card */
     margin-left: 10.2778cqi;
     margin-right: 10.2083cqi;
     padding: 0;
@@ -557,106 +557,6 @@
     border-radius: 0.6944cqi;
   }
 
-  /* Founder 2 */
-  .ws-founder-2 {
-    position: absolute;
-    top: 38.4028cqi; /* 97 + 390 + 66 gap */
-    left: 0;
-    width: 79.4444cqi;
-    height: 30.3472cqi;
-    display: block;
-  }
-
-  .ws-founder-2 .ws-founder-info {
-    position: absolute;
-    top: 4.9021cqi;
-    left: 36.4583cqi;
-    width: 39.5833cqi;
-    height: 22.2222cqi;
-    padding: 0;
-    display: block;
-  }
-
-  .ws-founder-2 .ws-founder-name {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20.4167cqi;
-    height: 2.0833cqi;
-    margin: 0;
-    font-family: 'Mona Sans', sans-serif;
-    font-weight: 700;
-    font-size: 2.1528cqi;
-    line-height: 1.3194cqi;
-    letter-spacing: 0.02em;
-    color: #263238;
-    display: flex;
-    align-items: center;
-  }
-
-  .ws-founder-2 .ws-founder-subtitle {
-    position: absolute;
-    top: 2.5694cqi;
-    left: 0;
-    width: 17.6389cqi;
-    height: 2.0833cqi;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1.1875cqi;
-    line-height: 2.0833cqi;
-    color: #FFA726;
-    display: flex;
-    align-items: center;
-  }
-
-  .ws-founder-2 .ws-founder-bio {
-    position: absolute;
-    top: 5.9722cqi;
-    left: 0;
-    width: 39.5833cqi;
-    height: 6.9444cqi;
-    margin: 0;
-    font-family: 'Mona Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.4583cqi;
-    line-height: 1.7361cqi;
-    letter-spacing: 0.02em;
-    color: #0F0F0F;
-  }
-
-  .ws-founder-2 .ws-founder-btn {
-    position: absolute;
-    top: 18.125cqi;
-    left: 0;
-    width: 18.8194cqi;
-    height: 4.0896cqi;
-    margin: 0;
-    padding: 0;
-    border-radius: 3.8194cqi;
-    background: #263238;
-    display: block;
-  }
-
-  .ws-founder-2 .ws-founder-photo-wrap {
-    position: absolute;
-    top: 2.2917cqi;
-    left: 3.3333cqi;
-    width: 26.6667cqi;
-    height: 26.1806cqi;
-    border-radius: 0.6944cqi;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  .ws-founder-2 .ws-founder-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.6944cqi;
-  }
-
   /* Founder Typography */
   .ws-founder-name {
     font-family: 'Mona Sans', sans-serif;
@@ -678,10 +578,6 @@
     margin: 0 0 1.3194cqi 0;
   }
 
-  .ws-founder-2 .ws-founder-subtitle {
-    letter-spacing: 0;
-  }
-
   .ws-founder-bio {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
@@ -690,10 +586,6 @@
     letter-spacing: 0.02em;
     color: #0F0F0F;
     margin: 0;
-  }
-
-  .ws-founder-2 .ws-founder-bio {
-    font-size: 1.4583cqi;
   }
 
   .ws-founder-btn {
@@ -706,11 +598,6 @@
 
   .ws-founder-1 .ws-founder-btn {
     top: 16.5972cqi;
-    left: 0;
-  }
-
-  .ws-founder-2 .ws-founder-btn {
-    bottom: 0; /* Auto pins to bottom of 22.2222cqi info block */
     left: 0;
   }
 
@@ -1363,21 +1250,20 @@
     100% { opacity: 1; transform: scale(1); }
   }
 
-  /* --- Info Cards Stack Animation --- */
+  /* --- Info Cards: static vertical stack (no scroll animation) --- */
   .ws-info-cards {
     position: relative;
     width: 31.3889cqi;
-    height: 52.0833cqi; /* Increased to allow cards to appear from below */
-    display: block;
-    overflow: hidden; /* Clips the bottoms of cards that are pushed down */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4583cqi; /* 21px */
   }
 
   .ws-info-card {
-    position: absolute;
-    left: 0;
+    position: relative;
     width: 31.3889cqi;
     height: 16.9444cqi; /* Matches Figma size perfectly */
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .ws-info-desc {
@@ -1385,21 +1271,6 @@
     max-height: none;
     margin-top: 0;
   }
-
-  /* Scroll Phase 0: Card 1 Active, Card 2 initially visible below */
-  .scroll-phase-0 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
-  .scroll-phase-0 .ws-info-card-2 { transform: translateY(18.4028cqi); z-index: 2; } /* 244 + 21 */
-  .scroll-phase-0 .ws-info-card-3 { transform: translateY(36.8056cqi); z-index: 3; } /* 265 + 244 + 21 */
-
-  /* Scroll Phase 1: Card 2 Covers Card 1 (Logo Visible), Card 3 Appears Below */
-  .scroll-phase-1 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
-  .scroll-phase-1 .ws-info-card-2 { transform: translateY(6.3194cqi); z-index: 2; } /* Leaves Card 1 Logo Exposed */
-  .scroll-phase-1 .ws-info-card-3 { transform: translateY(24.7222cqi); z-index: 3; } /* 91 + 244 + 21 */
-
-  /* Scroll Phase 2: Card 3 Covers Card 2 (Logo Visible) */
-  .scroll-phase-2 .ws-info-card-1 { transform: translateY(0px); z-index: 1; }
-  .scroll-phase-2 .ws-info-card-2 { transform: translateY(0px); z-index: 2; }
-  .scroll-phase-2 .ws-info-card-3 { transform: translateY(0px); z-index: 3; }
 }
 
 @media (max-width: 991px) {
@@ -1526,13 +1397,6 @@
     order: 2;
   }
   
-  /* Card 2 order (Match Card 1 on mobile: Info then Photo) */
-  .ws-founder-2 .ws-founder-info {
-    order: 1;
-  }
-  .ws-founder-2 .ws-founder-photo-wrap {
-    order: 2;
-  }
   .ws-founder-info {
     display: flex !important;
     flex-direction: column !important;
@@ -1645,11 +1509,7 @@
   .ws-founder-1 .ws-founder-photo-wrap {
     height: 75.32vw !important; /* 296px */
   }
-  
-  .ws-founder-2 .ws-founder-photo-wrap {
-    height: 77.35vw !important; /* 304px */
-  }
-  
+
   .ws-founder-photo {
     border-radius: 2.54vw !important; /* 10px */
     width: 100% !important;
@@ -1990,53 +1850,6 @@
   
   .ws-founder-1 .ws-founder-photo-wrap {
     top: 71.76vw !important; /* 282px */
-  }
-
-  /* Exact Coordinates for Founder Card 2 */
-  .ws-founder-card.ws-founder-2 {
-    height: 168.70vw !important; /* 663px total calculated height */
-    padding: 0 !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-  
-  .ws-founder-2 .ws-founder-info {
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-  }
-  
-  .ws-founder-2 .ws-founder-name,
-  .ws-founder-2 .ws-founder-subtitle,
-  .ws-founder-2 .ws-founder-bio,
-  .ws-founder-2 .ws-founder-btn,
-  .ws-founder-2 .ws-founder-photo-wrap {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    margin: 0 !important;
-  }
-  
-  .ws-founder-2 .ws-founder-name {
-    top: 7.89vw !important; /* 31px */
-  }
-  
-  .ws-founder-2 .ws-founder-subtitle {
-    top: 15.01vw !important; /* 59px */
-  }
-  
-  .ws-founder-2 .ws-founder-bio {
-    top: 23.16vw !important; /* 91px */
-  }
-  
-  .ws-founder-2 .ws-founder-btn {
-    top: 63.36vw !important; /* 249px */
-  }
-  
-  .ws-founder-2 .ws-founder-photo-wrap {
-    top: 82.44vw !important; /* 324px */
   }
 }
 
