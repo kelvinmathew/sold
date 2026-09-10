@@ -3,6 +3,172 @@
    Provides perfectly scaled identical output to Figma mockups globally
    ========================================================================= */
 
+/* Screen-reader-only live region: announces "Sending...", success and error
+   text to assistive tech without any visual footprint (the visible feedback
+   is the centered popup below + the inline field tooltips). */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Per-field validation - a floating tooltip anchored to the field itself
+   (position: absolute, taken out of flow) so an error never pushes the
+   field's row, or any row after it, down. .form-group is its containing
+   block (position: relative, added below). */
+.field-error:empty {
+    display: none;
+}
+
+.field-error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    /* White card + a red accent, not a solid red block - reads as a subtle
+       tooltip rather than an alarming banner. */
+    background: #FFFFFF;
+    color: #C5221F;
+    border: 1px solid #F6C2BF;
+    font-family: 'Inter', var(--font-body, sans-serif);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 6px 10px 6px 9px;
+    border-left: 3px solid #C5221F;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    z-index: 5;
+    /* Decorative bubble only - never blocks clicks on whatever it overlaps
+       (e.g. the row below it, or the services list). */
+    pointer-events: none;
+}
+
+/* Tiny bordered speech-bubble arrow: a slightly larger border-colored
+   triangle behind a slightly smaller white one on top, so the arrow shows
+   the same thin outline as the card instead of a flat solid wedge. */
+.field-error::before,
+.field-error::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.field-error::before {
+    top: -7px;
+    border-bottom: 6px solid #F6C2BF;
+}
+
+.field-error::after {
+    top: -6px;
+    border-bottom: 6px solid #FFFFFF;
+}
+
+.form-group.has-error .form-control-custom {
+    box-shadow: 0 0 0 1.5px #C5221F inset;
+}
+
+/* =========================================================
+   RESULT POPUP - centered success/error confirmation
+   Fixed to the viewport (not the scaled/transformed
+   .contact-modal-container) so it centers correctly on every
+   breakpoint, and lives as a direct child of #contactModal so it
+   travels along whenever js/contact-modal.js injects the modal
+   into another page.
+   ========================================================= */
+.contact-result-popup {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contact-result-popup.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.contact-result-popup-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 40px 36px 36px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.25);
+    transform: translateY(8px);
+    transition: transform 0.25s ease;
+}
+
+.contact-result-popup.active .contact-result-popup-card {
+    transform: translateY(0);
+}
+
+.contact-result-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    color: #8A9296;
+    padding: 8px;
+}
+
+.contact-result-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.contact-result-popup.is-success .contact-result-icon {
+    background: #E6F4EA;
+    color: #1E7B34;
+}
+
+.contact-result-popup.is-error .contact-result-icon {
+    background: #FDECEA;
+    color: #C5221F;
+}
+
+.contact-result-message {
+    font-family: 'Inter', var(--font-body, sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+    color: #1B3834;
+    margin: 0;
+}
+
 /* General Reset for the standalone wrapper, ensuring the backdrop sits fixed */
 .contact-modal-overlay {
     position: fixed;
@@ -56,7 +222,13 @@
     position: absolute;
     top: 25px;
     right: 25px;
-    background: none;
+    /* .contact-modal-right can still scroll internally on desktop as a
+       last-resort safety net (see below) - this button lives outside that
+       scroll area, so give it an opaque backdrop or scrolled-under content
+       would visually collide with it. */
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
     border: none;
     cursor: pointer;
     z-index: 10;
@@ -138,6 +310,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    /* Last-resort safety net only (desktop): validation errors are floating
+       tooltips and the success/error message is a separate centered popup,
+       so nothing here should add real height any more. Kept anyway in case
+       of an unusually long ACF-edited label - the card above this has a
+       fixed height + overflow:hidden to match the Figma frame exactly, so
+       without this, an overflow would be clipped and unreachable rather
+       than just scrollable. Disabled on mobile (below) in favor of letting
+       the whole modal scroll as one piece. */
+    overflow-y: auto;
 }
 
 .contact-logo {
@@ -161,7 +342,10 @@
 .form-row {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* flex-start (not center): when one field in a row shows an inline error
+       below it and its sibling doesn't, this keeps both inputs' tops level
+       instead of vertically centering them out of alignment. */
+    align-items: flex-start;
     gap: 41px;
     width: 100%;
 }
@@ -173,6 +357,9 @@
 .form-group {
     display: flex;
     flex-direction: column;
+    /* Containing block for .field-error, which is position: absolute so its
+       tooltip never affects this group's (or any row's) height. */
+    position: relative;
 }
 
 .form-row .form-group:first-child {
@@ -354,6 +541,13 @@
     display: none !important;
 }
 
+/* The mobile-specific service list (adds "All Services" / "AI Marketing" to
+   match the Figma mobile spec) stays hidden until the mobile breakpoint
+   below swaps it in for .desktop-only-grid. */
+.mobile-only-grid {
+    display: none !important;
+}
+
 /* Hide mobile-specific close button on desktop */
 .contact-modal-close-mobile {
     display: none !important;
@@ -412,7 +606,8 @@
     /* --- Mobile close button (top-right of card) --- */
     .contact-modal-close-mobile {
         position: absolute;
-        top: 20px;
+        top: 26px;
+        /* Figma: close sits beside the logo row, not below it */
         right: 20px;
         background: none;
         border: none;
@@ -428,10 +623,17 @@
     .contact-modal-right {
         width: 100%;
         background: #FFFFFF;
-        padding: 60px 24px 20px;
+        padding: 38px 20px 20px;
+        /* Figma: pt-38 px-20 pb-20 */
         box-sizing: border-box;
         border-radius: 17px 17px 0 0;
         position: relative;
+        /* Undo the desktop safety-net scrollbar: on mobile the card already
+           grows to fit its content (.contact-modal-container is height:auto
+           here) and .contact-modal-overlay itself scrolls - so the whole
+           modal moves as one piece instead of this one panel scrolling
+           inside a fixed-height card. */
+        overflow: visible;
     }
 
     /* --- Mobile header: Logo + Title --- */
@@ -439,7 +641,8 @@
         display: flex !important;
         flex-direction: column;
         gap: 12px;
-        margin-bottom: 28px;
+        margin-bottom: 20px;
+        /* Figma: gap-20 between header and the fields below it */
     }
 
     .mobile-contact-logo {
@@ -476,6 +679,49 @@
         flex: 1 1 auto;
     }
 
+    /* --- Field order: Figma stacks First, Last, Phone, Company, Email.
+       Desktop keeps its own First+Last / Email+Phone / Company row pairing
+       (untouched), so reorder here instead of changing the shared markup:
+       collapse the field rows into .contact-form's flex flow and reorder
+       the individual fields with `order`. --- */
+    .form-row-fields {
+        display: contents;
+    }
+
+    .field-first {
+        order: 1;
+    }
+
+    .field-last {
+        order: 2;
+    }
+
+    .field-phone {
+        order: 3;
+    }
+
+    .field-company {
+        order: 4;
+    }
+
+    .field-email {
+        order: 5;
+    }
+
+    /* Stacked fields only have the .contact-form gap (12px) between them -
+       not enough clearance for a ~30px tooltip bubble before the next field
+       starts, so it would otherwise cover that field's placeholder text
+       entirely. This extra margin is constant (not tied to error state, so
+       it never shifts anything when an error appears/clears) - it just
+       reserves the room up front. */
+    .field-first,
+    .field-last,
+    .field-phone,
+    .field-company,
+    .field-email {
+        margin-bottom: 22px;
+    }
+
     /* Input fields: Figma 303×36px → responsive full-width */
     .form-control-custom {
         width: 100% !important;
@@ -502,18 +748,59 @@
         padding-left: 19px;
     }
 
+    .field-error {
+        font-size: 11px;
+        line-height: 14px;
+        margin-top: 6px;
+        padding: 5px 9px;
+    }
+
+    .contact-result-popup-card {
+        padding: 32px 24px 28px;
+        max-width: 320px;
+    }
+
+    .contact-result-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .contact-result-message {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
     /* --- Services section --- */
     .services-interest {
         margin-top: 16px;
         /* 12px + 16px = 28px section gap */
         margin-left: 0;
+        order: 6;
+        /* Scale the chip row to the card's actual rendered width (not the
+           viewport) so it stays proportional to the 311px Figma reference
+           on every phone size, down to the narrowest (iPhone SE ~320px)
+           without the row overflowing the card. */
+        container-type: inline-size;
+    }
+
+    /* Swap in the mobile-specific service list (Figma adds "All Services"
+       and "AI Marketing"); desktop's 7-item list stays untouched. */
+    .desktop-only-grid {
+        display: none !important;
+    }
+
+    .mobile-only-grid {
+        display: grid !important;
     }
 
     .services-label {
         font-family: 'Inter', sans-serif;
         font-weight: 400;
-        font-size: 13px;
-        line-height: 20px;
+        font-size: 4.1801cqi;
+        /* 13px at the 311px reference width */
+        line-height: 1.54;
         letter-spacing: 0.01em;
         color: #1B3834;
         margin-bottom: 18px;
@@ -525,15 +812,18 @@
         justify-content: space-between;
         width: 100%;
         height: auto;
-        row-gap: 12px;
+        row-gap: 3.858cqi;
+        /* 12px at the 311px reference width */
         column-gap: 0;
     }
 
     .service-checkbox {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
-        font-size: 13px;
-        line-height: 20px;
+        font-size: 4.1801cqi;
+        /* 13px at the 311px reference width, scales with the card so the
+           row never overflows on narrow phones */
+        line-height: 1.54;
         letter-spacing: 0.01em;
         color: #1B3834;
         cursor: pointer;
@@ -563,11 +853,13 @@
     /* --- Message textarea --- */
     .form-row.message-row {
         margin-top: 16px;
+        order: 7;
     }
 
     .message-group .form-control-custom {
         width: 100% !important;
-        height: 109px;
+        height: 93px;
+        /* Figma: h-93 */
         padding: 15px 19px;
         resize: none;
         font-size: 12px;
@@ -576,6 +868,7 @@
     /* --- Send button: Figma 180×40px --- */
     .btn-send-message {
         margin-top: 16px;
+        order: 8;
         width: 180px;
         height: 40px;
         background: #263238;
@@ -638,7 +931,8 @@
         width: 12px;
         height: 12px;
         object-fit: contain;
-        filter: brightness(0) invert(1);
+        /* Office.png/Call.png are already the orange Figma icons - forcing
+           them white here doesn't match the design. */
     }
 
     /* --- Contact logo (desktop version hidden, mobile header used instead) --- */

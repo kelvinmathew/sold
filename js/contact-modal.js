@@ -64,12 +64,11 @@
             }
         });
 
-        // Service interest checkboxes (same behavior as the standalone contact page)
-        contactModal.querySelectorAll('.service-checkbox').forEach(box => {
-            box.addEventListener('click', function () {
-                this.classList.toggle('selected');
-            });
-        });
+        // Wire the form (checkboxes, validation tooltips, result popup) on
+        // the injected instance - see js/contact-form-local.js.
+        if (typeof window.soldInitContactForm === 'function') {
+            window.soldInitContactForm(contactModal);
+        }
 
         modalReady = true;
     };

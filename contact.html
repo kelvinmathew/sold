@@ -20,7 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="css/style.css?v=13" rel="stylesheet" />
-    <link href="css/contact.css?v=2" rel="stylesheet" />
+    <link href="css/contact.css?v=3" rel="stylesheet" />
 </head>
 
 <body class="home-page-body">
@@ -90,47 +90,67 @@
                     <!-- Desktop Logo -->
                     <img src="assets/images/contactlogo.png" alt="SOLD Logo" class="contact-logo desktop-only">
 
-                    <form class="contact-form" onsubmit="event.preventDefault();">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" class="form-control-custom" placeholder="First Name*">
+                    <form class="contact-form" id="sold-contact-form" novalidate>
+                        <div class="sold-sr-status sr-only" role="status" aria-live="polite"></div>
+
+                        <div class="form-row form-row-fields">
+                            <div class="form-group field-first">
+                                <input type="text" name="first_name" class="form-control-custom" placeholder="First Name*" required>
+                                <span class="field-error" data-error-for="first_name"></span>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control-custom" placeholder="Last Name*">
+                            <div class="form-group field-last">
+                                <input type="text" name="last_name" class="form-control-custom" placeholder="Last Name*" required>
+                                <span class="field-error" data-error-for="last_name"></span>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="email" class="form-control-custom" placeholder="Email*">
+                        <div class="form-row form-row-fields">
+                            <div class="form-group field-email">
+                                <input type="email" name="email" class="form-control-custom" placeholder="Email*" required>
+                                <span class="field-error" data-error-for="email"></span>
                             </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control-custom" placeholder="Phone Number*">
+                            <div class="form-group field-phone">
+                                <input type="tel" name="phone" class="form-control-custom" placeholder="Phone Number*" required>
+                                <span class="field-error" data-error-for="phone"></span>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" class="form-control-custom" placeholder="Company Name*">
+                        <div class="form-row form-row-fields">
+                            <div class="form-group field-company">
+                                <input type="text" name="company" class="form-control-custom" placeholder="Company Name*" required>
+                                <span class="field-error" data-error-for="company"></span>
                             </div>
                         </div>
 
                         <div class="services-interest">
                             <label class="services-label">What services are you interested in?</label>
-                            <div class="services-grid">
-                                <div class="service-checkbox selected">Design &amp; Branding</div>
-                                <div class="service-checkbox">Events</div>
-                                <div class="service-checkbox">Lead Generation</div>
-                                <div class="service-checkbox">SEO &amp; GEO</div>
-                                <div class="service-checkbox">PR &amp; Media</div>
-                                <div class="service-checkbox">Social Media</div>
-                                <div class="service-checkbox">Website</div>
+                            <!-- Desktop service list -->
+                            <div class="services-grid desktop-only-grid">
+                                <div class="service-checkbox selected" data-value="Design &amp; Branding">Design &amp; Branding</div>
+                                <div class="service-checkbox" data-value="Events">Events</div>
+                                <div class="service-checkbox" data-value="Lead Generation">Lead Generation</div>
+                                <div class="service-checkbox" data-value="SEO &amp; GEO">SEO &amp; GEO</div>
+                                <div class="service-checkbox" data-value="PR &amp; Media">PR &amp; Media</div>
+                                <div class="service-checkbox" data-value="Social Media">Social Media</div>
+                                <div class="service-checkbox" data-value="Website">Website</div>
+                            </div>
+                            <!-- Mobile service list (matches Figma: adds "All Services" and "AI Marketing") -->
+                            <div class="services-grid mobile-only-grid">
+                                <div class="service-checkbox" data-value="All Services">All Services</div>
+                                <div class="service-checkbox selected" data-value="Design &amp; Branding">Design &amp; Branding</div>
+                                <div class="service-checkbox" data-value="Events">Events</div>
+                                <div class="service-checkbox" data-value="Lead Generation">Lead Generation</div>
+                                <div class="service-checkbox" data-value="SEO &amp; GEO">SEO &amp; GEO</div>
+                                <div class="service-checkbox" data-value="PR &amp; Media">PR &amp; Media</div>
+                                <div class="service-checkbox" data-value="AI Marketing">AI Marketing</div>
+                                <div class="service-checkbox" data-value="Social Media">Social Media</div>
+                                <div class="service-checkbox" data-value="Website">Website</div>
                             </div>
                         </div>
 
                         <div class="form-row full-row message-row">
                             <div class="form-group message-group" style="width: 100%;">
-                                <textarea class="form-control-custom" placeholder="Message"></textarea>
+                                <textarea name="message" class="form-control-custom" placeholder="Message"></textarea>
                             </div>
                         </div>
 
@@ -159,16 +179,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Result popup: a sibling of .contact-modal-wrapper (not nested inside
+             .contact-modal-container, which gets transform: scale() at some
+             breakpoints - nesting inside it would make this popup's
+             position: fixed relative to that scaled box instead of the real
+             viewport). Lives inside #contactModal so it travels along
+             whenever js/contact-modal.js injects the modal into another page. -->
+        <div class="contact-result-popup" id="contactResultPopup" role="alertdialog" aria-live="assertive">
+            <div class="contact-result-popup-card">
+                <button type="button" class="contact-result-popup-close" aria-label="Close">&times;</button>
+                <div class="contact-result-icon" aria-hidden="true"></div>
+                <p class="contact-result-message"></p>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // Toggle active state for checkboxes visually matching the Figma design
-        document.querySelectorAll('.service-checkbox').forEach(box => {
-            box.addEventListener('click', function () {
-                this.classList.toggle('selected');
-            });
-        });
-    </script>
+    <script src="js/contact-form-local.js?v=1"></script>
 </body>
 
 </html>

@@ -1,48 +1,156 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
+  // Our Team - Mobile Auto-Scroll Carousel
+  // Same infinite-loop clone/slide technique as the testimonials carousel
+  // (js/main.js / js/main-v2.js), scoped to its own selectors so it doesn't
+  // touch or depend on that carousel.
+  // ==========================================
+  (function initTeamMobileCarousel() {
+    const track = document.querySelector('.ws-team-mobile-track');
+    const prevBtn = document.querySelector('.ws-team-prev-btn');
+    const nextBtn = document.querySelector('.ws-team-next-btn');
+    const dots = document.querySelectorAll('.ws-team-dots .dot');
+
+    if (!track || !prevBtn || !nextBtn || !dots.length) return;
+
+    let isAnimating = false;
+    let currentIndex = 0;
+    const numCards = dots.length;
+
+    const updateDots = () => {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    };
+
+    track.style.justifyContent = 'flex-start';
+
+    const slide = (direction) => {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const cards = Array.from(track.children);
+      if (cards.length === 0) {
+        isAnimating = false;
+        return;
+      }
+
+      const style = window.getComputedStyle(track);
+      const gapVal = parseFloat(style.gap);
+      const gap = isNaN(gapVal) ? 0 : gapVal;
+      const moveAmount = cards[0].offsetWidth + gap;
+
+      if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % numCards;
+        updateDots();
+
+        const clone = cards[0].cloneNode(true);
+        track.appendChild(clone);
+
+        track.style.transition = 'transform 0.4s ease';
+        track.style.transform = `translateX(-${moveAmount}px)`;
+
+        setTimeout(() => {
+          track.style.transition = 'none';
+          track.removeChild(track.firstElementChild);
+          track.style.transform = 'translateX(0)';
+          isAnimating = false;
+        }, 400);
+      } else {
+        currentIndex = (currentIndex - 1 + numCards) % numCards;
+        updateDots();
+
+        const clone = track.lastElementChild.cloneNode(true);
+        track.prepend(clone);
+
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${moveAmount}px)`;
+
+        void track.offsetWidth; // Force reflow
+
+        track.style.transition = 'transform 0.4s ease';
+        track.style.transform = 'translateX(0)';
+
+        setTimeout(() => {
+          track.style.transition = 'none';
+          track.removeChild(track.lastElementChild);
+          isAnimating = false;
+        }, 400);
+      }
+    };
+
+    let autoScrollInterval;
+
+    const startAutoScroll = () => {
+      autoScrollInterval = setInterval(() => {
+        slide('next');
+      }, 3500);
+    };
+
+    const resetAutoScroll = () => {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    };
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      slide('next');
+      resetAutoScroll();
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      slide('prev');
+      resetAutoScroll();
+    });
+
+    startAutoScroll();
+  })();
+
+  // ==========================================
   // Client Arc Rotation and Interaction Logic
   // ==========================================
   const clientsSection = document.querySelector('.ws-clients-section');
   const arcContainer = document.querySelector('.ws-clients-arc-container');
   const originalLogos = Array.from(document.querySelectorAll('.ws-client-logo'));
-  
+
   if (clientsSection && arcContainer && originalLogos.length > 0) {
     // Clear container to rebuild dynamically
     arcContainer.innerHTML = '';
-    
+
     // The original DOM order is 1 to 9.
     // Visually clockwise from left to right they are: 5, 4, 3, 2, 1, 6, 7, 8, 9
     // Original indices (0-based): 4, 3, 2, 1, 0, 5, 6, 7, 8
     const clockwiseIndices = [4, 3, 2, 1, 0, 5, 6, 7, 8];
     // Duplicate to complete 360 degrees (18 logos * 20 degrees = 360)
     const fullCircleIndices = [...clockwiseIndices, ...clockwiseIndices];
-    
+
     const activeLogos = [];
     const radius = 530;
     const centerX = 612; // 1224 / 2
     const centerY = 600; // Match CSS transform-origin
     const startAngle = -170; // Degrees for the left-most logo (Logo 5)
-    
+
     const positionMobileLogo = (logo, i) => {
-      const radiusVw = 51.1; 
-      const centerXVw = 60.38; 
-      const centerYVw = 68.14; 
-      const halfWidthVw = 9.16; 
-      
+      const radiusVw = 51.1;
+      const centerXVw = 60.38;
+      const centerYVw = 68.14;
+      const halfWidthVw = 9.16;
+
       const initialAngle = -150 + (i * 30);
       const angleRad = initialAngle * (Math.PI / 180);
       const xVw = centerXVw + radiusVw * Math.cos(angleRad) - halfWidthVw;
       const yVw = centerYVw + radiusVw * Math.sin(angleRad) - halfWidthVw;
-      
+
       logo.style.left = `${xVw}vw`;
       logo.style.top = `${yVw}vw`;
       // transform will be handled in updateRotation
     };
-    
+
     const testimonialText = document.querySelector('.ws-testimonial-text');
 
-    
+
     const testimonials = [
       "Over the last 2 decades, we’ve helped developers worldwide build brands, sell out projects, and enter new markets. We treat every launch as if it were our own.",
       "Our partnership with Banyan Group has redefined luxury living, establishing new standards in the global real estate market.",
@@ -54,95 +162,95 @@ document.addEventListener('DOMContentLoaded', () => {
       "Knight Frank’s global reach combined with our local market insights creates a powerful synergy for property marketing.",
       "Cushman & Wakefield leverages our SEO and PR services to dominate the commercial real estate discourse."
     ];
-    
+
     // For mobile, we use 12 logos spaced by exactly 30 degrees to create a perfect circle with 30px uniform gaps
-    const mobileIndices = [...clockwiseIndices, clockwiseIndices[0], clockwiseIndices[1], clockwiseIndices[2]]; 
+    const mobileIndices = [...clockwiseIndices, clockwiseIndices[0], clockwiseIndices[1], clockwiseIndices[2]];
     const loopIndices = window.innerWidth >= 992 ? fullCircleIndices : mobileIndices;
-    
+
     loopIndices.forEach((origIndex, i) => {
       // Clone original DOM node
       const clone = originalLogos[origIndex].cloneNode(true);
-      
+
       // Calculate circular position
       const angleMultiplier = window.innerWidth >= 992 ? 20 : 30; // Mobile exactly 30 degrees apart (12 logos = 360 deg)
       const startAngleMobile = -150; // i=2 (Center) will be at -150 + 60 = -90 degrees (top dead center)
       const angleDeg = (window.innerWidth >= 992 ? startAngle : startAngleMobile) + (i * angleMultiplier);
       const angleRad = angleDeg * (Math.PI / 180);
-      
+
       if (window.innerWidth >= 992) {
         // Web: Calculate in CQI to match container scaling flawlessly
         const radiusCqi = 36.8056; // 530 / 1440 * 100
         const centerXCqi = 42.5;   // 612 / 1440 * 100
         const centerYCqi = 41.6667; // 600 / 1440 * 100
         const halfWidthCqi = 4.9306; // 71 / 1440 * 100
-        
+
         const xCqi = centerXCqi + radiusCqi * Math.cos(angleRad) - halfWidthCqi;
         const yCqi = centerYCqi + radiusCqi * Math.sin(angleRad) - halfWidthCqi;
-        
+
         clone.style.left = `${xCqi}cqi`;
         clone.style.top = `${yCqi}cqi`;
       } else {
         positionMobileLogo(clone, i);
       }
-      
+
       arcContainer.appendChild(clone);
       activeLogos.push(clone);
-      
+
       // Click interaction
       clone.addEventListener('click', () => {
         activeLogos.forEach(l => l.classList.remove('active'));
         clone.classList.add('active');
-        
+
         const testimonialBlock = document.querySelector('.ws-client-testimonial');
-        
+
         if (testimonialText && testimonials[origIndex] && testimonialBlock) {
           // Remove class to reset animation
           testimonialBlock.classList.remove('animating');
-          
+
           // Force DOM reflow to restart animation
           void testimonialBlock.offsetWidth;
-          
+
           // Update text (it is invisible instantly due to .animating class)
           testimonialText.innerText = testimonials[origIndex];
-          
+
           // Trigger the animation sequence
           testimonialBlock.classList.add('animating');
         }
       });
     });
-    
+
     let currentRotation = 0;
     let targetRotation = 0;
     let isRequestingAnimation = false;
-    
+
     const updateRotation = () => {
       currentRotation += (targetRotation - currentRotation) * 0.08;
-      
+
       // Hardware accelerated group rotation for both web and mobile
       arcContainer.style.transform = `rotate(${currentRotation}deg)`;
-      
+
       activeLogos.forEach(logo => {
         logo.style.transform = `rotate(${-currentRotation}deg)`;
       });
-      
+
       if (Math.abs(targetRotation - currentRotation) > 0.05) {
         requestAnimationFrame(updateRotation);
       } else {
         currentRotation = targetRotation;
         arcContainer.style.transform = `rotate(${currentRotation}deg)`;
-        
+
         activeLogos.forEach(logo => {
           logo.style.transform = `rotate(${-currentRotation}deg)`;
         });
-        
+
         isRequestingAnimation = false;
       }
     };
-    
+
     const handleScrollRotate = () => {
       const rect = clientsSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       if (rect.top <= windowHeight && rect.bottom >= 0) {
         const totalScrollDistance = windowHeight + rect.height;
         const scrolledDistance = windowHeight - rect.top;
@@ -151,14 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotationRange = isMobile ? 160 : 120; // 4 logo positions on mobile (40° each)
         const rotationOffset = isMobile ? 20 : 15;
         targetRotation = -(progress * rotationRange) + rotationOffset;
-        
+
         if (!isRequestingAnimation) {
           isRequestingAnimation = true;
           requestAnimationFrame(updateRotation);
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScrollRotate, { passive: true });
     handleScrollRotate();
   }

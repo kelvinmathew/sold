@@ -245,12 +245,18 @@
     width: 100%;
   }
 
-  .ws-about-content {
+  #about-sold .ws-about-content {
     flex-direction: row;
-    width: 82.6389cqi;
-    margin: 0 auto;
-    /* Gives 8.6806cqi left and right gap within the 100cqi container */
-    gap: 11.25cqi;
+    width: 82.7083cqi !important;
+    /* 1191px */
+    margin: 0;
+    margin-left: 7.2222cqi !important;
+    /* 104px */
+    margin-right: 10.0694cqi !important;
+    /* 145px */
+    gap: 11.3194cqi !important;
+    /* 163px */
+    position: relative;
   }
 
   .ws-about-left {
@@ -401,13 +407,13 @@
     letter-spacing: 0.01em;
   }
 
-  .ws-map-container {
+  .ws-about-section .ws-map-container {
     position: absolute;
     top: 28.8194cqi;
-    left: 0;
-    width: 40cqi;
-    height: 22.5694cqi;
-    margin-top: 0;
+    left: -0.2083cqi;
+    width: 40cqi !important;
+    height: 22.5694cqi !important;
+    margin-top: 0 !important;
   }
 
   /* --- Web-only overrides for Our Founders --- */
@@ -417,17 +423,18 @@
     background: #FFFFFF;
   }
 
-  .ws-founders-container {
-    width: 79.5139cqi;
+  #our-founders .ws-founders-container {
+    width: 82.7083cqi;
     height: 40.5556cqi;
     /* Sized for the single remaining founder card */
-    margin-left: 10.2778cqi;
-    margin-right: 10.2083cqi;
+    margin-left: 7.2222cqi;
+    margin-right: 10.0694cqi;
+    max-width: none;
     padding: 0;
     position: relative;
   }
 
-  .ws-founders-container>.ws-section-label-wrap {
+  #our-founders .ws-founders-container>.ws-section-label-wrap {
     position: absolute;
     top: 0;
     left: 0.8333cqi;
@@ -463,7 +470,7 @@
     margin: 0;
   }
 
-  .ws-founder-card {
+  #our-founders .ws-founder-card {
     margin-bottom: 0;
     border-radius: 0.9028cqi;
     background: #E9EAEB;
@@ -473,9 +480,9 @@
   .ws-founder-1 {
     position: absolute;
     top: 6.7361cqi;
-    left: 1px;
-    width: 79.4444cqi;
-    height: 27.0833cqi;
+    left: 0;
+    width: 100%;
+    height: 30.9722cqi;
     display: block;
   }
 
@@ -528,12 +535,13 @@
     position: absolute;
     top: 6.1431cqi;
     left: 0;
-    width: 32.1528cqi;
-    height: 6.9444cqi;
+    width: 36.7361cqi;
+    height: auto;
     margin: 0;
-    font-family: 'Mona Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.3889cqi;
+    font-style: italic;
+    font-size: 1.5278cqi;
     line-height: 1.7361cqi;
     letter-spacing: 0.02em;
     color: #0F0F0F;
@@ -541,10 +549,10 @@
 
   .ws-founder-1 .ws-founder-btn {
     position: absolute;
-    top: 16.6cqi;
-    left: 0;
-    width: 18.8194cqi;
-    height: 4.0896cqi;
+    top: 18.4215cqi;
+    left: 0.1458cqi;
+    width: 19.5924cqi;
+    height: 4.6771cqi;
     margin: 0;
     padding: 0;
     border-radius: 3.8194cqi;
@@ -555,10 +563,10 @@
 
   .ws-founder-btn .ws-btn-icon {
     position: absolute;
-    top: 0.6444cqi;
-    left: 0.625cqi;
-    width: 2.7417cqi;
-    height: 2.7417cqi;
+    top: 0.8146cqi;
+    left: 1.0347cqi;
+    width: 3.0556cqi;
+    height: 2.9861cqi;
     border-radius: 1.6667cqi;
     background: #FFA726;
     display: flex;
@@ -568,9 +576,9 @@
 
   .ws-founder-btn .ws-btn-text {
     position: absolute;
-    top: 0.7639cqi;
-    left: 5.2083cqi;
-    width: 12.8472cqi;
+    top: 1.1111cqi;
+    left: 5.4222cqi;
+    width: 13.375cqi;
     height: 2.5375cqi;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
@@ -585,8 +593,8 @@
 
   .ws-founder-1 .ws-founder-photo-wrap {
     position: absolute;
-    top: 1.9444cqi;
-    left: 51.3194cqi;
+    top: 3.8889cqi;
+    left: 52.7778cqi;
     width: 24.1667cqi;
     height: 23.125cqi;
     border-radius: 0.6944cqi;
@@ -879,11 +887,11 @@
 }
 
 /* --- Info Cards --- */
-.ws-info-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 21px;
-  /* Gap between cards */
+#about-sold .ws-info-cards {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.4583cqi !important;
+  /* Exactly 21px */
 }
 
 .ws-info-card {
@@ -982,7 +990,7 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 17px;
-  color: #FFFFFF;
+  color: #FFA726;
   margin: 0;
   width: 352px;
   height: 51px;
@@ -1525,7 +1533,7 @@
     letter-spacing: 0.01em !important;
     margin: 0 !important;
     text-align: center !important;
-    color: #FFFFFF !important;
+    color: #FFA726 !important;
   }
 }
 
@@ -2226,7 +2234,10 @@
   .ws-team-container {
     width: 82.8472cqi;
     /* 1193px / 1440px */
-    margin: 0 auto;
+    margin-left: 7.0833cqi;
+    /* 102px */
+    margin-right: 10.0694cqi;
+    /* 145px */
     position: relative;
   }
 
@@ -2236,6 +2247,8 @@
     gap: 0.7028cqi;
     margin-bottom: 5.625cqi;
     /* 81px gap between label and grid container */
+    margin-left: 0.9028cqi;
+    /* Pushes exactly 13px right from 102px base, making its absolute viewport offset strictly 115px */
   }
 
   .ws-team-label-bar {
@@ -2403,5 +2416,124 @@
   /* Nyan Moe Wai (C2) */
   .ws-team-grid-row:nth-child(3) .ws-team-member:nth-child(2) .ws-team-role {
     width: 10.4167cqi;
+  }
+}
+
+/* ============================
+   OUR TEAM SECTION - MOBILE
+   Auto-scrolling carousel, one member at a time, same behavior/pattern
+   as the testimonials carousel (see js/why-sold-scroll.js).
+   ============================ */
+@media (max-width: 991px) {
+  .ws-team-mobile-section {
+    background: #FFFFFF;
+    padding: 9.92vw 0 13.48vw;
+  }
+
+  .ws-team-mobile-container .ws-section-label-wrap {
+    margin-left: 5.09vw;
+    /* 20px, matches the other section labels on this page */
+    margin-bottom: 12.21vw;
+    /* 48px - more breathing room above the cards, closer to the desktop
+       grid's generous 81px label-to-content gap */
+  }
+
+  .ws-team-mobile-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 6.6vw;
+  }
+
+  .ws-team-mobile-track {
+    display: flex;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .ws-team-mobile-card {
+    flex: 0 0 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5.09vw;
+    /* 20px side gutters */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .ws-team-mobile-photo {
+    width: 100%;
+    max-width: 89.82vw;
+    /* 353px, matches the map image width used earlier on this page */
+    height: 76.65vw;
+    /* ~301px - keeps roughly the desktop photo's 238:228 aspect ratio */
+    object-fit: cover;
+    border-radius: 2.54vw;
+    /* 10px */
+    margin-bottom: 4.83vw;
+    /* 19px */
+  }
+
+  .ws-team-mobile-name {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 5.09vw;
+    /* 20px, matches the desktop name size */
+    line-height: 7.63vw;
+    /* 30px */
+    color: #FFA726;
+    margin: 0;
+  }
+
+  .ws-team-mobile-role {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 3.31vw;
+    /* 13px, matches the desktop role size */
+    color: #1B3834;
+  }
+
+  /* Dots: the shared carousel dot style (hollow rings flanked by two long
+     decorative line segments) was designed for the testimonials carousel's
+     handful of dots and looks cramped/messy with 10 team members, so this
+     carousel gets its own compact, solid pagination-dot style instead. */
+  .ws-team-mobile-controls .carousel-dots-center::before,
+  .ws-team-mobile-controls .carousel-dots-center::after {
+    display: none !important;
+  }
+
+  .ws-team-dots {
+    gap: 1.53vw !important;
+    /* 6px */
+  }
+
+  .ws-team-dots .dot {
+    width: 1.53vw !important;
+    /* 6px */
+    height: 1.53vw !important;
+    border: none !important;
+    background: #D9D9D9 !important;
+    border-radius: 50% !important;
+    transition: width 0.25s ease, background-color 0.25s ease;
+  }
+
+  .ws-team-dots .dot.active {
+    width: 4.58vw !important;
+    /* 18px - pill shape for the active dot */
+    height: 1.53vw !important;
+    border: none !important;
+    background: #FFA726 !important;
+    border-radius: 3.05vw !important;
+  }
+
+  .ws-team-dots .dot.active::after {
+    display: none !important;
   }
 }

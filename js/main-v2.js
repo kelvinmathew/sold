@@ -91,9 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Close offcanvas when clicking any navigation link
+    // Close offcanvas when clicking any navigation link (the Services
+    // trigger is excluded - it only opens the dropdown, it never navigates)
     const offcanvasLinks = document.querySelectorAll('.offcanvas-link');
     offcanvasLinks.forEach(link => {
+        if (link.hasAttribute('data-nav-dropdown-toggle')) return;
         link.addEventListener('click', () => {
             if (mobileMenu) {
                 mobileMenu.classList.remove('open');
@@ -101,16 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Services Nav Dropdown (Desktop)
+    // Services Nav Dropdown (Desktop) - hovering (CSS :hover) or clicking
+    // either the "Services" label or the arrow only reveals the dropdown;
+    // the label itself never navigates to services.html (use "All Services"
+    // inside the dropdown for that).
     document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
         const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        const label = dropdown.querySelector('[data-nav-dropdown-toggle]');
         if (!toggle) return;
-        toggle.addEventListener('click', (e) => {
+        const toggleDropdown = (e) => {
             e.preventDefault();
             e.stopPropagation();
             const isOpen = dropdown.classList.toggle('open');
             toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
+        };
+        toggle.addEventListener('click', toggleDropdown);
+        if (label) label.addEventListener('click', toggleDropdown);
     });
 
     document.addEventListener('click', (e) => {
@@ -133,16 +141,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Services Offcanvas Dropdown (Mobile)
+    // Services Offcanvas Dropdown (Mobile) - tapping the "Services" label or
+    // the arrow only expands the submenu, it never navigates.
     document.querySelectorAll('.offcanvas-item-dropdown').forEach(dropdown => {
         const toggle = dropdown.querySelector('.offcanvas-dropdown-toggle');
+        const label = dropdown.querySelector('[data-nav-dropdown-toggle]');
         if (!toggle) return;
-        toggle.addEventListener('click', (e) => {
+        const toggleDropdown = (e) => {
             e.preventDefault();
             e.stopPropagation();
             const isOpen = dropdown.classList.toggle('open');
             toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
+        };
+        toggle.addEventListener('click', toggleDropdown);
+        if (label) label.addEventListener('click', toggleDropdown);
     });
 
     // Contact Popup Modal (Web Only) - handled by js/contact-modal.js, which
