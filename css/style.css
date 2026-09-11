@@ -832,14 +832,16 @@ h6 {
 }
 
 .feature-icon-cell {
-  width: 5.9722cqi;
-  /* 86px - exact Figma logo container width (left: 124px, right: 1230px) */
+  width: 7.8472cqi;
+  /* 113px - matches the logo width exactly (was 86px, narrower than the logo) */
   padding-top: 1.4021cqi;
   /* 20.19px - exact Figma top coordinate offset */
   padding-bottom: 1.4021cqi;
   /* 20.19px - exact Figma bottom coordinate offset */
   padding-left: 0;
   padding-right: 0;
+  margin-left: -1.0417cqi;
+  /* -15px - nudge the logo a little further left */
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -848,34 +850,18 @@ h6 {
 }
 
 .placeholder-svg-icon {
-  object-fit: cover !important;
+  object-fit: contain !important;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
 }
 
-/* Feature 1: Design Logo (75x63) */
-.feature-grid-item:nth-child(1) .placeholder-svg-icon {
-  width: 5.2083cqi;
-  /* 75px */
-  height: 4.3750cqi;
-  /* 63px */
-}
-
-/* Feature 2: Launch Logo (66.31x86.77) */
-.feature-grid-item:nth-child(2) .placeholder-svg-icon {
-  width: 4.6048cqi;
-  /* 66.31px */
-  height: 6.0255cqi;
-  /* 86.77px */
-}
-
-/* Feature 3: Sell Logo (86x84) */
-.feature-grid-item:nth-child(3) .placeholder-svg-icon {
-  width: 5.9722cqi;
-  /* 86px */
-  height: 5.8333cqi;
-  /* 84px */
+/* Same logo (logoweb.png, 113x98) and size for Design, Launch and Sell */
+.feature-icon-cell .placeholder-svg-icon {
+  width: 7.8472cqi;
+  /* 113px */
+  height: 6.8055cqi;
+  /* 98px */
 }
 
 .feature-content-cell {
@@ -3874,46 +3860,46 @@ h6 {
 
   .feature-grid-item:nth-child(1) .feature-icon-cell {
     top: 132.27px !important;
-    left: 38px !important;
+    left: 28px !important;
     bottom: 555px !important;
     right: 313px !important;
-    width: 40px !important;
-    height: 33px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(1) .placeholder-svg-icon {
-    width: 40px !important;
-    height: 33px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
   .feature-grid-item:nth-child(2) .feature-icon-cell {
     top: 349.27px !important;
-    left: 42px !important;
+    left: 32px !important;
     bottom: 328px !important;
     right: 316px !important;
-    width: 33px !important;
-    height: 43px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(2) .placeholder-svg-icon {
-    width: 33px !important;
-    height: 43px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
   .feature-grid-item:nth-child(3) .feature-icon-cell {
     top: 575.27px !important;
-    left: 35px !important;
+    left: 25px !important;
     bottom: 100px !important;
     right: 310px !important;
-    width: 46px !important;
-    height: 45px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(3) .placeholder-svg-icon {
-    width: 46px !important;
-    height: 45px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
@@ -4408,46 +4394,46 @@ h6 {
 
   .feature-grid-item:nth-child(1) .feature-icon-cell {
     top: 132.27px !important;
-    left: 38px !important;
+    left: 28px !important;
     bottom: 555px !important;
     right: 313px !important;
-    width: 40px !important;
-    height: 33px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(1) .placeholder-svg-icon {
-    width: 40px !important;
-    height: 33px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
   .feature-grid-item:nth-child(2) .feature-icon-cell {
     top: 349.27px !important;
-    left: 42px !important;
+    left: 32px !important;
     bottom: 328px !important;
     right: 316px !important;
-    width: 33px !important;
-    height: 43px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(2) .placeholder-svg-icon {
-    width: 33px !important;
-    height: 43px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
   .feature-grid-item:nth-child(3) .feature-icon-cell {
     top: 575.27px !important;
-    left: 35px !important;
+    left: 25px !important;
     bottom: 100px !important;
     right: 310px !important;
-    width: 46px !important;
-    height: 45px !important;
+    width: 57px !important;
+    height: 49px !important;
   }
 
   .feature-grid-item:nth-child(3) .placeholder-svg-icon {
-    width: 46px !important;
-    height: 45px !important;
+    width: 57px !important;
+    height: 49px !important;
     object-fit: contain !important;
   }
 
@@ -5024,7 +5010,14 @@ h6 {
   }
 
   .offcanvas-item-dropdown.open .offcanvas-dropdown-menu {
-    max-height: 600px !important;
+    max-height: 1000px !important;
+    /* No inner scroll box - a nested scroll region here trapped touch
+       scrolling (overscroll-behavior: contain stopped it from continuing
+       into the rest of the menu once you hit the submenu's edge, making
+       scrolling look stuck). The submenu just expands inline and the outer
+       .offcanvas-nav (overflow-y: auto below) is the single scroll region,
+       so one continuous scroll reaches every service item and the links
+       below it (Client Success, Contact, etc.). */
   }
 
   .offcanvas-dropdown-item {

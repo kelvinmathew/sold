@@ -439,7 +439,7 @@
     font-family: 'Mona Sans', var(--font-heading, sans-serif);
     font-weight: 600;
     font-size: 14px;
-    line-height: 29px;
+    line-height: 22px;
     letter-spacing: 0.01em;
     color: #263238;
     cursor: pointer;
@@ -812,8 +812,8 @@
         justify-content: space-between;
         width: 100%;
         height: auto;
-        row-gap: 3.858cqi;
-        /* 12px at the 311px reference width */
+        row-gap: 2.6cqi;
+        /* ~8px at the 311px reference width (reduced from 12px) */
         column-gap: 0;
     }
 

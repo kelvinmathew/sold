@@ -4889,7 +4889,14 @@ h6 {
   }
 
   .offcanvas-item-dropdown.open .offcanvas-dropdown-menu {
-    max-height: 600px !important;
+    max-height: 1000px !important;
+    /* No inner scroll box - a nested scroll region here trapped touch
+       scrolling (overscroll-behavior: contain stopped it from continuing
+       into the rest of the menu once you hit the submenu's edge, making
+       scrolling look stuck). The submenu just expands inline and the outer
+       .offcanvas-nav (overflow-y: auto below) is the single scroll region,
+       so one continuous scroll reaches every service item and the links
+       below it (Client Success, Contact, etc.). */
   }
 
   .offcanvas-dropdown-item {
@@ -5416,7 +5423,9 @@ h6 {
     width: 100vw !important;
     margin-left: calc(-50vw + 50%) !important;
     margin-right: 0 !important;
-    margin-top: 71px !important;
+    margin-top: 36px !important;
+    /* gap from the intro section below (was 71px, the hero-to-section gap
+       before the intro section existed) */
     background: #263238 !important;
     border-radius: 21px !important;
     padding: 106px 29px !important;
@@ -8088,8 +8097,85 @@ body.why-sold-page-body,
      SOLD work with" section used to be) - give it the same gap that section
      used to have so it isn't flush against the hero. */
   .services-page-body .services-list-section {
-    margin-top: 6.3194cqi !important;
-    /* 91px */
+    margin-top: 5.9722cqi !important;
+    /* 86px - gap from the intro section below, matching the other service pages */
+  }
+
+  /* --- Intro Text Section (matches the intro on the other 8 service pages,
+     just with white background since this page is white throughout) --- */
+  .services-intro-section {
+    width: 100%;
+    padding-top: 4.9306cqi;
+    /* 71/1440 - gap from Hero, matching the other service pages */
+    padding-bottom: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+  }
+
+  .services-intro-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .services-intro-row {
+    width: 91.6667cqi;
+    /* 1320/1440 */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5.2083cqi;
+    /* 75px */
+  }
+
+  .services-intro-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.7639cqi;
+    /* 11/1440 */
+  }
+
+  .services-intro-bar {
+    width: 0.2778cqi;
+    /* 4/1440 */
+    height: 2.0833cqi;
+    /* 30/1440 fixed height to match 1-line title */
+    display: block;
+  }
+
+  .services-intro-heading {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.0833cqi;
+    /* 30/1440 */
+    line-height: 2.0833cqi;
+    /* 30/1440 */
+    color: #FFA726;
+    white-space: nowrap;
+  }
+
+  .services-intro-right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .services-intro-desc {
+    width: 100%;
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 500;
+    font-size: 2.2222cqi;
+    /* 32/1440 */
+    line-height: 2.9167cqi;
+    /* 42/1440 */
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+    margin-top: -0.3472cqi;
+    /* ~5px offset to counter leading padding */
   }
 
   .services-who-section {
@@ -9052,4 +9138,69 @@ body.why-sold-page-body,
     margin: 0 !important;
   }
 
+}
+
+/* --- Services Page: Intro Text Section (MOBILE) - mirrors the intro
+   section markup/spacing used on the other 8 service pages. --- */
+@media (max-width: 991px) {
+  .services-intro-section {
+    background-color: #FFFFFF !important;
+    padding-top: 60px !important;
+    padding-bottom: 34px !important;
+  }
+
+  .services-intro-container {
+    width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .services-intro-row {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+
+  .services-intro-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 11px !important;
+  }
+
+  .services-intro-bar {
+    width: 4px !important;
+    height: 31px !important;
+    display: block !important;
+  }
+
+  .services-intro-heading {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
+    color: #FFA726 !important;
+    margin: 0 !important;
+    width: auto !important;
+    white-space: nowrap !important;
+  }
+
+  .services-intro-right {
+    width: 100% !important;
+  }
+
+  .services-intro-desc {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 0.01em !important;
+    color: #0B0B0B !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 352px !important;
+  }
 }
