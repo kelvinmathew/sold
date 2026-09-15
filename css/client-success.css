@@ -362,8 +362,12 @@
   }
 
   /* --- Logo dimensions per card (Figma exact) --- */
+  /* contain, not cover: the box sizes below are the Figma dimensions of each
+     client's own logo, so cover only looked right for artwork whose aspect
+     ratio matched exactly. Any other upload (e.g. a PNG with different padding)
+     got cropped. Mobile has always used contain for the same reason. */
   .cs-card-logo {
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: left;
   }
 
@@ -596,8 +600,11 @@
 
 .sf-container {
   width: 100%;
-  max-width: 1440px;
-  /* Constrain on ultra-wide screens */
+  /* No max-width: children are positioned with vw/cqi units that scale off
+     the full viewport width (same as .page-container, which has no cap
+     either - see Services/Why SOLD's equivalent wrapper). Capping this
+     container's width without also capping those units caused the whole
+     section to drift right of center on screens wider than 1440px. */
   position: relative;
   display: flex;
   flex-direction: column;

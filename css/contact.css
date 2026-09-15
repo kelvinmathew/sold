@@ -304,7 +304,7 @@
 .contact-modal-right {
     flex-grow: 1;
     background: #FFFFFF;
-    padding: 55px 47px 55px 47px;
+    padding: 42px 47px 42px 47px;
     /* Figma Right Container Start is x:480 (480 - 433 leftPanel = 47px padding left) */
     box-sizing: border-box;
     position: relative;
@@ -326,14 +326,15 @@
     height: 62px;
     object-fit: contain;
     object-position: left;
-    margin-bottom: 36px;
-    /* Gap to 153px top input: 153 - 55 - 62 = 36px */
+    margin-bottom: 26px;
+    /* Tightened so the whole form, including SEND MESSAGE, fits the fixed
+       760px card without the right panel needing to scroll. */
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     /* y gap between form blocks */
     width: 578px;
     /* Form block actual exact width per Figma */
@@ -402,8 +403,8 @@
 }
 
 .services-interest {
-    margin-top: 15px;
-    /* Offset the 25px regular gap to reach 389 y coord */
+    margin-top: 8px;
+    /* Offset the regular gap to reach the Figma y coord */
     margin-left: 12px;
     /* Nudged right of the other form rows so the gap from the left panel is 59px instead of 47px */
 }
@@ -417,21 +418,23 @@
     line-height: 20px;
     letter-spacing: 0.01em;
     color: #1B3834;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .services-grid {
-    display: grid;
-    /* Was a fixed 484px with "auto" tracks, which left a large dead gap
-       between the grid and the form's right edge (every other row spans the
-       full 578px width) - stretch the last 3 columns so the row lines up
-       with the rest of the form instead. */
-    grid-template-columns: 156px repeat(3, 1fr);
-    column-gap: 21px;
-    row-gap: 0px;
+    /* Fixed 156px + 3x1fr tracks and a hard 45px height only fitted the short
+       original labels. Once the list follows the navbar wording ("Lead &
+       Demand Generation", "Real Estate Websites") the widest item ran 61px
+       past its track and the third row was clipped by 21px. Flex wrapping
+       sizes every item to its own text and flows onto as many rows as the
+       labels need, so any wording an editor sets still fits. */
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 8px;
     width: 100%;
-    height: 45px;
-    justify-content: start;
+    height: auto;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -453,7 +456,7 @@
 }
 
 .form-row.message-row {
-    margin-top: 25px;
+    margin-top: 14px;
     /* Gap from services grid based on Figma */
 }
 
@@ -465,7 +468,7 @@
 }
 
 .btn-send-message {
-    margin-top: 33px;
+    margin-top: 22px;
     /* Gap from message box based on Figma */
     width: 180px;
     height: 40px;
@@ -556,8 +559,13 @@
 /* =========================================================
    MOBILE LAYOUT – Figma-faithful single white card
    Designed width 351px, scales fluid on all phones (320-430px+)
+
+   Also applied to any very short viewport (a phone held in landscape, or a
+   short desktop window). There the desktop card - 760px tall, only scaled
+   down to 0.65 - still overflowed a ~390px viewport and centring made the
+   overflow unreachable. The scrollable single-card layout handles it.
    ========================================================= */
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-height: 500px) {
 
     /* --- Visibility toggles --- */
     .desktop-only {
@@ -571,9 +579,19 @@
     /* --- Overlay: full-screen centered host --- */
     .contact-modal-overlay {
         background: rgba(0, 0, 0, 0.35);
-        align-items: center;
+        /* align-items:center would overflow the card equally above and below
+           the viewport, but overflow-y only scrolls downward - so on a short
+           phone (e.g. 390x664 with Safari's chrome showing) the top ~70px of
+           the card was unreachable. flex-start + margin:auto on the wrapper
+           still centers it when it fits, without ever clipping the top. */
+        align-items: flex-start;
         justify-content: center;
+        /* dvh excludes the iOS browser chrome, so the bottom of the form is
+           not left sitting underneath it. vh stays as the fallback. */
+        height: 100vh;
+        height: 100dvh;
         padding: 16px;
+        padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -582,6 +600,9 @@
         align-items: center;
         height: auto;
         min-height: auto;
+        /* auto margins center the card when there is spare room and collapse
+           to 0 when there is not, keeping every edge scrollable. */
+        margin: auto;
     }
 
     /* --- Card: White rounded container --- */
@@ -713,13 +734,15 @@
        starts, so it would otherwise cover that field's placeholder text
        entirely. This extra margin is constant (not tied to error state, so
        it never shifts anything when an error appears/clears) - it just
-       reserves the room up front. */
+       reserves the room up front. Reduced further to 10px (12+10=22px total,
+       down from the original 34px) - still enough clearance for the tooltip,
+       just tighter. */
     .field-first,
     .field-last,
     .field-phone,
     .field-company,
     .field-email {
-        margin-bottom: 22px;
+        margin-bottom: 10px;
     }
 
     /* Input fields: Figma 303×36px → responsive full-width */
@@ -774,8 +797,8 @@
 
     /* --- Services section --- */
     .services-interest {
-        margin-top: 16px;
-        /* 12px + 16px = 28px section gap */
+        margin-top: 8px;
+        /* 12px + 8px = 20px section gap (was 16px -> 28px total) */
         margin-left: 0;
         order: 6;
         /* Scale the chip row to the card's actual rendered width (not the
@@ -792,7 +815,9 @@
     }
 
     .mobile-only-grid {
-        display: grid !important;
+        /* flex, not grid - the .services-grid rule below wraps on content so
+           the longer navbar labels stay inside the card. */
+        display: flex !important;
     }
 
     .services-label {
@@ -807,14 +832,16 @@
     }
 
     .services-grid {
-        display: grid;
-        grid-template-columns: max-content max-content max-content;
-        justify-content: space-between;
+        /* Three max-content columns forced exactly 3 items per row, so the
+           longer navbar labels pushed the row up to 142px past the card edge.
+           Wrapping on content keeps every item inside the card at any width. */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
         width: 100%;
         height: auto;
-        row-gap: 2.6cqi;
-        /* ~8px at the 311px reference width (reduced from 12px) */
-        column-gap: 0;
+        row-gap: 2.2cqi;
+        column-gap: 3.2cqi;
     }
 
     .service-checkbox {
@@ -831,19 +858,6 @@
         white-space: nowrap;
         width: auto !important;
         text-align: left !important;
-    }
-
-    /* Force column alignments to mimic flex space-between row edges */
-    .service-checkbox:nth-child(3n+1) {
-        justify-self: start;
-    }
-
-    .service-checkbox:nth-child(3n+2) {
-        justify-self: center;
-    }
-
-    .service-checkbox:nth-child(3n) {
-        justify-self: end;
     }
 
     .service-checkbox.selected {

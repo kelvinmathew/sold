@@ -1196,44 +1196,34 @@ h6 {
   padding: 0;
 }
 
+/* Position/size lives on the base rule so it applies to EVERY client logo
+   uniformly, including any new one added later - not just the three brands
+   below. Those three used to duplicate these exact same numbers, gated
+   behind a filename match in testimonials.php, so a logo whose filename
+   didn't contain "ellington"/"banyan"/"regus" got no sizing at all and
+   rendered unsized in the top-left corner. */
 .client-logo {
   object-fit: contain !important;
   object-position: left center;
   position: absolute;
   z-index: 0;
   /* Behind stars and quote box */
-}
-
-/* Ellington logo - Figma: x:34, y:20, w:175, h:79 relative to 482x343 card */
-/* Cropped image: 191x75 (no whitespace) */
-.logo-ellington {
   width: 36.307%;
-  /* 175/482 */
+  /* 175/482 - Figma: x:34, y:20, w:175, h:79 relative to 482x343 card */
   height: 23.032%;
   /* 79/343 */
   top: 5.831%;
   /* 20/343 */
   left: 7.054%;
   /* 34/482 */
-  margin-top: 0;
 }
 
-/* Banyan logo - Figma: x:45, y:26, w:139, h:73 relative to 482x343 card */
-/* Cropped image: 246x131 (no whitespace) */
-.logo-banyan {
-  width: 36.307%;
-  height: 23.032%;
-  top: 5.831%;
-  left: 7.054%;
-}
-
-/* Regus logo - Figma: x:49, y:25, w:111, h:60 relative to 482x343 card */
-/* Cropped image: 223x116 (no whitespace) */
+/* Kept as harmless no-ops in case any markup still references these classes -
+   same values as the base rule above, so they change nothing. */
+.logo-ellington,
+.logo-banyan,
 .logo-regus {
-  width: 36.307%;
-  height: 23.032%;
-  top: 5.831%;
-  left: 7.054%;
+  margin-top: 0;
 }
 
 /* Stars - Figma: x:312.62, y:112.68, w:138.09, h:22.22 relative to 482x343 card */
@@ -2550,6 +2540,7 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   position: absolute;
   top: 0;
   left: 0;
@@ -5391,26 +5382,45 @@ h6 {
   }
 
   .testimonials-controls {
+    /* Centered with auto margins on a block-level flex container, not the
+       old left:50% + translateX(-50%) trick - that positions itself against
+       a percentage of the parent while transforming by a percentage of its
+       OWN (container-query-scaled) width, and any rounding mismatch between
+       the two pushes the element off-center. At narrow phone widths (~320px)
+       it drifted far enough to push the left arrow button off-screen
+       entirely. margin:auto has no such rounding trap. */
     position: relative !important;
     top: auto !important;
+    left: auto !important;
     transform: none !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 331px !important;
+    width: min(331px, 100%) !important;
+    /* Shrinks to fit on phones narrower than ~331px+padding instead of
+       overflowing or (via the desktop rule's uncontested max-width:75.1166cqi
+       bleeding through) getting squeezed smaller than its own content, which
+       used to push the left arrow button off-screen entirely. container-type
+       below lets every child (buttons, dots, lines) scale down with it
+       proportionally, via cqi, so nothing overflows or gets clipped at any
+       width - centered with auto margins rather than the old
+       left:50%+translateX(-50%) trick, which had its own rounding-mismatch
+       version of this same bug. */
+    container-type: inline-size;
     height: 41px !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
-    gap: 5px !important;
+    gap: 1.511cqi !important;
+    /* 5/331 */
     align-items: center !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     padding: 0 !important;
   }
 
   .testimonials-controls .carousel-btn {
-    width: 36px !important;
-    min-width: 36px !important;
-    height: 35px !important;
+    width: 10.876cqi !important;
+    /* 36/331 */
+    min-width: 24px !important;
+    height: 10.575cqi !important;
+    /* 35/331 */
     border-radius: 3px !important;
     border: 0.5px solid #B3B3B3 !important;
     display: flex !important;
@@ -5422,8 +5432,11 @@ h6 {
   }
 
   .testimonials-controls .carousel-btn svg {
-    width: 21px !important;
-    height: 21px !important;
+    width: 6.344cqi !important;
+    /* 21/331 */
+    height: 6.344cqi !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
     stroke: #858585 !important;
     stroke-width: 1.5px !important;
   }
@@ -5432,46 +5445,61 @@ h6 {
     background: transparent !important;
     height: auto !important;
     flex: 1 !important;
+    min-width: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     border: none !important;
+    overflow: hidden !important;
   }
 
   .carousel-dots-center {
     display: flex !important;
-    gap: 2px !important;
+    gap: 0.604cqi !important;
+    /* 2/331 */
     align-items: center !important;
     background: transparent !important;
     padding: 0 !important;
+    max-width: 100% !important;
   }
 
   .carousel-dots-center::before {
     content: "" !important;
-    width: 73.64px !important;
+    width: 22.253cqi !important;
+    /* 73.64/331 */
+    min-width: 12px !important;
     height: 1px !important;
     background: #EEEDED !important;
     display: block !important;
     margin: 0 !important;
+    flex-shrink: 1 !important;
   }
 
   .carousel-dots-center::after {
     content: "" !important;
-    width: 76.36px !important;
+    width: 23.072cqi !important;
+    /* 76.36/331 */
+    min-width: 12px !important;
     height: 1px !important;
     background: #EEEDED !important;
     display: block !important;
     margin: 0 !important;
+    flex-shrink: 1 !important;
   }
 
   .carousel-dots-center .dot {
-    width: 16px !important;
-    height: 16.61px !important;
+    width: 4.834cqi !important;
+    /* 16/331 */
+    height: 5.019cqi !important;
+    /* 16.61/331 */
+    min-width: 9px !important;
+    min-height: 9px !important;
     border: 1.5px solid #CCCCCC !important;
     border-radius: 50% !important;
     background: transparent !important;
     padding: 0 !important;
     box-sizing: border-box !important;
+    flex-shrink: 0 !important;
   }
 
   .carousel-dots-center .mobile-only-dot {

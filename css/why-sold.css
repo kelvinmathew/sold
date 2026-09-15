@@ -1535,6 +1535,27 @@
     text-align: center !important;
     color: #FFA726 !important;
   }
+
+  /* The mobile rules above set the title/description colours with !important,
+     which outranked the unprefixed hover rule - so tapping a card filled it
+     orange while the text stayed white and orange (the description turning
+     invisible against the panel). Re-assert the hover colours here at the same
+     specificity so mobile matches the desktop treatment: orange panel, black
+     icon, black text. */
+  .ws-info-card:hover .ws-info-title,
+  .ws-info-card:hover .ws-info-desc,
+  .ws-info-card:active .ws-info-title,
+  .ws-info-card:active .ws-info-desc {
+    color: #000000 !important;
+  }
+
+  .ws-info-card:active::before {
+    height: 100% !important;
+  }
+
+  .ws-info-card:active .ws-info-icon img {
+    filter: brightness(0) !important;
+  }
 }
 
 @media (max-width: 991px) {
