@@ -4,7 +4,7 @@
    ========================================================================= */
 
 /* For Desktop (Web screens) - Fluid scaling based on 1440px */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
   .client-success-hero {
     position: relative;
@@ -685,7 +685,7 @@
 
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 .cs-pre-footer .pre-footer-title {
   top: 50%;
   transform: translateY(-50%);
@@ -729,7 +729,7 @@
 }
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
   .client-success-hero-breadcrumb {
@@ -782,6 +782,16 @@
 
   .client-success-hero-content {
     position: relative;
+    /* The children are absolutely positioned, so the whole block is nudged up
+       as one with this offset rather than by editing each child's top - that
+       keeps every gap between title, subtitle and breadcrumb exactly as it is.
+       336px (current start) - 135px = 201px, matching the Home hero. */
+    /* Was -135px, which pinned the block at Home's 201px. This page's block
+       is only 226px tall, so that left the lower hero empty. Now centred
+       slightly above the middle: 45vh - 113px (half the block). The block
+       naturally starts 336px down, hence the -449px. vh (not px) because
+       this hero is 100vh, so 45%% must track the phone's height. */
+    top: calc(45vh - 449px);
     transform: none;
     left: 0;
     padding: 0;
@@ -1672,5 +1682,21 @@
   .client-success-page-body .cs-cards-section .cs-card-wrapper {
     padding-left: 18px !important;
     padding-right: 18px !important;
+  }
+}
+
+/* =============================================================
+   TABLET (768-1199px) - CLIENT SUCCESS
+   Breadcrumb is sized in vw here and drops to 9.6px at 768, and this
+   file loads after style-v2.css so the shared floor there cannot win.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  .client-success-hero-breadcrumb .breadcrumb-home,
+  .client-success-hero-breadcrumb .current,
+  .client-success-hero-breadcrumb a,
+  .client-success-hero-breadcrumb .breadcrumb-services-wrapper span,
+  .client-success-hero-breadcrumb .ws-breadcrumb-home {
+    font-size: max(12px, 1.25vw);
   }
 }

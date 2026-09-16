@@ -747,23 +747,27 @@ h6 {
   position: relative;
 }
 
-/* Vertical line between logo and content on left side */
+/* Vertical line between logo and content on left side - on web only,
+   starts above the "Design" heading top instead of flush with it (or
+   below it); bottom edge kept in place, so only the top moved up. */
 .what-we-do-content::before {
   content: "";
   position: absolute;
-  top: 4.3750cqi;
-  /* 63px */
+  top: 2.2917cqi;
+  /* 33px (was 63px originally) */
   left: 8.1250cqi;
   /* 117px */
   width: 0.0694cqi;
   /* 1px */
-  height: 35.2777cqi;
-  /* 508px */
+  height: 37.3610cqi;
+  /* 538px (was 508px originally, lengthened by the same 30px the top moved up) */
   background: linear-gradient(180deg, #C8C9C9 0%, #EAEBEB 95.47%);
   z-index: 1;
 }
 
-/* Vertical line between left container and right container */
+/* Vertical line between left container and right container - removed on
+   web (desktop/tablet) per request. Mobile already hides this via its own
+   max-width:767px override further below, which is untouched. */
 .what-we-do-content::after {
   content: "";
   position: absolute;
@@ -777,6 +781,7 @@ h6 {
   /* 652px - crosses bottom of container by 93px */
   background: linear-gradient(0deg, #C8C9C9 0%, #EAEBEB 95.47%);
   z-index: 1;
+  display: none;
 }
 
 @media (max-width: 767px) {
@@ -1412,8 +1417,20 @@ h6 {
   border-radius: 3.125cqi;
   /* 45px - exact Figma border-radius */
   width: 100cqi;
-  height: 94.5138cqi;
-  /* 1361px - exact Figma height */
+  /* Was a hard height: 94.5138cqi (1361px). The expanded accordion image is
+     now shown full-width, so its height varies with each photo's aspect
+     ratio - the section has to be able to grow past the Figma height rather
+     than let the accordion spill out of its rounded background. */
+  min-height: 94.5138cqi;
+  height: auto;
+  /* 308.08px - the accordion's offset lives here as padding rather than as a
+     margin on the accordion itself: with no padding-top the child's margin
+     collapsed straight through the section and shoved the whole section down
+     instead of placing the accordion. Padding does not move the absolutely
+     positioned header, which resolves against the padding box edge. */
+  padding-top: 21.3944cqi;
+  padding-bottom: 8.4938cqi;
+  /* 122.31px - preserves the original gap under the accordion */
   margin: 0 auto;
   position: relative;
   box-sizing: border-box;
@@ -1604,18 +1621,24 @@ h6 {
 
 
 .services-accordion-new {
-  position: absolute;
-  top: 21.3944cqi;
-  /* 308.08px - exact Figma top coordinate */
-  left: 5.0756cqi;
-  /* 73.09px - exact Figma left coordinate */
+  /* In flow (not absolute) so the section grows with it when an expanded
+     image is taller than the old fixed 930.69px. Margins reproduce the exact
+     Figma offsets the absolute top/left used to give. Mobile already does
+     exactly this - see the max-width:767px override. */
+  position: relative;
+  margin-top: 0;
+  /* vertical offset now comes from .services-list-section's padding-top */
+  margin-left: 5.0756cqi;
+  /* 73.09px - was left */
   width: 91.3738cqi;
   /* 1315.78px - exact Figma width */
-  height: 64.6311cqi;
-  /* 930.69px - exact Figma height */
+  min-height: 64.6311cqi;
+  /* 930.69px - the old fixed height, now a floor */
+  height: auto;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin-right: 0;
+  margin-bottom: 0;
   padding: 0;
   opacity: 1;
 }
@@ -1880,20 +1903,37 @@ h6 {
   /* 69.4px */
   overflow: hidden;
   transition: height 0.4s ease;
+  /* Matches the section's own dark background so the letterboxing left by
+     object-fit: contain (below) reads as part of the panel, not as a gap. */
+  background: #263238;
 }
 
 .service-list-item.active .service-image-strip {
-  height: 35.65cqi;
-  /* 513.36px - matches expanded height of left column */
-  min-height: 100%;
-  /* Ensures image container fills 100% of open card space without any gap below */
+  /* Height follows the image now that it is shown at full container width.
+     The old fixed 513.36px becomes the floor so a wide/short photo never
+     makes the open row shorter than it used to be. */
+  height: auto;
+  min-height: 35.65cqi;
 }
 
+/* Collapsed strip: keep the original cropped landscape band. These are only
+   69.4px tall, so letterboxing a whole (near-square) photo in here would
+   shrink it to a tiny centred sliver instead of a thumbnail. */
 .service-image-strip img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+/* Expanded item only: the photo spans the full width of the strip - the same
+   width the collapsed strip already has - and its height follows naturally,
+   so the whole photo is visible with no cropping and no side letterboxing. */
+.service-list-item.active .service-image-strip img {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  display: block;
 }
 
 .service-list-item:last-child {
@@ -1965,7 +2005,7 @@ h6 {
   object-fit: cover !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .who-title-logo {
     object-fit: contain !important;
   }
@@ -3181,7 +3221,8 @@ h6 {
 .footer-col-services {
   width: 19.5833cqi;
   height: auto;
-  margin-top: 95px;
+  margin-top: 6.5972cqi;
+  /* 95px */
   margin-right: 2.8472cqi;
   display: flex;
   flex-direction: column;
@@ -3201,12 +3242,15 @@ h6 {
 }
 
 .footer-col-quicklinks {
-  width: 218px;
+  width: 15.1389cqi;
+  /* 218px */
   height: auto;
-  margin-top: 94px;
+  margin-top: 6.5278cqi;
+  /* 94px */
   display: flex;
   flex-direction: column;
-  gap: 43px;
+  gap: 2.9861cqi;
+  /* 43px */
 }
 
 .footer-heading {
@@ -3246,7 +3290,8 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 35px;
-  width: 218px;
+  width: 15.1389cqi;
+  /* 218px */
   height: auto;
 }
 
@@ -3980,7 +4025,7 @@ h6 {
   }
 }
 
-@container (max-width: 1199px) {
+@container (max-width: 767px) {
 
   /* Global Mobile Screen Safeguard (No whitespace, exact #F4F5F5 background below hero) */
   html,
@@ -5705,6 +5750,7 @@ h6 {
     overflow: hidden !important;
     margin: 0 auto !important;
     flex-shrink: 0 !important;
+    background: #263238 !important;
   }
 
   /* Show image when service card is expanded */
@@ -5716,10 +5762,11 @@ h6 {
     /* Left align like everything else */
   }
 
+  /* contain, not cover - see the matching comment on the desktop rule above. */
   .service-list-item.active .service-image-strip img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: center !important;
   }
 
@@ -7199,7 +7246,7 @@ h6 {
 
 
 /* Responsive Overrides */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
   .services-hero-breadcrumb {
@@ -7964,7 +8011,7 @@ body.why-sold-page-body,
   background-color: #FFFFFF !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .services-hero {
     margin-bottom: 0 !important;
   }
@@ -8028,5 +8075,153 @@ body.why-sold-page-body,
     /* 579.5/1440 */
     box-sizing: border-box !important;
     max-width: none !important;
+  }
+}
+
+/* =============================================================
+   TABLET (768-1199px) - HOME
+   The layout here is the desktop one (the @container breakpoint above
+   switches at 767px), which is correct: it is built on cqi units, so it
+   scales proportionally and needs no separate tablet layout.
+   The one thing that does NOT survive the scale-down is type: at 768px
+   the design lands at ~53% of its 1440px size, which pushes body copy to
+   9.6px. These max() floors keep the cqi scaling wherever it is already
+   comfortable and stop it shrinking past a readable size below that.
+   Each line-height is floored in the same proportion as its font-size, so
+   the vertical rhythm is preserved rather than squashed.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  /* body copy: 1.25cqi -> floored at 13px (crossover ~1040px) */
+  .feature-content-cell p {
+    font-size: max(13px, 1.25cqi);
+    line-height: max(15.9px, 1.5277cqi);
+  }
+
+  /* feature headings: 1.3888cqi -> floored at 14px */
+  .feature-content-cell h3 {
+    font-size: max(14px, 1.3888cqi);
+    line-height: max(21px, 2.0833cqi);
+  }
+
+  /* hero intro paragraph: 1.5277cqi -> floored at 13px */
+  .hero-text-block p {
+    font-size: max(13px, 1.5277cqi);
+    line-height: max(17.1px, 2.0138cqi);
+  }
+
+  /* services accordion copy: 1.3888cqi -> floored at 13px */
+  .service-desc {
+    font-size: max(13px, 1.3888cqi);
+    line-height: max(13.7px, 1.4583cqi);
+  }
+
+  /* FAQ answers (1.3194cqi -> 10.1px at 768). The open-state max-height is
+     also raised, otherwise the now-larger text would be clipped by the
+     cqi-based cap that was sized for the desktop font. */
+  .faq-answer p,
+  .faq-mobile-answer p {
+    font-size: max(12px, 1.3194cqi);
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: max(220px, 13.8889cqi);
+  }
+
+  /* footer (1.5277cqi / 1.4583cqi) */
+  .footer-company-name {
+    font-size: max(12px, 1.5277cqi);
+  }
+
+  .footer-links-list a,
+  .footer-contact-info a,
+  .footer-contact-info span {
+    font-size: max(12px, 1.4583cqi);
+  }
+
+  /* breadcrumbs - two-deep to match the base rules' specificity */
+  .services-hero-breadcrumb .breadcrumb-home,
+  .services-hero-breadcrumb .current,
+  .services-hero-breadcrumb a,
+  .breadcrumb-services-wrapper .current {
+    font-size: max(12px, 1.25cqi);
+  }
+
+  /* services accordion: number + description (1.3888cqi) */
+  .service-list-item .num,
+  .service-desc {
+    font-size: max(12px, 1.3888cqi);
+  }
+
+  /* testimonial quotes (1.1111cqi) - 8.5px at 768 unfloored */
+  .testi-quote,
+  .testi-name,
+  .testi-role {
+    font-size: max(12px, 1.1111cqi);
+  }
+
+  /* header nav: only shown from 992px up (below that the burger takes over),
+     where there is room for a 12px floor without hitting BOOK A CALL */
+  .nav-link,
+  .btn-book-call {
+    font-size: max(12px, 1.1111cqi);
+  }
+
+  /* insights cards: small excerpt (0.9722cqi) - 7.5px at 768 unfloored */
+  .insights-small-excerpt,
+  .insights-large-excerpt,
+  .insights-small-date,
+  .insights-large-date {
+    font-size: max(12px, 0.9722cqi);
+  }
+
+  /* FAQ questions: 1.4583cqi -> floored at 14px */
+  .faq-question-text {
+    font-size: max(14px, 1.4583cqi);
+    line-height: max(13.4px, 1.3889cqi);
+  }
+}
+
+
+/* =============================================================
+   TABLET PORTRAIT (768-991px) - HEADER
+   The desktop pill nav technically fits here, but only by shrinking its
+   labels to ~8.5px, and flooring them to a readable size widens the nav
+   until it collides with the BOOK A CALL button. Narrow tablets therefore
+   keep the mobile drawer (same 41px burger as phones); the full nav
+   returns at 992px, where its labels are already 11px+ and there is room.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 991px) {
+
+  .header-nav,
+  .header-cta {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    position: relative !important;
+    display: flex !important;
+    width: 41px !important;
+    height: 41px !important;
+    border-radius: 30px !important;
+    background: #FFA726 !important;
+    border: none !important;
+    padding: 18px !important;
+    margin: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-menu-btn svg,
+  .mobile-menu-btn img {
+    width: 24px !important;
+    height: 24px !important;
+    display: block !important;
+    flex-shrink: 0 !important;
   }
 }

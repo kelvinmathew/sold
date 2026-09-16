@@ -35,7 +35,7 @@
 /* ==============================================
    1. HERO SECTION
    ============================================== */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .events-hero {
     position: relative;
     width: 100%;
@@ -885,7 +885,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE INTRO OVERRIDES */
   .events-intro-left {
@@ -959,7 +959,19 @@
 
   .events-hero-content {
     position: absolute !important;
-    top: 0 !important;
+    /* The children are cqi-based, so the block started at ~83.33vw down: 266px
+       on a 320px phone, 358px on a 430px one. Offsetting the wrapper by
+       201px - 83.33vw pins the start at 201px (the Home hero position) on every
+       width while leaving the children - and so every inner gap - untouched. */
+    /* Centres the block slightly above the middle (45% of the hero height).
+       Two things move with screen width here: the children sit at ~83.33vw
+       down (they are cqi-based), and the block's own height SHRINKS as the
+       title wraps onto fewer lines (296px at 320w down to 204px at 430w).
+       -41.43vw - 282px is the straight-line fit of
+       (83.33vw + half the block height) measured across 320-430px, so the
+       centre lands on 45vh right through the phone range.
+       vh because this hero is 100vh. */
+    top: calc(45vh - 41.43vw - 282px) !important;
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
@@ -1908,5 +1920,21 @@
     align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+}
+
+/* =============================================================
+   TABLET (768-1199px) - EVENTS
+   Breadcrumb floor: this file loads after style-v2.css, so its own
+   .events-hero-breadcrumb rules win over the shared floor there.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  .events-hero-breadcrumb .breadcrumb-home,
+  .events-hero-breadcrumb .current,
+  .events-hero-breadcrumb a,
+  .events-hero-breadcrumb .ws-breadcrumb-home,
+  .events-hero-breadcrumb .breadcrumb-services-wrapper span {
+    font-size: max(12px, 1.25cqi);
   }
 }

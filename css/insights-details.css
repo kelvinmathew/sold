@@ -4,7 +4,7 @@
    ========================================================================= */
 
 /* For Desktop (Web screens) - Fluid scaling based on 1440px */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
   /* --- Hero Section --- */
   .insights-details-hero {
@@ -60,6 +60,8 @@
 
   .insights-details-hero-title-container {
     position: static;
+    max-width: 58.3333vw;
+    /* Keeps dynamic post titles wrapping within the hero column instead of stretching full-width */
   }
 
   .insights-details-hero-title {
@@ -220,6 +222,70 @@
     left: -1.9333vw;
     /* 12/1440 - tighten gap to match Figma */
     color: #000000;
+  }
+
+  /* Generic tags produced by the native WordPress editor (the_content()) -
+     mirrors the .insights-details-paragraph/-subtitle/-list rules above so
+     anything an editor types is styled automatically, with no special
+     classes required. */
+  .insights-details-body p {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.29vw;
+    line-height: 2.0089vw;
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .insights-details-body h2,
+  .insights-details-body h3 {
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.125vw;
+    line-height: 3.4722vw;
+    letter-spacing: 0.01em;
+    color: #000000;
+    max-width: 49.9305vw;
+    margin: 0;
+  }
+
+  .insights-details-body ul,
+  .insights-details-body ol {
+    width: 57.4305vw;
+    margin: 0;
+    margin-left: 4.4583vw;
+    padding-left: 2.0833vw;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.29vw;
+    line-height: 2.5167vw;
+    letter-spacing: 0.01em;
+    color: #000000;
+    list-style-type: none;
+  }
+
+  .insights-details-body ul li,
+  .insights-details-body ol li {
+    position: relative;
+  }
+
+  .insights-details-body ul li::before,
+  .insights-details-body ol li::before {
+    content: '•';
+    position: absolute;
+    left: -1.9333vw;
+    color: #000000;
+  }
+
+  .insights-details-body img,
+  .insights-details-body figure {
+    width: 100%;
+    max-width: 89.5833vw;
+    height: auto;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
   }
 
   .insights-details-image-wrapper {
@@ -573,7 +639,7 @@
 }
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* --- Hero Section --- */
   .insights-details-hero {
@@ -601,7 +667,12 @@
 
   .insights-details-hero-content {
     position: absolute !important;
-    top: 0 !important;
+    /* Hero content was sitting just below the middle (53.7%). Centred
+       slightly above it instead: 45vh - 120px (half the 241px block). The
+       block naturally starts 333px down, hence the -453px. Offsetting the
+       wrapper moves title and meta together, so their gap is unchanged.
+       vh because this hero is 100vh. */
+    top: calc(45vh - 453px) !important;
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
@@ -750,6 +821,65 @@
     left: -3.0534vw !important;
     /* -12px */
     color: #000000 !important;
+  }
+
+  /* Generic tags produced by the native WordPress editor (the_content()) -
+     mirrors the .insights-details-paragraph/-subtitle/-list rules above. */
+  .insights-details-body p {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 4.0712vw !important;
+    line-height: 5.5980vw !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+    margin: 0 !important;
+  }
+
+  .insights-details-body h2,
+  .insights-details-body h3 {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 5.5979vw !important;
+    line-height: 7.1246vw !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+    margin: 5.3435vw 0 0 0 !important;
+  }
+
+  .insights-details-body ul,
+  .insights-details-body ol {
+    margin: 0 !important;
+    padding-left: 5.0890vw !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 4.0712vw !important;
+    line-height: 5.5980vw !important;
+    letter-spacing: 0.01em !important;
+    color: #000000 !important;
+    list-style-type: none !important;
+  }
+
+  .insights-details-body ul li,
+  .insights-details-body ol li {
+    position: relative !important;
+  }
+
+  .insights-details-body ul li::before,
+  .insights-details-body ol li::before {
+    content: '•' !important;
+    position: absolute !important;
+    left: -3.0534vw !important;
+    color: #000000 !important;
+  }
+
+  .insights-details-body img,
+  .insights-details-body figure {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 4px !important;
+    margin: 0 !important;
+    display: block !important;
   }
 
   .insights-details-image-wrapper {
@@ -1114,5 +1244,36 @@
     display: block !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+}
+
+/* =============================================================
+   TABLET (768-1199px)
+   Card excerpts/dates are 0.9722cqi, which is 7.5px at 768. This file
+   loads after style-v2.css so it needs its own floor.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  .insights-related-card-desc,
+  .insights-related-card-date,
+  .insights-related-card-title,
+  .insights-details-body p,
+  .insights-details-body li {
+    font-size: max(12px, 0.9722cqi);
+  }
+
+  .insights-details-hero-breadcrumb .breadcrumb-home,
+  .insights-details-hero-breadcrumb .current,
+  .insights-details-hero-breadcrumb a,
+  .insights-details-hero-meta,
+  .insights-details-hero-meta span {
+    font-size: max(12px, 1.25cqi);
+  }
+
+  .insights-related-card-date,
+  .insights-related-card-date span,
+  .insights-related-read-more,
+  .insights-related-read-more a {
+    font-size: max(12px, 1.4583cqi);
   }
 }

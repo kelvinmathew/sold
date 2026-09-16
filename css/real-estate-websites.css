@@ -30,7 +30,7 @@ body.social-page-body {
    ============================================== */
 
 /* Desktop & Tablet Styles (Min-width: 992px) */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .social-hero {
     position: relative;
     width: 100%;
@@ -172,7 +172,7 @@ body.social-page-body {
 /* ==============================================
    MOBILE STYLES (Max-width: 991px)
    ============================================== */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE INTRO OVERRIDES */
   .social-intro-left {
@@ -227,7 +227,13 @@ body.social-page-body {
   .social-hero-content {
     position: relative;
     z-index: 3;
-    padding: 242px 24px 40px 24px;
+    /* This page's content block is short (179px), so sitting at Home's 201px
+       left the lower half of the hero empty. Centred slightly above the
+       middle instead: block centre at 45% of the 852px hero = 383px, so
+       top = 383 - 179/2 = 294px. Hero height here is a fixed 852px at any
+       phone height, so a fixed px value holds 45% everywhere.
+       Only the start moved - all inner gaps are untouched. */
+    padding: 294px 24px 40px 24px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -297,7 +303,7 @@ body.social-page-body {
 /* ==============================================
    2. SOCIAL INTRO SECTION
    ============================================== */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .social-intro-section {
     width: 100%;
     padding-top: 4.9306cqi;
@@ -773,7 +779,7 @@ body.social-page-body {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   body.social-page-body {
     background-color: #ffffff;
   }
@@ -1250,7 +1256,7 @@ body.social-page-body {
 /* ==============================================
    GLOBAL OVERRIDES FOR SOCIAL MEDIA PAGE
    ============================================== */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .social-page-body .faq-section {
     background-color: #E9EAEB !important;
     padding: 5.6250cqi 0 4.5139cqi !important;
@@ -1315,7 +1321,7 @@ body.social-page-body {
 /* ==============================================
    MOBILE STYLES (Max-width: 991px) ADDITIONS
    ============================================== */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .social-features-main-heading {
     margin: 6px 0 21px 4px;
     font-family: 'Mona Sans', sans-serif;
@@ -1526,4 +1532,37 @@ body.social-page-body {
      from style-v2.css that every other page uses, instead of the custom
      smaller dimensions this page previously had (which didn't match the
      rest of the site and squeezed the arrow icon against the button edge). */
+}
+
+/* =============================================================
+   TABLET (768-1199px)
+   Breadcrumb floor. These per-page files load after style-v2.css, so
+   their own .*-hero-breadcrumb rules win over the shared floor there.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  .social-hero-breadcrumb .breadcrumb-home,
+  .social-hero-breadcrumb .current,
+  .social-hero-breadcrumb a,
+  .social-hero-breadcrumb .ws-breadcrumb-home,
+  .branding-hero-breadcrumb .breadcrumb-home,
+  .branding-hero-breadcrumb .current,
+  .branding-hero-breadcrumb a,
+  .branding-hero-breadcrumb .ws-breadcrumb-home,
+  .services-hero-breadcrumb .breadcrumb-home,
+  .services-hero-breadcrumb .current {
+    font-size: max(12px, 1.25cqi);
+  }
+
+  /* Service page body copy (1.5277cqi -> 11.7px at 768) */
+  .social-feature-desc,
+  .social-success-item-desc,
+  .social-services-item-text,
+  .social-intro-desc,
+  .branding-feature-desc,
+  .branding-success-item-desc,
+  .branding-services-item-text,
+  .branding-intro-desc {
+    font-size: max(12px, 1.5277cqi);
+  }
 }

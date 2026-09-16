@@ -137,7 +137,7 @@
 }
 
 /* Mobile text styling for About SOLD */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
   .ws-hero-breadcrumb {
@@ -233,7 +233,7 @@
 }
 
 /* Web-only layout overrides */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .ws-about-section {
     padding: 8.125cqi 0 5.6944cqi;
   }
@@ -312,34 +312,50 @@
     color: #504B4B;
   }
 
-  .ws-about-btn {
+  /* Matches the "Get in touch" button in the Our Founders section below
+     (.ws-founder-btn): same 282.1 x 67.3 pill, same 55px radius, same
+     44 x 43 icon at the same inset, same 30px text line-height. Web only -
+     the mobile rules further down are untouched.
+
+     Selectors are .ws-about-section-scoped so they outrank the base
+     .ws-btn-dark-pill rule, which is declared later in this file and was
+     otherwise winning on border-radius and padding. */
+  .ws-about-section .ws-about-btn {
     position: absolute;
     top: 21.1111cqi;
     left: 1.9444cqi;
+    width: 19.5924cqi;
+    /* 282.1px - same as .ws-founder-btn */
+    height: 4.6771cqi;
+    /* 67.3px */
     border-radius: 3.8194cqi;
+    /* 55px */
     background: #263238;
     display: inline-flex;
     align-items: center;
-    /* top: 13, right: 11, bottom: 11.77, left: 9 */
-    padding: 0.9028cqi 0.7639cqi 0.8174cqi 0.625cqi;
-    /* gap: 24.9 (so text left is 9 + 41.1 + 24.9 = 75) */
-    gap: 1.7292cqi;
+    /* icon sits 14.9px in from the left edge, as on the founder button */
+    padding: 0 0 0 1.0347cqi;
+    /* 19.2px, puts the text 78.1px from the left edge */
+    gap: 1.3333cqi;
+    box-sizing: border-box;
   }
 
-  .ws-about-btn .ws-btn-text {
+  .ws-about-section .ws-about-btn .ws-btn-text {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 1.7361cqi;
-    line-height: 2.5375cqi;
-    /* match Figma 36.54px bounding box to ensure exact vertical geometry */
+    line-height: 2.0833cqi;
+    /* 30px - matches .ws-founder-btn .ws-btn-text */
     letter-spacing: 0.01em;
     color: #FFFFFF;
     margin: 0;
   }
 
-  .ws-about-btn .ws-btn-icon {
-    width: 2.8542cqi;
-    height: 2.8542cqi;
+  .ws-about-section .ws-about-btn .ws-btn-icon {
+    width: 3.0556cqi;
+    /* 44px */
+    height: 2.9861cqi;
+    /* 43px */
     border-radius: 1.6667cqi;
     background: #FFA726;
     margin: 0;
@@ -540,7 +556,8 @@
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-style: italic;
+    /* italic removed on web to match mobile, which was never italic */
+    font-style: normal;
     font-size: 1.5278cqi;
     line-height: 1.7361cqi;
     letter-spacing: 0.02em;
@@ -855,24 +872,29 @@
 }
 
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .ws-map-container {
     width: 89.82vw;
     /* 353px */
-    height: 50.64vw;
-    /* 199px */
+    height: 57vw;
+    /* 224px (was 199px) - taller box, width untouched so it can't overflow sideways */
     margin-top: 20px;
   }
 
+  /* object-fit switched from cover to contain: a taller box with cover
+     would crop the map image's left/right edges to fill the new height.
+     Contain keeps the whole image visible (letterboxed top/bottom
+     instead), which is invisible here since the image and the section
+     behind it are both plain white. */
   .ws-map-image {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover !important;
+    object-fit: contain !important;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .ws-map-container {
     width: 100%;
     margin-top: 20px;
@@ -1047,7 +1069,7 @@
   padding: 60px 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .ws-founders-section {
     background: #FFFFFF;
   }
@@ -1214,7 +1236,7 @@
 }
 
 /* Web-only layout overrides */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .ws-hero-breadcrumb .ws-breadcrumb-current {
     align-items: baseline;
   }
@@ -1440,7 +1462,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* Info cards mobile overrides */
   /* Info cards mobile overrides */
@@ -1451,6 +1473,12 @@
   }
 
   .ws-info-card {
+    /* Stops iOS Safari / Chrome Android silently boosting the text inside these
+       cards. That auto-inflation is what pushed the description onto a 4th line
+       on some phones while it always measured as three in a desktop browser.
+       Inherited, so it covers the title and the description. */
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
     position: relative !important;
     width: 90.58vw !important;
     /* 356px */
@@ -1526,8 +1554,17 @@
     /* 22px */
     font-family: 'Mona Sans', var(--font-body) !important;
     font-weight: 400 !important;
-    font-size: 3.56vw !important;
-    /* 14px */
+    /* Was 3.56vw (14px @390). At that size the copy filled all three lines
+       with ZERO slack - "Collaborate with Us" tipped to a 4th line if the text
+       rendered just 1% larger, and "Our Mission" at 6%. Any phone that inflates
+       text even slightly (accessibility text scaling, a substituted font) spilled
+       a 4th line past the fixed-height box and ate the gap to the card bottom.
+       3.15vw (12.3px @390) leaves ~14% headroom, so all three cards stay on
+       three lines on every mobile width from 280px up.
+       line-height, height, width, top and left are deliberately untouched, so
+       the three-line box and the gap below the card are exactly as before. */
+    font-size: 3.15vw !important;
+    /* 12.3px @390 - was 3.56vw */
     line-height: 4.33vw !important;
     /* 17px */
     letter-spacing: 0.01em !important;
@@ -1558,7 +1595,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* Our Founders Section Mobile Overrides */
   .ws-founders-section {
@@ -1787,7 +1824,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* What Our Clients Say - Mobile Overrides */
   .ws-clients-section {
@@ -2074,7 +2111,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* ABOUT SOLD SECTION - Precise Mobile Coordinates */
   .ws-about-section {
@@ -2147,15 +2184,18 @@
     margin-top: 0 !important;
     width: 89.82vw !important;
     /* 353px width */
-    height: 50.64vw !important;
-    /* 199px height from user prompt 1151-1350? */
+    height: 57vw !important;
+    /* 224px height (was 199px) - taller box, width/margins untouched */
     display: block !important;
   }
 
+  /* object-fit switched from cover to contain: see matching comment on
+     the earlier .ws-map-image rule above - avoids cropping the map
+     image's left/right edges now that the box is taller. */
   .ws-map-image {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
   }
 
   /* 4. Card Container */
@@ -2243,7 +2283,7 @@
   /* match spacing logic */
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .ws-team-section {
     background: #FFFFFF;
     position: relative;
@@ -2445,7 +2485,7 @@
    Auto-scrolling carousel, one member at a time, same behavior/pattern
    as the testimonials carousel (see js/why-sold-scroll.js).
    ============================ */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .ws-team-mobile-section {
     background: #FFFFFF;
     padding: 9.92vw 0 13.48vw;
@@ -2556,5 +2596,48 @@
 
   .ws-team-dots .dot.active::after {
     display: none !important;
+  }
+}
+
+/* =============================================================
+   TABLET (768-1199px) - WHY SOLD
+   Layout is the desktop one here and scales correctly (all cqi); only the
+   type needs a floor so it stays readable when the design sits at ~53%.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  /* About info cards - description (1.0417cqi -> 8px at 768) */
+  .ws-about-right .ws-info-desc,
+  .ws-info-desc {
+    font-size: max(12px, 1.0417cqi);
+  }
+
+  /* Founder subtitle (1.1806cqi -> 9.1px at 768) */
+  .ws-founder-subtitle {
+    font-size: max(12px, 1.1806cqi);
+  }
+
+  /* Breadcrumb (two-deep to beat the base rule's specificity) */
+  .ws-hero-breadcrumb .ws-breadcrumb-home,
+  .ws-hero-breadcrumb .ws-breadcrumb-current,
+  .ws-hero-breadcrumb a,
+  .services-hero-breadcrumb .ws-breadcrumb-home,
+  .services-hero-breadcrumb .ws-breadcrumb-current {
+    font-size: max(12px, 1.25cqi);
+  }
+
+  /* Our Team - name + role (1.3889cqi / 0.9028cqi) */
+  .ws-team-name {
+    font-size: max(12px, 1.3889cqi);
+  }
+
+  .ws-team-role {
+    font-size: max(12px, 0.9028cqi);
+  }
+
+  /* Founder bio + client quote */
+  .ws-founder-bio,
+  .ws-clients-quote {
+    font-size: max(12px, 1.1111cqi);
   }
 }

@@ -8,7 +8,7 @@
   background-color: #F4F5F5 !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
   .insights-hero {
     position: relative;
@@ -1216,7 +1216,7 @@
 
 
 /* --- Pre-Footer Overrides for Client Success Page --- */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .cs-pre-footer .pre-footer-title {
     top: 50%;
     transform: translateY(-50%);
@@ -1263,7 +1263,7 @@
 }
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 
   /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
   .insights-hero-breadcrumb {
@@ -1316,6 +1316,12 @@
 
   .insights-hero-content {
     position: relative;
+    /* Hero content centred slightly above the middle: 45vh - 114px (half of
+       the 229px block). Children are absolutely positioned and naturally
+       start 333px down, hence the -448px - offsetting the wrapper moves the
+       whole block as one and leaves every inner gap untouched. vh because
+       this hero is 100vh. */
+    top: calc(45vh - 448px);
     transform: none;
     left: 0;
     padding: 0;
@@ -2230,4 +2236,43 @@
     padding: 0 !important;
   }
 
+}
+
+/* =============================================================
+   TABLET (768-1199px)
+   Card excerpts/dates are 0.9722cqi, which is 7.5px at 768. This file
+   loads after style-v2.css so it needs its own floor.
+   ============================================================= */
+@container (min-width: 768px) and (max-width: 1199px) {
+
+  .insights-blog-excerpt,
+  .insights-blog-date,
+  .insights-blog-title,
+  .insights-small-excerpt,
+  .insights-large-excerpt,
+  .insights-small-date,
+  .insights-large-date {
+    font-size: max(12px, 0.9722cqi);
+  }
+
+  .insights-hero-breadcrumb .breadcrumb-home,
+  .insights-hero-breadcrumb .current,
+  .insights-hero-breadcrumb a,
+  .breadcrumb-services-wrapper .current {
+    font-size: max(12px, 1.25cqi);
+  }
+
+  .insights-hero-desc {
+    font-size: max(12px, 1.5cqi);
+  }
+
+  .filter-link,
+  .insights-feed-categories a {
+    font-size: max(12px, 1.3889cqi);
+  }
+
+  .insights-blog-readmore,
+  .insights-blog-readmore a {
+    font-size: max(12px, 1.4583cqi);
+  }
 }
