@@ -560,7 +560,14 @@
     font-style: normal;
     font-size: 1.5278cqi;
     line-height: 1.7361cqi;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    /* Client-requested: match the "Our Vision" card description's letter
+       spacing (.ws-info-desc, 0.01em) - was 0.02em, twice as wide. The About
+       description (.ws-about-text) was already 0.01em, confirmed via
+       computed style - only this one needed changing. Web only (this rule
+       lives in the @media (min-width:768px) block); mobile's own
+       .ws-founder-bio positioning override doesn't touch letter-spacing,
+       so it is untouched. */
     color: #0F0F0F;
   }
 
@@ -823,6 +830,14 @@
     margin: 0;
     display: block;
     /* Override global flex */
+    pointer-events: none;
+    /* This text block sits centred ON TOP of the rotating logo wheel. Without
+       this, hovering/dragging anywhere inside its box (the wheel's own
+       centre) never reaches .ws-clients-arc-container underneath - it just
+       silently swallows the mouse events, so the newly added web hover-pause
+       and mouse-drag (js/why-sold-scroll.js) never fired there. Matches the
+       mobile rule below, which already solved this identical problem the
+       same way for touch. */
   }
 
   .ws-clients-section .ws-client-testimonial .ws-quote-icon {
@@ -873,19 +888,25 @@
 
 
 @media (max-width: 767px) {
+  /* REVERTED (again) back to zero-crop. v1.0.79 tried a fixed 57vw height +
+     object-fit:cover to make this taller, accepting a ~24px/side crop - the
+     client then saw it live and asked for the left side not to be cut,
+     on every phone width, even if that means less height. aspect-ratio
+     locks the box to the image's own 2162:1206 shape, so object-fit has
+     nothing left to crop - whatever the width is (89.82vw, unchanged), the
+     height that exactly fits it with zero crop is calculated automatically
+     at every viewport, not just the ones that happened to be tested.
+     Hard geometric fact, confirmed multiple rounds now: with THIS width and
+     THIS source image, "taller AND zero-crop" are mutually exclusive - one
+     needs either a wider container (less side margin) or a differently-
+     cropped/more-square source image, not a CSS-only value. */
   .ws-map-container {
     width: 89.82vw;
     /* 353px */
-    height: 57vw;
-    /* 224px (was 199px) - taller box, width untouched so it can't overflow sideways */
+    aspect-ratio: 2162 / 1206;
     margin-top: 20px;
   }
 
-  /* object-fit switched from cover to contain: a taller box with cover
-     would crop the map image's left/right edges to fill the new height.
-     Contain keeps the whole image visible (letterboxed top/bottom
-     instead), which is invisible here since the image and the section
-     behind it are both plain white. */
   .ws-map-image {
     width: 100%;
     height: 100%;
@@ -1160,6 +1181,16 @@
   gap: 20px;
 }
 
+/* Mobile + tablet: the client arc can be spun by finger (js/why-sold-scroll.js).
+   pan-y lets the browser keep owning vertical page scroll natively, while
+   horizontal gestures are delivered to JS so the wheel can be dragged.
+   992px matches the mobile/tablet cut-off that script's arc maths uses. */
+@media (max-width: 991px) {
+  .ws-clients-arc-container {
+    touch-action: pan-y;
+  }
+}
+
 .ws-client-logo {
   position: relative;
   display: flex;
@@ -1290,6 +1321,10 @@
     transform: none;
     display: block;
     /* Allows absolute positioning for children */
+    pointer-events: none;
+    /* Same fix as the other .ws-client-testimonial rule above - without this,
+       this box (the wheel's own visual centre) blocks the web hover-pause
+       and mouse-drag from ever reaching the arc container beneath it. */
   }
 
   .ws-quote-icon {
@@ -2164,8 +2199,10 @@
   .ws-about-text-mobile {
     margin-left: 5.34vw !important;
     /* 21px left */
-    margin-bottom: 3.31vw !important;
-    /* 13px below to map */
+    margin-bottom: 7.65vw !important;
+    /* 30px below to the Get in touch button (was 20px, client asked for a
+       little more room; was 13px straight to the map before the button was
+       shown on mobile) */
     margin-top: 0 !important;
     width: 89.57vw !important;
     /* 352px width */
@@ -2175,23 +2212,94 @@
     /* 15px gap between p tags */
   }
 
-  /* 3. Map */
+  /* 3. Get in touch button - same pill as .ws-founder-btn below (same
+     colors/icon/text sizing), just left-aligned instead of centered to
+     match this column's text, and placed above the map like the desktop
+     version already is. Was d-none on mobile (desktop-only); now shown. */
+  .ws-about-btn {
+    width: 44.78vw !important;
+    /* 176px */
+    height: 10.94vw !important;
+    /* 43px */
+    border-radius: 13.99vw !important;
+    /* 55px */
+    background: #263238 !important;
+    align-self: flex-start !important;
+    margin-left: 5.34vw !important;
+    /* 21px left - matches the text above */
+    margin-bottom: 5.09vw !important;
+    /* 20px below to the map */
+    margin-top: 0 !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    gap: 1.93vw !important;
+    /* 7.58px gap */
+    text-decoration: none !important;
+  }
+
+  .ws-about-btn .ws-btn-text {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 5.09vw !important;
+    /* 20px */
+    line-height: 7.63vw !important;
+    /* 30px */
+    letter-spacing: 0.01em !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+  }
+
+  .ws-about-btn .ws-btn-icon {
+    width: 7.38vw !important;
+    /* 29px */
+    height: 7.38vw !important;
+    /* 29px */
+    background: #FFA726 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .ws-about-btn .ws-btn-icon svg {
+    width: 4.07vw !important;
+    /* ~16px downscaled arrow */
+    height: auto !important;
+  }
+
+  /* 4. Map */
   .ws-about-left .ws-map-container {
     margin-left: 5.09vw !important;
     /* 20px left */
-    margin-bottom: 9.92vw !important;
-    /* 39px below to card container */
+    margin-bottom: 5.09vw !important;
+    /* 20px below to card container (was 39px, client asked to close up
+       the map-to-cards gap) */
     margin-top: 0 !important;
     width: 89.82vw !important;
     /* 353px width */
-    height: 57vw !important;
-    /* 224px height (was 199px) - taller box, width/margins untouched */
+    aspect-ratio: 2162 / 1206 !important;
+    /* REVERTED (again) back to zero-crop, same reasoning as the general
+       .ws-map-container rule above: v1.0.79's 57vw fixed height +
+       object-fit:cover cropped the left/right edges (~24px/side) to get
+       taller - client saw it live and asked for it not to be cut on any
+       phone width. aspect-ratio locking to the image's own 2162:1206 shape
+       is the only way to guarantee zero crop at EVERY viewport
+       automatically, not just the ones tested - a fixed height value
+       (vw or px) can only ever be exactly right at one width. This rule
+       (more specific, !important) is the one that actually wins over the
+       general rule above - keep both in sync. */
     display: block !important;
   }
 
-  /* object-fit switched from cover to contain: see matching comment on
-     the earlier .ws-map-image rule above - avoids cropping the map
-     image's left/right edges now that the box is taller. */
+  /* object-fit back to contain: with the box locked to the image's own
+     aspect ratio again, contain and cover render identically (no crop, no
+     letterbox) - contain is the safer of the two, since it can never crop
+     even if aspect-ratio rounds a sub-pixel differently than the image's
+     exact dimensions. */
   .ws-map-image {
     width: 100% !important;
     height: 100% !important;
@@ -2200,8 +2308,11 @@
 
   /* 4. Card Container */
   .ws-about-right .ws-info-cards {
-    margin-top: 9.92vw !important;
-    /* 39px */
+    margin-top: 5.09vw !important;
+    /* 20px (was 39px, client asked to close up the map-to-cards gap -
+       reduced on both sides: this rule's own top margin AND the map
+       container's bottom margin above, since they stack together into
+       one combined visible gap) */
     margin-left: 4.58vw !important;
     /* 18px */
     margin-right: 4.83vw !important;

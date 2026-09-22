@@ -78,13 +78,36 @@ h6 {
 
 /* ============================
    HEADER
+   v1.0.60: back to position:absolute (its original, pre-sticky design) so
+   it scrolls away with the page again - web + tablet only, same as before
+   the v1.0.58 change that made it position:fixed throughout. The <=767px
+   override below is untouched and still forces its own absolute floating
+   pill for mobile regardless of any of this.
+
+   Once the user has scrolled well past this tall header, a SEPARATE
+   compact fixed bar (.site-header.is-compact, further down this file)
+   takes over - same element, JS just toggles the class. See that block's
+   comment for the compact bar itself; this one is only ever the tall,
+   transparent-over-the-hero state.
    ============================ */
 .site-header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100cqi;
+  /* Every child (logo/nav/cta) is absolutely positioned, so the header box
+     has no natural content height - without an explicit one it would be
+     0px tall.
+     144px (not 113px, which only reached the logo's bottom edge and left the
+     whole group sitting flush against the bar's bottom): the logo sits at
+     top:31px and is 82px tall, and the nav pill and Book a Call button are
+     already centred on that same axis - all three have their centre at 72px.
+     31 + 82 + 31 = 144 puts the bar's own centre on 72px too, so the whole
+     group is vertically centred without moving a single element off its
+     Figma position. */
+  height: 10cqi;
   z-index: 100;
+  background: transparent;
 }
 
 .header-logo {
@@ -288,6 +311,97 @@ h6 {
   /* 24px */
   height: 0.694cqi;
   /* 10px */
+}
+
+/* ============================
+   COMPACT STICKY HEADER (v1.0.60)
+   The SAME .site-header element as above - JS (main.js / main-v2.js) adds
+   this class once the user has scrolled well past the tall header, and the
+   tall header's own rules stop applying (position:fixed here wins over the
+   plain position:absolute above). Web (992px+) shows the full logo/nav/CTA
+   compact row below; the @container tablet block further down this file
+   (768-991px, unchanged by this) keeps hiding .header-nav/.header-cta and
+   showing the hamburger instead - same content as the tall header already
+   shows at that width, just inside this shorter bar. Mobile is <=767px,
+   entirely separate, untouched.
+
+   Every child here was position:absolute for the tall bar's Figma-exact
+   layout; that math does not shrink cleanly, so the compact bar resets them
+   to a plain flex row instead - same technique the mobile override already
+   uses for its own totally different layout.
+   ============================ */
+@media (min-width: 768px) {
+  .site-header.is-compact {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100cqi;
+    height: 5cqi;
+    /* 72px - exactly half the tall header's 144px, and reuses that header's
+       own established vertical centre-line (72px) as this bar's full height. */
+    z-index: 100;
+    background: #263238;
+    /* brand dark, matching the pre-footer/footer - this bar has no hero
+       behind it to stay transparent over, so it is always solid. */
+    box-shadow: 0 0.6944cqi 1.3888cqi rgba(0, 0, 0, 0.15);
+    /* 10px 20px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.7777cqi;
+    /* 40px - matches the tall header's existing .header-cta right inset */
+    box-sizing: border-box;
+  }
+
+  .site-header.is-compact .header-logo {
+    position: static;
+    width: 7.9861cqi;
+    /* 115px, down from 145px - same ~1.77:1 aspect ratio */
+    height: 4.5138cqi;
+    /* 65px, down from 82px */
+    flex-shrink: 0;
+  }
+
+  .site-header.is-compact .header-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    margin: 0 1.3888cqi;
+    /* 20px breathing room from the logo/button on either side */
+  }
+
+  .site-header.is-compact .main-nav-wrapper {
+    width: auto;
+    /* auto shrinks the pill to hug its own content; header-nav's
+       justify-content:center (above) still keeps it centred. */
+    height: 3.6805cqi;
+    /* 53px - same as the tall header's pill */
+    padding: 0 3.3333cqi;
+    /* 48px - ensures end items 'Home' and 'Insights' don't touch the edges */
+  }
+
+  .site-header.is-compact .main-nav-wrapper nav {
+    gap: 4.375cqi;
+    /* 63px - same spacing as the tall header */
+  }
+
+  .site-header.is-compact .header-cta {
+    position: static;
+    width: auto;
+    height: 3.6805cqi;
+    /* 53px - same as the tall header's CTA */
+    flex-shrink: 0;
+  }
+
+  .site-header.is-compact .btn-book-call {
+    padding: 0 1.3888cqi;
+    /* 20px horizontal padding */
+    font-size: 1.1111cqi;
+    /* 16px - same as the tall header */
+  }
 }
 
 .mobile-menu-btn {
@@ -1213,8 +1327,10 @@ h6 {
   position: absolute;
   z-index: 0;
   /* Behind stars and quote box */
-  width: 36.307%;
-  /* 175/482 - Figma: x:34, y:20, w:175, h:79 relative to 482x343 card */
+  width: 39.419%;
+  /* Client-requested +15px, width only, left/top ("starting") untouched:
+     175/482=36.307% (Figma) + 15px -> 190/482=39.419%. Height stays at the
+     original Figma value below - only width changed. */
   height: 23.032%;
   /* 79/343 */
   top: 5.831%;
@@ -2697,10 +2813,12 @@ h6 {
    ============================ */
 .faq-section {
   background: var(--color-bg-light);
-  padding: 1.875cqi 8.0208cqi 4.5139cqi;
-  /* top: 27px, left/right: 115.5px, bottom: 65px - matches the gap used on
-     branding-design/ai-marketing/lead-generation/etc. so every page has the
-     same spacing between the FAQ section and the pre-footer below it */
+  padding: 4.5139cqi 8.0208cqi 4.5139cqi;
+  /* top/bottom: 65px, left/right: 115.5px. Top was 27px (1.875cqi) when this
+     section sat right after the hero-area content; now that Pre-footer
+     comes right before it, top is matched to the section's own bottom gap -
+     the standard spacing already used site-wide between stacked sections -
+     so "Have Questions ?" isn't crowded against the pre-footer above it. */
 }
 
 .faq-container {
@@ -2837,6 +2955,19 @@ h6 {
   color: #3A3939;
   /* exact Figma */
   margin: 0;
+}
+
+/* ============================
+   FAQ -> FOOTER DIVIDER
+   Figma node 3575:916 (web) called for a 4px line; thinned to 2px per
+   client feedback - looked too heavy at the original weight.
+   ============================ */
+.faq-footer-divider {
+  width: 100%;
+  height: 0.1389cqi;
+  /* 2px / 1440 */
+  min-height: 2px;
+  background: #263238;
 }
 
 /* ============================
@@ -3561,22 +3692,100 @@ h6 {
     flex-shrink: 0 !important;
   }
 
+  /* Pinned throughout scroll (client request) - was position:absolute,
+     which scrolled fully away with the page like the rest of the content.
+     A solid #263238 background was briefly added here (matching the
+     web/tablet .is-compact bar), then removed again per a later client
+     request (transparent, icons only). Client has now asked for the
+     background back - restored to the same #263238 brand dark the web
+     .is-compact bar uses, so mobile finally matches web as originally
+     intended. Logo and hamburger are still laid out by this same flex row
+     (justify-content:space-between), so they remain correctly contained;
+     the WhatsApp icon is a separate position:fixed element (see
+     .whatsapp-float-btn) whose own coordinates happen to fall inside this
+     bar's rectangle and whose z-index (9990) is well above this bar's
+     (100), so it continues to render on top of the new background exactly
+     where it already sat. */
   .site-header {
     position: absolute !important;
+    /* Client-requested: mobile should behave like web now - this "tall"
+       state scrolls away with the page (position:absolute, not fixed);
+       .site-header.is-compact below is the separate sticky bar that takes
+       over once scrolled, matching web's own two-state pattern
+       (.site-header / .site-header.is-compact, see css/style.css's web
+       rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
+       client explicitly asked for pinned-always back then; this reverses
+       that in favour of matching web's scroll-away-then-compact model. */
     top: 42px !important;
-    left: 25px !important;
-    right: 24px !important;
+    left: 16px !important;
+    right: 16px !important;
     width: auto !important;
-    max-width: calc(100% - 49px) !important;
-    height: 54px !important;
+    max-width: calc(100% - 32px) !important;
+    height: 60px !important;
+    /* Client-requested: slightly taller bar, mobile only (was 54px). Logo
+       and hamburger need no changes to stay vertically centred - they're
+       plain flex children of this rule's own align-items:center, which
+       re-centres them automatically in the new height regardless of its
+       value. The WhatsApp button is the one exception: it's a separate
+       position:fixed element with a manually-calculated `top`, not a flex
+       child of this bar, so its vertical centre had to be recalculated by
+       hand for both this state and .is-compact (see .whatsapp-float-btn's
+       mobile rules) - flag for the client to confirm 60px is "slightly"
+       enough, no exact value was given. */
     z-index: 100 !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     opacity: 1 !important;
-    padding: 0 !important;
+    padding: 0 12px !important;
+    /* Client-requested: background extended further out (outer inset
+       25px/24px -> 16px/16px, now symmetric too - was 1px off), plus equal
+       12px internal padding on both sides so the logo and hamburger sit
+       inset from the background edge instead of flush against it (was 0px
+       gap on both, confirmed via computed layout before this change). No
+       exact px was given, so these are reasoned values - flag for the
+       client to confirm the spacing looks right. Mobile only. */
     margin: 0 !important;
     box-sizing: border-box !important;
+    background: transparent !important;
+    /* Client-requested: background removed from this "tall"/scrolling
+       state - now transparent like web's own tall header, which only ever
+       had a solid background in its compact/sticky state. The dark
+       #263238 fill (added in v1.0.81) moved to .site-header.is-compact
+       below instead of being removed outright, since the client still
+       wants it on the sticky bar. border-radius is now moot here (nothing
+       visible to round) but left in place - harmless, and saves a
+       re-declaration if a background is ever wanted back on this state. */
+    border-radius: 10px !important;
+  }
+
+  /* Sticky/compact bar - appears once js/main.js's scroll listener adds
+     .is-compact past 200px scrolled (the same class/threshold web already
+     uses; that JS runs unconditionally, only the CSS was ever gated to
+     desktop - see the comment on the .is-compact block in the web-width
+     section of this file). Height/padding/flex layout are inherited from
+     the base .site-header rule above unchanged, which is exactly why the
+     logo and hamburger keep the same positioning the client asked to
+     preserve - they're normal flex children centered by the shared
+     `align-items:center`, not individually positioned, so nothing about
+     them needs to be redeclared here. background is redeclared explicitly
+     (not inherited) since the base rule above is now transparent - this
+     bar is the only one of the two states that should be solid. */
+  .site-header.is-compact {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* The base rule's max-width:calc(100% - 32px) exists to keep the tall
+       state inset 16px from each edge - left/right:0 alone doesn't cancel
+       it, so without this override the bar stayed capped at that narrower
+       width even while positioned flush left, leaving an unexplained 32px
+       gap on the right and throwing off the hamburger's position (caught
+       by re-measuring after scroll, not assumed). */
+    background: #263238 !important;
+    border-radius: 0 !important;
   }
 
   .header-logo {
@@ -4094,22 +4303,100 @@ h6 {
     flex-shrink: 0 !important;
   }
 
+  /* Pinned throughout scroll (client request) - was position:absolute,
+     which scrolled fully away with the page like the rest of the content.
+     A solid #263238 background was briefly added here (matching the
+     web/tablet .is-compact bar), then removed again per a later client
+     request (transparent, icons only). Client has now asked for the
+     background back - restored to the same #263238 brand dark the web
+     .is-compact bar uses, so mobile finally matches web as originally
+     intended. Logo and hamburger are still laid out by this same flex row
+     (justify-content:space-between), so they remain correctly contained;
+     the WhatsApp icon is a separate position:fixed element (see
+     .whatsapp-float-btn) whose own coordinates happen to fall inside this
+     bar's rectangle and whose z-index (9990) is well above this bar's
+     (100), so it continues to render on top of the new background exactly
+     where it already sat. */
   .site-header {
     position: absolute !important;
+    /* Client-requested: mobile should behave like web now - this "tall"
+       state scrolls away with the page (position:absolute, not fixed);
+       .site-header.is-compact below is the separate sticky bar that takes
+       over once scrolled, matching web's own two-state pattern
+       (.site-header / .site-header.is-compact, see css/style.css's web
+       rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
+       client explicitly asked for pinned-always back then; this reverses
+       that in favour of matching web's scroll-away-then-compact model. */
     top: 42px !important;
-    left: 25px !important;
-    right: 24px !important;
+    left: 16px !important;
+    right: 16px !important;
     width: auto !important;
-    max-width: calc(100% - 49px) !important;
-    height: 54px !important;
+    max-width: calc(100% - 32px) !important;
+    height: 60px !important;
+    /* Client-requested: slightly taller bar, mobile only (was 54px). Logo
+       and hamburger need no changes to stay vertically centred - they're
+       plain flex children of this rule's own align-items:center, which
+       re-centres them automatically in the new height regardless of its
+       value. The WhatsApp button is the one exception: it's a separate
+       position:fixed element with a manually-calculated `top`, not a flex
+       child of this bar, so its vertical centre had to be recalculated by
+       hand for both this state and .is-compact (see .whatsapp-float-btn's
+       mobile rules) - flag for the client to confirm 60px is "slightly"
+       enough, no exact value was given. */
     z-index: 100 !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     opacity: 1 !important;
-    padding: 0 !important;
+    padding: 0 12px !important;
+    /* Client-requested: background extended further out (outer inset
+       25px/24px -> 16px/16px, now symmetric too - was 1px off), plus equal
+       12px internal padding on both sides so the logo and hamburger sit
+       inset from the background edge instead of flush against it (was 0px
+       gap on both, confirmed via computed layout before this change). No
+       exact px was given, so these are reasoned values - flag for the
+       client to confirm the spacing looks right. Mobile only. */
     margin: 0 !important;
     box-sizing: border-box !important;
+    background: transparent !important;
+    /* Client-requested: background removed from this "tall"/scrolling
+       state - now transparent like web's own tall header, which only ever
+       had a solid background in its compact/sticky state. The dark
+       #263238 fill (added in v1.0.81) moved to .site-header.is-compact
+       below instead of being removed outright, since the client still
+       wants it on the sticky bar. border-radius is now moot here (nothing
+       visible to round) but left in place - harmless, and saves a
+       re-declaration if a background is ever wanted back on this state. */
+    border-radius: 10px !important;
+  }
+
+  /* Sticky/compact bar - appears once js/main.js's scroll listener adds
+     .is-compact past 200px scrolled (the same class/threshold web already
+     uses; that JS runs unconditionally, only the CSS was ever gated to
+     desktop - see the comment on the .is-compact block in the web-width
+     section of this file). Height/padding/flex layout are inherited from
+     the base .site-header rule above unchanged, which is exactly why the
+     logo and hamburger keep the same positioning the client asked to
+     preserve - they're normal flex children centered by the shared
+     `align-items:center`, not individually positioned, so nothing about
+     them needs to be redeclared here. background is redeclared explicitly
+     (not inherited) since the base rule above is now transparent - this
+     bar is the only one of the two states that should be solid. */
+  .site-header.is-compact {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* The base rule's max-width:calc(100% - 32px) exists to keep the tall
+       state inset 16px from each edge - left/right:0 alone doesn't cancel
+       it, so without this override the bar stayed capped at that narrower
+       width even while positioned flush left, leaving an unexplained 32px
+       gap on the right and throwing off the hamburger's position (caught
+       by re-measuring after scroll, not assumed). */
+    background: #263238 !important;
+    border-radius: 0 !important;
   }
 
   .header-logo {
@@ -4645,22 +4932,100 @@ h6 {
   }
 
   /* 1. Header Area (#781:1190) */
+  /* Pinned throughout scroll (client request) - was position:absolute,
+     which scrolled fully away with the page like the rest of the content.
+     A solid #263238 background was briefly added here (matching the
+     web/tablet .is-compact bar), then removed again per a later client
+     request (transparent, icons only). Client has now asked for the
+     background back - restored to the same #263238 brand dark the web
+     .is-compact bar uses, so mobile finally matches web as originally
+     intended. Logo and hamburger are still laid out by this same flex row
+     (justify-content:space-between), so they remain correctly contained;
+     the WhatsApp icon is a separate position:fixed element (see
+     .whatsapp-float-btn) whose own coordinates happen to fall inside this
+     bar's rectangle and whose z-index (9990) is well above this bar's
+     (100), so it continues to render on top of the new background exactly
+     where it already sat. */
   .site-header {
     position: absolute !important;
+    /* Client-requested: mobile should behave like web now - this "tall"
+       state scrolls away with the page (position:absolute, not fixed);
+       .site-header.is-compact below is the separate sticky bar that takes
+       over once scrolled, matching web's own two-state pattern
+       (.site-header / .site-header.is-compact, see css/style.css's web
+       rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
+       client explicitly asked for pinned-always back then; this reverses
+       that in favour of matching web's scroll-away-then-compact model. */
     top: 42px !important;
-    left: 25px !important;
-    right: 24px !important;
+    left: 16px !important;
+    right: 16px !important;
     width: auto !important;
-    max-width: calc(100% - 49px) !important;
-    height: 54px !important;
+    max-width: calc(100% - 32px) !important;
+    height: 60px !important;
+    /* Client-requested: slightly taller bar, mobile only (was 54px). Logo
+       and hamburger need no changes to stay vertically centred - they're
+       plain flex children of this rule's own align-items:center, which
+       re-centres them automatically in the new height regardless of its
+       value. The WhatsApp button is the one exception: it's a separate
+       position:fixed element with a manually-calculated `top`, not a flex
+       child of this bar, so its vertical centre had to be recalculated by
+       hand for both this state and .is-compact (see .whatsapp-float-btn's
+       mobile rules) - flag for the client to confirm 60px is "slightly"
+       enough, no exact value was given. */
     z-index: 100 !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     opacity: 1 !important;
-    padding: 0 !important;
+    padding: 0 12px !important;
+    /* Client-requested: background extended further out (outer inset
+       25px/24px -> 16px/16px, now symmetric too - was 1px off), plus equal
+       12px internal padding on both sides so the logo and hamburger sit
+       inset from the background edge instead of flush against it (was 0px
+       gap on both, confirmed via computed layout before this change). No
+       exact px was given, so these are reasoned values - flag for the
+       client to confirm the spacing looks right. Mobile only. */
     margin: 0 !important;
     box-sizing: border-box !important;
+    background: transparent !important;
+    /* Client-requested: background removed from this "tall"/scrolling
+       state - now transparent like web's own tall header, which only ever
+       had a solid background in its compact/sticky state. The dark
+       #263238 fill (added in v1.0.81) moved to .site-header.is-compact
+       below instead of being removed outright, since the client still
+       wants it on the sticky bar. border-radius is now moot here (nothing
+       visible to round) but left in place - harmless, and saves a
+       re-declaration if a background is ever wanted back on this state. */
+    border-radius: 10px !important;
+  }
+
+  /* Sticky/compact bar - appears once js/main.js's scroll listener adds
+     .is-compact past 200px scrolled (the same class/threshold web already
+     uses; that JS runs unconditionally, only the CSS was ever gated to
+     desktop - see the comment on the .is-compact block in the web-width
+     section of this file). Height/padding/flex layout are inherited from
+     the base .site-header rule above unchanged, which is exactly why the
+     logo and hamburger keep the same positioning the client asked to
+     preserve - they're normal flex children centered by the shared
+     `align-items:center`, not individually positioned, so nothing about
+     them needs to be redeclared here. background is redeclared explicitly
+     (not inherited) since the base rule above is now transparent - this
+     bar is the only one of the two states that should be solid. */
+  .site-header.is-compact {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* The base rule's max-width:calc(100% - 32px) exists to keep the tall
+       state inset 16px from each edge - left/right:0 alone doesn't cancel
+       it, so without this override the bar stayed capped at that narrower
+       width even while positioned flush left, leaving an unexplained 32px
+       gap on the right and throwing off the hamburger's position (caught
+       by re-measuring after scroll, not assumed). */
+    background: #263238 !important;
+    border-radius: 0 !important;
   }
 
   .header-logo {
@@ -5356,7 +5721,9 @@ h6 {
   }
 
   .client-logo {
-    width: 120.18px !important;
+    width: 135.18px !important;
+    /* Client-requested +15px (was 120.18px), width only - height/left/top
+       ("starting" position) all unchanged. */
     height: 54.25px !important;
     left: 27px !important;
     top: 42px !important;
@@ -5547,12 +5914,14 @@ h6 {
     flex-shrink: 0 !important;
   }
 
+  /* This extra dot didn't correspond to any real testimonial card, so it
+     was included in the swipe/dot-cycle count (5 dots, 4 real cards) - one
+     full cycle would land the active state on this dot instead of back on
+     the real first card, an empty circle that never matched what was
+     showing. Hidden on mobile too now (js/main.js also no longer counts it
+     regardless of width, so it can't desync the dots again). */
   .carousel-dots-center .mobile-only-dot {
-    display: block !important;
-  }
-
-  .carousel-dots-center .mobile-only-dot.active {
-    display: flex !important;
+    display: none !important;
   }
 
   .carousel-dots-center .dot.active {
@@ -5587,7 +5956,9 @@ h6 {
     margin-top: 71px !important;
     background: #263238 !important;
     border-radius: 21px !important;
-    padding: 106px 29px !important;
+    padding: 56px 29px !important;
+    /* top/bottom reduced from 106px, kept equal to each other so the gap
+       above "Services" matches the gap below item 08 */
     position: relative !important;
     box-sizing: border-box !important;
     height: auto !important;
@@ -5756,7 +6127,12 @@ h6 {
   /* Show image when service card is expanded */
   .service-list-item.active .service-image-strip {
     display: block !important;
-    width: 336px !important;
+    width: 100% !important;
+    /* Was a fixed 336px, which only matched the card's actual content
+       width by coincidence at one phone size - narrower phones had it
+       overflow past the card's right edge, wider phones left an
+       uneven gap on the right since it's left-aligned. 100% always
+       matches the card exactly, at every width. */
     height: 319px !important;
     margin: 0 !important;
     /* Left align like everything else */
@@ -6145,12 +6521,22 @@ h6 {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    /* flex-wrap:nowrap (the default) only keeps the "Our Offices" span and
+       the rest of the text on the same flex row - it does not stop the text
+       *inside* each of those from line-wrapping on its own, which is what
+       was actually happening. white-space:nowrap stops that, and since
+       .why-sold-container itself is a fixed 341px box (not vw/cqi-scaled)
+       that just centers via margin:auto, this single mobile media query
+       already covers every phone width identically - no extra breakpoint
+       logic needed. */
+    white-space: nowrap !important;
   }
 
   .offices-text span.text-primary-brand {
     font-family: "Mona Sans", var(--font-heading) !important;
     font-weight: 500 !important;
-    font-size: 14px !important;
+    font-size: 18px !important;
+    /* larger than the rest of the line (14px) so "Our Offices" stands out more */
     line-height: 23px !important;
   }
 
@@ -6828,7 +7214,16 @@ h6 {
   }
 
   .site-footer .social-whatsapp {
-    content: url("../assets/images/whatsppmob.svg") !important;
+    content: url("../assets/images/sol_whatsapp.png") !important;
+    /* Was whatsppmob.svg - the GREEN icon meant for the floating chat
+       button (.whatsapp-float-btn), mistakenly reused here too. That made
+       the footer's WhatsApp icon green on mobile while the other 3 social
+       icons (fbmob/linkdnmob/instamob, all dark #263238 circles matching
+       web) stayed dark - client-reported inconsistency, web was correct,
+       mobile wasn't. sol_whatsapp.png is a pre-existing, already-correct
+       34x34 dark-circle asset matching the other three's exact style -
+       it existed in this project completely unused before this fix,
+       apparently prepared for this exact spot and never wired up. */
     width: 34px !important;
     height: 34px !important;
   }
@@ -8199,7 +8594,17 @@ body.why-sold-page-body,
   }
 
   .mobile-menu-btn {
-    position: relative !important;
+    /* Was position:relative with margin:0, which left it in normal flow at
+       the header's top-left corner - clipped by the top edge and sitting on
+       top of the logo. Every other header child is absolutely positioned, so
+       this one is too now: pinned right at the same 2.7777cqi (40px) inset
+       .header-cta uses, and vertically centred, so the tablet header reads
+       logo-left / burger-right on one centre line. Tablet only - the <=767px
+       blocks keep their own flex layout, untouched. */
+    position: absolute !important;
+    right: 2.7777cqi !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     display: flex !important;
     width: 41px !important;
     height: 41px !important;
@@ -8223,5 +8628,283 @@ body.why-sold-page-body,
     height: 24px !important;
     display: block !important;
     flex-shrink: 0 !important;
+  }
+}
+
+/* ============================
+   FLOATING WHATSAPP BUTTON
+   Figma node 3620:1009 (web/tablet): bottom-right pill, #0DC143 background,
+   40px radius (clamps to a full pill at 57px height either way), box-shadow
+   6px 8px 13px #0DC14366 (40% opacity green).
+   Width fixed at Figma's 337px per client request. The content group
+   (icon + gap + text) is centred inside it, so a longer/shorter ACF label
+   re-centres instead of resizing the button. box-sizing is border-box
+   globally, so the 20px side padding sits inside the 337px.
+   25px right/bottom inset matches Figma's 1440 - 1078 - 337 = 25px right
+   margin, reused for bottom too for a symmetric floating placement.
+   ============================ */
+/* Client-requested: a "wave"/ripple effect matching digitalnexa.com's
+   WhatsApp button, web only. Their button uses an infinite pulse animation
+   on box-shadow - an expanding, fading ring - not a static drop-shadow.
+   Reused their exact keyframe shape (0% a tight ring at the button's own
+   colour and 0.7 opacity, 70% expanded 15px and fully transparent, 100%
+   back to 0) but with this project's own green (#0DC143 = rgb(13,193,67))
+   instead of theirs, and deliberately did NOT copy their red notification
+   "1" badge - client explicitly asked to leave that out. Icon, text and
+   button colour/shape are all otherwise unchanged. Web only - cancelled
+   explicitly in the mobile media query below. Note: while this animation
+   runs it takes over the box-shadow property entirely, so the static
+   Figma drop-shadow two rules down (and the :hover one after it) has no
+   visible effect for as long as the animation is active - the same
+   trade-off the reference site itself makes; kept both because a future
+   reader might want the animation removed and the static shadow to
+   reappear without guessing what it should be. */
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 193, 67, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(13, 193, 67, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 193, 67, 0);
+  }
+}
+
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 1.7361cqi;
+  /* 25px */
+  right: 1.7361cqi;
+  /* 25px */
+  z-index: 9990;
+  /* above the header (100), below the contact modal (9999) and the
+     mobile drawer (99999) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4166cqi;
+  /* Client-requested: reduce the icon-to-text gap a bit more, web only.
+     Was 0.6944cqi (10px, the original Figma value) - no exact new number
+     given, reduced to 6px as a reasoned "little more" decrease; flag for
+     the client to confirm. Mobile is unaffected either way - the text is
+     display:none there, so this gap has no visible effect on that
+     breakpoint regardless of its value. */
+  width: 23.4028cqi;
+  /* 337px - Figma node 3620:1009 */
+  height: 3.9583cqi;
+  /* 57px - vertical centring of icon+text comes from height+
+     align-items:center rather than the Figma 8px top/bottom padding,
+     since exact sub-part heights vary with the font */
+  padding: 0 1.3888cqi;
+  /* 20px left/right */
+  background: #0DC143;
+  border-radius: 2.7777cqi;
+  /* 40px */
+  box-shadow: 0.4166cqi 0.5555cqi 0.9027cqi 0 rgba(13, 193, 67, 0.4);
+  /* 6px 8px 13px, #0DC14366 = 40% opacity */
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-float-btn:hover {
+  transform: translateY(-0.2777cqi);
+  /* 4px lift */
+  box-shadow: 0.4166cqi 0.8333cqi 1.25cqi 0 rgba(13, 193, 67, 0.5);
+}
+
+.whatsapp-float-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.whatsapp-float-icon svg {
+  width: 1.666cqi;
+  height: 1.666cqi;
+  /* 24px */
+  display: block;
+}
+
+/* The mobile-only branded icon (assets/images/whatsppmob.svg) is hidden
+   here on web/tablet, which keeps the hand-drawn glyph above inside the
+   existing green pill - unchanged, matches the original Figma spec.
+   Shown instead of the svg on mobile - see that media query below. */
+.whatsapp-float-icon-img {
+  display: none;
+}
+
+.whatsapp-float-text {
+  font-family: 'Inter', var(--font-body, sans-serif);
+  font-weight: 600;
+  font-size: 1.1111cqi;
+  /* 16px */
+  line-height: 1.3611cqi;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* Hide the button while the contact popup is open. The popup's overlay is
+   z-index 9999 with a 50% black backdrop, so the button (9990) showed
+   through it dimmed AND unclickable - it looked broken. Raising it above
+   the overlay instead is worse: on phones the popup card fills the screen
+   and the button lands on top of its close button.
+   This covers the standalone /contact/ page (whose overlay ships with
+   .active already on it) and every other page the moment the popup is
+   opened, and :has() is live, so closing the popup brings it straight back.
+   The mobile drawer needs no rule - it is an opaque full-screen white panel
+   at z-index 99999, so it already covers the button completely.
+   :has() is safe here: this stylesheet is already built on container query
+   units, which ship in the same browser versions. */
+body:has(.contact-modal-overlay.active) .whatsapp-float-btn {
+  display: none;
+}
+
+/* Tablet floor. Every value above is a cqi, so unfloored the pill shrinks to
+   180x30 with an 8.5px label at 768px - illegible, and out of step with the
+   rest of the UI, whose text already floors at 12px in the block above.
+   Floored here at 75% of the 1440px design, the same ratio that 12px/16px
+   text floor implies. Every floor crosses over at a 1080px container, so the
+   pill stays exactly in proportion on both sides of the crossover: fluid
+   from 1440 down to 1080, then held at 75% across the rest of tablet.
+   Must sit AFTER the base rule - same specificity, so source order decides.
+   Scoped to 768px+ so it never touches the mobile circle below. */
+@media (min-width: 768px) {
+  .whatsapp-float-btn {
+    bottom: max(18.75px, 1.7361cqi);
+    right: max(18.75px, 1.7361cqi);
+    gap: max(4.5px, 0.4166cqi);
+    /* Was max(7.5px, 0.6944cqi) - kept in sync with the base rule's gap
+       reduction (10px -> 6px). This rule (min-width:768px, so it also
+       covers desktop, not just tablet) sits AFTER the base rule and wins
+       at equal specificity, which is why editing only the base rule's gap
+       had no visible effect at 1440px until this was updated too - caught
+       by re-measuring computed style, not assumed. Floor kept at the same
+       75% ratio (4.5/6 = 0.75, matching 7.5/10). */
+    width: max(252.75px, 23.4028cqi);
+    height: max(42.75px, 3.9583cqi);
+    padding: 0 max(15px, 1.3888cqi);
+    border-radius: max(30px, 2.7777cqi);
+  }
+
+  .whatsapp-float-icon svg {
+    width: max(18px, 1.666cqi);
+    height: max(18px, 1.666cqi);
+  }
+
+  .whatsapp-float-text {
+    font-size: max(12px, 1.1111cqi);
+    line-height: max(14.7px, 1.3611cqi);
+  }
+}
+
+/* Mobile: icon-only circle sitting immediately LEFT of the hamburger with a
+   12px gap, vertically centred on it (client request - it previously sat
+   below the header).
+   The right inset is built from the mobile header's own geometry, which is
+   constant at every phone width: the header pill is inset 16px from the
+   right (was 24px) plus 12px of internal padding added when the client
+   asked for equal spacing between the logo/hamburger and the background
+   edge - so the hamburger's own right edge now sits 16+12=28px in from the
+   viewport edge (was 24px flush, no padding). The 12px gap is measured to
+   that 41px box, because the button's visible shape IS the box - it paints
+   a filled circle, and the 24px SVG inside it is only the white bars.
+   Measuring to the SVG instead leaves a 3.5px gap on screen.
+   Vertical: recalculated for the header's height increase (54px -> 60px,
+   client-requested, mobile only). Centre line is now 72px from the top
+   (header top 42px + half of 60px), so this 41px button needs
+   top: 72 - 41/2 = 51.5px to share it (was 48.5px, for the old 69px
+   centre line). Hamburger and logo needed no equivalent change - they're
+   plain flex children of `.site-header`'s own `align-items:center`, which
+   re-centres them in whatever height the bar has automatically; this
+   button is the one exception, since it's a separate position:fixed
+   element with a manually-calculated `top`, not a flex child of the bar.
+   Position history: briefly switched to position:absolute so this scrolled
+   away with the mobile header, then reverted back to fixed (v1.0.66 - the
+   client wanted the WHOLE top bar pinned throughout scroll at the time).
+   REVERSED AGAIN: client now wants mobile to match web's scroll-away-then-
+   sticky two-state header, so this is position:absolute by default once
+   more - `body` is position:relative with no offset from `.page-container`,
+   so both fixed and absolute land this button in the same spot at
+   page-load, meaning nothing else needs to change for the default state.
+   A separate rule below (keyed off `.site-header.is-compact`, the same
+   class that flips the header itself) switches this back to fixed with
+   recalculated coordinates once the page is scrolled past the same 200px
+   threshold. */
+@media (max-width: 767px) {
+  /* This button is now a real child of .site-header (moved there 2026-09-21;
+     see header.php / the static HTML) instead of a separate element that
+     had to duplicate the header's own coordinates by hand. .site-header is
+     always the positioned ancestor here - position:absolute in its default
+     "tall" state and position:fixed once .is-compact takes over - so ONE
+     rule now covers both states automatically instead of needing a second
+     `body:has(.site-header.is-compact)` override to recalculate everything
+     whenever the header's own geometry changes. top:50%+translateY(-50%)
+     mirrors the tablet hamburger's own technique just above this block for
+     exactly the same reason: it self-centers on whatever height the header
+     currently has, so it can't drift out of sync with it, whether that's
+     from a scroll-state change or - as happened live - unrelated injected
+     content shifting the header's position on the page. */
+  .whatsapp-float-btn {
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    right: 65px;
+    /* 12px header padding + the 41px hamburger + a 12px gap - the same
+       right offset the compact bar already used, since a header-relative
+       position no longer needs a separate number for the tall state's
+       extra 16px outer inset; that inset is now just part of .site-header's
+       own box, not something this button has to account for itself. */
+    left: auto;
+    transform: translateY(-50%);
+    width: 41px;
+    /* 41px - matched exactly to Figma 3620:998 */
+    height: 41px;
+    /* 41px */
+    padding: 0;
+    gap: 0;
+    border-radius: 50%;
+    /* the base rule's border-radius is a cqi value, which at 48x48px is
+       nowhere near half the box - it rendered as a rounded square instead
+       of a circle until this was added */
+    background: transparent;
+    box-shadow: none;
+    animation: none;
+    /* Same "icons only, no background box" request as the header (see its
+       comment) - the base rule's green #0DC143 circle and drop-shadow are
+       both cleared here, mobile only. The web-only pulse ripple animation
+       (see the base rule) is explicitly cancelled here too, rather than
+       just relying on box-shadow:none - the animation would otherwise
+       keep overriding box-shadow back to the ring effect every 2s
+       regardless of this static value. */
+  }
+
+  .whatsapp-float-text {
+    display: none;
+  }
+
+  /* Swapped to the dedicated mobile icon (assets/images/whatsppmob.svg,
+     Figma node 3620:998) instead of the hand-drawn glyph recoloured green -
+     that recolour was a stand-in guess made without Figma access; this
+     asset already existed in the project, unused, and is the real one.
+     It has its own dark circle baked into the artwork, so it needs no
+     background/fill CSS of its own - just shown at the full 48px touch
+     target it sits in (replaces the old 40px glyph-only sizing). */
+  .whatsapp-float-icon svg.whatsapp-float-icon-svg {
+    display: none;
+    /* Needs this compound selector, not just .whatsapp-float-icon-svg -
+       the always-on base rule (.whatsapp-float-icon svg, no media query)
+       sets display:block at a HIGHER specificity (class+type beats a
+       single class), so a plain class selector here loses and the inline
+       svg stayed visible underneath the img. Matching + exceeding that
+       selector's shape wins outright regardless of source order. */
+  }
+
+  .whatsapp-float-icon-img {
+    display: block;
+    width: 41px;
+    height: 41px;
   }
 }

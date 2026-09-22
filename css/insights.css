@@ -2275,4 +2275,15 @@
   .insights-blog-readmore a {
     font-size: max(12px, 1.4583cqi);
   }
+
+  /* Feed search field + Go button. The base rule sizes the wrapper in vw
+     (1.3889vw -> 10.7px at 768) and the controls inherit it, so the floor
+     is written in the same unit - a cqi floor did not resolve here. */
+  .insights-feed-search,
+  .insights-feed-search button,
+  .insights-feed-search input,
+  .insights-feed-search-form button,
+  .insights-feed-search-form input {
+    font-size: max(12px, 1.3889vw) !important;
+  }
 }

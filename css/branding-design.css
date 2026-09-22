@@ -172,6 +172,54 @@ body.branding-page-body {
     color: #ffffff;
   }
 
+  /* Hero "SPEAK TO AN EXPERT" pill — floats over the hero image, bottom-right */
+  .branding-hero-cta {
+    position: absolute;
+    left: 69.79%;
+    right: 8.75%;
+    bottom: 7.64%;
+    z-index: 4;
+    height: 3.4703cqi;
+    /* 49.973/1440 - same button as Design & Production's CTA (identical
+       Figma percentages), just a different background colour */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8042cqi;
+    /* 11.58/1440 */
+    background: rgba(240, 238, 234, 0.85);
+    border-radius: 2.0139cqi;
+    /* 29/1440 */
+    padding: 0 0.8174cqi 0 0.4861cqi;
+    /* 0, 11.77/1440, 0, 7/1440 - icon sits 7px from the left, text ends
+       11.77px from the right, per Figma's absolute positions rather than a
+       symmetric guess */
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .branding-hero-cta .icon-circle {
+    width: 2.7778cqi;
+    /* 40/1440 - was 1.7083cqi (24.6px), well under Figma's real 40px icon */
+    height: 2.7778cqi;
+    /* 40/1440 - this icon (orange circle, white arrow) is a perfect 40x40
+       circle, not the 38.44px-tall pill shape Design & Production uses -
+       they're two different icon assets, not one reused. */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .branding-hero-cta .btn-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.5278cqi;
+    /* 22/1440 */
+    color: #1b3834;
+    white-space: nowrap;
+  }
+
   /* ==============================================
      2. INTRO SECTION
      ============================================== */
@@ -294,8 +342,10 @@ body.branding-page-body {
   .branding-intro-bar {
     width: 0.2778cqi;
     /* 4/1440 */
-    height: 2.0833cqi;
-    /* 30/1440 fixed height to match 1-line title */
+    height: 2.4438cqi;
+    /* 35.19/1440 - was 2.0833cqi (30px); Figma's bar (node 3499:788) is
+       35.19px tall, matching the site's usual section-bar convention
+       (sold_section_bar() defaults to a 36px-tall bar), not 30px. */
     display: block;
   }
 
@@ -318,8 +368,11 @@ body.branding-page-body {
   }
 
   .branding-intro-desc {
-    width: 100%;
-    /* Fill remaining row width so it stays flush with the row's right edge, matching the Home page intro */
+    width: 62.0139cqi;
+    /* 893/1440 - was 100% (fills ~959px, the row's full remaining flex
+       space). Figma's paragraph (node 3499:803) has an explicit fixed
+       893px width, narrower than the available space - it doesn't stretch
+       to the row's right edge. */
     font-family: "Mona Sans", sans-serif;
     font-weight: 500;
     font-size: 2.2222cqi;
@@ -334,327 +387,406 @@ body.branding-page-body {
   }
 
   /* ==============================================
-     3. FULL VIEWPORT SECTION
+     3. WHERE GREAT BRANDS BEGIN (CARD GRID)
      ============================================== */
-  .branding-full-viewport-section {
+  .branding-cards-section {
     width: 100%;
-    height: auto;
-    padding-top: 5.9722cqi;
-    /* Exactly 86px gap (86/1440) from the previous text */
-    padding-bottom: 1.3194cqi;
-    /* Exactly 19px gap to the bottom section */
+    padding-top: 6.6667cqi;
+    /* 96/1440 - was 5.9722cqi (86px). Figma: intro text bottom (686+126=812)
+       to this heading's top (908) = 96px, not 86px. */
+    padding-bottom: 10.9722cqi;
+    /* 158/1440 - was 6.25cqi (90px). Figma: cards grid bottom (1035+778=1813)
+       to Design & Production's top (1971) = 158px, not 90px. */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     background-color: #F4F5F5;
-    overflow: hidden;
   }
 
-  .branding-full-viewport-container {
-    position: relative;
-    width: 100%;
-    height: 41.6528cqi;
-    /* 599/1440 (Exactly fits the image: top 7.0 + height 34.6528) */
+  .branding-cards-container {
+    width: 71.3194cqi;
+    /* 1027/1440 - this grid (Figma node 3499:1359) is narrower than the
+       1320px intro row above it, not the same width - centered independently
+       on the page. Using the intro row's wider 1320px here (an earlier
+       mistake) rendered every card noticeably oversized. */
+    margin: 0 auto;
   }
 
-  .branding-full-viewport-heading {
-    position: absolute;
-    top: 0;
-    left: 4.9306cqi;
-    /* 71/1440 (Exact left margin) */
-    width: 49.9306cqi;
-    /* 719/1440 */
+  .branding-cards-heading {
+    margin: 0 0 5.3472cqi;
+    /* 77/1440 - was 4.375cqi (63px). Figma: heading bottom (908+50=958) to
+       the card grid's top (1035) = 77px, not 63px. */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(32px, 3.1250cqi, 45px);
-    /* Caps at exactly 45px on large screens */
+    font-size: clamp(32px, 3.125cqi, 45px);
+    /* 45/1440 */
     line-height: clamp(36px, 3.4722cqi, 50px);
-    /* Caps at exactly 50px */
+    /* 50/1440 */
     letter-spacing: 0.01em;
-    /* 1% from Figma */
     color: #263238;
+    text-align: center;
+  }
+
+  .branding-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.75cqi;
+    /* 54/1440 */
+  }
+
+  .branding-card {
+    box-sizing: border-box;
+    border: 2px solid #ffa726;
+    border-radius: 1.0417cqi;
+    /* 15/1440 */
+    padding: 4.1667cqi 3.4028cqi;
+    /* 60/1440, 49/1440 */
+    display: flex;
+    flex-direction: column;
+    gap: 2.7778cqi;
+    /* 40/1440 */
+    justify-content: center;
+  }
+
+  .branding-card-title {
     margin: 0;
-  }
-
-  .branding-full-viewport-points {
-    position: absolute;
-    top: 8.1250cqi;
-    /* 117/1440 */
-    left: 8.1250cqi;
-    /* 71 + 46 = 117/1440 */
-    width: 36.3889cqi;
-    /* 524/1440 */
-    display: flex;
-    flex-direction: column;
-    gap: 1.9444cqi;
-    /* 28/1440 */
-  }
-
-  .branding-point {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5556cqi;
-    /* 8/1440 */
-  }
-
-  .branding-point-title {
     font-family: 'Mona Sans', sans-serif;
-    font-weight: 700;
-    font-size: 1.9444cqi;
-    /* 28/1440 */
-    line-height: 2.5000cqi;
-    /* 36/1440 (Matches Figma bounding box height to fix gap) */
-    letter-spacing: 0.01em;
-    color: #000000;
-    margin: 0;
+    font-weight: 600;
+    font-size: 2.0833cqi;
+    /* 30/1440 */
+    line-height: 2.0833cqi;
+    color: #ffa726;
   }
 
-  .branding-point-desc {
-    width: 29.8611cqi;
-    /* 430/1440 (Matches Figma line breaks) */
+  .branding-card-divider {
+    display: block;
+    width: 6.1806cqi;
+    /* 89/1440 */
+    height: 2px;
+    background-color: #ffa726;
+  }
+
+  .branding-card-desc {
+    margin: 0;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: 1.5278cqi;
-    /* 22/1440 */
-    line-height: 1.8056cqi;
+    font-size: 1.8056cqi;
     /* 26/1440 */
-    letter-spacing: 0.01em;
-    color: #696969;
-    margin: 0;
-  }
-
-  .branding-full-viewport-right {
-    position: absolute;
-    top: 7.0cqi;
-    /* 117/1440 (Moved down to align with points) */
-    right: 0;
-    /* Flush to the right edge */
-    width: 53.4722cqi;
-    /* 770/1440 */
-    height: 34.6528cqi;
-    /* 499/1440 */
-  }
-
-  .branding-full-viewport-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    /* CMS Safeguard: prevents distortion and cropping of uploaded images */
-    object-position: right center;
-    /* Forces the image to sit entirely flush with the right edge */
+    line-height: 2.2222cqi;
+    /* 32/1440 */
+    color: #0b0b0b;
   }
 
   /* ==============================================
-     4. BRANDING SERVICES SECTION
+     4. DESIGN & PRODUCTION
      ============================================== */
-  .branding-services-section {
-    background-color: #E9EAEB;
+  .branding-production-section {
+    background-color: #e9eaeb;
     width: 100%;
-    padding-top: 5.3472cqi;
-    /* 77/1440 */
-    padding-bottom: 7.0139cqi;
-    display: flex;
-    justify-content: center;
-  }
-
-  .branding-services-container {
-    width: 100%;
+    padding-top: 4.6528cqi;
+    /* 67/1440 */
+    padding-bottom: 7.5417cqi;
+    /* 108.6/1440 - was 6.25cqi (90px); the section's real Figma height is
+       789px and the CTA button bottom sits at 680.4px, leaving 108.6px
+       below it, not 90px */
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
-  .branding-services-heading {
-    margin-left: 6.4583cqi;
-    /* 93/1440 */
-    margin-bottom: 4.7917cqi;
-    /* 69/1440 */
+  /* Had no rules at all - as a plain block it shrank to its widest child
+     (the 578px-wide pill list), and the narrower 309px CTA button, having
+     no centering of its own, sat flush against that box's left edge instead
+     of centering on the section like the heading (text-align:center, which
+     centers regardless of the box's own width) appeared to. Centering every
+     child within this container directly fixes it instead of relying on
+     text-align only working for the heading. */
+  .branding-production-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .branding-production-heading {
+    margin: 0 0 3.4722cqi;
+    /* 50/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: 3.7500cqi;
+    font-size: 3.75cqi;
     /* 54/1440 */
     line-height: 4.0972cqi;
     /* 59/1440 */
     letter-spacing: 0.01em;
     color: #263238;
+    text-align: center;
   }
 
-  .branding-services-content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .branding-services-image-wrapper {
-    margin-left: 8.3333cqi;
-    /* 120/1440 */
-    width: 29.0278cqi;
-    /* 418/1440 */
-    height: 35.7639cqi;
-    /* 515/1440 */
-    border-radius: 0;
-    /* Figma spec: sharp corners on desktop */
-    overflow: hidden;
-  }
-
-  .branding-services-img {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    /* CMS Safeguard: prevents distortion and cropping of uploaded images */
-    object-position: center;
-  }
-
-  .branding-services-list {
-    margin-left: 10.6944cqi;
-    /* 154/1440 */
-    margin-top: 2.1528cqi;
-    /* 31/1440 */
+  .branding-production-list {
+    width: 40.1389cqi;
+    /* 578/1440 */
     display: flex;
     flex-direction: column;
-    gap: 0.5556cqi;
-    /* 8/1440 */
+    gap: 2.0833cqi;
+    /* 30/1440 */
   }
 
-  .branding-services-item {
+  .branding-production-cta {
+    margin-top: 1.6667cqi;
+    /* 24/1440 */
+    width: 21.4583cqi;
+    /* 309/1440 */
+    height: 3.4703cqi;
+    /* 49.973/1440 - same button as the hero CTA (identical Figma
+       percentages), just solid orange instead of translucent */
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 1.1111cqi;
-    /* 16/1440 */
+    justify-content: center;
+    gap: 0.8042cqi;
+    /* 11.58/1440 */
+    background: #ffa726;
+    border-radius: 2.0139cqi;
+    /* 29/1440 */
+    padding: 0 0.8174cqi 0 0.4861cqi;
+    /* icon 7px from the left, text 11.77px from the right - see hero CTA's
+       own comment for how these were derived from Figma's absolute values */
+    text-decoration: none;
   }
 
-  .branding-services-circle {
-    width: 1.2500cqi;
-    /* 18/1440 */
-    height: 1.2500cqi;
-    /* 18/1440 */
-    background-color: #FFA726;
-    border-radius: 50%;
+  .branding-production-cta .icon-circle {
+    width: 2.7778cqi;
+    /* 40/1440 - was 1.7083cqi (24.6px) */
+    height: 2.6694cqi;
+    /* 38.44/1440 */
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .branding-services-text {
-    font-family: 'Inter', sans-serif;
+  .branding-production-cta .btn-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.5278cqi;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  /* Shared bordered pill row — reused by Design & Production's list and
+     the step buttons in "How We Build Your Brand" below */
+  .branding-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 4.3056cqi;
+    /* 62/1440 */
+    background: #ffffff;
+    border: 0.2431cqi solid #ffa726;
+    /* 3.5/1440 */
+    border-radius: 3.6806cqi;
+    /* 53/1440 */
+    padding-left: 5.2431cqi;
+    /* 75.5/1440 */
+    box-sizing: border-box;
+  }
+
+  .branding-pill-icon {
+    position: absolute;
+    left: -0.0347cqi;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.8194cqi;
+    /* 55/1440 */
+    height: 3.8889cqi;
+    /* 56/1440 */
+    background: url("../assets/images/branding-pill-icon.svg") center / contain no-repeat;
+  }
+
+  .branding-pill-text {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1.8056cqi;
     /* 26/1440 */
-    line-height: 2.7778cqi;
-    /* 40/1440 */
-    color: #0B0B0B;
+    line-height: 2.2222cqi;
+    color: #0b0b0b;
   }
 
   /* ==============================================
-     5. HOW WE BUILD SECTION
+     PORTFOLIO GALLERY (placeholder image, real assets to follow)
      ============================================== */
-  .branding-build-section {
-    background-color: #F4F5F5;
+  .branding-gallery-section {
     width: 100%;
-    padding-top: 6.3889cqi;
-    /* Exactly 92px (92/1440) gap to top */
-    padding-bottom: 10.9722cqi;
-    /* Exactly 158px gap to testimonials */
-    padding-left: 10.4861cqi;
-    /* Exactly 151px left gap */
-    padding-right: 10.4167cqi;
-    /* Exactly 150px right gap */
+    padding-top: 7.6389cqi;
+    /* 110/1440 */
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    background-color: #f4f5f5;
   }
 
-  .branding-build-container {
+  .branding-gallery-container {
+    width: 78.0556cqi;
+    /* 1124/1440 */
+  }
+
+  .branding-gallery-img {
+    display: block;
     width: 100%;
-    /* Automatically fills the 1139px remaining space */
-    position: relative;
+    aspect-ratio: 1808 / 1060;
+    /* the placeholder asset's own natural size - locking the box to it
+       means object-fit has nothing left to crop or letterbox, guaranteeing
+       the full image always shows regardless of viewport width. Was a fixed
+       height (659/1440) with object-fit:cover, which is fine at exactly
+       1440px (Figma's frame ratio and the image's natural ratio are
+       already a near-perfect match there) but isn't "full image,
+       guaranteed" the way an aspect-ratio lock is. */
+    object-fit: contain;
+    border-radius: 0;
+    /* Figma's own generated code has no rounded-corner class on this node -
+       was 1.0417cqi (15px), which doesn't match */
+  }
+
+  /* ==============================================
+     5. HOW WE BUILD YOUR BRAND
+     ============================================== */
+  .branding-steps-section {
+    width: 100%;
+    padding-top: 9.5139cqi;
+    /* 137/1440 - was 10.7639cqi (155px). A direct metadata fetch on this
+       exact frame (3541:3954) gives its real top as y=3666, not the 3684
+       estimated earlier - gallery bottom (3529) to 3666 = 137px. */
+    padding-bottom: 9.5139cqi;
+    /* 137/1440 - was 8.3333cqi (120px). Frame bottom (3666+651=4317) to the
+       pre-footer's top (4455) = 138px, matching the top gap almost exactly -
+       set to the same 137px for the intended symmetric spacing. */
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 39.0278cqi;
-    /* 562/1440 */
+    justify-content: center;
+    background-color: #f4f5f5;
   }
 
-  .branding-build-left {
-    position: relative;
-    width: 49.9306cqi;
-    /* 719/1440 */
+  .branding-steps-container {
+    width: 60.3472cqi;
+    /* 869/1440 */
   }
 
-  .branding-build-heading {
-    margin: 0;
+  .branding-steps-heading {
+    margin: 0 0 5.5556cqi;
+    /* 80/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(32px, 3.1250cqi, 45px);
-    /* Caps at exactly 45px */
-    line-height: clamp(36px, 3.4722cqi, 50px);
-    /* Caps at exactly 50px */
+    font-size: 3.75cqi;
+    /* 54/1440 */
+    line-height: 4.0972cqi;
     letter-spacing: 0.01em;
     color: #263238;
+    text-align: center;
   }
 
-  .branding-build-list {
-    margin-top: clamp(80px, 7.5000cqi, 108px);
-    /* Caps at exactly 108px gap */
+  .branding-steps-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.6667cqi;
-    /* 24/1440 */
-    width: auto;
-    /* Allow items to define width */
+    gap: 4.8611cqi;
+    /* 70/1440 */
   }
 
-  .branding-build-item {
+  .branding-steps-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .branding-step {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1.1111cqi;
+    /* 16/1440 - the number-to-pill gap (Figma groups these two together,
+       node 3506:1428); was 1.3889cqi (20px), which is actually the gap
+       between that group and the description below, not this one. See
+       .branding-step-desc for how the 20px gap is restored there instead. */
+    width: 19.5139cqi;
+    /* 281/1440 */
   }
 
-  .branding-build-item-title {
-    margin: 0;
+  .branding-step-number {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(20px, 1.9444cqi, 28px);
-    /* Caps at exactly 28px */
-    line-height: clamp(36px, 3.4722cqi, 50px);
-    /* Caps at exactly 50px */
+    font-size: 4.1667cqi;
+    /* 60/1440 */
+    line-height: 4.0972cqi;
     letter-spacing: 0.01em;
-    color: #000000;
+    color: #ffa726;
   }
 
-  .branding-build-item-title .highlight {
-    color: #FFA726;
+  .branding-step-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.2083cqi;
+    /* 219/1440 - was 100% (281px, the full step column). Figma's pill is
+       narrower than the column and centred within it, not stretched to
+       fill it. */
+    height: 4.3056cqi;
+    /* 62/1440 */
+    background: #ffffff;
+    border: 0.2431cqi solid #ffa726;
+    border-radius: 3.6806cqi;
+    box-sizing: border-box;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.8056cqi;
+    /* 26/1440 */
+    color: #0b0b0b;
   }
 
-  .branding-build-item-desc {
-    margin: 0;
+  .branding-step-desc {
+    margin: 0.2778cqi 0 0;
+    /* 4/1440 - on top of the column's own 16px gap, this restores the full
+       20px Figma gives specifically between the number+pill group and the
+       description (the two gaps differ in Figma; flexbox gap can't apply
+       two different values, so the smaller one is the base and this adds
+       the difference back for just this one edge). */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: clamp(16px, 1.5278cqi, 22px);
-    /* Caps at exactly 22px */
-    line-height: clamp(20px, 1.8056cqi, 26px);
-    /* Caps at exactly 26px */
-    letter-spacing: 0.01em;
-    color: #292626;
+    font-size: 1.5278cqi;
+    /* 22/1440 */
+    line-height: 2.2222cqi;
+    color: #0b0b0b;
+    text-align: center;
   }
 
-  .branding-build-right {
-    position: absolute;
-    top: 6.3889cqi;
-    /* 92/1440 */
-    right: 0;
-    width: 32.7083cqi;
-    /* 471/1440 */
-    height: 32.6389cqi;
-    /* 470/1440 */
-    border-radius: 0;
-    /* Figma spec: sharp corners */
-    overflow: hidden;
+  .branding-step-arrow {
+    flex-shrink: 0;
+    align-self: flex-start;
+    /* was align-self:center, which centred it on the whole row's height
+       (driven by whichever step is tallest) instead of a fixed offset from
+       the row's own top - wrong reference point entirely. */
+    margin-top: 3.3299cqi;
+    /* 47.95/1440 - Figma's arrow (node 3506:1431) sits at y=59px from the
+       top of the step group with the arrow itself visually spanning
+       47.95-70.05 (a 0-height baseline at 59px, expanded +/-11.05px by its
+       own inset), i.e. centred exactly on y=59 - which lands right at the
+       bottom edge of the "01"/"02" number text, well above the pill centre.
+       Previously guessed as centred on the pill instead (~107px), which put
+       the whole arrow about 48px too low. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16.3889cqi;
+    /* 236/1440 */
+    height: 1.5347cqi;
+    /* 22/1440 */
   }
 
-  .branding-build-img {
+  .branding-step-arrow-img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: scale-down;
-    /* CMS Safeguard: prevents distortion and cropping of uploaded images */
-    object-position: center;
+  }
+
+  /* Declared after .branding-step-arrow so it wins at equal specificity -
+     only bridges rows on mobile, where every step stacks in one column */
+  .branding-step-arrow-connector {
+    display: none;
   }
 
 }
@@ -682,45 +814,19 @@ body.branding-page-body {
     /* Force explicit figma text bound */
   }
 
-  /* UNIVERSAL MOBILE BREADCRUMB OVERRIDES */
-  .branding-hero-breadcrumb {
-    margin-left: 0 !important;
-    gap: 11px !important;
-  }
-
-  .branding-hero-breadcrumb a,
-  .branding-hero-breadcrumb .current,
-  .branding-hero-breadcrumb .ws-breadcrumb-current,
-  .branding-hero-breadcrumb .ws-breadcrumb-home {
-    font-size: 13px !important;
-    line-height: 29px !important;
-    text-decoration: none !important;
-    color: #ffffff !important;
-    opacity: 1 !important;
-  }
-
-  .branding-hero-breadcrumb img.breadcrumb-icon,
-  .branding-hero-breadcrumb img.ws-breadcrumb-icon {
-    width: 23px !important;
-    height: 15px !important;
-    object-fit: fill !important;
-  }
-
-  .branding-hero-text-container {
-    margin-bottom: 24px !important;
-    /* True Figma Mobile Gap to Breadcrumb */
-    gap: 10px !important;
-  }
-
-  .branding-hero-title {
-    font-size: 34.2px !important;
-    line-height: 43px !important;
-  }
-
-  .branding-hero-subtitle {
-    font-size: 16px !important;
-    line-height: 30px !important;
-  }
+  /* NOTE: this used to have a second, near-duplicate set of rules for
+     .branding-hero-breadcrumb / .branding-hero-text-container / -title /
+     -subtitle right here ("UNIVERSAL MOBILE BREADCRUMB OVERRIDES"), from
+     before this page had its own precise mobile values. Removed - it was
+     silently live and conflicting with the real rules further down (which
+     already redeclare all of these correctly): its breadcrumb `gap: 11px
+     !important` was actually WINNING over the correct `gap: 8px` set later
+     (an earlier !important beats a later non-!important declaration
+     regardless of source order), so the breadcrumb was rendering with the
+     wrong gap despite the "fixed" value sitting right there in the file.
+     Everything else in the removed block was either an exact duplicate or
+     equivalent to the CSS default (margin-left:0, opacity:1, object-fit:
+     fill), so nothing else changes by deleting it. */
 
   .branding-hero {
     position: relative;
@@ -770,6 +876,11 @@ body.branding-page-body {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
+    /* Needed so the breadcrumb's position:absolute (see .branding-hero-
+       breadcrumb) resolves against the hero's real height, not just this
+       element's own shorter, content-sized height. */
+    box-sizing: border-box;
   }
 
   .branding-hero-text-container {
@@ -785,12 +896,22 @@ body.branding-page-body {
   .branding-hero-title {
     font-family: "Mona Sans", sans-serif;
     font-weight: 700;
-    font-size: 34.2px !important;
-    line-height: 43px !important;
+    /* "Branding & Design" at the Figma 34.2px spec is 324px wide, but the
+       320/360px-wide phones only have 272/312px available (24px padding
+       each side) - it was wrapping to 2 lines there. clamp() keeps the
+       full 34.2px size (matches Figma) from ~393px up, where it already
+       fits, and only shrinks below that down to a measured-safe ~26.8px
+       at 320px. white-space:nowrap is a hard guarantee on top of the
+       sizing, not a substitute for it - sizing alone keeps it from
+       overflowing past the viewport edge, which nowrap alone wouldn't. */
+    font-size: clamp(26px, 8.7vw, 34.2px) !important;
+    line-height: 1.2573 !important;
+    /* 43/34.2 - unitless so it scales proportionally with the clamped size */
     letter-spacing: 0.02em;
     color: #ffffff;
     margin: 0;
     text-align: left;
+    white-space: nowrap;
   }
 
   .branding-hero-subtitle {
@@ -803,14 +924,23 @@ body.branding-page-body {
     text-align: left;
   }
 
-  /* Breadcrumb Mobile */
+  /* Breadcrumb Mobile - independently positioned near the bottom of the
+     hero (Figma node 3548:3977, y=622 of a 680-tall frame), well below the
+     CTA button (~y=371-408) - was still grouped inside .branding-hero-content
+     right after the title block with only a 60px gap, which put it ABOVE
+     the CTA instead of below it. Pulled out of that flow with
+     position:absolute so it can sit at its own correct spot regardless of
+     the title block's height/position. */
   .branding-hero-breadcrumb {
+    position: absolute;
+    left: 24px;
+    bottom: 29px;
+    /* Figma: hero bottom (680) - breadcrumb's own bottom edge (622+29=651)
+       = 29px clear space beneath it. */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 6px;
-    /* Text at 24px, breadcrumb at 30px -> diff is 6px */
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -893,19 +1023,30 @@ body.branding-page-body {
     width: 100% !important;
   }
 
-  /* 2a. INTRO SECTION (MOBILE) - actual markup classes used in
-     branding-design.html; mirrors .social-intro-* above so mobile matches
-     the other 6 service pages (bar + heading stay left, white section bg). */
+  /* 2a. INTRO SECTION (MOBILE) */
   .branding-intro-section {
     background-color: #FFFFFF !important;
-    padding-top: 60px !important;
-    padding-bottom: 34px !important;
+    padding-top: 41px !important;
+    /* Hero (node 3548:3971, 680 tall at y=0) to this intro frame (node
+       3548:4092, y=721) = 41px - was 60px, a stale guess from before this
+       was measured directly against Figma. */
+    padding-bottom: 0 !important;
+    /* Was 34px - .branding-cards-section right after it ALSO has its own
+       46px padding-top, and since both sections share the same white
+       background there's no visual seam between them, so those two
+       paddings just stacked into one 80px gap (34+46) between the intro
+       paragraph and "Where Great Brands Begin" - Figma's actual gap here
+       (node 3548:4092 bottom to 3548:4123 top) is 46px total. Zeroing this
+       one out leaves the cards section's own 46px top padding as the
+       full, correct gap. */
   }
 
   .branding-intro-container {
     width: 100% !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
+    padding-left: 21px !important;
+    padding-right: 21px !important;
+    /* 21px, matching Figma's frame inset (x=21 of the 393-wide page) -
+       was 24px, a generic guess from the copied pattern. */
     box-sizing: border-box !important;
   }
 
@@ -957,344 +1098,501 @@ body.branding-page-body {
     max-width: 352px !important;
   }
 
-  /* ==============================================
-     3. FULL VIEWPORT SECTION (MOBILE)
-     ============================================== */
-  .branding-full-viewport-section {
-    background-color: #FFFFFF !important;
-    height: auto !important;
-    min-height: auto !important;
-    padding-top: 36px !important;
-    padding-bottom: 60px !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    overflow: hidden !important;
-  }
-
-  .branding-full-viewport-container {
-    position: static !important;
-    height: auto !important;
+  /* Hero "SPEAK TO AN EXPERT" pill (mobile) — full redeclare, this class
+     has no unscoped base rule, only the desktop block above defines one.
+     Figma (node 3548:4303) spec: width 219, height 37, border-radius 29,
+     background #FFFFFF, left 24. The box was previously positioned with
+     top/right/bottom/left PERCENTAGES of the 100svh hero - since this
+     hero's real height (~852px on typical phones) never matches Figma's
+     680px reference frame, that produced a 46px-tall button (too tall) and
+     an 88px gap to the text block above it instead of the requested 58px.
+     Fixed px now, matching this hero's existing convention (padding-top:
+     294px on .branding-hero-content, breadcrumb's bottom:29px are fixed
+     too, not percentage-derived) - measured text block bottom (377px from
+     hero top at 390x844) + 58px gap = 435px. Icon is 30x30 sitting ~3px
+     from the left edge, text starts 44px from the left - an asymmetric,
+     left-packed layout, not a centered icon+text block. */
+  .branding-hero-cta {
+    position: absolute !important;
+    left: 24px !important;
+    right: auto !important;
+    top: 435px !important;
+    bottom: auto !important;
+    width: 219px !important;
+    height: 37px !important;
+    z-index: 4 !important;
     display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    gap: 0 !important;
-  }
-
-  /* Heading aligns exactly with the 15px container padding */
-  .branding-full-viewport-heading {
-    position: static !important;
-    width: 100% !important;
-    max-width: 265px !important;
-    height: auto !important;
-    font-family: 'Mona Sans', sans-serif !important;
-    font-size: 22px !important;
-    line-height: 28px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.01em !important;
-    color: #263238 !important;
-    white-space: normal !important;
-    text-align: left !important;
-    margin-left: 28px !important;
-    margin-bottom: 23px !important;
-  }
-
-  /* Figma: Points are 16px further right than the heading (x=20 vs x=4) */
-  .branding-full-viewport-points {
-    position: static !important;
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 23px !important;
-    margin-left: 44px !important;
-  }
-
-  /* Each point: column, gap=4px */
-  .branding-point {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-  }
-
-  /* Figma: Inter Semi Bold 600, 14/15, #0B0B0B */
-  .branding-point-title {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 14px !important;
-    line-height: 15px !important;
-    font-weight: 600 !important;
-    color: #0B0B0B !important;
-    letter-spacing: normal !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 321px !important;
-  }
-
-  /* Figma: Inter Regular 400, 13/15, #696969 */
-  .branding-point-desc {
-    font-family: 'Inter', sans-serif !important;
-    width: 100% !important;
-    max-width: 321px !important;
-    font-size: 13px !important;
-    line-height: 15px !important;
-    font-weight: 400 !important;
-    color: #696969 !important;
-    letter-spacing: normal !important;
-    margin: 0 !important;
-  }
-
-  .branding-point:nth-child(1) .branding-point-desc {
-    max-width: 307px !important;
-  }
-
-  /* Image sits naturally within the remaining container bounding box bleeding to the right edge */
-  .branding-full-viewport-right {
-    position: static !important;
-    width: calc(100% - 24px) !important;
-    height: auto !important;
-    margin-left: 24px !important;
-    margin-top: 31px !important;
-    overflow: hidden !important;
-  }
-
-  /* Hide desktop image on mobile, show only mobile image */
-  .branding-full-viewport-img.d-none {
-    display: none !important;
-  }
-
-  .branding-full-viewport-img.d-lg-none {
-    display: block !important;
-  }
-
-  .branding-full-viewport-img {
-    width: 100% !important;
-    max-width: none !important;
-    height: auto !important;
-    border-radius: 0 !important;
-    object-fit: cover !important;
-    object-position: left center !important;
-  }
-
-  /* ==============================================
-     4. BRANDING SERVICES SECTION (MOBILE)
-     ============================================== */
-  .branding-services-section {
-    background-color: #E9EAEB !important;
-    padding: 40px 0 !important;
-    overflow: hidden !important;
-  }
-
-  .branding-services-container {
-    padding: 0 !important;
-    /* Reset padding, children positioned individually */
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-  }
-
-  /* Figma: x=26, Mona Sans 22/28 Bold, width 349 */
-  .branding-services-heading {
-    margin: 0 0 35px 26px !important;
-    width: 349px !important;
-    max-width: calc(100% - 26px) !important;
-    font-family: 'Mona Sans', sans-serif !important;
-    font-size: 22px !important;
-    line-height: 28px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.01em !important;
-    color: #263238 !important;
-    text-align: left !important;
-  }
-
-  .branding-services-content {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 0 !important;
-  }
-
-  /* Force list to appear before image on mobile */
-  .branding-services-list {
-    order: 1 !important;
-    margin: 0 0 0 55px !important;
-    /* Figma: x=55 */
-    width: calc(100% - 75px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 6px !important;
-    /* Figma gap between items */
-  }
-
-  .branding-services-item {
-    display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
-    gap: 14px !important;
-    /* Figma gap between circle and text */
+    justify-content: flex-start !important;
+    gap: 11px !important;
+    /* 44 (text start) - 3 (icon left) - 30 (icon width) = 11 */
+    background: #ffffff !important;
+    border-radius: 29px !important;
+    padding: 0 14px 0 3px !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
   }
 
-  .branding-services-circle {
-    display: block !important;
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-    background-color: #FFA726 !important;
-    border-radius: 10px !important;
+  .branding-hero-cta .icon-circle {
+    width: 30px !important;
+    height: 30px !important;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Figma: Inter Regular 13/15, #0B0B0B */
-  .branding-services-text {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
-    line-height: 15px !important;
-    font-weight: 400 !important;
-    color: #0B0B0B !important;
-  }
-
-  /* Image is ordered after list. User requested 37px gap on BOTH left and right */
-  .branding-services-image-wrapper {
-    order: 2 !important;
-    margin: 42px 37px 0 37px !important;
-    /* 37px on left and right */
-    width: calc(100% - 74px) !important;
-    /* Fill space leaving exactly 37px on each side */
-    /* Pin the box to the source image's own ratio (636x650) instead of
-       relying on height:auto alone - keeps the box a guaranteed, definite
-       size so the collage can never end up shrunk/clipped inside the
-       flex column on narrower phones or engines that size flex items
-       differently, matching the desktop CMS safeguard below. */
-    aspect-ratio: 636 / 650 !important;
-    height: auto !important;
-    flex-shrink: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .branding-services-img.d-lg-none {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    /* CMS Safeguard (mobile): prevents distortion/cropping, mirrors desktop */
-    object-position: center !important;
+  .branding-hero-cta .btn-text {
+    font-family: "Inter", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.14px !important;
+    color: #1b3834 !important;
+    white-space: nowrap;
   }
 
   /* ==============================================
-     5. HOW WE BUILD SECTION (MOBILE)
+     3. WHERE GREAT BRANDS BEGIN (MOBILE CARD GRID)
      ============================================== */
-  .branding-build-section {
-    padding-top: 41px !important;
-    padding-bottom: 60px !important;
-    background-color: #FFFFFF !important;
-  }
-
-  .branding-build-container {
+  .branding-cards-section {
     width: 100% !important;
     display: flex !important;
-    flex-direction: column !important;
-    padding: 0 20px !important;
-    /* 20px safe area */
-    position: static !important;
-    gap: 0 !important;
+    justify-content: center !important;
+    background-color: #ffffff !important;
+    padding: 46px 41px 33px !important;
   }
 
-  .branding-build-left {
+  .branding-cards-container {
     width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    position: static !important;
-  }
-
-  /* Figma: x=0 inside the 20px padded container */
-  .branding-build-heading {
-    margin: 0 0 31px 0 !important;
-    /* gap from heading bottom to list top is 31px */
-    width: 100% !important;
-    font-family: 'Mona Sans', sans-serif !important;
-    font-size: 22px !important;
-    line-height: 28px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.01em !important;
-    color: #263238 !important;
-    text-align: left !important;
-  }
-
-  /* Figma: x=22 inside the 20px padded container */
-  .branding-build-list {
-    margin: 0 0 0 22px !important;
-    /* Indent 22px */
-    width: calc(100% - 22px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 23px !important;
-    /* Figma gap between items */
-  }
-
-  .branding-build-item {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    /* Gap between title and desc */
-    margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* Title: Inter Semi Bold 600, 14/15, #0B0B0B */
-  .branding-build-item-title {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 14px !important;
-    line-height: 15px !important;
+  .branding-cards-heading {
+    margin: 0 auto 33px !important;
+    max-width: 199px !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 28px !important;
+    line-height: 31px !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: center !important;
+  }
+
+  .branding-cards-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .branding-card {
+    box-sizing: border-box;
+    border: 2px solid #ffa726 !important;
+    border-radius: 15px !important;
+    padding: 0 20px !important;
+    /* Figma's horizontal inset is 20px each side (card 311px wide, content
+       271px wide, centred: (311-271)/2=20) - was 18px. No vertical padding
+       here anymore: see justify-content + fixed height below. */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 21px !important;
+  }
+
+  /* Figma doesn't give every card equal top/bottom padding - each PAIR of
+     cards shares one fixed card height (197px for cards 1-2, 234px for
+     cards 3-4, matching whichever card's own content is taller in that
+     pair), with the shorter card's content vertically centred inside it.
+     Was auto-height with a flat 20px top/bottom padding on every card,
+     which made all 4 heights track their own content independently
+     (206/184/236/236) instead of pairing up (197/197/234/234) - so card 1
+     and 2 didn't line up the way they do in Figma. */
+  .branding-card:nth-child(1),
+  .branding-card:nth-child(2) {
+    min-height: 197px !important;
+    /* min- not a fixed height: at the 393px reference width (and up) the
+       content fits inside 197px exactly, matching Figma, but on narrower
+       phones (320-375px) the same text wraps to more lines and needs more
+       room - a fixed height would have clipped it. min-height keeps the
+       197px floor everywhere while letting the card grow if it must. */
+  }
+
+  .branding-card:nth-child(3),
+  .branding-card:nth-child(4) {
+    min-height: 234px !important;
+  }
+
+  .branding-card-title {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif !important;
     font-weight: 600 !important;
-    color: #0B0B0B !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 321px !important;
+    font-size: 23px !important;
+    line-height: 30px !important;
+    color: #ffa726 !important;
   }
 
-  .branding-build-item-title .highlight {
-    color: #FFA726 !important;
+  /* Cards 1-3's titles are each set to whitespace-nowrap in Figma (every
+     line is its own single-line text node, e.g. 3548:4322) - card 2's
+     "Built Around Your Brand" is meant to stay on one line, but without
+     this it wrapped to "Built Around Your / Brand", which also inflated
+     the card's measured content height and threw off the vertical
+     centering (wrong top/bottom gap) added for the card-pairing fix. Card
+     3's two lines are two separate nowrap text nodes (the <br> in the HTML
+     already forces that split) - this just stops either half from
+     wrapping again on narrow phones. Card 4's "Lorem ipsum..." title is
+     the one exception: Figma leaves it as normal auto-wrap (node
+     3548:4333 has no whitespace-nowrap), so it's excluded here. */
+  .branding-card:nth-child(1) .branding-card-title,
+  .branding-card:nth-child(2) .branding-card-title,
+  .branding-card:nth-child(3) .branding-card-title {
+    white-space: nowrap !important;
   }
 
-  /* Desc: Inter Regular 400, 13/15, #0B0B0B */
-  .branding-build-item-desc {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
-    line-height: 15px !important;
+  /* "Built Around Your Brand" (card 2) and "Ready for Tomorrow." (card 3,
+     the longer of its two nowrap lines) are both wide enough at the full
+     23px Figma size that once nowrap stops them wrapping, they instead
+     overflow past the card's right edge on narrower phones (194-249px of
+     available text width vs. the ~227-268px these actually need at 23px) -
+     the "heading touches the right edge" bug. Card 1's and card 3's first
+     line are short enough to never hit this. Shrinking the font slightly
+     on narrow screens keeps every title readably close to Figma's 23px
+     (reached at/above the 393px reference) while guaranteeing it always
+     fits in one line without spilling past the border. */
+  .branding-card:nth-child(2) .branding-card-title {
+    font-size: clamp(15px, calc(8.33cqi - 11.67px), 22.5px) !important;
+  }
+
+  .branding-card:nth-child(3) .branding-card-title {
+    font-size: clamp(19px, calc(10.81cqi - 15.6px), 23px) !important;
+  }
+
+  .branding-card-divider {
+    display: block;
+    width: 89px !important;
+    height: 2px !important;
+    background-color: #ffa726;
+  }
+
+  .branding-card-desc {
+    margin: 0;
+    font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
-    color: #0B0B0B !important;
-    margin: 0 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    color: #0b0b0b !important;
+  }
+
+  /* ==============================================
+     4. DESIGN & PRODUCTION (MOBILE)
+     ============================================== */
+  .branding-production-section {
     width: 100% !important;
-    max-width: 321px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background-color: #e9eaeb !important;
+    padding: 39px 30px 36px !important;
+    /* was 33px 30px 45px. Figma (node 3548:4124, 392x480): heading top=39px
+       (not 33), and section bottom - CTA bottom (480-444.3=35.7) = 36px
+       (not 45). Left/right 30px was already correct (list is 333px wide,
+       centered in the 392px-wide frame: (392-333)/2=30). */
+    box-sizing: border-box;
   }
 
-  .branding-build-item:nth-child(1) .branding-build-item-desc {
-    max-width: 307px !important;
+  /* Same missing-rules bug as the desktop container (see the desktop block's
+     own comment) - never had a mobile equivalent added, so the button sat
+     flush-left inside the list's own (narrower) box instead of centering on
+     the section like the heading does. */
+  .branding-production-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
   }
 
-  .branding-build-item:nth-child(3) .branding-build-item-desc {
-    max-width: 301px !important;
+  .branding-production-heading {
+    margin: 0 0 28px !important;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 28px !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: center !important;
   }
 
-  .branding-build-item:nth-child(4) .branding-build-item-desc {
-    max-width: 309px !important;
+  .branding-production-list {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
   }
 
-  /* Figma: Image gap to left screen edge 38px, right screen edge 37px. 
-     Container padding is 20px, so left margin=18px, right margin=17px */
-  .branding-build-right {
-    position: static !important;
-    margin: 42px 17px 0 18px !important;
-    width: calc(100% - 35px) !important;
-    height: 317px !important;
-    overflow: hidden !important;
+  .branding-production-cta {
+    margin-top: 46px !important;
+    /* was 20px. Figma: list bottom (95+260=355) to CTA top (401.05) = 46px. */
+    width: 231px !important;
+    height: 43px !important;
+    /* Figma node 3548:4353 is 231x43.24 - was unset (derived from 8px
+       vertical padding + a 32px icon = 48px), same "box too tall" issue as
+       the hero CTA button. */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    /* icon left(5) + icon width(32) + gap = text start(44.1) -> gap ~7 */
+    background: #ffa726 !important;
+    border-radius: 29px !important;
+    padding: 0 16px 0 5px !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    /* justify-content:flex-start + a fixed left/right padding instead of
+       centered content - Figma's icon sits 5px from the left edge, not
+       centered as one block with the text (same left-packed layout as the
+       hero CTA button, node 3548:4303). */
   }
 
-  .branding-build-img.d-lg-none {
+  .branding-production-cta .icon-circle {
+    width: 32px !important;
+    height: 32px !important;
+    flex-shrink: 0 !important;
+    /* Without this, the flex row (button is only 231px wide, and "SPEAK TO
+       AN EXPERT" at 16px doesn't leave much room) squeezed the icon down
+       to ~18px wide instead of respecting the 32px set above - caught by
+       measuring the actual rendered width, not assumed from the CSS alone.
+       Was also accidentally shared with .branding-hero-cta .icon-circle at
+       32x29.71 (a value borrowed from a third, unrelated component) - that
+       combined selector was also silently overriding the hero button's own
+       correct 22x22 mobile icon rule declared earlier in this file, since
+       this one comes later and wins at equal specificity. Figma's actual
+       icon for this button (node 3548:4354) is a plain 32x32 square, not
+       29.71 tall - and the hero icon needed its own separate rule back. */
+  }
+
+  .branding-production-cta .btn-text {
+    font-family: "Inter", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    white-space: nowrap;
+  }
+
+  /* Shared pill row (mobile) — full redeclare */
+  .branding-pill {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 40px !important;
+    background: #ffffff !important;
+    border: 2px solid #ffa726 !important;
+    border-radius: 53px !important;
+    padding-left: clamp(46px, 15.0127cqi, 59px) !important;
+    /* Figma's pill text (e.g. node 3548:4340) starts at x=61 from the pill's
+       outer edge - with box-sizing:border-box, the 2px border sits outside
+       the padding, so padding-left needs to be 61-2=59, not 61 directly
+       (tried 61 first, which measured out to 63px total - overshot).
+       Fluid below the 393px reference (15.0127cqi = 59/393) so the pill
+       keeps proportionally the same free width for text on narrower phones
+       instead of losing it all to the fixed section side-padding - that
+       loss was what made "Project Branding & Collaterals" wrap to 2 lines
+       at 320-360px even before white-space:nowrap was added below. Clamped
+       to 59px so nothing changes at/above the 393px reference width. */
+    box-sizing: border-box;
+  }
+
+  .branding-pill-icon {
+    position: absolute !important;
+    left: -1px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 38px !important;
+    height: 38px !important;
+    background: url("../assets/images/branding-pill-icon.svg") center / contain no-repeat !important;
+  }
+
+  .branding-pill-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: clamp(13px, 4.0712cqi, 16px) !important;
+    color: #0b0b0b !important;
+    white-space: nowrap !important;
+    /* Figma (node 3548:4340 etc.) sets whitespace-nowrap on this text itself -
+       it's meant to always be one line. Left as auto-wrap before, it broke
+       to 2 lines for the two longest labels at 320-360px viewports. Paired
+       with the fluid padding-left above so the text shrinks together with
+       its available room instead of overflowing past the pill's edge. */
+  }
+
+  /* ==============================================
+     PORTFOLIO GALLERY (MOBILE)
+     ============================================== */
+  .branding-gallery-section {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    background-color: #ffffff !important;
+    /* Figma node 3560:4358 - was #f4f5f5, a copied-pattern guess */
+    padding: 33px 37px 0 !important;
+  }
+
+  .branding-gallery-container {
+    width: 100% !important;
+  }
+
+  .branding-gallery-img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1808 / 1060 !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+  }
+
+  /* ==============================================
+     5. HOW WE BUILD YOUR BRAND (MOBILE)
+     ============================================== */
+  .branding-steps-section {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    background-color: #ffffff !important;
+    /* Figma node 3560:4427 - was #f4f5f5, a copied-pattern guess */
+    padding: 61px 56px 42px !important;
+    /* Was 60px - full-page frame (3548:3970) gives the last step's content
+       bottom at y=3833 and the pre-footer's top at y=3875 = 42px, not 60. */
+  }
+
+  .branding-steps-container {
+    width: 100% !important;
+  }
+
+  .branding-steps-heading {
+    margin: 0 auto 33px !important;
+    max-width: 199px !important;
+    /* Figma (node 3560:4359) sets this text box to a fixed 199px, forcing
+       the break after "Build" - "How We Build / Your Brand". Left
+       unconstrained before, so the browser wrapped wherever the full
+       container width allowed, giving a DIFFERENT break ("How We Build
+       Your / Brand") on wider phones (414-430px) than on narrower ones
+       (320-375px) - same text, inconsistent look across screens. */
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 28px !important;
+    line-height: 31px !important;
+    letter-spacing: 0.01em !important;
+    color: #263238 !important;
+    text-align: center !important;
+  }
+
+  .branding-steps-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 19px !important;
+    /* The connector arrow between step 02 and 03 (.branding-step-arrow-
+       connector) sits directly in this grid, not inside a .branding-steps-
+       row - without align-items:center here it defaulted to stretch/flex-
+       start, so that one arrow (fixed at 22px wide) sat flush against the
+       LEFT edge of the full-width grid instead of centered like the other
+       two arrows, which get centered by .branding-steps-row's own
+       align-items:center. */
+  }
+
+  .branding-steps-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 19px !important;
+    width: 100% !important;
+  }
+
+  /* On mobile every step stacks in one column, so the connector between
+     rows becomes a real, visible arrow too - not just decorative padding */
+  .branding-step-arrow-connector {
+    display: flex !important;
+  }
+
+  .branding-step {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 7px !important;
+  }
+
+  .branding-step-number {
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 40px !important;
+    line-height: 59px !important;
+    letter-spacing: 0.01em !important;
+    color: #ffa726 !important;
+  }
+
+  .branding-step-pill {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 113px !important;
+    height: 40px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #ffa726 !important;
+    border-radius: 53px !important;
+    box-sizing: border-box;
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: #0b0b0b !important;
+  }
+
+  .branding-step-desc {
+    margin: 13px 0 0 !important;
+    /* .branding-step's flex `gap: 7px` already gives every child pair 7px
+       (correct for number-to-pill, Figma 66-59=7). Pill-to-description is
+       actually 20px in Figma (text y=126, pill block bottom=106) - this
+       adds the remaining 13px (20-7) on top of the inherited gap instead
+       of changing the shared gap value, which would have thrown off the
+       number-to-pill spacing above it. */
+    font-family: 'Mona Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 25px !important;
+    color: #0b0b0b !important;
+    text-align: center !important;
+  }
+
+  .branding-step-arrow {
+    flex-shrink: 0;
+    margin-top: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 22px !important;
+    height: 59px !important;
+    overflow: visible;
+  }
+
+  /* Wrapper reserves the ROTATED footprint (22 wide x 59 tall); the img
+     keeps the arrow's own natural horizontal proportions and is what
+     actually rotates, so it renders correctly centered instead of
+     stretched/distorted or overflowing its reserved space. */
+  .branding-step-arrow-img {
     display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
+    width: 59px !important;
+    height: 22px !important;
+    transform: rotate(90deg);
+    content: url("../assets/images/branding-step-arrow-mobile.svg") !important;
+    /* The shared branding-step-arrow.svg file is the DESKTOP asset - its
+       arrowhead sits inside a 237.5-wide canvas because desktop's arrow is
+       a long horizontal connector between columns (236px, no rotation).
+       Reusing it here at a fixed 59x22 box (preserveAspectRatio="none" on
+       the file itself) squeezed that whole 237.5-wide canvas down ~4x
+       horizontally, shrinking the arrowhead chevron to a barely-visible
+       sliver - the "arrow head not seeing" bug. This mobile-only file has
+       the identical shape traced at the actual 60.5-wide canvas mobile
+       needs, so the ~59px box barely scales it at all and the head renders
+       at full size. */
   }
 
   /* ==============================================
@@ -1392,8 +1690,15 @@ body.branding-page-body {
 @media (min-width: 768px) {
   .branding-page-body .faq-section {
     background-color: #E9EAEB !important;
-    padding: 5.6250cqi 0 4.5139cqi !important;
-    /* 81/1440 top, 65/1440 bottom - FAQ-to-pre-footer gap */
+    padding: 3.75cqi 0 2.2222cqi !important;
+    /* Was 81/1440 top, 65/1440 bottom - a full-page metadata fetch on the
+       actual desktop frame (3499:628) gives: pre-footer bottom (4709) to
+       the "Have Questions?" bar top (4763) = 54px, and the FAQ list's
+       bottom (5355) to the divider (5408) = 53px total. Top: 54/1440 =
+       3.75cqi, no stacking issue (the label-wrap has no margin of its
+       own). Bottom: same "last item keeps its own padding" issue as the
+       mobile FAQ fix - .faq-item:last-child keeps a 21px padding-bottom,
+       so this needed 53-21=32px, not the full 53: 32/1440 = 2.2222cqi. */
     display: flex !important;
     justify-content: center !important;
   }
@@ -1463,6 +1768,17 @@ body.branding-page-body {
 
 .branding-page-body .faq-section-mobile {
   background-color: #E9EAEB !important;
+  padding-top: 47px !important;
+  padding-bottom: 26px !important;
+  /* Figma node 3548:3993 (x=23, y=47) - the shared rule in style-v2.css
+     (:is(.services-page-body, ...) .faq-section-mobile) uses 56px/50px,
+     tuned for other pages, not this one's own Figma spec - both gaps here
+     (pre-footer to FAQ, FAQ to the .faq-footer-divider line) should be
+     47px. Top matches directly (no stacking). Bottom needed 47 - 21: the
+     last FAQ item (.faq-mobile-item:last-child) drops its border but
+     keeps its own padding-bottom:21px, so that 21px was stacking on top
+     of this section's own padding-bottom - 47px here read as 68px total,
+     the same "two paddings stacking" issue as the intro section above. */
 }
 
 .branding-page-body .faq-section .faq-container {
@@ -1496,13 +1812,10 @@ body.branding-page-body {
   .social-intro-desc,
   .branding-feature-desc,
   .branding-success-item-desc,
-  .branding-services-item-text,
-  .branding-intro-desc {
-    font-size: max(12px, 1.5277cqi);
-  }
-
-  /* page-specific body copy (1.5277cqi -> 11.7px at 768) */
-  .branding-point-desc {
+  .branding-intro-desc,
+  .branding-card-desc,
+  .branding-pill-text,
+  .branding-step-desc {
     font-size: max(12px, 1.5277cqi);
   }
 }

@@ -104,4 +104,13 @@
         color: #3A3939 !important;
         margin: 0 !important;
     }
+
+    /* FAQ -> Footer divider, mobile (Figma node 3584:1395) - thinned to 2px,
+       matches the desktop weight change */
+    .home-page-body .faq-footer-divider {
+        width: 100% !important;
+        height: 2px !important;
+        min-height: 2px !important;
+        background: #263238 !important;
+    }
 }

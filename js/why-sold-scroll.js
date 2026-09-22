@@ -105,6 +105,32 @@ document.addEventListener('DOMContentLoaded', () => {
       resetAutoScroll();
     });
 
+    // Swipe support (mobile/touch) - same approach as the testimonials
+    // carousel fix (js/main.js / js/main-v2.js): reuses the existing slide()
+    // transition so a swipe animates identically to the buttons/auto-scroll
+    // instead of running its own separate drag animation.
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const SWIPE_THRESHOLD = 40; // px - minimum horizontal distance to count as a swipe
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+      // A mostly-vertical gesture is the user scrolling the page, not
+      // swiping the carousel - leave it alone.
+      if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+      if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+
+      slide(deltaX < 0 ? 'next' : 'prev');
+      resetAutoScroll();
+    }, { passive: true });
+
     startAutoScroll();
   })();
 
@@ -148,6 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // transform will be handled in updateRotation
     };
 
+    // Width at which the arc switches from the mobile masked wheel to the wide
+    // web arc. This MUST track the mobile/web split in css/why-sold.css (767/768),
+    // because the two layouts use different coordinate systems - the web rules
+    // size the container and its transform-origin in cqi while the mobile ones
+    // position the logos in vw. When this sat at 992 the 768-991px range got web
+    // CSS with mobile logo positions, and the wheel did not form an arc at all.
+    const ARC_WEB_MIN_WIDTH = 768;
+    const isWebArc = () => window.innerWidth >= ARC_WEB_MIN_WIDTH;
+
     const testimonialText = document.querySelector('.ws-testimonial-text');
 
 
@@ -165,19 +200,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // For mobile, we use 12 logos spaced by exactly 30 degrees to create a perfect circle with 30px uniform gaps
     const mobileIndices = [...clockwiseIndices, clockwiseIndices[0], clockwiseIndices[1], clockwiseIndices[2]];
-    const loopIndices = window.innerWidth >= 992 ? fullCircleIndices : mobileIndices;
+    const loopIndices = isWebArc() ? fullCircleIndices : mobileIndices;
 
     loopIndices.forEach((origIndex, i) => {
       // Clone original DOM node
       const clone = originalLogos[origIndex].cloneNode(true);
 
       // Calculate circular position
-      const angleMultiplier = window.innerWidth >= 992 ? 20 : 30; // Mobile exactly 30 degrees apart (12 logos = 360 deg)
+      const angleMultiplier = isWebArc() ? 20 : 30; // Mobile exactly 30 degrees apart (12 logos = 360 deg)
       const startAngleMobile = -150; // i=2 (Center) will be at -150 + 60 = -90 degrees (top dead center)
-      const angleDeg = (window.innerWidth >= 992 ? startAngle : startAngleMobile) + (i * angleMultiplier);
+      const angleDeg = (isWebArc() ? startAngle : startAngleMobile) + (i * angleMultiplier);
       const angleRad = angleDeg * (Math.PI / 180);
 
-      if (window.innerWidth >= 992) {
+      if (isWebArc()) {
         // Web: Calculate in CQI to match container scaling flawlessly
         const radiusCqi = 36.8056; // 530 / 1440 * 100
         const centerXCqi = 42.5;   // 612 / 1440 * 100
@@ -198,6 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Click interaction
       clone.addEventListener('click', () => {
+        // Swallow the click the browser fires at the end of a finger-drag, so
+        // spinning the wheel does not also switch the testimonial underneath.
+        // (dragMoved is owned by the manual-rotation block further down.)
+        if (dragMoved) return;
+
         activeLogos.forEach(l => l.classList.remove('active'));
         clone.classList.add('active');
 
@@ -223,31 +263,106 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetRotation = 0;
     let isRequestingAnimation = false;
 
-    const updateRotation = () => {
-      currentRotation += (targetRotation - currentRotation) * 0.08;
+    // ------------------------------------------------------------------
+    // Manual rotation by finger - mobile + tablet only
+    // ------------------------------------------------------------------
+    // Below 992px - i.e. every touch-sized viewport, phone and tablet alike -
+    // the wheel can be grabbed and spun. Deliberately NOT the same number as
+    // ARC_WEB_MIN_WIDTH above: that one picks which arc *layout* to draw (tablet
+    // uses the web arc), this one picks which viewports get *touch* dragging
+    // (tablet does). While a finger is driving it the
+    // scroll-linked rotation is suspended, and whatever the user turns it by
+    // is kept as an offset - so on release the wheel carries on from where
+    // they left it instead of snapping back to the scroll position.
+    const MANUAL_MAX_WIDTH = 992;
+    const DRAG_COMMIT_PX = 6;    // movement before we decide rotate-vs-page-scroll
 
+    let isDragging = false;      // finger down AND committed to rotating
+    let dragCommitted = null;    // null | 'rotate' | 'scroll'
+    let dragMoved = false;       // read by the logo click handler above
+    let manualOffset = 0;        // degrees contributed by the user so far
+    let dragStartOffset = 0;
+    let dragStartRotation = 0;
+    let dragStartAngle = 0;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragCentre = { x: 0, y: 0 };
+
+    const isManualWidth = () => window.innerWidth < MANUAL_MAX_WIDTH;
+
+    const applyRotation = (deg) => {
       // Hardware accelerated group rotation for both web and mobile
-      arcContainer.style.transform = `rotate(${currentRotation}deg)`;
+      arcContainer.style.transform = `rotate(${deg}deg)`;
 
       activeLogos.forEach(logo => {
-        logo.style.transform = `rotate(${-currentRotation}deg)`;
+        logo.style.transform = `rotate(${-deg}deg)`;
       });
+    };
+
+    // The transform-origin is the one point that does NOT move while the arc
+    // is rotated, but getBoundingClientRect() reports the rotated bounding
+    // box - so read the box with the transform momentarily off to locate that
+    // point exactly. Nothing paints in between, so there is no flicker.
+    const getRotationCentre = () => {
+      const previous = arcContainer.style.transform;
+      arcContainer.style.transform = 'none';
+      const rect = arcContainer.getBoundingClientRect();
+      const origin = window.getComputedStyle(arcContainer).transformOrigin.split(' ');
+      arcContainer.style.transform = previous;
+
+      return {
+        x: rect.left + parseFloat(origin[0]),
+        y: rect.top + parseFloat(origin[1])
+      };
+    };
+
+    const angleFromPoint = (x, y) =>
+      Math.atan2(y - dragCentre.y, x - dragCentre.x) * (180 / Math.PI);
+
+    // ------------------------------------------------------------------
+    // Hover pause - web/desktop only, independent of dragging. Hovering just
+    // freezes handleScrollRotate() from moving the target angle any further;
+    // it does not need to touch updateRotation()'s own easing loop, which
+    // naturally settles once the target stops changing.
+    // ------------------------------------------------------------------
+    let isHovering = false;
+
+    arcContainer.addEventListener('mouseenter', () => {
+      isHovering = true;
+    });
+
+    arcContainer.addEventListener('mouseleave', () => {
+      isHovering = false;
+      // Resume immediately from the current scroll position rather than
+      // waiting for the next scroll event.
+      handleScrollRotate();
+    });
+
+    const updateRotation = () => {
+      // A finger/mouse owns the rotation while it is down - drop the eased loop.
+      if (isDragging) {
+        isRequestingAnimation = false;
+        return;
+      }
+
+      currentRotation += (targetRotation - currentRotation) * 0.08;
+      applyRotation(currentRotation);
 
       if (Math.abs(targetRotation - currentRotation) > 0.05) {
         requestAnimationFrame(updateRotation);
       } else {
         currentRotation = targetRotation;
-        arcContainer.style.transform = `rotate(${currentRotation}deg)`;
-
-        activeLogos.forEach(logo => {
-          logo.style.transform = `rotate(${-currentRotation}deg)`;
-        });
+        applyRotation(currentRotation);
 
         isRequestingAnimation = false;
       }
     };
 
     const handleScrollRotate = () => {
+      // Automatic (scroll-linked) rotation is paused while the user drags,
+      // and also while the mouse is hovering the wheel (web/desktop).
+      if (isDragging || isHovering) return;
+
       const rect = clientsSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
@@ -255,10 +370,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalScrollDistance = windowHeight + rect.height;
         const scrolledDistance = windowHeight - rect.top;
         const progress = Math.max(0, Math.min(1, scrolledDistance / totalScrollDistance));
-        const isMobile = window.innerWidth < 992;
-        const rotationRange = isMobile ? 160 : 120; // 4 logo positions on mobile (40° each)
-        const rotationOffset = isMobile ? 20 : 15;
-        targetRotation = -(progress * rotationRange) + rotationOffset;
+        // Matches the arc geometry in use, so tablet gets the web sweep too.
+        const isMobileArc = !isWebArc();
+        const rotationRange = isMobileArc ? 160 : 120; // 4 logo positions on mobile (40 deg each)
+        const rotationOffset = isMobileArc ? 20 : 15;
+        targetRotation = -(progress * rotationRange) + rotationOffset + manualOffset;
 
         if (!isRequestingAnimation) {
           isRequestingAnimation = true;
@@ -266,6 +382,115 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     };
+
+    // Shared start/move logic for both finger (touch) and mouse (web/desktop)
+    // dragging - takes plain coordinates so either input type can drive it.
+    const startDrag = (x, y) => {
+      dragCommitted = null;
+      dragMoved = false;
+      dragStartX = x;
+      dragStartY = y;
+      dragCentre = getRotationCentre();
+      dragStartAngle = angleFromPoint(x, y);
+      dragStartOffset = manualOffset;
+      dragStartRotation = targetRotation;
+    };
+
+    // Returns true if the move should be treated as rotating the wheel (so
+    // the caller knows whether to preventDefault the page scroll/selection).
+    const moveDrag = (x, y) => {
+      if (dragCommitted === null) {
+        const dx = x - dragStartX;
+        const dy = y - dragStartY;
+
+        if (Math.abs(dx) < DRAG_COMMIT_PX && Math.abs(dy) < DRAG_COMMIT_PX) return false;
+
+        // A mostly-vertical gesture is the user scrolling the page, not
+        // spinning the wheel - the same rule the carousels in this file use.
+        // Hand it straight back to the browser and leave the arc alone.
+        dragCommitted = Math.abs(dx) >= Math.abs(dy) ? 'rotate' : 'scroll';
+        if (dragCommitted === 'rotate') isDragging = true;
+      }
+
+      if (dragCommitted !== 'rotate') return false;
+
+      let delta = angleFromPoint(x, y) - dragStartAngle;
+
+      // atan2 wraps at +-180 - keep the delta on the short way round so
+      // crossing that seam does not fling the wheel a whole turn.
+      while (delta > 180) delta -= 360;
+      while (delta < -180) delta += 360;
+
+      if (Math.abs(delta) > 0.5) dragMoved = true;
+
+      manualOffset = dragStartOffset + delta;
+      targetRotation = dragStartRotation + delta;
+
+      // Follow the finger/cursor 1:1 - no easing lag while dragging.
+      currentRotation = targetRotation;
+      applyRotation(currentRotation);
+      return true;
+    };
+
+    const endDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+
+        // Resume the automatic rotation from wherever the user left it.
+        if (!isRequestingAnimation) {
+          isRequestingAnimation = true;
+          requestAnimationFrame(updateRotation);
+        }
+      }
+
+      dragCommitted = null;
+    };
+
+    // ---- Touch (finger) - mobile + tablet only, per isManualWidth() -------
+    arcContainer.addEventListener('touchstart', (e) => {
+      if (!isManualWidth() || e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      startDrag(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    arcContainer.addEventListener('touchmove', (e) => {
+      if (!isManualWidth() || e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      const rotating = moveDrag(touch.clientX, touch.clientY);
+      // Keep the page still while the wheel is being spun.
+      if (rotating) e.preventDefault();
+    }, { passive: false });
+
+    arcContainer.addEventListener('touchend', endDrag, { passive: true });
+    arcContainer.addEventListener('touchcancel', endDrag, { passive: true });
+
+    // ---- Mouse (web/desktop) - client asked for manual rotate/swipe here
+    // too, in addition to the hover-pause above. Window-level move/up so a
+    // fast drag that leaves the wheel's own bounds still resolves correctly,
+    // the same reason the touch version isn't scoped to isManualWidth() any
+    // narrower than it already is. ----
+    const onMouseMove = (e) => {
+      const rotating = moveDrag(e.clientX, e.clientY);
+      if (rotating) e.preventDefault();
+    };
+
+    const onMouseUp = () => {
+      endDrag();
+      arcContainer.style.cursor = 'grab';
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+
+    arcContainer.addEventListener('mousedown', (e) => {
+      // Only the primary button starts a drag.
+      if (e.button !== 0) return;
+      startDrag(e.clientX, e.clientY);
+      arcContainer.style.cursor = 'grabbing';
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+    });
+
+    arcContainer.style.cursor = 'grab';
 
     window.addEventListener('scroll', handleScrollRotate, { passive: true });
     handleScrollRotate();

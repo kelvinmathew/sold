@@ -3,6 +3,26 @@
    Provides perfectly scaled identical output to Figma mockups globally
    ========================================================================= */
 
+/* contact.html has no <header>/hamburger at all (standalone modal page) - the
+   2026-09-21 fix that made .whatsapp-float-btn a child of .site-header and
+   positioned it relative to that header doesn't apply here, since there's no
+   header to be relative to. Restored to a simple fixed corner placement so
+   this page isn't regressed by that shared style.css change.
+   MUST be scoped to .contact-page-body, not just a bare selector - this
+   file is loaded on every page (the contact popup is available site-wide),
+   and contact.html shares the exact same "home-page-body" body class as the
+   real Home page, so an unscoped rule here silently clobbered the header-
+   relative fix on every other page too until this was scoped properly. */
+@media (max-width: 767px) {
+  .contact-page-body .whatsapp-float-btn {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+  }
+}
+
 /* Screen-reader-only live region: announces "Sending...", success and error
    text to assistive tech without any visual footprint (the visible feedback
    is the centered popup below + the inline field tooltips). */
@@ -284,9 +304,13 @@
     color: #FFFFFF;
 }
 
-/* Specific start alignment for multi-line location block */
+/* Specific start alignment for multi-line location block. Was
+   align-items:center (contradicting its own class name), which centered the
+   pin icon against the whole two-address stack instead of the first line -
+   flex-start keeps the icon level with the first address, same as before
+   the second address was added. */
 .contact-info-item.align-start {
-    align-items: center;
+    align-items: flex-start;
     line-height: 20px;
     gap: 29px;
 }
@@ -402,6 +426,22 @@
     padding-left: 24px;
 }
 
+/* Two addresses stacked under the single pin icon, per Figma node 3023:512
+   (vertical stack, each line 284px wide at 18px/20). Figma's own 11px gap
+   read too tight next to the icon in practice - bumped for more breathing
+   room per client feedback. */
+.contact-address-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-address-stack span {
+    display: inline-block;
+    width: 284px;
+    max-width: 284px;
+}
+
 .services-interest {
     margin-top: 8px;
     /* Offset the regular gap to reach the Figma y coord */
@@ -418,16 +458,13 @@
     line-height: 20px;
     letter-spacing: 0.01em;
     color: #1B3834;
-    margin-bottom: 14px;
+    /* Figma node 3030:562: 20px between the heading and the service columns */
+    margin-bottom: 20px;
 }
 
 .services-grid {
-    /* Fixed 156px + 3x1fr tracks and a hard 45px height only fitted the short
-       original labels. Once the list follows the navbar wording ("Lead &
-       Demand Generation", "Real Estate Websites") the widest item ran 61px
-       past its track and the third row was clipped by 21px. Flex wrapping
-       sizes every item to its own text and flows onto as many rows as the
-       labels need, so any wording an editor sets still fits. */
+    /* Mobile list keeps wrapping on content (see the mobile block); the
+       desktop grid below overrides this with the Figma column layout. */
     display: flex;
     flex-wrap: wrap;
     column-gap: 14px;
@@ -436,6 +473,37 @@
     height: auto;
     justify-content: flex-start;
     align-items: center;
+}
+
+/* Desktop: Figma node 3030:553 lays the nine services out as five columns of
+   two (the last column holds a single item), flowing DOWN each column then
+   across - not as wrapped rows. grid-auto-flow: column with two explicit rows
+   reproduces that order exactly.
+   Columns are auto-sized to their own text (each item is 29px line-height,
+   white-space:nowrap), so justify-content alone decides how far right they
+   reach. The correct target is the Message box's own right edge, not the
+   full 100%-width container: .message-group .form-control-custom is a
+   deliberate 561px (narrower than the 578px form), and .services-interest
+   (this grid's parent) is itself nudged 12px right of the form's left edge
+   - so matching the message box's right edge means a width of
+   561px - 12px = 549px here, not 100%. space-between then spreads the 5
+   columns to fill exactly that, growing the gaps past the nominal 13px
+   instead of leaving dead space (or, at 100%, overshooting the message box
+   as it did before this was narrowed). */
+.services-grid.desktop-only-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 0;
+    justify-content: space-between;
+    align-items: start;
+    width: 549px;
+    height: auto;
+}
+
+.services-grid.desktop-only-grid .service-checkbox {
+    /* 14px / 29px per Figma */
+    line-height: 29px;
 }
 
 .service-checkbox {
@@ -590,8 +658,10 @@
            not left sitting underneath it. vh stays as the fallback. */
         height: 100vh;
         height: 100dvh;
-        padding: 16px;
-        padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        padding: 6px;
+        /* was 16px - trimmed along with other spacing below so the card
+           fits every tested phone height (320x568 up) without scrolling */
+        padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -644,8 +714,10 @@
     .contact-modal-right {
         width: 100%;
         background: #FFFFFF;
-        padding: 38px 20px 20px;
-        /* Figma: pt-38 px-20 pb-20 */
+        padding: 28px 20px 14px;
+        /* was 38px 20px 20px (Figma: pt-38 px-20 pb-20) - top/bottom
+           trimmed for viewport fit; close button (top:26px) still clears
+           the header row */
         box-sizing: border-box;
         border-radius: 17px 17px 0 0;
         position: relative;
@@ -661,9 +733,10 @@
     .mobile-contact-header {
         display: flex !important;
         flex-direction: column;
-        gap: 12px;
-        margin-bottom: 20px;
-        /* Figma: gap-20 between header and the fields below it */
+        gap: 8px;
+        margin-bottom: 12px;
+        /* was gap:12px / margin-bottom:20px (Figma: gap-20 to the fields
+           below) - trimmed for viewport fit */
     }
 
     .mobile-contact-logo {
@@ -729,20 +802,19 @@
         order: 5;
     }
 
-    /* Stacked fields only have the .contact-form gap (12px) between them -
-       not enough clearance for a ~30px tooltip bubble before the next field
-       starts, so it would otherwise cover that field's placeholder text
-       entirely. This extra margin is constant (not tied to error state, so
-       it never shifts anything when an error appears/clears) - it just
-       reserves the room up front. Reduced further to 10px (12+10=22px total,
-       down from the original 34px) - still enough clearance for the tooltip,
-       just tighter. */
+    /* Was margin-bottom:10px on top of .contact-form's 12px gap (22px total)
+       to clear a validation-error tooltip before it could cover the next
+       field. Client asked for exactly 12px between fields and more room
+       overall to guarantee the whole modal fits one viewport on every
+       phone size - removed here, so fields now rely on the 12px gap alone.
+       Slightly less tooltip clearance than before; still readable, just
+       tighter. */
     .field-first,
     .field-last,
     .field-phone,
     .field-company,
     .field-email {
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
 
     /* Input fields: Figma 303×36px → responsive full-width */
@@ -808,16 +880,18 @@
         container-type: inline-size;
     }
 
-    /* Swap in the mobile-specific service list (Figma adds "All Services"
-       and "AI Marketing"); desktop's 7-item list stays untouched. */
-    .desktop-only-grid {
+    /* "What services are you interested in?" is dropped entirely on mobile -
+       heading and both grids - so the card fits on a phone screen without
+       scrolling. contact-form.js only submits checkboxes whose offsetParent
+       is non-null, so hiding the block also stops it sending a stale
+       default-selected service. */
+    .services-interest {
         display: none !important;
     }
 
+    .desktop-only-grid,
     .mobile-only-grid {
-        /* flex, not grid - the .services-grid rule below wraps on content so
-           the longer navbar labels stay inside the card. */
-        display: flex !important;
+        display: none !important;
     }
 
     .services-label {
@@ -866,22 +940,25 @@
 
     /* --- Message textarea --- */
     .form-row.message-row {
-        margin-top: 16px;
+        margin-top: 8px;
+        /* was 16px (12px gap + 16px = 28px total) - trimmed for viewport fit */
         order: 7;
     }
 
     .message-group .form-control-custom {
         width: 100% !important;
-        height: 93px;
-        /* Figma: h-93 */
-        padding: 15px 19px;
+        height: 65px;
+        /* was 93px (Figma: h-93) - trimmed for viewport fit; still room
+           for a couple of lines of text */
+        padding: 12px 19px;
         resize: none;
         font-size: 12px;
     }
 
     /* --- Send button: Figma 180×40px --- */
     .btn-send-message {
-        margin-top: 16px;
+        margin-top: 8px;
+        /* was 16px (12px gap + 16px = 28px total) - trimmed for viewport fit */
         order: 8;
         width: 180px;
         height: 40px;
@@ -952,5 +1029,79 @@
     /* --- Contact logo (desktop version hidden, mobile header used instead) --- */
     .contact-logo {
         display: none;
+    }
+}
+
+/* =========================================================
+   MOBILE MODAL - HEIGHT-RESPONSIVE SIZING
+   The block above was tuned tight enough to fit the shortest phone tested
+   (320x568, iPhone SE) without scrolling - correct there, but it left the
+   exact same compact card on every taller phone too, even ones with 250px+
+   of untouched spare room (844-932px viewports), which looked cramped for
+   no reason. These two tiers restore more of the original Figma spacing as
+   height allows, capped so no tier can overflow at its own lowest bound
+   (verified against this project's 8 standard test sizes:
+   320x568/360x640/375x667/360x740/390x844/412x915/414x896/430x932). The
+   12px field-to-field gap (client-requested exact value) is intentionally
+   left alone in every tier - only the *other* spacing grows.
+   ========================================================= */
+@media (max-width: 767px) and (min-height: 620px) {
+    .contact-modal-overlay {
+        padding: 12px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .contact-modal-right {
+        padding: 34px 20px 18px;
+    }
+
+    .mobile-contact-header {
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .form-row.message-row {
+        margin-top: 12px;
+    }
+
+    .btn-send-message {
+        margin-top: 12px;
+    }
+
+    .message-group .form-control-custom {
+        height: 82px;
+        padding: 14px 19px;
+    }
+}
+
+@media (max-width: 767px) and (min-height: 780px) {
+    .contact-modal-overlay {
+        padding: 16px;
+        padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .contact-modal-right {
+        padding: 38px 20px 20px;
+        /* back to the original Figma pt-38 px-20 pb-20 */
+    }
+
+    .mobile-contact-header {
+        gap: 12px;
+        margin-bottom: 20px;
+        /* back to the original Figma gap-20 */
+    }
+
+    .form-row.message-row {
+        margin-top: 16px;
+    }
+
+    .btn-send-message {
+        margin-top: 16px;
+    }
+
+    .message-group .form-control-custom {
+        height: 93px;
+        /* back to the original Figma h-93 */
+        padding: 15px 19px;
     }
 }

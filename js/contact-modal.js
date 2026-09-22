@@ -11,8 +11,6 @@
  * returns to the same page/scroll position.
  */
 (function () {
-    const DESKTOP_BREAKPOINT = 992;
-
     const triggers = document.querySelectorAll('[data-contact-trigger]');
     if (!triggers.length) return; // this page has no contact trigger, nothing to do
 
@@ -24,6 +22,12 @@
     // toggling overflow alone resets window.scrollY to 0 on close in most browsers,
     // which would break "return to the exact position" requirement.
     const openContactModal = () => {
+        // The mobile drawer is position:fixed and sits above the page, so it
+        // has to be closed before the popup opens or it covers it.
+        const drawer = document.getElementById('mobileMenu');
+        if (drawer) {
+            drawer.classList.remove('open');
+        }
         savedScrollY = window.scrollY || window.pageYOffset || 0;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${savedScrollY}px`;
@@ -44,13 +48,13 @@
     };
 
     const wireUpModal = () => {
-        const contactClose = contactModal.querySelector('.contact-modal-close');
-        if (contactClose) {
+        const contactCloseBtns = contactModal.querySelectorAll('.contact-modal-close, .contact-modal-close-mobile');
+        contactCloseBtns.forEach((contactClose) => {
             contactClose.addEventListener('click', (e) => {
                 e.preventDefault();
                 closeContactModal();
             });
-        }
+        });
 
         // Click on the dimmed backdrop (outside the modal card) closes it
         contactModal.addEventListener('click', (e) => {
@@ -75,14 +79,10 @@
 
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
-            // Mobile has no Contact popup UI, so the button must do nothing at
-            // all - no popup, and no falling through to contact.html either.
-            if (window.innerWidth < DESKTOP_BREAKPOINT) {
-                e.preventDefault();
-                return;
-            }
-            // If the fetch below hasn't resolved yet, fall through to the
-            // normal navigation rather than swallowing the click.
+            // The popup now opens at every width, including from the mobile
+            // drawer. If the fetch below hasn't resolved yet, fall through to
+            // normal navigation to contact.html rather than swallowing the
+            // click and leaving the user with nothing.
             if (!modalReady) return;
             e.preventDefault();
             openContactModal();

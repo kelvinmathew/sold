@@ -519,6 +519,44 @@
     /* 521/1440 */
   }
 
+  /* Double-quotes accent, web only - COLUMN (icon above the description),
+     per client correction after v1.0.72's row attempt. Client gave an exact
+     alignment spec this round: the icon's RIGHT edge should land exactly on
+     the description's LEFT edge (i.e. sit fully outside/left of the text
+     column, not overlapping it), plus sit ~12px higher than the description.
+     Mobile's own row layout (v1.0.69) and the description's own position
+     are both untouched - web only. */
+  .cs-card-quote-block {
+    width: 100%;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6944vw;
+    /* 10px - unchanged; the icon's vertical nudge below uses a transform
+       instead of touching this gap, specifically so the description's own
+       position is not affected by the icon moving. */
+  }
+
+  .cs-card-quote-icon {
+    width: 2.7083vw;
+    /* 39px natural width */
+    height: 1.8056vw;
+    /* 26px natural height */
+    display: block;
+    margin-left: -2.7083vw;
+    /* Exactly cancels the icon's own width (same vw value, negated), so its
+       right edge always lands precisely on the description's left edge
+       (x=0 of this flex column) at any viewport width - not a guessed px
+       value like the last two rounds, which only lined up at one width. */
+    transform: translateY(-12px);
+    /* Moves the icon 12px higher without affecting layout flow - a margin
+       change here would also push the description down (same flex column,
+       gap-based spacing), which the client explicitly said to keep
+       unchanged. transform is purely visual, so the description doesn't
+       move. */
+  }
+
   .cs-card-desc {
     width: 100%;
     align-self: stretch;
@@ -723,9 +761,30 @@
   max-width: none !important;
 }
 
-/* --- Web FAQ Background Override --- */
+/* --- Web FAQ padding override --- */
 .client-success-page-body .faq-section {
-  background-color: #F4F5F5 !important;
+  /* Client-requested: this section's background was #F4F5F5 (light grey),
+     inconsistent with Services/Why SOLD, which both use the base
+     .faq-section rule's white (#FFFFFF, css/style-v2.css) - removed so this
+     page inherits the same white instead of duplicating/hardcoding it here.
+     The padding-top override below is unrelated and stays: FAQ now sits
+     right after Pre-footer (was the other way round), so its top gap is
+     matched to its own 65px bottom gap - the standard spacing already used
+     site-wide between stacked sections - instead of the 27px inherited from
+     the base .faq-section rule. */
+  padding-top: 4.5139cqi !important;
+  /* 65px */
+}
+
+/* Tablet dead zone (768-991px): the mobile FAQ markup (#faq-mobile) is what
+   Bootstrap's d-lg-none/d-lg-block actually show below 992px, but the mobile
+   padding rule further down is gated at max-width:767px - so without this,
+   .faq-section-mobile got 0px top padding in this range, crowding it
+   straight against Pre-footer. Matches the 56px used <=767px. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .faq-section-mobile {
+    padding-top: 56px !important;
+  }
 }
 
 /* For Mobile (Below 992px) - Fallback to standard px/layout so it stacks nicely like services.html */
@@ -1053,7 +1112,9 @@
   .cs-card-right {
     display: flex !important;
     flex-direction: column !important;
-    gap: 57px !important;
+    gap: 40px !important;
+    /* Gap below the description (down to the button): 57px -> 33px -> 40px
+       -> 14px (v1.0.84) -> REVERTED back to 40px. Mobile only. */
     width: 100% !important;
   }
 
@@ -1127,6 +1188,51 @@
     padding: 0 !important;
   }
 
+  /* Layout axis changed from column (icon stacked above the text) to row
+     (icon beside the text, to its left) - client confirmed against Figma
+     that the quote sits to the LEFT of the description on mobile, not
+     above it (the desktop placement above the text is unchanged - not
+     asked about, left alone). Figma gave absolute screen-edge gaps (716px
+     left / 687px right) for this element, but those don't fit this
+     project's actual mobile frame - every other mobile value in this
+     codebase is derived from a 393px-wide Figma frame (see any `vw`
+     comment in this file, e.g. "18px relative to 393px" a few lines
+     below), and 716 alone is already almost double that. Rather than
+     guess a scaling/offset that could be wrong in either direction, used
+     a reasoned gap instead (12px, this project's other common small-gap
+     value) - flag for the client to confirm the exact spacing, or supply
+     the frame width the 716/687 figures were measured against. */
+  /* REVERTED from row back to column (client correction): the quote icon
+     was sitting beside the description on mobile ("same line"), but should
+     be above it, like the original v1.0.69 layout. The icon's left edge was
+     first set to an 18px inset (a guessed value), then corrected to align
+     exactly with the description's own left edge - client feedback:
+     "positioned slightly too far to the right" - measured an 18px offset
+     between them before that fix, now 0. Mobile only - desktop's row
+     layout (v1.0.75, icon flush left of text) is untouched.
+
+     Gap history: spec was 20px above (icon-to-description) / 33px below
+     (description-to-button, `.cs-card-right`'s own gap) - both verified
+     exactly correct via getBoundingClientRect at the time, a visual-weight
+     perception effect rather than a bug. Nudged to 14px above / 40px below
+     (v1.0.83) to compensate. v1.0.84 then swapped to 33px above / 14px
+     below - REVERTED back to v1.0.83's 14px above / 40px below (see
+     `.cs-card-right` for the below value). */
+  .cs-card-quote-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .cs-card-quote-icon {
+    width: 39px !important;
+    height: 26px !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+
   .cs-card-desc {
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 400 !important;
@@ -1138,6 +1244,7 @@
     color: #292626 !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
   }
 
   .cs-card-btn {
@@ -1476,7 +1583,10 @@
   /* FAQ Section Mobile */
   .faq-section-mobile {
     width: 100% !important;
-    padding-top: 0 !important;
+    padding-top: 56px !important;
+    /* FAQ now sits right after Pre-footer (was the other way round) -
+       matches the 56px top gap used on Home/Services/Why SOLD mobile, was
+       0 when Pre-footer came after FAQ instead of before it. */
     padding-bottom: 50px !important;
     /* Matches the FAQ-to-pre-footer gap used on every other page */
   }
@@ -1588,7 +1698,15 @@
   /* Client Success Mobile Pre-Footer Overrides (matches index.html mobile layout) */
   .client-success-page-body .cs-pre-footer {
     width: 100vw !important;
-    height: 424px !important;
+    height: 350px !important;
+    /* Client-requested: reduce the container height, mobile only, without
+       moving the text or button. Was 424px, copied from Home's own
+       pre-footer box - left ~132px of empty space below the button (top
+       250px + height 42px = 292px content bottom). Trimmed to 350px, which
+       leaves a ~58px bottom margin, close to symmetric with the title's own
+       56.34px top inset, rather than shrinking it right down to the
+       button's edge. Title/button top values and their gap are untouched
+       below - only this outer box shrank. */
     margin-left: calc(-50vw + 50%) !important;
     margin-right: 0 !important;
     padding: 0 !important;
@@ -1629,7 +1747,15 @@
 
   .client-success-page-body .cs-pre-footer .btn-pre-footer {
     position: absolute !important;
-    top: 305px !important;
+    top: 250px !important;
+    /* Was 305px, copied verbatim from Home's 4-line mobile title. Client
+       Success's real headline ("READY TO WORK WITH THE REAL ESTATE
+       EXPERTS?") is only 3 lines once the wrong mobile text (see
+       .pre-footer-title above/fix_cs_prefoot_mobile_text.sql) is corrected -
+       one line-height (55px) shorter - so the button moved up by the same
+       55px to keep the same ~28.66px visual gap Home has between its own
+       text block's bottom and its button (56.34 top + 3*55 line-height =
+       221.34 text bottom; 221.34+28.66=250). */
     transform: none !important;
     left: 24px !important;
     right: auto !important;

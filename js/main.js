@@ -6,6 +6,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('SOLD Frontend Initialized');
 
+    // Header: the tall header is position:absolute and simply scrolls away
+    // with the page like any other content - no JS needed for that part.
+    // Once the user has scrolled well past it, swap in a separate, shorter
+    // "is-compact" fixed bar instead of leaving nothing pinned at the top.
+    // This toggle runs at every width - mobile now uses the same
+    // scroll-away-then-compact model as web/tablet (client-requested,
+    // matching web's behaviour exactly), each breakpoint just has its own
+    // CSS for what "tall" and "is-compact" look like (see css/style.css's
+    // and css/style-v2.css's mobile vs. desktop .site-header rules).
+    const siteHeader = document.querySelector('.site-header');
+    if (siteHeader) {
+        const COMPACT_THRESHOLD = 200; // px - clears the 144px tall header, then a bit more
+        const updateHeaderCompact = () => {
+            siteHeader.classList.toggle('is-compact', window.scrollY > COMPACT_THRESHOLD);
+        };
+        updateHeaderCompact();
+        window.addEventListener('scroll', updateHeaderCompact, { passive: true });
+    }
+
     // FAQ Accordion Interaction
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
@@ -166,12 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.carousel-dots-center .dot');
-    
-    let activeDots = Array.from(dots);
-    if (window.innerWidth >= 768) {
-        activeDots = activeDots.filter(d => !d.classList.contains('mobile-only-dot'));
-    }
-    
+
+    // .mobile-only-dot is a decorative extra dot with no matching card - it
+    // never took part in the cycle correctly (one dot too many for the real
+    // card count desynced the active dot from the actual card after a full
+    // cycle), so it's excluded here at every width now, not just >=768px.
+    let activeDots = Array.from(dots).filter(d => !d.classList.contains('mobile-only-dot'));
+
     if (track && prevBtn && nextBtn) {
         let isAnimating = false;
         let currentIndex = 0;
@@ -283,6 +303,75 @@ document.addEventListener('DOMContentLoaded', () => {
             slide('prev');
             resetAutoScroll();
         });
+
+        // Swipe support (mobile/touch). Reuses the same slide() transition
+        // as the arrow buttons and auto-scroll, so a swipe animates exactly
+        // the same way and stays in sync with them instead of running its
+        // own separate drag animation.
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const SWIPE_THRESHOLD = 40; // px - minimum horizontal distance to count as a swipe
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+            touchStartY = e.changedTouches[0].clientY;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            const deltaX = e.changedTouches[0].clientX - touchStartX;
+            const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+            // A mostly-vertical gesture is the user scrolling the page, not
+            // swiping the carousel - leave it alone.
+            if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+            if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+
+            slide(deltaX < 0 ? 'next' : 'prev');
+            resetAutoScroll();
+        }, { passive: true });
+
+        // Manual drag support (mouse, web/desktop) - same threshold-based
+        // approach as the touch swipe above, so it stays in sync with it and
+        // the buttons/auto-scroll rather than a separate drag animation.
+        // Only resolved on mouseup (not followed continuously), matching how
+        // the touch version only acts on touchend.
+        let mouseStartX = 0;
+        let mouseStartY = 0;
+        let isMouseDown = false;
+
+        const onTrackMouseMove = (e) => {
+            // Prevent text/image selection while dragging across the cards.
+            if (isMouseDown) e.preventDefault();
+        };
+
+        const onTrackMouseUp = (e) => {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            track.style.cursor = 'grab';
+            window.removeEventListener('mousemove', onTrackMouseMove);
+            window.removeEventListener('mouseup', onTrackMouseUp);
+
+            const deltaX = e.clientX - mouseStartX;
+            const deltaY = e.clientY - mouseStartY;
+
+            if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+            if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+
+            slide(deltaX < 0 ? 'next' : 'prev');
+            resetAutoScroll();
+        };
+
+        track.addEventListener('mousedown', (e) => {
+            if (e.button !== 0) return; // primary button only
+            isMouseDown = true;
+            mouseStartX = e.clientX;
+            mouseStartY = e.clientY;
+            track.style.cursor = 'grabbing';
+            window.addEventListener('mousemove', onTrackMouseMove);
+            window.addEventListener('mouseup', onTrackMouseUp);
+        });
+
+        track.style.cursor = 'grab';
 
         // Initialize auto-scroll
         startAutoScroll();
