@@ -532,8 +532,12 @@ body.branding-page-body {
   .branding-production-cta {
     margin-top: 1.6667cqi;
     /* 24/1440 */
-    width: 21.4583cqi;
-    /* 309/1440 */
+    flex-shrink: 0;
+    /* Was a fixed width (309/1440) sized to fit only the default "SPEAK TO
+       AN EXPERT" text exactly - a longer ACF-entered CTA text visibly
+       overflowed past the button (caught via a real ACF update_field()
+       audit, not assumed). Auto-sizing to content instead, same pattern
+       already used by .btn-pre-footer for the same reason. */
     height: 3.4703cqi;
     /* 49.973/1440 - same button as the hero CTA (identical Figma
        percentages), just solid orange instead of translucent */
@@ -630,14 +634,18 @@ body.branding-page-body {
   .branding-gallery-img {
     display: block;
     width: 100%;
-    aspect-ratio: 1808 / 1060;
-    /* the placeholder asset's own natural size - locking the box to it
-       means object-fit has nothing left to crop or letterbox, guaranteeing
-       the full image always shows regardless of viewport width. Was a fixed
-       height (659/1440) with object-fit:cover, which is fine at exactly
-       1440px (Figma's frame ratio and the image's natural ratio are
-       already a near-perfect match there) but isn't "full image,
-       guaranteed" the way an aspect-ratio lock is. */
+    height: auto;
+    /* Was aspect-ratio:1808/1060, this placeholder image's own natural
+       ratio hardcoded - would distort or letterbox any differently-shaped
+       image the other 7 service pages upload once this becomes their
+       shared template. width:100% + height:auto instead uses each image's
+       own intrinsic ratio automatically (the CSS default for a replaced
+       element like <img> once no fixed aspect-ratio/height fights it) -
+       full image, zero crop, zero distortion, for any dimensions, with no
+       per-page CSS change needed. The section's own top/bottom padding
+       (unrelated to the image's height) is what keeps the surrounding
+       spacing identical across pages regardless of how tall a given image
+       renders. */
     object-fit: contain;
     border-radius: 0;
     /* Figma's own generated code has no rounded-corner class on this node -
@@ -1189,37 +1197,20 @@ body.branding-page-body {
     box-sizing: border-box;
     border: 2px solid #ffa726 !important;
     border-radius: 15px !important;
-    padding: 0 20px !important;
-    /* Figma's horizontal inset is 20px each side (card 311px wide, content
-       271px wide, centred: (311-271)/2=20) - was 18px. No vertical padding
-       here anymore: see justify-content + fixed height below. */
+    padding: 20px !important;
+    /* Real padding on all 4 sides now (was 0 top/bottom, faked via a fixed
+       min-height per card pair instead - see below). This page's own 4
+       cards happened to fit a Figma-exact paired-height look (197px for
+       cards 1-2, 234px for cards 3-4), but that only worked for THIS
+       page's specific text lengths - a different service page reusing this
+       same template with longer or shorter card copy needs the box to
+       genuinely grow/shrink with its own content, not clip against or
+       float inside a height tuned to a different page's words. Real
+       padding keeps the gap above/below the text constant regardless of
+       how many lines it wraps to, on any page. */
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
     gap: 21px !important;
-  }
-
-  /* Figma doesn't give every card equal top/bottom padding - each PAIR of
-     cards shares one fixed card height (197px for cards 1-2, 234px for
-     cards 3-4, matching whichever card's own content is taller in that
-     pair), with the shorter card's content vertically centred inside it.
-     Was auto-height with a flat 20px top/bottom padding on every card,
-     which made all 4 heights track their own content independently
-     (206/184/236/236) instead of pairing up (197/197/234/234) - so card 1
-     and 2 didn't line up the way they do in Figma. */
-  .branding-card:nth-child(1),
-  .branding-card:nth-child(2) {
-    min-height: 197px !important;
-    /* min- not a fixed height: at the 393px reference width (and up) the
-       content fits inside 197px exactly, matching Figma, but on narrower
-       phones (320-375px) the same text wraps to more lines and needs more
-       room - a fixed height would have clipped it. min-height keeps the
-       197px floor everywhere while letting the card grow if it must. */
-  }
-
-  .branding-card:nth-child(3),
-  .branding-card:nth-child(4) {
-    min-height: 234px !important;
   }
 
   .branding-card-title {
@@ -1243,27 +1234,44 @@ body.branding-page-body {
      the one exception: Figma leaves it as normal auto-wrap (node
      3548:4333 has no whitespace-nowrap), so it's excluded here. */
   .branding-card:nth-child(1) .branding-card-title,
-  .branding-card:nth-child(2) .branding-card-title,
-  .branding-card:nth-child(3) .branding-card-title {
+  .branding-card:nth-child(2) .branding-card-title {
     white-space: nowrap !important;
   }
 
-  /* "Built Around Your Brand" (card 2) and "Ready for Tomorrow." (card 3,
-     the longer of its two nowrap lines) are both wide enough at the full
-     23px Figma size that once nowrap stops them wrapping, they instead
-     overflow past the card's right edge on narrower phones (194-249px of
-     available text width vs. the ~227-268px these actually need at 23px) -
-     the "heading touches the right edge" bug. Card 1's and card 3's first
-     line are short enough to never hit this. Shrinking the font slightly
-     on narrow screens keeps every title readably close to Figma's 23px
-     (reached at/above the 393px reference) while guaranteeing it always
-     fits in one line without spilling past the border. */
+  /* "Built Around Your Brand" (card 2) is wide enough at the full 23px
+     Figma size that once nowrap stops it wrapping, it instead overflows
+     past the card's right edge on narrower phones (194-249px of available
+     text width vs. the ~227-268px it actually needs at 23px) - the
+     "heading touches the right edge" bug. Card 1 is short enough to never
+     hit this. Shrinking the font slightly on narrow screens keeps the
+     title readably close to Figma's 23px (reached at/above the 393px
+     reference) while guaranteeing it always fits in one line without
+     spilling past the border. */
   .branding-card:nth-child(2) .branding-card-title {
     font-size: clamp(15px, calc(8.33cqi - 11.67px), 22.5px) !important;
   }
 
+  /* Card 3 ("Built for Today.<newline>Ready for Tomorrow.") is ACF-driven
+     (a WordPress text/textarea field storing a real newline character, not
+     an HTML <br>), so the rendered markup has an ordinary line-break
+     character between the two sentences, not a forced tag. white-space:
+     nowrap (as used above for cards 1-2) collapses that character into an
+     ordinary, non-breaking space, so the *entire* two-sentence string was
+     being laid out as one unbroken line - 395px of content trying to fit
+     roughly 194-304px of available width at every phone size tested
+     (320-430px), even at this rule's own 19px font-size floor. That's the
+     actual "heading overflows the card" bug reported - the old comment
+     here assumed a real <br> already existed in the HTML, which it does
+     not for the dynamic/ACF-driven template.
+     white-space: pre-line preserves that newline as a real line break
+     (keeping the intended two-line layout) while still allowing normal
+     wrapping if either resulting line is ever too long for a given screen
+     width - so unlike nowrap, it can never overflow the card, it degrades
+     to a 3rd line instead. Desktop's own separate (unmodified) rule is
+     unaffected - this selector only exists inside this mobile media query. */
   .branding-card:nth-child(3) .branding-card-title {
     font-size: clamp(19px, calc(10.81cqi - 15.6px), 23px) !important;
+    white-space: pre-line !important;
   }
 
   .branding-card-divider {
@@ -1331,7 +1339,11 @@ body.branding-page-body {
   .branding-production-cta {
     margin-top: 46px !important;
     /* was 20px. Figma: list bottom (95+260=355) to CTA top (401.05) = 46px. */
-    width: 231px !important;
+    flex-shrink: 0;
+    /* Was a fixed 231px width sized to fit only the default "SPEAK TO AN
+       EXPERT" text exactly - a longer ACF-entered CTA text visibly
+       overflowed past the button (caught via a real ACF update_field()
+       audit, not assumed). Auto-sizing to content instead. */
     height: 43px !important;
     /* Figma node 3548:4353 is 231x43.24 - was unset (derived from 8px
        vertical padding + a 32px icon = 48px), same "box too tall" issue as
@@ -1444,7 +1456,10 @@ body.branding-page-body {
     display: block;
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 1808 / 1060 !important;
+    /* Was also aspect-ratio:1808/1060 !important - same fix as desktop,
+       see that rule's comment. Removing it here too so a differently-
+       shaped image uploaded on another service page isn't distorted or
+       letterboxed on mobile either. */
     object-fit: contain !important;
     border-radius: 0 !important;
   }
@@ -1642,42 +1657,17 @@ body.branding-page-body {
 
   /* ==============================================
      9. PRE-FOOTER OVERRIDES (MOBILE) — Figma node 2468:6072
-     ============================================== */
-  .branding-page-body .pre-footer {
-    height: 328px !important;
-  }
-
+     Was a full fixed-height/absolute-position override (top/left offsets
+     for the title and button) - the shared base (style-v2.css) now handles
+     the box's height, spacing and button layout dynamically for every
+     page, this one included. Kept: the genuine design differences this
+     page's Figma spec has that the shared default doesn't - a wider max
+     wrap-width, uppercase styling, and its own slightly larger type size. */
   .branding-page-body .pre-footer-title {
-    top: 47.61px !important;
-    left: 30.58px !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 346px !important;
     max-width: calc(100% - 45px) !important;
     font-size: 36px !important;
     line-height: 46px !important;
     text-transform: uppercase !important;
-  }
-
-  .branding-page-body .btn-pre-footer {
-    top: 237px !important;
-    left: 31px !important;
-    height: 39px !important;
-  }
-
-  .branding-page-body .btn-pre-footer .icon-circle {
-    top: 4.64px !important;
-    left: 5px !important;
-    width: 32px !important;
-    height: 29.71px !important;
-  }
-
-  .branding-page-body .btn-pre-footer .btn-text {
-    top: 4px !important;
-    left: 46.47px !important;
-    text-align: left !important;
-    justify-content: flex-start !important;
-    letter-spacing: 0.01em !important;
   }
 
 }
@@ -1720,49 +1710,14 @@ body.branding-page-body {
     border-bottom: none !important;
   }
 
-  /* Pre-footer Overrides */
-  .branding-page-body .pre-footer {
-    height: 17.6389cqi !important;
-    /* 254/1440 */
-  }
-
+  /* Pre-footer Overrides - was a full fixed-height/absolute-position
+     override, same as mobile above; the shared base now handles sizing,
+     centering and spacing dynamically. Kept: this page's own wider max
+     wrap-width (matches every other page's own override to the same
+     749/1440 value). */
   .branding-page-body .pre-footer-title {
-    width: 52.0138cqi !important;
+    max-width: 52.0138cqi !important;
     /* 749/1440 */
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    /* 90.59/1440 */
-    height: auto !important;
-  }
-
-  .branding-page-body .btn-pre-footer {
-    width: 25.2778cqi !important;
-    /* 364/1440 */
-    height: 3.5770cqi !important;
-    /* 51.51/1440 */
-    top: 11.2868cqi !important;
-    /* 162.53/1440 */
-    right: auto !important;
-    left: 69.2361cqi !important;
-    /* 997/1440 */
-  }
-
-  .branding-page-body .btn-pre-footer .icon-circle {
-    top: 0.3506cqi !important;
-    /* 5.05/1440 */
-    left: 0.7944cqi !important;
-    /* 11.44/1440 */
-    width: 3.0333cqi !important;
-    /* 43.68/1440 */
-    height: 2.8055cqi !important;
-    /* 40.4/1440 */
-  }
-
-  .branding-page-body .btn-pre-footer .btn-text {
-    top: 0.7638cqi !important;
-    /* 11/1440 */
-    left: 5.0555cqi !important;
-    /* 72.8/1440 */
   }
 }
 

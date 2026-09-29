@@ -377,8 +377,12 @@ h6 {
     width: auto;
     /* auto shrinks the pill to hug its own content; header-nav's
        justify-content:center (above) still keeps it centred. */
-    height: 3.6805cqi;
-    /* 53px - same as the tall header's pill */
+    height: 2.7777cqi;
+    /* 40px - shorter than the tall header's 53px pill, client-requested for
+       the sticky/compact bar specifically; padding/gap/font-size and the
+       72px outer bar height are all untouched, .main-nav-wrapper's own
+       align-items:center keeps the nav items vertically centred at any
+       height. */
     padding: 0 3.3333cqi;
     /* 48px - ensures end items 'Home' and 'Insights' don't touch the edges */
   }
@@ -391,8 +395,13 @@ h6 {
   .site-header.is-compact .header-cta {
     position: static;
     width: auto;
-    height: 3.6805cqi;
-    /* 53px - same as the tall header's CTA */
+    height: 2.7777cqi;
+    /* 40px - matches the nav pill's own reduced height (client-requested,
+       confirmed final). .btn-book-call fills this via its own height:100%
+       and its base display:flex + align-items:center, so its text/arrow
+       icon stay vertically centred (and level with the nav item text,
+       since both pills now share the same 40px height and the same parent
+       align-items:center) with no extra rule needed. */
     flex-shrink: 0;
   }
 
@@ -1292,6 +1301,7 @@ h6 {
   margin-left: -18.611cqi;
   margin-right: -18.611cqi;
 }
+
 
 .testimonial-card {
   background: #fff;
@@ -2976,30 +2986,40 @@ h6 {
 .pre-footer {
   background: #263238;
   width: 100%;
-  height: 19.8611cqi;
-  /* 286px */
-  position: relative;
+  /* No fixed height - was 19.8611cqi (286px); see style-v2.css's identical
+     fix for the full reasoning (this file carries a byte-for-byte copy of
+     the same pre-2026-09-23 rule, just for Home specifically). */
 }
 
 .pre-footer-inner {
-  position: relative;
   width: 100%;
   max-width: 100cqi;
   /* 1440px */
-  height: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  /* Was align-items:center when this section first went flex-based/dynamic
+     - the button sat vertically centred against the title, but the original
+     fixed-position design had it anchored to the bottom-right, not centred.
+     flex-end restores that (button's bottom edge level with the title's
+     last line / bottom padding edge) while keeping the box's real dynamic
+     height - it still grows/shrinks with however many lines the title
+     wraps to, only the button's own vertical anchor changed. */
+  justify-content: space-between;
+  gap: 3.4722cqi;
+  /* 50/1440 */
+  padding: 4.0277cqi 5.1388cqi 3.125cqi 5.1388cqi;
+  /* 58/1440 top, 74/1440 left+right, 45/1440 bottom - client-specified
+     exact gap from the button's bottom edge to the section's own bottom
+     edge (was 58/1440, symmetric with the top). Since this is the
+     button's real vertical anchor (align-items:flex-end above), reducing
+     it is what actually moves the button - .pre-footer-title's own
+     margin-bottom below adds the 13px back so the title's position is
+     unaffected, matching Figma node 3620:2376/2378. */
 }
 
 .pre-footer-title {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 5.1388cqi;
-  /* 74px */
-  width: 46.4583cqi;
-  /* 669px */
-  height: 11.4583cqi;
-  /* 165px */
   font-family: "Mona Sans", var(--font-heading);
   font-weight: 700;
   font-size: 3.4027cqi;
@@ -3008,27 +3028,34 @@ h6 {
   /* 55px */
   letter-spacing: 0;
   color: #FFFFFF;
-  margin: 0;
-  z-index: 2;
+  margin: 0 0 0.9028cqi 0;
+  /* 13/1440 - compensates the 13px .pre-footer-inner's own bottom padding
+     just lost (58px -> 45px, for the button's sake - see above), so the
+     title's own effective bottom gap stays exactly what it was before. */
+  max-width: 46.4583cqi;
+  /* 669/1440 - was a fixed width AND height, kept as a wrapping cap only */
 }
 
 .btn-pre-footer {
-  position: absolute;
-  top: 12.7083cqi;
-  /* 183px */
-  right: 6.1805cqi;
-  /* 89px */
-  width: 24.0972cqi;
-  /* 347px */
-  height: 4.0277cqi;
-  /* 58px */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.1806cqi;
+  /* 17/1440 - Figma-exact icon-to-text gap (was 18/1440) */
+  height: 4.0278cqi;
+  /* 58/1440 - Figma's exact button height (node 3620:2378), fixed like the
+     icon/text sizes; only the button's WIDTH stays dynamic (auto, driven
+     by its own padding + whatever CTA text is on a given page) so longer
+     or shorter text on other pages still fits correctly. */
   background: #F0EEEA;
   border-radius: 2.0138cqi;
   /* 29px */
-  display: flex;
-  align-items: center;
+  padding: 0 1.875cqi 0 0.7638cqi;
+  /* 27/1440 right, 11/1440 left - Figma-exact (was 25/1440 right); no
+     vertical padding needed now height is fixed above, align-items:center
+     centres the icon/text within it. */
   text-decoration: none;
-  z-index: 2;
+  box-sizing: border-box;
 }
 
 .btn-pre-footer:hover {
@@ -3036,11 +3063,7 @@ h6 {
 }
 
 .btn-pre-footer .icon-circle {
-  position: absolute;
-  top: 0.4166cqi;
-  /* 6px */
-  left: 0.7638cqi;
-  /* 11px */
+  flex-shrink: 0;
   width: 2.9166cqi;
   /* 42px */
   height: 3.125cqi;
@@ -3054,11 +3077,6 @@ h6 {
 }
 
 .btn-pre-footer .btn-text {
-  position: absolute;
-  top: 0.9722cqi;
-  /* 14px */
-  left: 4.9305cqi;
-  /* 71px */
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 1.7361cqi;
@@ -3067,6 +3085,7 @@ h6 {
   /* 30px */
   letter-spacing: -0.01em;
   color: #1B3834;
+  white-space: nowrap;
 }
 
 /* ============================
@@ -3075,8 +3094,13 @@ h6 {
 .site-footer {
   background: #E9EAEB;
   width: 100%;
-  height: 57.5694cqi;
-  /* 829px */
+  /* height removed - was a fixed 829px (57.5694cqi), calibrated to the
+     original absolutely-positioned content. That content has since grown
+     (e.g. the Services column went from 6 to 8 links), but the fixed
+     height never followed - left a ~165px dead zone below the real
+     content, reported as extra white space/scroll after the footer.
+     Auto-height (via the flow-based rules below) now genuinely follows
+     whatever the content actually needs. */
 }
 
 .footer-inner {
@@ -3084,20 +3108,25 @@ h6 {
   width: 100%;
   max-width: 100cqi;
   /* 1440px */
-  height: 100%;
   margin: 0 auto;
+  padding: 4.5138cqi 5.7638cqi 4.5138cqi 5.7638cqi;
+  /* 65px top/bottom, 83px left/right - replaces the old height:100% +
+     three separately hand-positioned children (logo/line/content each
+     had their own top/left offset); real padding + normal flow below. */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-logo {
-  position: absolute;
-  top: 4.5138cqi;
-  /* 65px */
-  left: 6.0416cqi;
-  /* 87px */
+  position: relative;
   width: 19.0277cqi;
   /* 274px */
   height: 6.8055cqi;
   /* 98px */
+  margin-bottom: 1.3889cqi;
+  /* 20px - gap to the line, matches the old top-offset difference
+     (183 - 65 - 98 = 20) */
 }
 
 .footer-logo img {
@@ -3108,25 +3137,18 @@ h6 {
 }
 
 .footer-line {
-  position: absolute;
-  top: 14.3000cqi;
-  /* 183px */
-  left: 5.7638cqi;
-  /* 83px */
-  width: 88.4722cqi;
-  /* 1440 - 83 - 83 = 1274px */
+  position: relative;
+  width: 100%;
   height: 1px;
   background: #ACADAE;
+  margin-bottom: 3.6111cqi;
+  /* 52px - gap to footer-content, matches the old top-offset difference
+     (236 - 183 - 1 = 52) */
 }
 
 .footer-content {
-  position: absolute;
-  top: 18.2472cqi;
-  /* 236px */
-  left: 5.7638cqi;
-  /* 83px */
-  width: 88.4722cqi;
-  /* 1274px */
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
 }
@@ -3716,7 +3738,13 @@ h6 {
        rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
        client explicitly asked for pinned-always back then; this reverses
        that in favour of matching web's scroll-away-then-compact model. */
-    top: 42px !important;
+    top: 30px !important;
+    /* Was 42px - client-requested, mobile only: reduce the gap above the
+       logo/WhatsApp/hamburger row. The WhatsApp button needs no separate
+       change to stay aligned - since v1.0.95 it's a real child of this
+       element, self-centering via top:50%+translateY(-50%) on whatever
+       position/height .site-header actually has, not a hand-calculated
+       offset of its own. */
     left: 16px !important;
     right: 16px !important;
     width: auto !important;
@@ -4327,7 +4355,13 @@ h6 {
        rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
        client explicitly asked for pinned-always back then; this reverses
        that in favour of matching web's scroll-away-then-compact model. */
-    top: 42px !important;
+    top: 30px !important;
+    /* Was 42px - client-requested, mobile only: reduce the gap above the
+       logo/WhatsApp/hamburger row. The WhatsApp button needs no separate
+       change to stay aligned - since v1.0.95 it's a real child of this
+       element, self-centering via top:50%+translateY(-50%) on whatever
+       position/height .site-header actually has, not a hand-calculated
+       offset of its own. */
     left: 16px !important;
     right: 16px !important;
     width: auto !important;
@@ -4956,7 +4990,13 @@ h6 {
        rules). Was fixed (pinned throughout scroll) since v1.0.66 - the
        client explicitly asked for pinned-always back then; this reverses
        that in favour of matching web's scroll-away-then-compact model. */
-    top: 42px !important;
+    top: 30px !important;
+    /* Was 42px - client-requested, mobile only: reduce the gap above the
+       logo/WhatsApp/hamburger row. The WhatsApp button needs no separate
+       change to stay aligned - since v1.0.95 it's a real child of this
+       element, self-centering via top:50%+translateY(-50%) on whatever
+       position/height .site-header actually has, not a hand-calculated
+       offset of its own. */
     left: 16px !important;
     right: 16px !important;
     width: auto !important;
@@ -6920,121 +6960,76 @@ h6 {
   .pre-footer {
     position: relative !important;
     width: 100vw !important;
-    height: 424px !important;
     background: #263238 !important;
     margin-left: calc(-50vw + 50%) !important;
     margin-right: 0 !important;
-    padding: 0 !important;
-    display: block !important;
     overflow: hidden !important;
+    /* No fixed height - was 424px; see style-v2.css's identical fix for the
+       full reasoning. */
   }
 
   .pre-footer-inner {
-    position: relative !important;
     width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+    padding: 56px 24px 50px 24px !important;
+    /* Bottom padding is the button's own gap to the section's bottom edge
+       (last flex child in this column layout) - 50px per Figma node
+       3548:4017/4019, mirroring the desktop 45px fix the same way. */
+    box-sizing: border-box !important;
   }
 
   .pre-footer-title {
-    position: absolute !important;
-    top: 75.34px !important;
-    transform: none !important;
-    left: 24px !important;
-    bottom: 158.38px !important;
-    right: 24px !important;
-    width: auto !important;
-    height: auto !important;
+    width: 100% !important;
+    max-width: 346px !important;
     font-family: "Mona Sans", var(--font-heading) !important;
     font-weight: 700 !important;
     font-size: 34px !important;
-    line-height: 47.57px !important;
+    line-height: 55px !important;
     color: #FFFFFF !important;
     margin: 0 !important;
-    padding: 0 !important;
   }
 
   /* Pre-footer button: matches client-success.html's mobile button design
      (used as the reference for a consistent button UI across all pages). */
   .btn-pre-footer {
-    position: absolute !important;
-    top: 305px !important;
-    left: 24px !important;
-    width: 239px !important;
-    height: 42px !important;
-    border-radius: 29px !important;
-    opacity: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9.47px !important;
+    height: auto !important;
+    /* Cancels the desktop base rule's `height: 4.0278cqi` (~58px at the
+       1440px desktop reference) - cqi scales to the actual container width,
+       so at a ~390px mobile container that same rule silently computed to
+       ~15.7px here and clipped the icon+text instead of sizing to Figma's
+       ~39px (node 3548:4017). Auto lets padding + content set the height,
+       same approach already used for this button's width. */
     background: #FFFFFF !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    border-radius: 29px !important;
+    padding: 4px 20px 4px 7.29px !important;
+    text-decoration: none !important;
   }
 
   .btn-pre-footer .btn-text {
-    position: absolute !important;
-    top: 6px !important;
-    left: 46px !important;
-    width: 187px !important;
-    height: 30px !important;
-    white-space: nowrap !important;
     font-family: "Inter", var(--font-body) !important;
     font-weight: 600 !important;
     font-size: 16px !important;
     line-height: 30px !important;
     color: #1B3834 !important;
-    text-align: center !important;
-    margin: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    letter-spacing: 0.01em !important;
+    white-space: nowrap !important;
   }
 
   .btn-pre-footer .icon-circle {
-    position: absolute !important;
-    top: 5px !important;
-    left: 8px !important;
-    width: 32px !important;
-    height: 32px !important;
+    flex-shrink: 0 !important;
+    width: 35.42px !important;
+    height: 34px !important;
     border-radius: 24px !important;
     background: #FFA726 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    opacity: 1 !important;
-  }
-
-  /* ==============================================
-     PRE-FOOTER OVERRIDES (HOME PAGE MOBILE)
-     ============================================== */
-  .home-page-body .pre-footer-title {
-    top: 56.34px !important;
-    left: 24px !important;
-    width: 346px !important;
-    max-width: calc(100% - 48px) !important;
-    font-size: 34px !important;
-    line-height: 55px !important;
-  }
-
-  .home-page-body .btn-pre-footer {
-    width: 225px !important;
-    height: 43px !important;
-  }
-
-  .home-page-body .btn-pre-footer .icon-circle {
-    top: 4px !important;
-    left: 7.29px !important;
-    width: 35.42px !important;
-    height: 34px !important;
-  }
-
-  .home-page-body .btn-pre-footer .btn-text {
-    top: 6px !important;
-    left: 52.18px !important;
-    /* 7.29 + 35.42 + 9.47 gap = 52.18px */
-    text-align: left !important;
-    justify-content: flex-start !important;
-    letter-spacing: 0.01em !important;
   }
 
   /* ============================
@@ -7043,20 +7038,25 @@ h6 {
   .site-footer {
     position: relative !important;
     width: 100vw !important;
-    height: 1255px !important;
+    height: auto !important;
+    /* Was a fixed 1255px with overflow:hidden - same root cause as
+       desktop's fix above: didn't follow real content height (which grew
+       once the Services column got 2 more links), so it either left dead
+       space below the real content or silently clipped it. Auto-height,
+       no more overflow:hidden, so the box always matches its real content
+       and nothing can be cut off either. */
     background: #E9EAEB !important;
     margin-left: calc(-50vw + 50%) !important;
     margin-right: 0 !important;
     padding: 53px 24px 40px 24px !important;
     display: block !important;
     box-sizing: border-box !important;
-    overflow: hidden !important;
   }
 
   .site-footer .footer-inner {
     position: relative !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     margin: 0 !important;

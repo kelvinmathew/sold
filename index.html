@@ -26,9 +26,19 @@
   <link href="css/style.css?v=12" rel="stylesheet" />
   <link href="css/home-faq-mobile.css" rel="stylesheet" />
   <link href="css/contact.css?v=3" rel="stylesheet" />
+  <link href="css/page-loader.css" rel="stylesheet" />
 </head>
 
 <body class="home-page-body">
+  <!-- Page Loader (site-wide) -->
+  <div id="sold-page-loader" class="sold-page-loader sold-page-loader--pulse" style="background-color: #263238;" role="status" aria-live="polite" aria-label="Loading">
+    <div class="sold-page-loader-inner">
+      <div class="sold-page-loader-logo-wrap">
+        <img src="assets/images/logosold.svg" alt="SOLD" class="sold-page-loader-logo" />
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="page-container">
@@ -1234,6 +1244,7 @@
   <script src="js/main.js"></script>
   <script src="js/contact-form-local.js?v=1" defer></script>
   <script src="js/contact-modal.js?v=1" defer></script>
+  <script src="js/page-loader.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,167 @@
+/* ==============================================
+   SITE-WIDE PAGE LOADER
+   Shown on every page while it loads (js/page-loader.js hides it on the
+   window 'load' event), on every viewport size. Deliberately minimal:
+   only transform/opacity are animated (GPU-accelerated, no layout
+   thrashing), no external assets beyond the site's own logo, so this adds
+   negligible weight and never blocks the page's own real loading work.
+   ============================================== */
+
+.sold-page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  /* Above everything else on the site, including the contact modal
+     (9999/99999) and mobile offcanvas drawer - a loader that could be
+     covered by other UI wouldn't be doing its job. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #263238;
+  /* Overridden inline per the ACF colour field; this is just a safe
+     default if that's ever missing. */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease, visibility 0s linear 0s;
+}
+
+.sold-page-loader.sold-page-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+  /* visibility flips only after the opacity fade finishes, so the loader
+     stops intercepting clicks the instant it's actually invisible, not
+     before. */
+}
+
+.sold-page-loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sold-page-loader-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sold-page-loader-logo {
+  width: 140px;
+  height: auto;
+  max-width: 60vw;
+  /* Never lets the logo overpower a very narrow phone screen */
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.sold-page-loader-text {
+  margin: 0;
+  font-family: "Mona Sans", "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/* --- Pulse animation (default) --- */
+.sold-page-loader--pulse .sold-page-loader-logo {
+  animation: sold-loader-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sold-loader-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+/* --- Spin animation (ring rotates around a static logo) --- */
+.sold-page-loader--spin .sold-page-loader-logo-wrap {
+  padding: 18px;
+}
+
+.sold-page-loader-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: #FFA726;
+  /* Overridden inline per the ACF accent colour field */
+  border-radius: 50%;
+  animation: sold-loader-spin 0.9s linear infinite;
+}
+
+@keyframes sold-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Dots animation (three bouncing dots below the logo) --- */
+.sold-page-loader-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sold-page-loader-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #FFA726;
+  /* Overridden inline per the ACF accent colour field */
+  animation: sold-loader-dot-bounce 1.2s ease-in-out infinite;
+}
+
+.sold-page-loader-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.sold-page-loader-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes sold-loader-dot-bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  40% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Respect a visitor's OS-level reduced-motion preference - the loader
+   still shows/hides correctly, just without the decorative animation. */
+@media (prefers-reduced-motion: reduce) {
+
+  .sold-page-loader-logo,
+  .sold-page-loader-ring,
+  .sold-page-loader-dots span {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sold-page-loader-logo {
+    width: 110px;
+  }
+
+  .sold-page-loader-inner {
+    gap: 16px;
+  }
+}

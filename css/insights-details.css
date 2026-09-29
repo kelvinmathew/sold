@@ -574,67 +574,14 @@
     text-decoration: underline;
   }
 
-  /* --- Pre-footer VW Overrides --- */
-  .insights-details-page-body .pre-footer {
-    height: 19.8611vw !important;
-    /* 286/1440 */
-  }
-
+  /* --- Pre-footer overrides ---
+     Was a full fixed-height/absolute-position re-implementation (height,
+     top/left, icon/button sizing) - all of that is now handled dynamically
+     by the shared base in style-v2.css, including this page. Only the
+     title's own wider wrap-width is a genuine difference worth keeping. */
   .insights-details-page-body .pre-footer-title {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    /* 102/1440 */
-    left: 5.1388vw !important;
-    /* 74/1440 */
-    width: 52.0138vw !important;
+    max-width: 52.0138vw !important;
     /* 749/1440 */
-    height: 7.6388vw !important;
-    /* 110/1440 */
-    font-size: 3.4027vw !important;
-    /* 49/1440 */
-    line-height: 3.8194vw !important;
-    /* 55/1440 */
-  }
-
-  .insights-details-page-body .btn-pre-footer {
-    top: 12.7083vw !important;
-    /* 183/1440 */
-    right: auto !important;
-    left: 69.2361vw !important;
-    /* 997/1440 */
-    width: 25.2777vw !important;
-    /* 364/1440 */
-    height: 4.0277vw !important;
-    /* 58/1440 */
-    border-radius: 2.0138vw !important;
-    /* 29/1440 */
-  }
-
-  .insights-details-page-body .btn-pre-footer .icon-circle {
-    left: 0.7944vw !important;
-    /* 11.44/1440 */
-    top: 0.3951vw !important;
-    /* 5.69/1440 */
-    width: 3.0333vw !important;
-    /* 43.68/1440 */
-    height: 3.1590vw !important;
-    /* 45.49/1440 */
-    border-radius: 1.6666vw !important;
-    /* 24/1440 */
-  }
-
-  .insights-details-page-body .btn-pre-footer .btn-text {
-    left: 5.0555vw !important;
-    /* 72.8/1440 */
-    top: 0.9722vw !important;
-    /* 14/1440 */
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500 !important;
-    font-size: 1.7361vw !important;
-    /* 25/1440 */
-    line-height: 2.0833vw !important;
-    /* 30/1440 */
-    color: #1B3834 !important;
   }
 }
 
@@ -1148,102 +1095,12 @@
   }
 
 
-  .insights-details-page-body .cs-pre-footer {
-    width: 100vw !important;
-    height: 424px !important;
-    margin-left: calc(-50vw + 50%) !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .pre-footer-inner {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #263238 !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .pre-footer-title {
-    position: absolute !important;
-    top: 56.34px !important;
-    transform: none !important;
-    bottom: auto !important;
-    left: 24px !important;
-    right: auto !important;
-    width: 346px !important;
-    max-width: calc(100% - 48px) !important;
-    height: auto !important;
-    font-size: 34px !important;
-    line-height: 55px !important;
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #FFFFFF !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
-    color: #FFFFFF !important;
-  }
-
+  /* Was a full fixed-height/absolute-position re-implementation - the
+     shared base (style-v2.css) now handles this page's pre-footer
+     dynamically too. Kept: the one rule that was a genuine content
+     difference, not a positioning hack. */
   .insights-details-page-body .cs-pre-footer .insights-mobile-pre-footer-title {
     color: #FFFFFF !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .btn-pre-footer {
-    position: absolute !important;
-    top: 305px !important;
-    transform: none !important;
-    left: 24px !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: auto !important;
-    max-width: calc(100% - 48px) !important;
-    height: 42px !important;
-    margin: 0 !important;
-    padding: 0 20px 0 8px !important;
-    background: #FFFFFF !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    flex: 0 0 auto !important;
-    width: 32px !important;
-    height: 32px !important;
-    margin-right: 6px !important;
-    background: #FFA726 !important;
-    border-radius: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .btn-pre-footer .icon-circle img {
-    border-radius: 24px !important;
-  }
-
-  .insights-details-page-body .cs-pre-footer .btn-pre-footer .btn-text {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: auto !important;
-    height: auto !important;
-    white-space: nowrap !important;
-    font-size: 16px !important;
-    line-height: 30px !important;
-    color: #1B3834 !important;
-    text-align: left !important;
-    letter-spacing: 0.01em !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 }
 

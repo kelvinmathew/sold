@@ -21,9 +21,19 @@
     <!-- Custom CSS -->
     <link href="css/style.css?v=13" rel="stylesheet" />
     <link href="css/contact.css?v=3" rel="stylesheet" />
+  <link href="css/page-loader.css" rel="stylesheet" />
 </head>
 
 <body class="home-page-body contact-page-body">
+  <!-- Page Loader (site-wide) -->
+  <div id="sold-page-loader" class="sold-page-loader sold-page-loader--pulse" style="background-color: #263238;" role="status" aria-live="polite" aria-label="Loading">
+    <div class="sold-page-loader-inner">
+      <div class="sold-page-loader-logo-wrap">
+        <img src="assets/images/logosold.svg" alt="SOLD" class="sold-page-loader-logo" />
+      </div>
+    </div>
+  </div>
+
 
   <a href="https://wa.me/971585931979" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with us">
     <span class="whatsapp-float-icon">
@@ -217,6 +227,7 @@
     </div>
 
     <script src="js/contact-form-local.js?v=1"></script>
+  <script src="js/page-loader.js"></script>
 </body>
 
 </html>

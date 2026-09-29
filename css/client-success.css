@@ -460,7 +460,15 @@
     /* 50/1440 */
     letter-spacing: 0.01em;
     color: #263238;
+    /* Reverted to Figma's real base colour - the earlier "make it all
+       orange" pass was a misread of the design; Figma actually uses
+       #263238 as the base with only a specific phrase per card in
+       #FFA726 (see .cs-title-highlight below), never a uniform colour. */
     margin: 0;
+  }
+
+  .cs-card-title .cs-title-highlight {
+    color: #FFA726;
   }
 
   /* Cards 2, 6 have title width 445px */
@@ -725,26 +733,22 @@
 /* --- Pre-Footer Overrides for Client Success Page --- */
 @media (min-width: 768px) {
 .cs-pre-footer .pre-footer-title {
-  top: 50%;
-  transform: translateY(-50%);
-  /* 102/1440 */
-  left: 5.1389vw;
-  /* 74/1440 */
-  width: 52.0139vw;
-  /* 749/1440 */
-  height: 7.6389vw;
-  /* 110/1440 */
-}
-
-.cs-pre-footer .btn-pre-footer {
-  width: 25.0833vw;
-  /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
-}
-
-.cs-pre-footer .btn-pre-footer .btn-text {
-  color: #1B3834;
+  max-width: 52.0139vw;
+  /* 749/1440 - this page's own title needs more width than the 669/1440
+     shared default before it wraps. Was also a fixed width/height/top/
+     transform tied to the old fixed-box absolute-positioning system -
+     those are gone now that the shared base (style-v2.css) is dynamic:
+     no fixed height, real padding, flexbox centering the title against
+     the button automatically regardless of how many lines it wraps to. */
 }
 }
+/* The mobile override that used to live here (its own ~80-line copy of the
+   whole fixed-height/absolute-position system, hand-tuned to a height of
+   350px and a button position of exactly 250px for this page's specific
+   3-line headline) is gone - the shared base in style-v2.css now handles
+   every page's pre-footer dynamically, including this one, with no
+   per-page copy needed. See DEPLOY.md for the verification this was
+   checked against, not just deleted and assumed fine. */
 
 /* --- Plus Divider Override for Client Success Page --- */
 .client-success-page-body .plus-btn-divider {
@@ -1184,8 +1188,15 @@
     /* 40px relative to 393px */
     letter-spacing: 0.01em !important;
     color: #000000 !important;
+    /* Reverted to its original base colour - matches the desktop revert
+       (real Figma design is a per-card highlighted phrase, not a uniform
+       colour); same .cs-title-highlight span used for the orange portion. */
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  .cs-card-title .cs-title-highlight {
+    color: #FFA726 !important;
   }
 
   /* Layout axis changed from column (icon stacked above the text) to row
@@ -1693,115 +1704,6 @@
     letter-spacing: 0.01em !important;
     color: #3A3939 !important;
     margin: 0 !important;
-  }
-
-  /* Client Success Mobile Pre-Footer Overrides (matches index.html mobile layout) */
-  .client-success-page-body .cs-pre-footer {
-    width: 100vw !important;
-    height: 350px !important;
-    /* Client-requested: reduce the container height, mobile only, without
-       moving the text or button. Was 424px, copied from Home's own
-       pre-footer box - left ~132px of empty space below the button (top
-       250px + height 42px = 292px content bottom). Trimmed to 350px, which
-       leaves a ~58px bottom margin, close to symmetric with the title's own
-       56.34px top inset, rather than shrinking it right down to the
-       button's edge. Title/button top values and their gap are untouched
-       below - only this outer box shrank. */
-    margin-left: calc(-50vw + 50%) !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .pre-footer-inner {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #263238 !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .pre-footer-title {
-    position: absolute !important;
-    top: 56.34px !important;
-    transform: none !important;
-    bottom: auto !important;
-    left: 24px !important;
-    right: auto !important;
-    width: 346px !important;
-    max-width: calc(100% - 48px) !important;
-    height: auto !important;
-    font-size: 34px !important;
-    line-height: 55px !important;
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #FFFFFF !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
-    color: #FFFFFF !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .btn-pre-footer {
-    position: absolute !important;
-    top: 250px !important;
-    /* Was 305px, copied verbatim from Home's 4-line mobile title. Client
-       Success's real headline ("READY TO WORK WITH THE REAL ESTATE
-       EXPERTS?") is only 3 lines once the wrong mobile text (see
-       .pre-footer-title above/fix_cs_prefoot_mobile_text.sql) is corrected -
-       one line-height (55px) shorter - so the button moved up by the same
-       55px to keep the same ~28.66px visual gap Home has between its own
-       text block's bottom and its button (56.34 top + 3*55 line-height =
-       221.34 text bottom; 221.34+28.66=250). */
-    transform: none !important;
-    left: 24px !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: auto !important;
-    max-width: calc(100% - 48px) !important;
-    height: 42px !important;
-    margin: 0 !important;
-    padding: 0 20px 0 8px !important;
-    background: #FFFFFF !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    flex: 0 0 auto !important;
-    width: 32px !important;
-    height: 32px !important;
-    margin-right: 6px !important;
-    background: #FFA726 !important;
-    border-radius: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .btn-pre-footer .icon-circle img {
-    border-radius: 24px !important;
-  }
-
-  .client-success-page-body .cs-pre-footer .btn-pre-footer .btn-text {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: auto !important;
-    height: auto !important;
-    white-space: nowrap !important;
-    font-size: 16px !important;
-    line-height: 30px !important;
-    color: #1B3834 !important;
-    text-align: left !important;
-    letter-spacing: 0.01em !important;
-    display: block !important;
   }
 
   /* Mobile padding overrides for Client Success Cards to ensure exactly 18px edge gap */

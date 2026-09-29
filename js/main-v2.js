@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Services Accordion Interaction
     const serviceItems = document.querySelectorAll('.service-list-item');
-    
+
     serviceItems.forEach((item, index) => {
         item.addEventListener('click', () => {
             const isMobile = window.innerWidth < 768;
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.remove('open');
         });
     }
-    
+
     // Close offcanvas when clicking any navigation link (the Services
     // trigger is excluded - it only opens the dropdown, it never navigates)
     const offcanvasLinks = document.querySelectorAll('.offcanvas-link');
@@ -258,11 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Clone the last card and prepend it to the start
                 const clone = track.lastElementChild.cloneNode(true);
                 track.prepend(clone);
-                
+
                 // Offset instantly so visual position doesn't change
                 track.style.transition = 'none';
                 track.style.transform = `translateX(-${moveAmount}px)`;
-                
+
                 void track.offsetWidth; // Force reflow
 
                 // Animate slide right back to 0
@@ -330,48 +330,47 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoScroll();
         }, { passive: true });
 
-        // Manual drag support (mouse, web/desktop) - same threshold-based
-        // approach as the touch swipe above, so it stays in sync with it and
-        // the buttons/auto-scroll rather than a separate drag animation.
-        // Only resolved on mouseup (not followed continuously), matching how
-        // the touch version only acts on touchend.
-        let mouseStartX = 0;
-        let mouseStartY = 0;
-        let isMouseDown = false;
+        // Two-finger trackpad swipe (web only). Replaces the previous
+        // click-and-drag interaction - a trackpad two-finger swipe fires
+        // "wheel" events with a horizontal deltaX (this never happens from a
+        // touchscreen finger swipe, which fires touch events instead - see
+        // the touchstart/touchend block above, untouched), so this is
+        // naturally web/desktop-only without needing a width check.
+        //
+        // One physical swipe gesture fires many small wheel events in quick
+        // succession, not a single clean one - deltaX is accumulated across
+        // the gesture (reset after a brief pause with no wheel events) and
+        // only acted on once the total crosses the threshold, then a short
+        // cooldown swallows the rest of that same gesture's leftover events
+        // so it can't fire two slides for one swipe.
+        const WHEEL_SWIPE_THRESHOLD = 50;
+        const WHEEL_GESTURE_IDLE_MS = 150;
+        const WHEEL_COOLDOWN_MS = 500;
+        let wheelAccumX = 0;
+        let wheelIdleTimer = null;
+        let wheelCooldown = false;
 
-        const onTrackMouseMove = (e) => {
-            // Prevent text/image selection while dragging across the cards.
-            if (isMouseDown) e.preventDefault();
-        };
+        track.addEventListener('wheel', (e) => {
+            // A mostly-vertical gesture is the user scrolling the page, not
+            // swiping the carousel - leave it (and the page's own scroll)
+            // alone entirely.
+            if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
 
-        const onTrackMouseUp = (e) => {
-            if (!isMouseDown) return;
-            isMouseDown = false;
-            track.style.cursor = 'grab';
-            window.removeEventListener('mousemove', onTrackMouseMove);
-            window.removeEventListener('mouseup', onTrackMouseUp);
+            e.preventDefault();
+            if (wheelCooldown) return;
 
-            const deltaX = e.clientX - mouseStartX;
-            const deltaY = e.clientY - mouseStartY;
+            wheelAccumX += e.deltaX;
+            clearTimeout(wheelIdleTimer);
+            wheelIdleTimer = setTimeout(() => { wheelAccumX = 0; }, WHEEL_GESTURE_IDLE_MS);
 
-            if (Math.abs(deltaX) < Math.abs(deltaY)) return;
-            if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+            if (Math.abs(wheelAccumX) < WHEEL_SWIPE_THRESHOLD) return;
 
-            slide(deltaX < 0 ? 'next' : 'prev');
+            slide(wheelAccumX > 0 ? 'next' : 'prev');
             resetAutoScroll();
-        };
-
-        track.addEventListener('mousedown', (e) => {
-            if (e.button !== 0) return; // primary button only
-            isMouseDown = true;
-            mouseStartX = e.clientX;
-            mouseStartY = e.clientY;
-            track.style.cursor = 'grabbing';
-            window.addEventListener('mousemove', onTrackMouseMove);
-            window.addEventListener('mouseup', onTrackMouseUp);
-        });
-
-        track.style.cursor = 'grab';
+            wheelAccumX = 0;
+            wheelCooldown = true;
+            setTimeout(() => { wheelCooldown = false; }, WHEEL_COOLDOWN_MS);
+        }, { passive: false });
 
         // Initialize auto-scroll
         startAutoScroll();
@@ -380,16 +379,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const insightsCards = document.querySelectorAll('.insights-cards-container > div');
     const insightsDots = document.querySelectorAll('.insight-dot');
     const insightsContainer = document.querySelector('.insights-cards-container');
-    
+
     if (insightsCards.length > 0 && insightsDots.length > 0 && insightsContainer) {
-        
+
         const updateDotsOnScroll = () => {
             const scrollLeft = insightsContainer.scrollLeft;
             const cardWidth = insightsCards[0].offsetWidth;
             const gap = 26; // Match CSS gap
             // Calculate which card is currently most visible
             const index = Math.round(scrollLeft / (cardWidth + gap));
-            
+
             insightsDots.forEach((dot, i) => {
                 if (i === index) {
                     dot.classList.add('active');
@@ -401,10 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Listen for scroll events to update immediately without delay
         insightsContainer.addEventListener('scroll', updateDotsOnScroll, { passive: true });
-        
+
         // Initial setup
         updateDotsOnScroll();
-        
+
         // Allow clicking dots to scroll to that card
         insightsDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {

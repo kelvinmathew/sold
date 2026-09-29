@@ -27,9 +27,19 @@
   <!-- Specific page CSS with fluid vw calculation -->
   <link href="css/events.css?v=2" rel="stylesheet" />
   <link href="css/contact.css?v=3" rel="stylesheet" />
+  <link href="css/page-loader.css" rel="stylesheet" />
 </head>
 
 <body class="events-page-body">
+  <!-- Page Loader (site-wide) -->
+  <div id="sold-page-loader" class="sold-page-loader sold-page-loader--pulse" style="background-color: #263238;" role="status" aria-live="polite" aria-label="Loading">
+    <div class="sold-page-loader-inner">
+      <div class="sold-page-loader-logo-wrap">
+        <img src="assets/images/logosold.svg" alt="SOLD" class="sold-page-loader-logo" />
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="page-container">
@@ -426,7 +436,7 @@
                 <span class="faq-question-text">What is included in a real estate event strategy?</span>
               </div>
               <div class="faq-answer">
-                <p>A good event strategy should cover the concept, audience list, invitation flow, landing pages or RSVP funnel, run of show, speeches, visual storytelling, production, guest experience, on-site content capture, and post-event follow-up. SOLD’s page already frames events as both planned and promoted, which is the right approach.</p>
+                <p>A good event strategy should cover the concept, audience list, invitation flow, landing pages or RSVP funnel, run of show, speeches, visual storytelling, production, guest experience, on-site content capture, and post-event follow-up. SOLDï¿½s page already frames events as both planned and promoted, which is the right approach.</p>
               </div>
             </div>
 
@@ -435,7 +445,7 @@
                 <span class="faq-question-text">Do broker events still matter in Dubai real estate?</span>
               </div>
               <div class="faq-answer">
-                <p>Yes. Broker relationships still shape distribution, project awareness, and referral momentum, especially during launches and milestone moments. SOLD’s events page positions broker events as a way to deepen loyalty and attract talent, and competitor event agencies also emphasise previews and industry gatherings for property brands.</p>
+                <p>Yes. Broker relationships still shape distribution, project awareness, and referral momentum, especially during launches and milestone moments. SOLDï¿½s events page positions broker events as a way to deepen loyalty and attract talent, and competitor event agencies also emphasise previews and industry gatherings for property brands.</p>
               </div>
             </div>
 
@@ -621,6 +631,7 @@
   <script src="js/main-v2.js"></script>
   <script src="js/contact-form-local.js?v=1" defer></script>
   <script src="js/contact-modal.js?v=1" defer></script>
+  <script src="js/page-loader.js"></script>
 </body>
 
 </html>

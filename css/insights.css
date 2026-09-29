@@ -58,13 +58,41 @@
     margin: 0;
   }
 
-  /* --- Text Paragraph (Right) --- */
-  .insights-hero-desc {
+  .insights-hero-title .hero-title-highlight {
+    color: #FFA726;
+  }
+
+  /* --- Text + Button Container (Right) ---
+     Matches Figma's own "Frame 9" container exactly (node 1867:1766):
+     fixed width, flex-column with a real 56px gap. Bottom/left-anchored,
+     NOT top-anchored - `.insights-hero` is `height: 100vh` (the real
+     browser viewport height, which varies per screen and is very often
+     shorter than Figma's own 825px-tall reference frame). A top-anchor
+     keeps this 227px-tall block pinned at a fixed distance from the top
+     regardless of the hero's actual height, so on a shorter browser window
+     it can overflow past the hero's real bottom edge into the section
+     below - reported as the block "going down" past where it should sit.
+     Bottom-anchoring keeps it glued to the hero's actual bottom edge at
+     any real viewport height, same as it was before this container existed
+     (just with the correct 107px inset now, from Figma's real numbers,
+     instead of the old two-elements-with-drifted-values approach). */
+  .insights-hero-text-container {
     position: absolute;
-    bottom: 10.6889vw;
-    /* 198/1440 */
-    right: 4.375vw;
-    /* 63/1440 */
+    left: 60.9722vw;
+    /* 878/1440 */
+    bottom: 7.4306vw;
+    /* 107/1440 - 825 - (491 top + 227 height) = 107 */
+    width: 35vw;
+    /* 504/1440 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.8889vw;
+    /* 56/1440 */
+  }
+
+  /* --- Text Paragraph --- */
+  .insights-hero-desc {
     width: 34.6528vw;
     /* 499/1440 */
     height: 8.0556vw;
@@ -80,13 +108,11 @@
     margin: 0;
   }
 
-  /* --- Button (Right) --- */
+  /* --- Button --- */
   .insights-hero-btn {
-    position: absolute;
-    bottom: 4.8417vw;
-    /* 87/1440 */
-    right: 11.7361vw;
-    /* 169/1440 (1440 - 878 left edge - 393 width) */
+    position: relative;
+    /* Anchors .icon-circle/.btn-text-custom below, which are still
+       absolutely positioned relative to the button itself. */
     width: 27.2917vw;
     /* 393/1440 */
     height: 3.8194vw;
@@ -96,6 +122,7 @@
     background: #FFFFFF;
     text-decoration: none;
     display: block;
+    flex-shrink: 0;
   }
 
   .insights-hero-btn .btn-text-custom {
@@ -213,10 +240,13 @@
     width: 91.6667vw;
     /* 1320/1440 */
     display: flex;
-    justify-content: space-between;
-    /* Ensures content touches both left and right bounds exactly */
+    justify-content: flex-start;
     align-items: flex-start;
-    /* Lock top to exactly 110px margin-top */
+    gap: 5.2083vw;
+    /* 75/1440 - Figma's own gap-[75px] between the label and the paragraph
+       (node 1867:1915), used directly instead of relying on
+       justify-content:space-between to approximate it from the two
+       children's widths, which landed a couple px short. */
   }
 
   .insights-blogs-label {
@@ -244,8 +274,8 @@
     /* 983/1440 */
     font-family: 'Mona Sans', sans-serif;
     font-weight: 500;
-    font-size: 2.2222vw;
-    /* 32/1440 */
+    font-size: 2.3611vw;
+    /* 34/1440 - was 2.2222vw (32px), node 1867:1932 is 34px */
     line-height: 2.9167vw;
     /* 42/1440 */
     letter-spacing: 0.01em;
@@ -255,6 +285,30 @@
     /* -6px to pull up baseline so it aligns with label without pushing container down */
   }
 
+  /* --- Search + Category Filter Bar ---
+     Moved here (right after the Articles intro) from the Feed section
+     further down the page, to match Figma's real order (node 3929:4896).
+     Reuses the .insights-feed-search/.insights-feed-divider/
+     .insights-feed-categories rules further below unchanged - those
+     already matched Figma's numbers exactly (1277px divider, 19px/20px
+     type), the only actual bug was the block's page position. */
+  .insights-searchbar-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8.75vw;
+    /* 126/1440 - gap from the Articles intro's own bottom edge (node
+       1867:1915 bottom=1061) to the search bar's top (node 3929:4896
+       top=1187) */
+    margin-bottom: 0;
+  }
+
+  .insights-searchbar-container {
+    width: 91.6667vw;
+    /* 1320/1440 - same standard container width every other section here
+       uses, for consistent left/right edges page-wide */
+  }
+
   /* --- Featured Story Section --- */
   .insights-featured-section {
     position: relative;
@@ -262,8 +316,10 @@
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    margin-top: 6.4583vw;
-    /* Optically corrected from 6.875vw (99px) due to baseline shift */
+    margin-top: 4.6528vw;
+    /* 67/1440 - gap from the search bar's bottom edge (1187+95=1282) to
+       Featured Story's top (1349). Was 6.4583vw (93px), tuned for the old
+       flow before the search bar sat between these two sections. */
   }
 
   .insights-featured-container {
@@ -341,21 +397,28 @@
     /* 7/1440 */
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: clamp(12px, 1.1vw, 20px);
+    font-size: 1.3889vw;
+    /* 20/1440 - was clamp(12px, 1.1vw, 20px), only reaching 15.84px at the
+       1440px reference. Same fix applied to every clamp() rule below in
+       this card - node 1867:1936. */
     line-height: 1.6;
     color: #000000;
   }
 
   .insights-calendar-icon {
-    width: clamp(16px, 1.6vw, 34px);
-    height: clamp(15px, 1.5vw, 32px);
+    width: 2.3611vw;
+    /* 34/1440 */
+    height: 2.2222vw;
+    /* 32/1440 */
     object-fit: cover !important;
   }
 
   .insights-featured-headline {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(20px, 2.4vw, 40px);
+    font-size: 3.125vw;
+    /* 45/1440 - was clamp(20px, 2.4vw, 40px); node 1867:1952 is 45px, not
+       even the old 40px ceiling. */
     line-height: 1.2;
     letter-spacing: 0.01em;
     color: #000000;
@@ -365,7 +428,9 @@
   .insights-featured-excerpt {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: clamp(12px, 1.25vw, 21px);
+    font-size: 1.5972vw;
+    /* 23/1440 - node 1867:1953. Was clamp(12px, 1.25vw, 21px), and the old
+       21px ceiling was also short of Figma's real 23px. */
     line-height: 1.5;
     letter-spacing: 0.01em;
     color: #292626;
@@ -377,7 +442,8 @@
   .insights-featured-readmore {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(13px, 1.2vw, 21px);
+    font-size: 1.4583vw;
+    /* 21/1440 - node 1867:1954 */
     line-height: 1.6;
     letter-spacing: 0.01em;
     color: #000000;
@@ -444,9 +510,10 @@
     /* 2 columns */
     column-gap: 1.9167vw;
     /* 42/1440 */
-    row-gap: 3vh;
-    /* separate rows into viewports */
-    row-gap: 4dvh;
+    row-gap: 2.2222vw;
+    /* 32/1440 - node 1867:1955: row 2 top (662) - row 1 bottom (630) = 32.
+       Was 3vh/4dvh (viewport-height-relative, didn't match Figma's real
+       32px gap at the 1440px reference). */
   }
 
   .insights-latest-card {
@@ -471,8 +538,10 @@
     height: 35dvh;
     min-height: 15vw;
     max-height: 23.2639vw;
-    border-radius: 1.8056vw;
-    /* 26/1440 */
+    border-radius: 1.4583vw;
+    /* 21/1440 - was 1.8056vw (26px), that's Featured Story's own larger
+       image radius (node 1867:1937) reused by mistake here; Latest Blogs'
+       own image (node 1867:1975) is 21px. */
     overflow: hidden;
   }
 
@@ -499,16 +568,18 @@
     /* 7/1440 */
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: clamp(12px, 1vw, 20px);
-    /* 20/1440 */
+    font-size: 1.3889vw;
+    /* 20/1440 - was clamp(12px, 1vw, 20px), which only reaches 14.4px at
+       the 1440px reference (1vw never gets to its own 20px ceiling there) -
+       same fix applied to every clamp() rule below in this card. */
     line-height: 1.5;
     color: #000000;
   }
 
   .insights-latest-icon {
-    width: clamp(16px, 1.5vw, 34px);
+    width: 2.3611vw;
     /* 34/1440 */
-    height: clamp(15px, 1.4vw, 32px);
+    height: 2.2222vw;
     /* 32/1440 */
     object-fit: cover !important;
   }
@@ -516,8 +587,8 @@
   .insights-latest-headline {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(20px, 2vw, 32px);
-    /* 32/1440 */
+    font-size: 2.2222vw;
+    /* 32/1440 - node 1867:1990 */
     line-height: 1.2;
     letter-spacing: 0.01em;
     color: #000000;
@@ -527,8 +598,8 @@
   .insights-latest-excerpt {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 400;
-    font-size: clamp(12px, 1.1vw, 18px);
-    /* 18/1440 */
+    font-size: 1.25vw;
+    /* 18/1440 - node 1867:1991 */
     line-height: 1.5;
     letter-spacing: 0.01em;
     color: #292626;
@@ -539,8 +610,8 @@
   .insights-latest-readmore {
     font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(13px, 1.2vw, 21px);
-    /* 21/1440 */
+    font-size: 1.4583vw;
+    /* 21/1440 - node 1867:1992 */
     line-height: 1.6;
     letter-spacing: 0.01em;
     color: #000000;
@@ -616,7 +687,8 @@
     display: flex;
     flex-direction: column;
     gap: 3.8194vw;
-    /* 55/1440 gap between filter and large card */
+    /* 55/1440 - harmless now that the filter bar moved out (single child),
+       kept in case a 2nd child is ever added back here. */
   }
 
   .insights-feed-main-content .insights-featured-card {
@@ -1215,29 +1287,15 @@
 }
 
 
-/* --- Pre-Footer Overrides for Client Success Page --- */
+/* --- Pre-Footer Overrides (shared .cs-pre-footer styling, reused here) --- */
 @media (min-width: 768px) {
   .cs-pre-footer .pre-footer-title {
-    top: 50%;
-    transform: translateY(-50%);
-    /* 102/1440 */
-    left: 5.1389vw;
-    /* 74/1440 */
-    width: 52.0139vw;
-    /* 749/1440 */
-    height: 7.6389vw;
-    /* 110/1440 */
+    max-width: 52.0139vw;
+    /* 749/1440 - was also a fixed width/height/top/transform tied to the
+       old fixed-box absolute-positioning system; gone now that the shared
+       base (style-v2.css) is dynamic - see client-success.css's identical
+       fix for the full reasoning. */
   }
-
-  .cs-pre-footer .btn-pre-footer {
-    width: 25.0833vw;
-    /* 390/1440 - Wider to fit "SPEAK TO AN EXPERT" + padding */
-  }
-
-  .cs-pre-footer .btn-pre-footer .btn-text {
-    color: #1B3834;
-  }
-
 }
 
 /* --- Plus Divider Override for Client Success Page --- */
@@ -1348,7 +1406,13 @@
     top: 333px !important;
     left: 25px !important;
     width: 278px !important;
-    height: 160px !important;
+    height: 215px !important;
+    /* Was 160px (fit ~3-4 wrapped lines) - the title's new 3-segment
+       default ("UAE Real Estate<br>Insights, Trends &<br>Marketing") wraps
+       to 5 lines at this width/font-size (43px each), so the box needs to
+       grow to fit it without overlapping the breadcrumb below. Breadcrumb's
+       own `top` shifted down by the same +55px so the original ~40px gap
+       between title and breadcrumb is preserved exactly. */
     font-family: 'Mona Sans', sans-serif !important;
     font-size: 38.2px !important;
     line-height: 43px !important;
@@ -1356,6 +1420,12 @@
     font-weight: 700 !important;
     color: #FFFFFF !important;
     margin: 0 !important;
+  }
+
+  .insights-hero-title .hero-title-highlight {
+    /* Desktop-only per this pass (mobile Figma spec not given yet) - keeps
+       mobile's title pixel-identical to before, all-white as it already was. */
+    color: #FFFFFF !important;
   }
 
   .insights-hero-desc {
@@ -1371,7 +1441,9 @@
   /* Mobile Breadcrumb Injection */
   .insights-hero-breadcrumb-mobile {
     position: absolute !important;
-    top: 533px !important;
+    top: 588px !important;
+    /* Was 533px - shifted down 55px to match the title box's new 215px
+       height (was 160px), keeping the same visual gap below the title. */
     left: 25px !important;
     display: flex !important;
     align-items: center !important;
@@ -1507,6 +1579,25 @@
     letter-spacing: 0.01em !important;
     color: #0B0B0B !important;
     margin: 0 !important;
+  }
+
+  /* Search + Category Filter Bar Mobile - moved here from the Feed section,
+     same reason as desktop. No dedicated mobile Figma spec given yet for
+     this block, so kept in normal document flow (matches how it already
+     behaved inside the Feed section on mobile - .insights-feed-filter-wrap
+     itself has no position:absolute at this breakpoint) with the same
+     horizontal inset Featured Story below it uses, for a consistent look. */
+  .insights-searchbar-section {
+    width: 100%;
+  }
+
+  .insights-searchbar-container {
+    width: 100%;
+    padding: 0 4.8346vw !important;
+    /* 19/393 - matches Featured Story's own mobile inset */
+    margin-top: 8.3969vw !important;
+    /* 33/393 - matches Featured Story's own mobile top gap */
+    box-sizing: border-box;
   }
 
   /* Featured Story Mobile */
@@ -2138,102 +2229,12 @@
     width: 100%;
   }
 
-  .insights-page-body .cs-pre-footer {
-    width: 100vw !important;
-    height: 424px !important;
-    margin-left: calc(-50vw + 50%) !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .insights-page-body .cs-pre-footer .pre-footer-inner {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #263238 !important;
-  }
-
-  .insights-page-body .cs-pre-footer .pre-footer-title {
-    position: absolute !important;
-    top: 56.34px !important;
-    transform: none !important;
-    bottom: auto !important;
-    left: 24px !important;
-    right: auto !important;
-    width: 346px !important;
-    max-width: calc(100% - 48px) !important;
-    height: auto !important;
-    font-size: 34px !important;
-    line-height: 55px !important;
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #FFFFFF !important;
-  }
-
+  /* The old ~80-line fixed-height/absolute-position override that used to
+     live here is gone - the shared base (style-v2.css) now handles every
+     page's pre-footer dynamically, including this one. Kept: the one rule
+     that was a genuine content difference, not a positioning hack. */
   .insights-page-body .cs-pre-footer .insights-mobile-pre-footer-title {
     color: #FFFFFF !important;
-  }
-
-  .insights-page-body .cs-pre-footer .pre-footer-title .d-lg-none {
-    color: #FFFFFF !important;
-  }
-
-  .insights-page-body .cs-pre-footer .btn-pre-footer {
-    position: absolute !important;
-    top: 305px !important;
-    transform: none !important;
-    left: 24px !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: auto !important;
-    max-width: calc(100% - 48px) !important;
-    height: 42px !important;
-    margin: 0 !important;
-    padding: 0 20px 0 8px !important;
-    background: #FFFFFF !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  .insights-page-body .cs-pre-footer .btn-pre-footer .icon-circle {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    flex: 0 0 auto !important;
-    width: 32px !important;
-    height: 32px !important;
-    margin-right: 6px !important;
-    background: #FFA726 !important;
-    border-radius: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .insights-page-body .cs-pre-footer .btn-pre-footer .icon-circle img {
-    border-radius: 24px !important;
-  }
-
-  .insights-page-body .cs-pre-footer .btn-pre-footer .btn-text {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: auto !important;
-    height: auto !important;
-    white-space: nowrap !important;
-    font-size: 16px !important;
-    line-height: 30px !important;
-    color: #1B3834 !important;
-    text-align: left !important;
-    letter-spacing: 0.01em !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
 }

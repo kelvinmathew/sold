@@ -12,6 +12,1522 @@ cPanel prefix `uaenewpr_` · DB `uaenewpr_sold` · DB user `uaenewpr_solduser` �
 
 # PART 1 — PENDING DEPLOY
 
+## ✅ CONFIRMED LIVE 2026-09-28 (`_S_VERSION 1.5.28`; 8 emulated phones 320-430 = Figma x scale: heading 35, bar 3.8x31, gap 27 at 393; 1 per row, no h-scroll; desktop unchanged gap 62 / 589x582; no JS errors) — Insights MOBILE: Latest Blogs heading -> first card gap to Figma
+
+`css/insights.css` (end of the 1.5.27 mobile block). Figma 4050:1514 (heading, 35 tall: bar 3.77x31, text 20/30 SemiBold
+8px after the bar) + 4050:1736 (first card 27 below). Was: 30 tall block, 4x24 bar, 14px gap. Now vw-based: at 393 =
+heading 35, bar 3.8x31, gap 27 (exact Figma x scale at 320-430). Space above the heading unchanged (54 at 393x852).
+Web unchanged (gap 62, 589x582). Figma's heading text is "Latest Insights"; live says "Latest Blogs" - left as is,
+editable in Pages -> Insights -> Latest Blogs -> Section Title.
+
+## ✅ CONFIRMED LIVE 2026-09-28 (`_S_VERSION 1.5.27`; live on 8 emulated phones 320-430 incl. real DPRs: 4 cards one per row at Figma size, heading 1 line, images loaded, no h-scroll; web 1440 unchanged 589x582 / section 1391; category pages mobile same 333x287; SEO & GEO unaffected; no JS errors) — Insights MOBILE Latest Blogs: one card per row (was 2 x 2)
+
+`css/insights.css` (block at the end), mobile only (<768). Figma 4050:1736 / 1574 / 1576 / 1593 (393 frame): 4 cards
+stacked, 333 x 287, 30 from each side, 10 apart; #E9EAEB, radius 5, padding 7/8/10, gap 6; image 317 x 160 r4; date
+Inter 8 (icon 13x12, gap 7), title Mona Sans Bold 12 in a 22 row (1 line, "..."), excerpt 11/14 #292626 fixed 3 lines
+("..."), Read More SemiBold 9 in a 24 row. All vw (/393) -> identical proportions on every phone. Verified locally
+320/360/375/390/393/412/430/767 = Figma x scale exactly, no overflow/h-scroll; web 768 + 1440 unchanged (589x582).
+Figma's 3rd card is 305 tall with a 177 image (designer slip) - kept all four equal.
+Also: "Latest Blogs" heading wrapped to 2 lines on phones < ~375 (old fixed margin-right 201px) -> one line everywhere.
+Final local check emulating iPhone SE / 12-14 / 14 Pro / Pro Max, Galaxy S8, Pixel 7, S20 Ultra, 320 Android (real
+DPRs): identical layout on all; web section vs live = same height (1391) and card positions. Nothing new for the admin:
+cards = posts; "Latest Blogs" = Insights -> Latest Blogs; "Read More..." + calendar icon = Theme Settings.
+
+## ⏳ PENDING — client to-dos only: Facebook/LinkedIn/Instagram URLs, Privacy/Terms pages, delete the 6 ignored sub-items under "Services" in Appearance -> Menus -> Menu 1; security: delete fake plugin wp-optimizer-pro (+ gboost, sold-theme-backup), host malware scan, change the SOLD admin password (it was shared in chat for testing).
+
+## ✅ CONFIRMED LIVE 2026-09-26 (`_S_VERSION 1.5.26` + theme-settings-fill-current-values.sql + admin-fields-fill-current-values.sql (122 queries)). Live check: 9 templates x 1440/393 - all expected texts/placeholders present, no broken text/images, no h-scroll, no JS errors; every saved admin value in the new/parent-row groups is what the page shows; Why SOLD + Client Success steps pixel-compared with 25 Sep screenshots = same content (only scroll-animation frames differ); live Theme Settings shows the 5 tabs + filled values — Admin audit: EVERY page, navbar, footer editable in the admin (web + mobile)
+
+**Three steps, in order:** (1) upload `theme-code-only.zip` (extract in wp-content/themes/), (2) run
+`deploy/theme-settings-fill-current-values.sql`, (3) run `deploy/admin-fields-fill-current-values.sql`.
+Both SQL files only fill EMPTY fields with today's visible text (nothing on the site changes). Includes 1.5.25 below.
+Method (local only): every ACF field of every page + Theme Settings (+ posts) filled with unique markers "QZ<n>",
+each page scanned at 1440 + 393 for visible text/images/placeholders WITHOUT a marker = hard-coded; fixed; re-scanned;
+local DB restored from zzbk_* backup tables (still in the local DB, drop when done).
+Now editable (new fields, empty = today's text/icon):
+- Theme Settings > Shared Sections: Who We Work With heading (3 words + logo) + mobile Discover Now text/link;
+  Testimonials heading (Enter = mobile break); Services accordion label, heading desktop/mobile, All Services
+  text/link/mobile icon, Read More; step circles 1/2/3; mobile breadcrumb icon (Insights); blog "Read More..." /
+  "Load More..."; calendar icons (cards / post hero); blog post hero background desktop/mobile.
+- Theme Settings > Contact & Social: Contact Form Messages (success, sending, errors, field warnings) - used by
+  functions.php AJAX handler and js/contact-form.js (via SoldContact.msgs).
+- Why SOLD: Section Labels group (About + logo, Our Founders, Our Team), hero breadcrumb ("Why SOLD ?", trailing ? keeps
+  the yellow dot), clients label + quote icon, steps title logo + step numbers.
+- Client Success: Case Study Cards group (FIND OUT MORE, arrow icon, quote icon), formula title (The / logo / Success
+  Formula) + step numbers.
+- Insights: hero breadcrumb, Featured Story title, Latest Blogs group, search placeholder, "All", "Sort By Category",
+  Explore grid images (repeater), Category Pages group (All Blogs + headline desktop/mobile). Hero background now uses
+  the existing Background Image fields (were ignored). archive.php (category pages) now reads the Insights fields -
+  its intro used to show the Client Success paragraph by mistake; now shows the Insights intro (the one real change).
+- Contact (page + popup): Form Texts (6 placeholders, services question, SEND MESSAGE), Contact Icons (phone/email/address).
+- Service pages: mobile pill icon now follows Production -> Pill Icon (mobile CSS forced the default before).
+Still automatic/by design: post dates, read time, 01-04 step numbering on service pages, pagination, "/" separators,
+close x. Breadcrumb "Services"/"Client Success"/service names = the page title.
+Verified locally: markers on every page = no hard-coded text left; SQL filled values read back by ACF (group parent rows
+added where missing - without them ACF ignores a whole group); full-page snapshots of 9 templates x web/mobile identical
+before/after the SQL (only async contact-popup preload noise); new fields shown with current text on the edit screens.
+
+## ⏳ (shipped inside 1.5.26) — Admin audit part 1: Navbar + Footer fully editable
+
+Admin editability audit (client: every visible thing on web + mobile must be an ACF field). Navbar + Footer done:
+all visible items were already fields/menus except 4 icons; most Theme Settings fields were EMPTY on live (site
+showed code defaults, editors saw blank boxes).
+- `acf-json/group_global_settings.json`: Theme Settings split into tabs Header & Navbar / Footer / Contact & Social /
+  Shared Sections / Page Loader (+ notes pointing to Appearance -> Menus); clearer instructions. No field renamed.
+  NEW image fields (empty = today's icon): nav_dropdown_arrow_icon, mobile_menu_close_icon, whatsapp_float_icon,
+  whatsapp_float_icon_mobile (functions.php walker, footer.php, template-parts/whatsapp-float.php).
+- footer.php: footer WhatsApp icon linked "#" when WhatsApp Link empty -> now same wa.me link as the float button.
+- SQL fills ONLY empty fields with today's visible values (book a call text, WhatsApp text/link, phone, public
+  email, footer tagline/book call text/company/3 headings, Services Dropdown 9 rows). Local: header/footer/mobile
+  menu identical before/after on 3 pages x web/mobile; ACF reads all values; new icon fields tested (set -> shown ->
+  cleared). Includes 1.5.24 (Insights label fallback lowercase).
+Still needs the client: Facebook / LinkedIn / Instagram URLs (icons link "#"); Privacy Policy / Terms pages (links
+"#"); delete the 6 ignored sub-items under "Services" in Appearance -> Menus -> Menu 1 (dropdown comes from Theme
+Settings). Local test admin user `claude-local-test` exists for the audit - delete when done.
+
+## ⏳ PENDING (`deploy/insights-intro-label-lowercase.sql`) — Insights intro label lowercase "articles"
+
+Client wants the label lowercase (web + mobile). The theme already shows it exactly as typed (no text-transform
+since 1.5.21), so the SQL alone fixes live: saved value ARTICLES -> articles (tested locally: 1 row; web + mobile
+show "articles"). Zip 1.5.24 only changes home.php's fallback (used if the admin field is ever emptied) to
+lowercase. Editable any time: Pages -> Insights -> "2. Blogs Intro Section" -> Label.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.23` + steps SQL run: 3 rows; live check at 320/360/375/390/393/414/430: CS intro 7 lines at Figma spots, 10 buttons 234 wide with 6px gap, steps 3 lines 12px orange on all 3 pages (1 <br>, blank line gone), home bar visible, Insights hero 3 lines on 375+, no h-scroll, no JS errors) — 4 mobile fixes
+
+All mobile only (<768). Verified locally at 320/360/375/393/414/430, no h-scroll; desktop sizes unchanged.
+1. Client Success intro (Figma 2079:822/823): Inter 16/22 -> Mona Sans Medium 24/37 (0.01em), text at 101 below
+   the hero (Figma 953), label 54 -> 44 (Figma bar y 896); text now in flow, section = 101 + text + 71 (was a fixed
+   298px). vw-based so all phones show Figma's 7 lines. `css/client-success.css` (block at end).
+2. Home "Insights" label line (Figma 1363:886): bar existed but was 0px wide (flex-shrunk: 86.88px wrap too small
+   for bar + 11 gap + 77 text). Now flex-shrink 0, 1.88x26.36 orange, gap 8. `css/style.css` (end).
+3. Client Success card "FIND OUT MORE" (Figma 2095:1200/1201/1204): text 60.82 -> 47.16 from the left (arrow->text
+   gap 19.8 -> 6px), button 249 -> 234 wide. All 10 cards (one template). `css/client-success.css`.
+4. Success Formula mobile subtitle on Services, Why SOLD, Client Success (Figma 1680:2414): text = desktop's
+   "Everything campaign... one outcome:<br><span class=orange-text>helping your business sell more.</span>"
+   (ACF sh_steps_subtitle_mob / ws_steps_subtitle_mobile / cs_formula_subtitle_mob via the SQL + PHP fallbacks);
+   12/17 (was 14/20), orange line #FFA726; 15px top / 30px bottom gaps unchanged; 3 lines on every phone.
+   Live CS had shown a blank line (value had <br> + Enter -> nl2br double break) - the SQL fixes that too.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (shipped in 1.5.23) — Insights MOBILE hero heading + intro text to Figma
+
+Mobile only (<768). `css/insights.css` (2 blocks at the end) + `functions.php` (sold_title_with_highlight).
+Figma "iPhone 14 & 15 Pro - 15" (1997:258): heading 1997:274, intro 1997:277.
+1. Heading: live wrapped to 5 lines in a 278px top-aligned box ("UAE Real / Estate / Insights, / Trends & /
+   Marketing"); Figma = 3 lines "UAE Real Estate" white / "Insights, Trends" / "& Marketing" orange, centred in
+   a 224 box at (25,269). Box now 330 wide (so " &" drops like Figma), 224 tall, flex-centred; the desktop <br>
+   after "Trends &" hidden on mobile. functions.php now emits a space before that <br> (else "&Marketing" when
+   hidden; invisible at a line end - desktop/other pages' h1 unchanged, checked). Breadcrumb top 588 -> 548
+   (Figma y 498); <360px phones 568 (5-line heading). 375-430: 3 lines; 360: 4; 320: 5, no overlap/h-scroll.
+2. Intro text: Inter 16/22 at 117 -> Mona Sans Medium 24/35 (0.01em, #0B0B0B) at 97 below the hero (Figma 949),
+   352 wide, 5 lines; label 54 -> 44 (Figma 896) to keep Figma's 18px label->text gap.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.21` + label SQL run: 1 row, page 98 = ARTICLES; row 1103 still "articles" = a non-public revision, harmless; live check 768-1920 + short/tall windows = Figma x scale, mobile unchanged, no text overflow, no JS errors) — Insights: Featured + Latest Blogs cards to Figma (web), intro label as typed in admin
+
+**Two steps:** upload `theme-code-only.zip`, then run the SQL. `css/insights.css` (blocks at the end) + `home.php`.
+Figma "Desktop - 7": 1867:1934/1936 (Featured), 1867:1955/1974/1976/1993/1995 (Latest Blogs), 1867:1915 (intro).
+1. Cards used vh/dvh padding/gaps/image height -> sizes changed with window HEIGHT. Now all /1440 vw (web 768+):
+   Featured card 1197x695 (was 1080x639), image 1141x384, padding 17/28/44, gap 33, title->card 32.
+   Latest cards 589x582 (was 646.7x634.9), 2 columns + 32 gap = 1210 centred (was full 1321, 42 gap), image 549x298
+   (was 335 tall), padding 17/20/33, text gaps 13. Headline 1 line (32px/50, "..."), excerpt 2 lines (18/23, "...") -
+   real titles are longer than Figma's sample (were 2 + 3 lines = 643 tall). Verified 768-1920 and 1440x700/900:
+   exact Figma x scale. Mobile (<768) unchanged.
+2. Intro label: CSS no longer forces uppercase (web + mobile) - shows exactly what's typed in Pages -> Insights ->
+   "2. Blogs Intro Section" -> Label. SQL changes the saved "articles" to "ARTICLES" (Figma 1867:1931); fallback too.
+   Intro text desktop/mobile were already editable there.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.20`; all 8 service pages x 1920/1440/1024/393: gallery = min(natural, box) with ratio kept, centred, no JS errors) — Service page gallery image shown at its natural size
+
+`css/branding-design.css` (shared Service Page template, all 8 pages, desktop + mobile): `.branding-gallery-img`
+was width:100% (small uploads stretched up to the container and went soft). Now width:auto + max-width:100% +
+margin auto: an image narrower than the container shows at its real pixel size, centred; a wider one is scaled
+down to the container; aspect ratio always kept. Container unchanged (78.0556cqi = 1124px at 1440; mobile
+screen - 74px). Tested locally: 800x500 -> 800x500, 600x900 -> 600x900, 3000x1500 -> 1124x562, 1808x1060 unchanged.
+VISIBLE CHANGE on live (current uploads are 900-1168px wide): at 1440 branding-design (900x528), seo-geo (924x813),
+social-media-marketing (951x633), real-estate-websites (929x728) now show smaller than the box; at 1920 all 8 do.
+To fill the box, upload >= 1124px wide (1440 screens) / ~1500px (1920).
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.19` + prefooter SQL run: 3 rows; live check at 1024/1280/1366/1440/1536/1920/393: pre-footer SPEAK TO AN EXPERT same size on all 13 pages, founder btn = Figma at every width, 12 team cards 0.0px off-centre, mobile unchanged, no JS errors) — Pre-footer CTA text on all pages + Why SOLD team names centred + founder "Get in touch" to Figma
+
+**Two steps:** upload `theme-code-only.zip` (extract in `wp-content/themes/`), then run the SQL (SQL or Import tab).
+1. Pre-footer CTA: Home, Services and Why SOLD said "GET STARTED NOW" (333x58 desktop / 229x42 mobile);
+   service pages, Client Success, Insights, posts already said "SPEAK TO AN EXPERT" (362x58 / 249x42). Same
+   `.btn-pre-footer` class everywhere and the width follows the text, so only the text changes: theme fallbacks
+   in front-page.php / page-services.php / page-why-sold.php, and the SQL updates the saved ACF values
+   (home_prefoot_btn_text, sh_prefoot_btn_text, ws_prefoot_btn_text; only where still "GET STARTED NOW").
+   Locally (SQL run, 3 rows): every pre-footer = SPEAK TO AN EXPERT, 362x58 / 249x42. Hero buttons NOT changed.
+2. Why SOLD "Our Team" (desktop): first card of each row had .ws-team-info fixed at 7.7778cqi (112px, sized
+   for "Ben Neve"); longer nowrap names overflowed right - live: Mike Semmance +24.8px, Anum Ashfaq +10.2px
+   off-centre at 1440. Removed the 3 rules (`css/why-sold.css`); all names/roles now 0.0px off-centre at
+   1024/1440/1920. Figma 3291:1309/1311.
+3. (1.5.19) Why SOLD founder "Get in touch" (web 768+ only, `css/why-sold.css` block at the end): Figma 1512:3049
+   is scaled inside the founder card, real box 254x60 at card (53,320) - live was the unscaled 282x67 at (51,294).
+   Now 254x60 at (53,320), icon 42x41 at (11,8), text from 70px, 25px. Mobile (<768) identical to live (checked 393/767).
+Checked but NOT changed (already identical to Figma at 1440 and scaling with it): Why SOLD About "Get in touch"
+button 282x67 (Figma 3291:1329), founder "Co-Founder | CEO" 17.1px Inter 600 (1512:3047), Client Success
+card titles 39/50px (1867:1635) - waiting on the client to say what looks different.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.17` + `new-images-v1.5.17.zip`; live check: 10 cards x 11 widths 320-1920, 0 covered, 0 outside box/card, no JS errors) — Home testimonials: quote icon no longer covers the text
+
+**Two uploads**, both extracted in `wp-content/themes/` (overwrite): `theme-code-only.zip` and
+`new-images-v1.5.17.zip` (1 file: `sold-theme/assets/images/quote.png`). No SQL. Home page only (`css/style.css`).
+Bug: the double-quote icon (bottom-right of each dark quote box) was a PNG with an opaque #263238 square, and
+long quotes ran under it, so letters were hidden ("...to an excep[hidden]", "...outsta[hidden]"). On live 1.5.16,
+with the 10 live quotes: 2-3 cards hit at 1024-1920, 8-9 of 10 at 768-800; mobile (<768) was already fine.
+1. `assets/images/quote.png`: background made transparent (marks colour + alpha; identical on the dark box,
+   max 3/255 diff). Original kept in `deploy/backups/quote-original-2026-09-25.png`.
+2. `css/style.css` (2 blocks appended at the end):
+   - 1024+: text wraps around the icon - right float with shape-outside cut to the bottom-right corner, so
+     only lines level with the icon wrap; line counts identical to live at 1024-1920.
+   - 768-1023 (tablet): box grows (icon sits under the last line), quote line-height 1.35 (was 10.7px under a
+     12px font floor - lines overlapped on live), card 23.82 -> 27.5cqi tall with logo/stars/box pinned to
+     their old positions (within 1px of live). Longest quote at 768: box ends 8px inside the card.
+Verified locally with all 10 live quotes at 320-1920: 0 overlaps with the icon, no text past the box. Mobile unchanged.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (all 9 swapped in Theme Settings; uploads/2026/09/*.png byte-identical to the transparent files; Cushman still the old image) — Testimonials: 9 client logos with background/whitespace removed
+
+Files: `C:\Users\HP\Downloads\PNG logos\transparent\` (betterhomes, estro, ellington, knight-frank, ayat,
+mashriq-elite, sobha, banyan, regus .png) - white turned to transparency (smooth edges kept) and cropped
+tight to the artwork, so each fills the card logo box (145x79 desktop / 135x54 mobile, contain, left) like
+banyan/regus did. Before: betterhomes (1.png) + Estro (2.png) were uploaded with ~100px white padding and
+rendered tiny. Previewed inside live cards at 1440 + 393. Cushman & Wakefield (10th card) not in the set - unchanged.
+To ship: Media -> Add New (9 files), then Theme Settings -> Testimonials -> each card's Client Logo -> Remove ->
+pick the new file -> Update. The field stores the attachment ID, so no code/SQL change.
+
+## ✅ CONFIRMED LIVE 2026-09-25 (`_S_VERSION 1.5.16` + `deploy/footer-address-and-services-order.sql` run via Import: 4 option rows inserted, 5 menu rows changed; live footer verified - new order 943,1068,626,628,629,1067,627,630 and the admin address values rendering) — Footer address wording + editable in admin, footer Services order, home mobile address clipping
+
+**Two steps:** upload the theme zip FIRST, then run the SQL in phpMyAdmin (uaenewpr_sold).
+1. Address wording: "The Meydan Hotel, Grandstand, Meydan Road, Dubai." / "Circle Mall, Level 2, Jumeirah
+   Village Circle, Dubai." (commas + full stops, no "|"). `footer.php`: defaults updated; admin values now nl2br'd
+   (Enter = line break; before, a newline typed in admin didn't show); mobile falls back to the desktop value.
+   `acf-json/group_global_settings.json`: labels + help text. The SQL fills Theme Settings -> Footer Address
+   (Desktop / Mobile) on live (options_footer_address_* + ACF _field-key rows) so the admin boxes aren't empty.
+2. Footer Services menu order = accordion order (Branding & Design, Events, Lead & Demand Gen, SEO & GEO,
+   PR & Media, AI Marketing, Social Media, Real Estate Websites): SQL sets menu_order on live items
+   943,1068,626,628,629,1067,627,630 (IDs from live footer HTML). The template's fallback list (used only if the
+   menu is empty) updated to the same 8 items/order with real links.
+3. `css/style.css` (home only): mobile footer address box was a fixed 346.88px, clipping the text on 320-375px
+   phones on live; ported style-v2.css's existing fix (max-width + nowrap + clamp font). 4 lines on every phone.
+Tested on local: SQL run (address rows read by ACF; menu IDs don't exist locally so 0 rows there, as expected).
+Later: can also be reordered by drag in Appearance -> Menus.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.15` + fix-percent-placeholder.sql run; it updated 10 wp_postmeta rows - the live answer plus, most likely, copies of it on the page's revisions; remaining = 0, 0 codes on all 14 pages) — Client Success FAQ "%" bug + home intro orange text SemiBold
+
+**Two steps:** upload the theme zip, then run `fix-percent-placeholder.sql` in phpMyAdmin (DB uaenewpr_sold).
+1. SQL: Client Success FAQ #6 answer ("What measurable results has SOLD delivered...") showed
+   "95{eb4af9f0...}" instead of "95%" (and "25{...}+"), web + mobile. Cause: `deploy/fix_faq_content.sql`
+   (2026-09-15) was generated with WordPress's internal %-placeholder baked in; corrected in that file too
+   (backup in deploy/backups/). The fix SQL REPLACEs the code with "%" in wp_postmeta/wp_posts, skipping
+   serialized values; tested on local with temp rows (plain row fixed, serialized row untouched, rows removed).
+   Live audit 2026-09-24: all 14 pages, 12 posts, every FAQ on 13 pages - this is the ONLY affected value;
+   all other FAQs clean (no codes/entities/tags-as-text/empty answers; web and mobile sets match).
+2. Theme (`css/style.css`): home "What we do" lead - the orange highlight span is now font-weight 600
+   (Figma 3620:1154 Mona Sans SemiBold, "faster" SemiBold Italic); rest stays 500. Line count unchanged at
+   320-1920 vs live.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.14`) — Home: mobile "What we do" image to Figma + Insights cards text clamp (web + mobile)
+
+`css/style.css` only (two blocks appended at the end of the file).
+1. Mobile "What we do" image (Figma iPhone 1363:570 / node 1363:671): box now keeps Figma's 331:355 proportion
+   (aspect-ratio) instead of fixed 355px height + variable width (which cropped the square 1311px photo differently
+   per phone - at 320px it cut the "Campaigns That Reach / The Right Buyers" headline). left 30 / right 32, top
+   1028px (= 74px below last feature text at 954, Figma 1913->1987), section height follows the image so the 50px
+   gap to "Who do SOLD work with" stays. Exactly 331x355 at 393px. Desktop unchanged (verified identical to live).
+2. Home Insights cards: title and excerpt clamped to 2 lines with ellipsis (Figma 1363:909, 3620:1077/1096,
+   mobile 1363:926) + height:auto (a fixed height made Chrome draw the ellipsis but still show line 3). Real post
+   titles (3-4 lines) were overlapping the excerpt on mobile and the excerpt overflowed the card on mobile and
+   desktop. Images/links unchanged (cards still open the post). Verified 320-1920: no overlap, nothing past card.
+   Note 768px (tablet): small cards are tiny there, so title/excerpt show 1 line each (was overlapping before).
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.13`) — Footer address: "Jumeirah Village Circle | Dubai" -> ", Dubai"
+
+`footer.php` fallback text only (desktop + mobile). The Meydan line keeps its "|". NOTE: if Theme Settings ->
+footer_address_desktop / _mobile is ever filled in on live, that value overrides this default and must be edited
+there instead (both empty locally; live output matched the default exactly, so assumed empty there too).
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.12`, shipped in 1.5.13) — Why SOLD mobile client logos: each sized to the largest that fits its circle
+
+NEW `js/why-sold-logo-fit.js` (enqueued on why-sold in `functions.php`). Mobile only (<=767px): measures each logo's
+visible artwork (canvas, non-transparent pixels - the SVGs carry 2-14% padding) and sets the largest width at which
+every artwork corner stays within 94% of the dark circle's radius (~2px clearance). Written as one CSS rule per img
+src so why-sold-scroll.js's arc clones get it too; vw units; recomputed on resize. Cross-origin fallback = full image
+box (always safe). At 393px: Better Homes 55->66, Regus 48->53, AYAT 55->64, Banyan 52->55, Sobha 55->74,
+Mashriq 55->58, Knight Frank 55->61, Cushman 55->69 px wide. Circle/ring/positions unchanged; desktop unchanged.
+Verified 320-767px: worst artwork corner 94.5% of radius. No SQL, no images.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.11`) — Why SOLD "What Our Clients Say": heading text + bigger mobile logos
+
+`page-why-sold.php` + `css/why-sold.css`.
+- Heading "What our Client say" -> "What Our Clients Say" (hard-coded in the template, web + mobile). Mobile label box
+  was a fixed 212.59px (sized to the old text) -> max-content + nowrap so the longer text stays on one line.
+- 1.5.11: DESKTOP label text also had a fixed width (19.7917cqi = 285px) and wrapped the new heading to 2 lines
+  on live 1.5.10 -> max-content + nowrap. Verified 1 line at 320-1920 via range client rects (the first check used
+  height/line-height, which silently reported 1 line on desktop where line-height is `normal`).
+- Mobile only: logo max-width 48px -> 55px (13.99vw), max-height unchanged 26px. Measured at 320-430px: every
+  logo's bounding-box corner stays within 96% of the 61px circle's radius, so nothing is clipped. Desktop unchanged.
+No SQL, no images.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.9` + images zip) — Insights hero gap, Latest/Explore images, intro->search gap
+
+**Two uploads this time**, both extracted in `wp-content/themes/` (the images zip also has `sold-theme/` paths):
+`theme-code-only.zip` and `new-images-v1.5.9.zip` (2 JPGs: `assets/images/insights-explore-office.jpg`,
+`insights-explore-tower.jpg`, from Figma 1867:2094, transparent corners flattened onto card bg #e9eaeb).
+- Hero text+button block: bottom gap to hero edge 100/1440 (6.9444vw) per request (supersedes 1.5.7's 116).
+- Latest Blogs image box: fixed 335/1440 (was 35dvh capped at 335 -> 315 on a 900px window). The 4 live
+  images were already byte-for-size identical to Figma 1867:1972 - only the crop box changed.
+- Explore All Insights grid: fixed Figma images office / tower / tower repeating (not post thumbnails).
+- Intro -> search gap reduced: desktop 126 -> 72px (5vw), mobile 33 -> 24px.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.8`, shipped in 1.5.9) — Insights search bar + Featured Story card to Figma
+
+`home.php`, `css/insights.css`, `acf-json/group_insights_page.json`. Figma 3929:4896, 1867:1938/1952/1953/1954.
+- Search bar: "Go" button removed (Enter still submits - tested). Placeholder "Search" black like Figma.
+  Categories in Figma order: All / Marketing & Branding / Lead Generation / Trending Topics / AI Marketing
+  (unlisted categories follow alphabetically).
+- Featured Story card: headline + text are now Figma's fixed copy ("Featured Insights" + "SOLD breaks down
+  the latest story...") instead of the post's title/excerpt, editable via NEW ACF group
+  `insights_featured` (Insights page -> Featured Story). Image, date and link still from the post.
+- Desktop card spacing: 13px gaps (was ~5px / 0.6vh), line-heights 50 / 29 / 34 per Figma.
+No SQL. Confirm `insights.css?ver=1.5.8`.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.7`, shipped in 1.5.9) — Insights hero + Articles intro to Figma
+
+`home.php` + `css/insights.css`. Figma nodes 1867:1774 / 1766 / 1915 / 1932.
+- Hero title desktop: font was 4.1528vw (~60px) -> 4.6528vw (67px, Figma; same as Client Success).
+  Mobile: "Insights, Trends & Marketing" now orange like desktop (was forced white).
+- Hero text+button block (desktop): desc font 1.4972vw -> 1.5972vw (23px, 4 lines like Figma); block
+  bottom 7.4306vw -> 8.0556vw so the description starts at exactly Client Success's position.
+- Articles intro: label uppercase ("ARTICLES") web + mobile. Mobile text was Client Success's copy
+  (wrong fallback) -> now the same Figma copy as desktop (falls back to text_desktop). Mobile section
+  now auto-height (text in flow) instead of a fixed 227px sized to the old 5-line copy.
+No SQL. Confirm `insights.css?ver=1.5.7`.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.6`, shipped in 1.5.9; Branding card 3 line break added by client) — Service Page card titles: Enter now works in admin
+
+The cards' `title` / `title_mobile` ACF fields were single-line `text`, so an editor could not type a
+line break (Enter did nothing) - e.g. live's Branding card 3 was saved as "Built for Today.Ready for
+Tomorrow.". Changed both to a 2-row `textarea` (`new_lines: ""`; `page-service.php` already does
+nl2br -> `<br>`) in `acf-json/group_service_page.json`. Existing values are kept as-is. After deploy:
+edit Branding & Design, card 3 title, press Enter between the sentences, Update.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.5`) — Service Page template: mobile hero wrap, cards heading/titles wrap, dynamic step capsules
+
+Shared template (`page-service.php` + `css/branding-design.css`), so it fixes all 8 service pages at once.
+
+1. **Hero title (mobile):** was `white-space:nowrap`, so "Social Media Marketing", "Lead & Demand
+   Generation", "Real Estate Websites" ran past the right edge. Now wraps inside the 24px side gutters.
+   The text block is bottom-anchored at 377px, so extra lines grow upward and the gap to the CTA
+   (pinned at top:435px) stays 58px for any title length.
+2. **"Where Great Brands Begin" (mobile):** the heading's fixed `max-width:199px` forced 3 lines on longer
+   headings; now full width + `text-wrap:balance`, font eases 28px -> 24px only below ~393px. 2 lines on
+   every page down to 320px. Card titles: the per-card nowrap/font hacks (tuned to Branding's own words)
+   replaced by one wrapping rule; `page-service.php` now outputs an ACF line break as a real `<br>`
+   and no longer leaves whitespace inside the `<h3>`.
+3. **Step capsules (web + mobile):** fixed width -> `min-width` (Figma size) + padding + nowrap, so they
+   grow with the label and stay one line ("Content Optimisation", "Launch & Optimise"). Desktop step
+   column grows with its pill (min 281/1440); the connecting arrow shrinks to make room (min 100/1440).
+
+Verified with Puppeteer against all 8 LIVE pages (local CSS injected) at 320/360/375/393/414/430/768/
+1024/1440/1920: no hero/card-title overflow, cards heading <=2 lines on mobile, every capsule one line,
+no row overflow, no horizontal page scroll. Deploy: upload `theme-code-only.zip` to
+`wp-content/themes/`, extract, overwrite. No SQL. Confirm `?ver=1.5.5` in page source.
+
+## ✅ LOADER DISABLED LIVE NOW / ⏳ code default pending in `_S_VERSION 1.5.4` zip — page loader removed site-wide, web + mobile
+
+Client requested the branded full-screen loader removed entirely, web and mobile, every page.
+
+**Didn't delete the feature - disabled it, both immediately (content) and structurally (code).** The
+loader was already built to be a real ACF toggle (Theme Settings -> Page Loader) with genuinely zero
+CSS/JS/markup footprint when off - so "remove it" is exactly what turning that toggle off already does,
+without needing to rip out the feature (which would make it harder to bring back if ever wanted).
+Turned the toggle off directly on **live** via wp-admin (immediate effect, confirmed via curl: zero
+occurrences of `sold-page-loader` markup or its CSS/JS requests on both the homepage and `/contact/`).
+
+**Also flipped the code's own default from on to off**, in both `functions.php` (the enqueue check) and
+`template-parts/page-loader.php` (the markup check) - previously `!isset($loader['enabled']) ||
+$loader['enabled']` (on unless explicitly disabled), now `isset($loader['enabled']) &&
+$loader['enabled']` (off unless explicitly enabled). This is a safety net, not required for the current
+live state (which is already fixed via the direct toggle change above) - it just means the loader stays
+off even if that ACF field is ever cleared/reset, rather than silently reverting to on.
+
+Verified on local WordPress too (same toggle set to off via a real `update_field()` call): zero
+`sold-page-loader` markup, zero `page-loader.css`/`.js` requests.
+
+## ✅ FOOTER FIXED LIVE - deploy the `_S_VERSION 1.5.4` zip to see it — extra white space below the footer removed, web + mobile
+
+Client reported extra white space after the footer on every page (both breakpoints), allowing the page
+to scroll further than the real content. Also asked about the Contact page specifically.
+
+**Root cause: the exact same "fixed height + absolutely-positioned children" pattern this project has
+fixed repeatedly elsewhere** (pre-footer, cards, WhatsApp button...). `.site-footer` had a hardcoded
+height (`829px` desktop / `1255px` mobile) from whenever the footer was first built, with its 3 real
+content pieces (`footer-logo`, `footer-line`, `footer-content`) each absolutely positioned inside via
+hand-set `top` offsets - meaning the box's own height was **never actually derived from its content**,
+just a number someone measured once. Content has since grown (the Services column just went from 6 to
+8 links this session) without the fixed height ever being revisited - left a measured **~165px dead
+zone** below the real content on desktop, and mobile's `overflow: hidden` meant it could have gone the
+other way (silently clipping content) just as easily.
+
+**Fix:** converted `.site-footer`/`.footer-inner`/`.footer-logo`/`.footer-line`/`.footer-content` from
+fixed-height-with-absolute-positioning to auto-height with real padding/margin/flow - same conversion
+pattern already proven multiple times on this project. Every child inside `.footer-content` (the 3
+columns) was *already* normal flow, not absolute, so this was a contained 5-selector fix, not a full
+footer rebuild. Preserved every original visual gap exactly (65px top/bottom, 83px left/right, 20px
+logo-to-line, 52px line-to-content) by converting the old absolute `top` offsets into equivalent
+`margin-bottom` values - same numbers, different mechanism. Both `css/style.css` (Home) and
+`css/style-v2.css` (everywhere else), both desktop and the separate mobile `!important` block.
+
+**Verified on local WordPress**, both breakpoints, both a home-page-body page and a style-v2 page (Why
+SOLD): measured gap between the footer's real bottom edge and the page's total scroll height - was
+0.45-165px depending on page/breakpoint, now consistently ~0px (±0.4px, pure rounding) on every
+combination tested. Screenshotted the scrolled-to-bottom result - footer content now genuinely reaches
+the true end of the page.
+
+**Contact page - investigated, did NOT change anything, need your confirmation before touching it.**
+Contact is structurally different from every other page (`page-contact.php` builds its own standalone
+document, not the shared header/footer - a pre-existing, deliberate design). Checked its actual
+measurements directly:
+- **Desktop:** the contact card fills the full viewport height exactly (0px gap) - no issue found.
+- **Mobile:** found a real ~110px gap, but it's **symmetric** - ~110px above the card AND ~110px below
+  it, both sides, not just below. The CSS comments here explain this is deliberate, carefully-tuned
+  behaviour (`flex-start` + `margin:auto` specifically chosen so a card taller than a short phone screen
+  never gets its top clipped) - this is centred content on a short form within a taller phone viewport,
+  which is fairly normal UX, not an obvious bug the way the footer was.
+
+Flagging this rather than guessing and risking breaking deliberately-engineered centering: if what's
+wanted is the form anchored to the top (less symmetric empty space) rather than centred, or something
+else specific, that needs a quick confirmation before changing this page's careful mobile-height
+handling.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.5.3` -> `1.5.4`, includes both the loader-default
+change and the footer fix). Same deploy steps: upload to `wp-content/themes/`, extract with overwrite,
+no SQL.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.5.3`) — all 7 rebuilt service pages unlocked
+
+Client had rebuilt all 7 remaining service pages (Events, Lead & Demand Generation, SEO & GEO, PR &
+Media, AI Marketing, Social Media Marketing, Real Estate Websites) on the Service Page template in
+wp-admin, but they weren't linked anywhere - navbar dropdown, Home/Services "Read More" buttons, and
+2 of them missing from the footer entirely.
+
+**Confirmed all 7 are actually ready first, not just template-switched.** Checked each live URL
+directly: all return 200, all have 4 filled Cards and real FAQ content (3-18 questions each) - not the
+empty-template state AI Marketing was in a few passes ago.
+
+**Root cause (navbar + accordion "Read More"):** `sold_removed_service_slugs()` in `functions.php`
+still listed all 7 as "removed" - a leftover from the 2026-09-20 page-deletion project, meant to
+neutralise dead links to `#` until each page was rebuilt. Every one of these 7 pages *was* rebuilt, but
+this list was never updated to reflect that - `sold_resolve_link()` (used by both the navbar dropdown
+and every "Read More" button) was still routing all 7 to `#` regardless of the real pages existing.
+Emptied the array (kept the function itself, and its own explanatory comment, for whenever a 9th
+service is added later and needs the same staging mechanism). Verified on local: all 9 navbar dropdown
+links and all 8 accordion "Read More" links now resolve to their real URLs, not `#`.
+
+**Root cause (footer, 2 missing entirely):** the footer's "Services" column uses a real WP menu
+(`Footer Services`, ID 8), not the `sold_resolve_link()` mechanism - so this was a separate bug, not
+fixed by the code change above. Checked directly: the menu had only 6 of 8 items - "AI Marketing" and
+"Events" were never added to it at all (not just neutralised, genuinely absent). Fixed by adding both
+directly to this live menu via wp-admin (Appearance → Menus → Footer Services) - confirmed via a fresh
+page load: all 8 service links now present.
+
+**Already live, no deploy needed:** the footer menu fix (a content/menu edit, not code).
+**Still needs the theme zip:** the `sold_removed_service_slugs()` code change - packaged into
+`theme-code-only.zip`, `_S_VERSION` bumped `1.5.2` -> `1.5.3`. Same deploy steps: upload to
+`wp-content/themes/`, extract with overwrite, no SQL.
+
+
+## ⏳ REVERTED, NO LONGER PENDING (`_S_VERSION 1.5.2`) — Services accordion collapsed-preview crop fix was undone by client request
+
+Client reported the Services accordion (Home + Services page - shared component,
+`template-parts/services-accordion.php`) shows the full photo correctly once expanded, but the
+collapsed/preview strip's crop doesn't match Figma - width/height of the strip itself were already
+right, only which *portion* of the photo shows was wrong.
+
+**Root cause:** `.service-image-strip img { object-position: top; }` - the collapsed strip (a thin
+~69px-tall band) was always showing each photo's absolute top edge. Checked Figma's own crop directly
+(nodes 3387:1507 and 3387:1519, two different collapsed items): both show a band from roughly the
+photo's vertical middle, not the top - one has the visible slice starting ~34% down, the other has the
+image itself shifted up by only ~11%. Neither matches "top" - confirms the client's own suspicion
+("they taking center portion to preview it?").
+
+**Fix:** `object-position: top` -> `object-position: center` on `.service-image-strip img`, both
+`css/style.css` (Home) and `css/style-v2.css` (Services + everywhere else this component is used). Only
+this one collapsed-state rule changed - the expanded-state rule (`.service-list-item.active
+.service-image-strip img`, already showing the full photo correctly) was untouched, and so was every
+width/height value on the strip itself, per the client's own note that sizing was already correct.
+
+**Web only, confirmed by construction, not just by not touching mobile's CSS:** mobile's own separate
+rule for this component (`@media max-width:767px`) sets `display:none !important` on the collapsed
+strip - the image is hidden entirely until a card is expanded, so there's no collapsed-preview crop to
+even show on mobile. Nothing needed there.
+
+**Also clarified for the client:** the images used differ between local (WP's own PHP fallback array,
+`service_social.png` etc., since the ACF option field isn't populated in the local test environment)
+and live (real uploaded photos via the `global_services_acc` options field) - this is expected and
+unrelated to the bug; the crop-position fix applies identically regardless of which image source is
+active, confirmed by testing against the local fallback set.
+
+**Verified on local WordPress:** confirmed all 8 collapsed strips now compute `object-position: 50% 50%`
+(was `0% 0%`/top); expanded item's own size/crop unchanged (0% width/height difference, still full-photo,
+no cropping); screenshotted the collapsed items - each one now shows a meaningful, subject-containing
+slice of its photo instead of a mostly-empty top edge.
+
+Mirrored to the static prototype (`css/style.css`, `css/style-v2.css`).
+
+**Reverted the same session, same message thread - client re-sent the identical request then said "we
+did this now revert it now we dont need."** `object-position` restored to `top` in all 4 files
+(`css/style.css`/`css/style-v2.css`, both theme and static prototype), byte-identical to before this
+entry - confirmed via a fresh computed-style check (`50% 0%`, i.e. `top`, not `50% 50%`). Since this was
+never uploaded to live (still sitting in an undeployed zip the whole time), there is nothing to undo on
+the live site itself - only the local zip needed rebuilding. `_S_VERSION` bumped `1.5.1` -> `1.5.2`
+purely to keep the zip's version number moving; no functional change from `1.5.0`'s state for this
+specific rule.
+
+## ✅ CONTENT LIVE NOW / ⏳ CSS pending in the `_S_VERSION 1.5.0` zip — Client Success card titles corrected to two-tone (Figma), not uniform orange
+
+Client flagged that an earlier fix (making all 10 Client Success card titles solid orange) was wrong -
+asked to check 3 Figma nodes and confirm. **Fetched the real Figma design for all 10 cards directly**
+(not a sample) and found every single one uses **two colours**: a base of `#263238` (dark slate) with
+only a specific phrase per card highlighted in `#FFA726` (orange) - never a uniform colour anywhere.
+Client's own first message described the second colour as "green" - clarified it's `#263238`, a dark
+slate that can read as green-ish, not an actual green hex.
+
+**This is a revert-and-redo of the earlier (wrong) fix**, not new work: that pass made the *entire*
+title orange on both breakpoints, which was a misread of the design. Reverted `.cs-card-title`'s base
+colour back to `#263238` (desktop) / `#000000` (mobile, its own original colour), and added a new
+`.cs-card-title .cs-title-highlight { color: #FFA726; }` rule - the orange now comes from a `<span>`
+wrapping only the correct phrase, not the whole element.
+
+**Mapped all 10 titles' exact orange phrase from Figma, one at a time** (not a mechanical "first N
+words" guess - card 4 and card 8 have the orange portion in the *middle*/*end* of the title, not the
+start):
+
+| # | Client | Orange phrase |
+|---|--------|---------------|
+| 1 | Mered | "Accelerating Sales" |
+| 2 | Ellington | "Building Global" |
+| 3 | Jubail Island | "Building International Demand" |
+| 4 | Knight Frank | "GCC's Leading Destination" (mid-sentence) |
+| 5 | Beyond | "Driving Demand" |
+| 6 | Banyan Group | "Turning Inspiration " |
+| 7 | Regus | "Turning Local Searches" |
+| 8 | (Masaraj) | "Successful Multilingual Property Launch" (end of sentence) |
+| 9 | betterhomes | "Growing Organic Buyer Demand" |
+| 10 | AVAT | "Selling Out Phase 1 Through" |
+
+**Content updated directly in both databases, right now, no theme deploy needed for this part:**
+local via a real `update_field()` call (wrapping each stored title in the matching
+`<span class="cs-title-highlight">`); live via the same real save pathway WordPress's own admin uses -
+this field group has `show_in_rest: false` (confirmed by reading its own JSON), so the REST API
+approach that worked for Latest Blogs' images wasn't available here. Logged into wp-admin, set each of
+the repeater's 10 `acf[field_cs_cards][row-N][field_cs_c_t]` inputs directly via the DOM, then submitted
+the real Update button - the same POST-based save every normal edit in wp-admin uses. Verified via a
+live curl: all 10 `.cs-title-highlight` spans present with the correct phrase, in order.
+
+**Important - live will look unchanged until the CSS deploys.** The content (the `<span>` wrapper) is
+live now, but live is still serving `_S_VERSION 1.4.1`'s CSS, which still has the *old* "make it all
+orange" rule active - so right now the titles show fully orange on live still, just with the correct
+HTML underneath. The moment this zip (`1.5.0`) goes up, it'll immediately snap to the correct two-tone
+look with no further action needed.
+
+Mirrored to the static prototype (`client-success.html`, `css/client-success.css`) - same 10 spans,
+same CSS revert, both breakpoints. Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.9` ->
+`1.5.0`). Same deploy steps: upload to `wp-content/themes/`, extract with overwrite, no SQL (the
+content half of this fix is already live independently of this zip).
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.9`, not yet uploaded) — Feed/"Explore All Insights" section audited against Figma: heading text was wrong, everything else already matched
+
+Client supplied 5 nodes for this section (whole frame, label, headline, the 6-card grid, Load More) -
+asked for the heading text, Load More top/bottom gap, and every card's image/content to be checked and
+fixed against Figma.
+
+**Audited every measurement before changing anything, rather than assuming something was broken.**
+Compared each of the 6 grid cards' CSS (`.insights-blog-card`/`-img-wrap`/`-date`/`-icon`/`-headline`/
+`-excerpt`/`-readmore`) against Figma's real numbers (node 1867:2094) one property at a time: card
+padding, border-radius, image height (265px) and corner radius (21px), grid gap (12px), date/icon
+size, and all 4 text sizes (18/24/14/21px). **Every single one already matched exactly** - this section
+had clearly already been built against this same Figma spec at some point. Also measured the Load
+More button's own gaps directly (Puppeteer, real `getBoundingClientRect()`): grid-to-Load-More gap
+measured `65.98px` (Figma: `66px`) and Load-More-to-section-end measured `0px` (Figma: also `0`, it's
+the section's last element) - both already correct too. `font-size: 45px` on `.insights-load-more`
+looked suspiciously large at first glance (bigger than any card text) but is confirmed correct - Figma
+really does specify a large, bold, centred 45px style for this link (node 1867:2213), not a typo copied
+from a heading rule.
+
+**The one real bug: heading text.** Label was "Lorem Blogs" -> should be "Explore All Insights" (node
+1867:2067); headline was the generic "Lorem ipsum dolor sit amet consectetur adipiscing elit" -> should
+be "Everything You Need to Know to Stay Ahead in UAE Real Estate" (node 1867:2068). Fixed the default
+in `home.php`, added matching `default_value`s to the ACF field group (`field_ins_feed_label`/
+`field_ins_feed_head`) so a first-time edit in admin starts from the right text, and updated the static
+prototype's hardcoded copy (`insights.html`, both its desktop and mobile headline variants).
+
+**Card content stays dynamic** - same architecture/decision as Featured Story and Latest Blogs; Figma's
+own card text here is generic placeholder ("Global Office space provider" on all 6 cards, not 6 real
+distinct examples like Latest Blogs had), reinforcing that it's mockup filler, not literal required
+copy.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.8` -> `1.4.9`). Same deploy steps: upload to
+`wp-content/themes/`, extract with overwrite, no SQL.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.8`, not yet uploaded) — Feed section's "Large Card" removed, both web and mobile; 6-card grid below it kept
+
+Client-requested: under the Feed section's "Lorem Blogs" / "Lorem ipsum..." heading, the single big
+image+description card that used to sit right below it should be removed entirely (web and mobile) -
+the 6-card grid further down stays.
+
+**Found a real pagination bug while removing this.** The big card and the grid below it were reading
+from the *same* `WP_Query` object (`$feed_query`) - the big card called `$feed_query->the_post()` once
+to grab the first post, then the grid's own `while ($feed_query->have_posts())` loop continued from
+wherever that left off. `$feed_per_page` was `7` specifically so the math worked out to "1 for the big
+card + 6 for the grid." Simply deleting the big card's markup without changing anything else would
+have left the grid's loop starting fresh from post #1 - showing **7** posts instead of 6, since nothing
+would be "used up" by the removed card anymore.
+
+**Fix:** removed the entire `.insights-feed-main-content` block (the big card) from `home.php`, and
+changed `$feed_per_page` from `7` to `6` - the whole feed section is now just the grid, 6 posts per
+page, pagination math correct with nothing consumed by a card that no longer exists. Also removed the
+now-unused `$bigid`/`get_permalink()`/`sold_post_excerpt($bigid, ...)` calls that only existed for that
+card.
+
+Mirrored to the static prototype (`insights.html`) - same block removed there (its own hardcoded
+markup, not query-driven, so no pagination math to adjust).
+
+**Verified on local WordPress:** `.insights-feed-main-content` and any `.insights-featured-card` inside
+the Feed section confirmed gone from the DOM; grid still renders exactly **6** cards (confirmed via a
+real element count, not assumed); Feed Title ("Lorem Blogs") and Headline text unchanged, sitting
+directly above the grid now with no card in between. Screenshotted both 1440px and 390px - clean
+transition straight from the heading into the grid, no dead space or broken layout, confirmed on both
+breakpoints as requested.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.7` -> `1.4.8`). Same deploy steps: upload to
+`wp-content/themes/`, extract with overwrite, no SQL.
+
+## 🚨 FLAGGED, LEFT AS-IS PER CLIENT — 2 spam/casino posts live in the real Insights feed
+
+Found while working on the Latest Blogs images: two published posts titled "How to Identify Leading
+High RTP Online Casino Australia Operators" and "The Comprehensive Guide to Visa Online Online
+Casino: What You Required to Know" are live on the real site (IDs 947 and 932) and are dated NEWER
+than all real content - meaning they currently occupy the "Featured Story" slot and the first "Latest
+Blogs" card on the real, public `/insights/` page. This is the same 2026-09-17 compromise
+([[sold-live-malware]]) actively injecting fake published content into the real post feed, not just a
+dormant backdoor file - confirmed directly: `curl .../insights/` shows the casino post as the literal
+`insights-featured-headline` text.
+
+**Asked the client how to handle it - they chose to leave both posts published for now** and have me
+continue past them. Not touched. Still recommend removing these (Posts -> All Posts -> Trash) whenever
+convenient - they push 2 real articles out of the visible Featured/Latest Blogs slots on every page
+load until removed.
+
+## ✅ DONE, LIVE NOW (content only, no theme deploy needed for this part) — Latest Blogs images replaced with Figma's real photos, both local and live
+
+Client re-sent the same 4 Latest Blogs nodes (1867:1955/1974/1975/1976), asking specifically for the
+same images Figma uses, on both the static prototype and the live site.
+
+**Confirmed these are real WordPress posts with real (if low-quality) featured images already set** -
+not template fallback images. Figma's mockup shows 4 specific photos (a Palm-view penthouse terrace, a
+sunset high-rise interior, a "Cushman & Wakefield" website screenshot, an "Arancia Yards" ad banner) for
+4 specific example articles ("Pay-Per-Click Campaigns", "Luxury Properties Online", "Cushman &
+Wakefield Core's SEO", "Targeted Social Media Ads"). Downloaded all 4 image assets directly from Figma
+(`assets/images/latest-blog-1.png` through `-4.png`, added to both the theme and the static prototype).
+
+**Static prototype (`insights.html`):** replaced all 4 cards' images, headlines, and descriptions with
+Figma's real example content - this file has no dynamic data source, so it's the actual literal content
+now (previously mismatched lorem-ipsum/generic text and unrelated svg icon placeholders).
+
+**Local + live WordPress:** the 4 "Latest Blogs" cards pull real posts (IDs 118-121, same content on
+both databases) - kept dynamic per the earlier decision, only replaced each post's actual featured
+image (was a crude `.svg` icon, e.g. `lastestone.svg`) with the matching Figma photo. Local: via a
+direct `wp_insert_attachment()`/`set_post_thumbnail()` script. Live: first attempt via the classic
+media-modal UI (Puppeteer) silently failed to persist (confirmed via REST afterward - featured_media
+unchanged) despite the UI appearing to succeed; switched to driving the WP REST API directly through
+the authenticated admin session's own nonce (upload to `/wp/v2/media`, then `POST
+featured_media` to `/wp/v2/posts/{id}`) - far more reliable than fighting the modal's upload/selection
+timing, confirmed each of the 4 by re-reading `featured_media` back from the REST API afterward.
+
+**Why you may not see all 4 new images on the live page yet:** the 2 spam posts above occupy the
+Featured Story slot and the first Latest Blogs card, pushing 2 of the 4 real posts (with their new
+images already correctly set) out of the visible 4-card area for now. They'll appear automatically
+once those posts are removed - nothing further needed on the image side.
+
+**This part needed no theme code/deploy** - images were uploaded straight into each site's own media
+library via REST, already live on both local and the real site right now.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.7`, not yet uploaded) — Latest Blogs + Featured Story card typography was systematically undersized at the 1440px Figma reference; found and fixed the root cause
+
+**Note: this theme zip (1.4.7, from the previous pass) is still not deployed to live** - the image
+content above is live already, but the correct spacing/sizing (32px row gap, 21px image corners, the
+corrected font sizes) that make these new images sit correctly still needs this zip uploaded. Live is
+currently still serving `_S_VERSION 1.4.1`.
+
+Client supplied 6 nodes for the Latest Blogs section (whole section, label, grid, both cards, one
+card's content block), reporting the image, gaps, and every card's text all looked different from
+Figma.
+
+**Root cause: `clamp()` formulas that never reach their own stated max at the 1440px reference width.**
+Both this section's cards and the Featured Story card above it use rules like
+`font-size: clamp(20px, 2vw, 32px)` - the intent was clearly "scale with the viewport, capped at
+Figma's 32px" but `2vw` at exactly 1440px is `28.8px`, not `32px` - the clamp's preferred value never
+actually reaches its own ceiling at the one width these were supposedly tuned for. Checked every text
+element in both cards against Figma's real numbers (nodes 1867:1974/1867:1976 for Latest Blogs,
+1867:1936 from the previous pass for Featured Story) and found this same gap on all of them, roughly
+15-30% smaller than intended - explains "each card text... different" precisely. Two of the old
+ceilings were also just wrong regardless of the clamp bug: Featured Story's headline capped at 40px
+(Figma is 45px) and excerpt capped at 21px (Figma is 23px).
+
+**Fix:** replaced every `clamp(min, vw, max)` in both cards with a flat, precise `vw` value computed
+directly from Figma's real px at 1440 (matching the convention already used everywhere else on this
+page, e.g. the Articles intro, the search bar) - `.insights-latest-date`, `.insights-latest-icon`,
+`.insights-latest-headline`, `.insights-latest-excerpt`, `.insights-latest-readmore`, and the same 5
+rules for `.insights-featured-*`. Verified via computed style after the fix: Featured Story now reads
+`45px/23px/21px/20px` (headline/excerpt/readmore/date) and Latest Blogs `32px/18px/21px/20px` -
+matching Figma exactly, not approximately.
+
+**Also fixed while auditing this card:**
+- `.insights-latest-img-wrap` border-radius was `26px` (Featured Story's own larger image radius,
+  reused here by copy-paste) - Latest Blogs' own image (node 1867:1975) is `21px`, corrected.
+- `.insights-latest-grid` row-gap was `3vh`/`4dvh` (viewport-height-relative, no fixed relationship to
+  Figma's real spacing) - replaced with `32px` (`2.2222vw`), computed directly from the two rows'
+  actual Figma positions (662 - 630 = 32).
+
+**Mobile:** no dedicated mobile Figma spec was supplied for either card, and both already have their
+own separately-tuned, purpose-built compact mobile rules (own font sizes, own 2-column grid, own
+padding) completely unrelated to the desktop clamp() values touched here - confirmed mobile's computed
+font-size is untouched (`10px`, unchanged) after this pass, only the desktop `@media (min-width: 768px)`
+block was touched.
+
+Mirrored to the static prototype (`css/insights.css`). Rebuilt `theme-code-only.zip` (`_S_VERSION`
+bumped `1.4.6` -> `1.4.7`). Same deploy steps: upload to `wp-content/themes/`, extract with overwrite,
+no SQL.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (content only, no code/deploy needed) — Insights category names renamed to match Figma
+
+Client pointed at the Featured Story card (node 1867:1936) and the category filter bar (node
+3929:4899) again, saying the text needs to match Figma.
+
+**Featured Story card - confirmed to stay dynamic, asked first.** Figma's card shows fixed-looking
+text ("Featured Insights", "July 10,2026", a generic description) instead of a real post's title/date/
+excerpt. Rather than guess, asked the client directly: keep pulling the real latest post (matches the
+architecture already built, stays useful as real articles get published) or hardcode Figma's literal
+text. **Client chose to keep it dynamic** - Figma's text is just placeholder copy for its own mockup,
+not literal required content. No code change needed here; the card already pulls
+`get_the_title()`/`get_the_date()`/excerpt from the real latest post.
+
+**Category names - this was real.** The filter bar's category NAMES themselves were dummy placeholders
+("Architecture & Design", "Investment Insights", "Lifestyle & Living", "Market Insights") unrelated to
+SOLD's actual services, while Figma's example bar shows real service-style names ("Marketing &
+Branding", "Lead Generation", "Trending Topics", "AI Marketing") - not a styling difference, a genuine
+content/taxonomy fix. These are real WordPress categories (`get_categories()`, unchanged code), so the
+fix is renaming the 4 existing terms, not touching any template.
+
+Renamed all 4 categories **directly in both databases** (same term IDs, both local and live matched
+exactly, so the same mapping applied to both): term 6 Architecture & Design -> Marketing & Branding,
+term 5 Investment Insights -> Lead Generation, term 7 Lifestyle & Living -> Trending Topics, term 4
+Market Insights -> AI Marketing. Local via a direct `wp_update_term()` script; live via the same
+wp-admin session already used for the earlier ACF field-group fix (Posts -> Categories -> Edit each,
+one at a time - the first attempt failed silently from a too-short page-load wait, redone with
+`waitForSelector('#name')` before typing, confirmed all 4 succeeded).
+
+Also updated the static prototype's hardcoded category list (`insights.html`) to the same 4 names, and
+moved its `active` class from a random one to "All" (a more sensible default state for a static
+mockup).
+
+**Verified:** live REST API (`/wp-json/wp/v2/categories`) confirms all 4 renamed; local page render
+confirms the new names show in the actual filter bar. Category *order* is alphabetical (WordPress's
+`get_categories()` default) rather than matching Figma's exact example sequence - kept this way
+deliberately, since a fixed manual order would need re-tuning by hand every time a category is added or
+renamed later; Figma's own ordering is very likely just how their example happened to be typed, not a
+requirement.
+
+**No theme zip needed for this - it's pure database content**, already live on both local and the real
+site, nothing pending to deploy for this part.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.6`, not yet uploaded) — Insights "Articles" intro fixed + search/filter bar moved up to match Figma's real page order
+
+Client supplied nodes 1867:1915/1867:1932 (the "Articles" intro block) and 3929:4896-4899 (the search +
+category filter bar), asking for matching text/alignment/spacing on the intro, and for the search bar
+to move up ("came top") - it currently lives much further down the page, inside the Feed section near
+the pagination.
+
+**Articles intro - content + 2 small precision fixes:**
+- Label default: `'Blogs'` -> `'Articles'` (node 1867:1931's real text). Desktop paragraph default:
+  the old placeholder Lorem ipsum text -> "Built from real campaign data, market intelligence, and
+  what we see driving results for real estate brands across the UAE." (node 1867:1932's exact copy).
+  Mobile's own paragraph text left untouched (it's real, intentional copy, not a placeholder, and no
+  mobile spec was given for this section).
+- `.insights-blogs-text` font-size: `2.2222vw` (32px) -> `2.3611vw` (34px) - node 1867:1932 is 34px,
+  the existing rule was 2px off.
+- `.insights-blogs-container` gap: was relying on `justify-content: space-between` to approximate the
+  gap from the two children's widths (landed ~72.6px, a few px short) - switched to Figma's real
+  `gap: 75px` directly (node 1867:1915's own `gap-[75px]`), more precise and matches the flex structure
+  Figma actually uses.
+- Also fixed `archive.php`'s own copy of this label (`Blogs` -> `Articles`) for consistency, since
+  category-archive pages share the same intro block.
+
+**Search + filter bar - moved, not rebuilt.** Checked the existing `.insights-feed-search`/
+`.insights-feed-divider`/`.insights-feed-categories` CSS before touching anything: it already matched
+Figma's numbers for this exact block pixel-for-pixel (`1277px` divider width, `19px`/`20px` type,
+`19px` internal gap, active category already coloured `#FFA726`) - this was clearly built against this
+same Figma spec already, just left in the wrong place on the page. Moved the real, fully-functional
+search form + category filter markup (`$search_term`/`$active_cat`/`sold_insights_url()` - unchanged,
+still the same `$_GET`-driven feed lower down) out of the Feed section and into a new
+`.insights-searchbar-section`, positioned right after the Articles intro and before Featured Story -
+matches Figma's real order (Hero -> Articles -> Search/Filter -> Featured Story -> Latest Blogs ->
+Feed). New section's spacing computed from Figma's real numbers: `126px` gap from the intro's bottom
+edge to the search bar, and `67px` from the search bar's bottom edge to Featured Story (was `93px`,
+tuned for the old flow with no search bar between them).
+
+**Mobile:** the search/filter markup was already in normal document flow at this breakpoint (no
+`position: absolute` to fight with), so the move required no restructuring there - just gave the new
+wrapping section the same horizontal inset and top gap Featured Story already uses on mobile, for a
+consistent look, since no dedicated mobile Figma spec was supplied for this specific block yet.
+
+Mirrored to the static prototype (`insights.html` uses static filter-link markup, no live PHP form,
+same visual result).
+
+**Verified on local WordPress:** confirmed via the real page section order
+(`hero -> blogs-intro -> searchbar -> featured -> latest -> feed -> pre-footer`) that the search bar
+now renders in the right place; divider still measures exactly `1277px`; categories render real WP
+category names with "All" correctly active by default; the Feed section further down still renders
+its large card correctly with the old filter markup fully removed (no duplicate). Screenshotted both
+1440px and 390px - clean, no overlap, matches Figma's visual order at both breakpoints.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.5` -> `1.4.6` - 1.4.5 was never uploaded, this
+supersedes it, now the 6th unreleased Insights-page version in a row). Same deploy steps: upload to
+`wp-content/themes/`, extract with overwrite, no SQL.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.5`, not yet uploaded) — Insights hero container was overflowing past the hero's real bottom edge on shorter browser windows; bottom-anchored it instead of top-anchored
+
+Client reported the description+button block (node 1867:1766) "goes down" - moved somewhere wrong
+after the 1.4.4 container rebuild.
+
+**Root cause:** `.insights-hero` is `height: 100vh` - the real browser viewport height, which varies
+per screen and is very often shorter than Figma's own 825px-tall reference frame (a maximized 1440-wide
+window is commonly 700-800px of actual content height once browser chrome is subtracted). 1.4.4's
+container used a **top**-anchor (`top: 34.0972vw`, a fixed 491px from the hero's top) - correct at
+exactly 825px tall, but pinned at that same fixed distance from the top regardless of the hero's real
+height. On any shorter real window, the 227px-tall container's bottom edge (491+227=718px down) can
+exceed the hero's actual shorter height, spilling past the dark hero background into the section below
+- reported as the block "going down."
+
+**Fix:** switched the container from `top` to `bottom` anchoring (`bottom: 7.4306vw`, 107px - Figma's
+825 - 718 = 107 gap from the frame's own bottom edge), same anchor style the block used before the
+1.4.4 rebuild. This keeps it glued to the hero's actual bottom edge at any real viewport height instead
+of drifting past it. Kept everything else from 1.4.4 (the real flex/gap container, exact 504px width,
+56px internal gap) - only the anchor direction changed.
+
+**Verified on local WordPress** at three different viewport heights (700px, 825px - the Figma
+reference, and 900px): gap between the container's bottom edge and the hero's real bottom edge stays
+exactly `107px` at all three, confirming it no longer overflows regardless of the actual browser
+window height. Re-confirmed the Figma reference height still matches exactly (`878/491/504x227`, 56px
+internal gap). Mobile re-checked, still unaffected (`40px` breadcrumb gap, unchanged from the last 2
+passes).
+
+**Four Insights-hero passes in a row haven't been uploaded yet** (1.4.2 through this one, 1.4.5) -
+live is still serving `1.4.1`. Recommended before any further hero tweaks: deploy this one so the
+client can review against a real browser/screen instead of iterating further on descriptions alone -
+several of these issues (the archive.php/home.php mix-up, the wrong bottom values, this viewport-height
+overflow) only became visible through direct measurement, and a real live check would likely surface
+anything else faster than another round of Figma-node comparisons.
+
+Mirrored to the static prototype. Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.4` -> `1.4.5`
+- 1.4.4 was never uploaded, this supersedes it). Same deploy steps: upload to `wp-content/themes/`,
+extract with overwrite, no SQL.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.4`, not yet uploaded) — Insights hero description+button rebuilt as a real container matching Figma's own frame, not two independently-positioned elements
+
+Client pointed at node 1867:1766 directly ("this is the container") after the 1.4.3 pass, suspecting
+the real container was wider than Figma's. Correct diagnosis of the *approach*, if not the exact
+number: the 1.4.3 fix corrected the description/button's individual `bottom` values to the right
+*numbers*, but they were still two separately positioned absolute elements approximating a shared
+box, rather than an actual shared container - fragile (any future spec tweak means re-deriving two
+separate `bottom` values by hand again) and not what "same as Figma" really means structurally.
+
+**Rebuilt properly this time.** Figma's node 1867:1766 ("Frame 9") is a single container: absolute,
+top/left-anchored at (878, 491), fixed 504x227px, `flex-direction: column`, `gap: 56px`. Added a new
+`.insights-hero-text-container` div in the markup wrapping the description paragraph and the button
+together (`home.php`, `archive.php`, `insights.html`) - this class already existed as a **dead,
+unused mobile CSS rule** (`margin-bottom`/`gap`, comment: "True Figma Mobile Gap to Breadcrumb") that
+had no matching element in the HTML until now; reused it rather than inventing a new name. Desktop CSS:
+`position:absolute; left:60.9722vw(878); top:34.0972vw(491); width:35vw(504); display:flex;
+flex-direction:column; align-items:flex-start; gap:3.8889vw(56)`. The description and button are now
+real flex children (no more of their own `position:absolute`/`bottom`/`right`) - the button keeps
+`position:relative` only so its own icon/text children (which ARE absolutely positioned relative to
+the button) keep working exactly as before.
+
+This is the same reliable top/left anchor style the title already used successfully (and which is why
+the title never had a position bug across any of these passes, only the bottom/right-anchored elements
+did) - eliminates the whole class of "bottom/right doesn't reproduce Figma's real height-relative
+position" bug for this section going forward, not just this one instance of it.
+
+**Verified on local WordPress** (Puppeteer, 1440x825): container measures `left:878, top:491,
+width:504, height:227` - matches Figma's Frame 9 numbers exactly (not approximately). Gap between
+description and button: exactly `56px`. **Mobile re-checked** (390px): the container's dormant mobile
+CSS rule now actually applies (harmless - both children stay `display:none` on mobile per the earlier
+pass, so it renders as an empty, invisible block with no layout effect), breadcrumb gap still exactly
+`40px`, no overlap, pixel-identical to the 1.4.3 mobile fix.
+
+Mirrored to the static prototype. Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.3` -> `1.4.4`
+- 1.4.3 was never uploaded, this supersedes it). Same deploy steps: upload to `wp-content/themes/`,
+extract with overwrite, no SQL.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.3`, not yet uploaded) — Insights hero title/alignment corrected to match Figma exactly, follow-up to the 1.4.2 pass below
+
+Client pointed back at the same 3 hero nodes (1867:1774 title, 1867:1767 description, 1867:1768
+button) after the 1.4.2 pass: title needed to wrap the same 3 visual lines Figma shows, and the
+description/button needed "the same alignment" as Figma.
+
+**Title - 3 lines, not 2.** Figma's title node is two real paragraphs: a plain first line ("UAE Real
+Estate"), then a second, entirely-orange paragraph ("Insights, Trends & Marketing") that itself wraps
+onto a 2nd line inside Figma's own 933px-wide text box (confirmed via the node's own height: 205px =
+3 x its own 69px line-height). The 1.4.2 pass only highlighted the text after a single forced `<br>`.
+which produced the right *colouring* but the real browser (actual Mona Sans web-font metrics differ
+slightly from Figma's canvas) fit "Insights, Trends & Marketing" onto **one** line instead of wrapping
+- 2 visual lines total, not 3.
+
+Rather than rely on font-metric coincidence, forced the exact same break Figma shows: default title is
+now `UAE Real Estate<br>Insights, Trends &<br>Marketing` (2 `<br>`s). Re-worked
+`sold_title_with_highlight()` (`functions.php`) so it splits on only the **first** `<br>` - everything
+before it stays plain, everything after (including any further `<br>`s inside that remainder) is
+wrapped in `.hero-title-highlight` as one block. This matches Figma's real paragraph1/paragraph2
+structure (not "always just the last line"), and still lets an editor force a specific wrap point
+inside the orange portion by typing a 2nd `<br>`, exactly as this default value now does. Updated the
+ACF field's `default_value` and instructions to match.
+
+**Description/button - real position bug, not just "alignment".** Measured both against Figma's own
+numbers (825px-tall hero reference frame) and found `.insights-hero-desc` and `.insights-hero-btn`'s
+`bottom` values were genuinely wrong - not a rounding difference: description was `10.6889vw` (153.9px)
+but should be `15.1389vw` (218px per node 1867:1767's real y-position); button was `4.8417vw` (87px)
+but should be `7.4306vw` (107px per node 1867:1768). Measured live before fixing: the gap between the
+description and button was **29px**, not Figma's real **56px** flex-gap - this is what "same
+alignment" and "fix it in web" were both pointing at, confirmed by these being the same underlying
+frame (Figma's "Frame 9") mispositioned as a whole. Left-alignment itself (both already sharing the
+same 878px left edge) and every other dimension (widths, heights, font sizes, icon size) were already
+correct - only the two `bottom` values needed correcting.
+
+**Mobile regression caught and fixed in the same pass.** The title's new 3-segment default wraps to 5
+lines at mobile's narrower 278px box (vs. the old default's ~3-4), overflowing the title's fixed
+160px-tall box and overlapping the breadcrumb positioned right below it - caught via a mobile
+screenshot, not assumed safe. Grew the mobile title box to 215px and shifted the breadcrumb's own
+fixed `top` down by the same 55px, preserving the exact 40px gap that existed between them before -
+mobile's title stays all-white (untouched colour-wise, per the 1.4.2 pass's own mobile-only override),
+only the box sizing needed to catch up to the new, longer default content.
+
+**Verified on local WordPress** (Puppeteer, at Figma's own 1440x825 reference viewport): title renders
+as 3 real lines (2-line orange span confirmed via computed height), gap between description and
+button measures exactly `56.02px`, both share the same `878px` left edge. Mobile (390px) re-screenshotted:
+title and breadcrumb no longer overlap, `40px` gap confirmed, matches the pre-existing mobile look
+exactly aside from the extra line the longer text now needs.
+
+Mirrored to the static prototype (`insights.html`, `css/insights.css`). Rebuilt `theme-code-only.zip`
+(`_S_VERSION` bumped `1.4.2` -> `1.4.3` - 1.4.2 was never uploaded, this supersedes it). Same deploy
+steps as before: upload to `wp-content/themes/`, extract with overwrite, no SQL.
+
+## ⏳ PENDING (theme zip, `_S_VERSION 1.4.2`, not yet uploaded) — Insights hero section rebuilt to match Figma (text + accent colour), desktop only, first of a section-by-section Insights page rebuild
+
+Client is rebuilding the Insights (blog listing) page against a fresh Figma pass, section by section -
+this is the first section (Hero), 4 Figma nodes supplied (1867:1752 full-page reference, 1867:1753 the
+hero frame/nav, 1867:1774 the heading text, 1867:1766 the description+CTA).
+
+**Found and fixed a template mix-up while investigating.** Initially edited `archive.php`'s hero markup
+(same field group, same variable shape) and couldn't get the change to show up locally even after an
+Apache restart and a direct DB check confirming the ACF field really was empty. Root cause: WordPress's
+own template hierarchy renders the Insights page (a static "Posts page", not the true front page) via
+**`home.php`**, not `archive.php` - `archive.php` only fires for category/tag/date archives, a
+different, unrelated context that happens to share the same `insights.css` enqueue condition
+(`is_archive()`). Made the real edit in `home.php` (kept the `archive.php` copy too, since it's
+harmless there and archive pages may want the same "Articles" breadcrumb consistency later).
+
+**Content changes (`home.php` + `functions.php`), matched to Figma exactly:**
+- Hero title default: "Delivering Results for / Leading Real Estate Brands" -> "UAE Real Estate /
+  Insights, Trends & Marketing" - the **last line is now always shown in orange** (`#FFA726`), any
+  number of preceding lines stay white. Built as a small reusable helper,
+  `sold_title_with_highlight()` in `functions.php`, rather than a one-off string hack: it splits the
+  raw `<br>`-separated value and wraps only the final segment in `.hero-title-highlight`, so an editor
+  keeps typing plain text with `<br>` exactly as the field always instructed - no HTML/class knowledge
+  needed on their end, and this can be reused for any other hero that needs the same "last line accent
+  colour" pattern later.
+- Hero description default: -> "Stay ahead of the market with SOLD insights on UAE real estate trends,
+  buyer behaviour, property marketing, lead generation, SEO, and AI search." (matches node 1867:1766).
+- Breadcrumb label: "Blogs" -> "Articles" (both the desktop and mobile breadcrumb, matches Figma's
+  wireframe node 1867:1753).
+- **Background image - checked, not changed.** Downloaded Figma's own hero background asset (node
+  1867:1753's fill) and diffed it byte-for-byte against the theme's existing `bannersold.png` - **MD5
+  identical**. The background photo was already exactly right; nothing to update there.
+
+**Already ACF-editable, confirmed not just assumed:** `acf-json/group_insights_page.json`'s Hero group
+(`field_ins_hero`) already has Title/Description/Button Text/Background (desktop+mobile)/Button
+Link/Button Icon as real fields - client can already override every piece of this section from
+wp-admin (Insights page's meta box) once these new defaults ship. Added `default_value` to the Title
+and Description fields (matching the new copy) so a first-time edit in admin starts from the right
+content instead of blank, and updated the Title field's instructions to mention the automatic last-line
+highlight. Bumped the JSON's own `modified` timestamp so ACF's sync screen picks up the change.
+
+**Verified on local WordPress** (Puppeteer, after tracing the archive.php/home.php mix-up down to a
+real DB check via `get_post_meta()` confirming the field was genuinely empty, not just displaying
+stale cache): highlight span computes to `rgb(255, 167, 38)` (#FFA726 exact) at 1440px, base title
+text stays white, breadcrumb reads "Articles". **Mobile explicitly re-checked and confirmed
+untouched** - added a mobile-only override (`.insights-hero-title .hero-title-highlight { color:
+#FFFFFF !important; }`) specifically so the new span doesn't turn orange there too, since mobile's own
+Figma spec for this section hasn't been supplied yet (mobile hides the description/button entirely on
+this page, "client-success approach" per its own existing comment) - computed color still `rgb(255,
+255, 255)` on both the base title and the new span at 390px, pixel-identical to before this change.
+
+Mirrored to the static prototype (`insights.html`, `css/insights.css`) - same content changes, no ACF
+involved there since it's plain HTML.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.1` -> `1.4.2`). Upload to cPanel File Manager,
+extract into `wp-content/themes/` (one level **above** `sold-theme/`, not inside it - see the folder-
+depth note earlier in this file) with overwrite. No SQL, no new images.
+
+## ✅ CONFIRMED LIVE 2026-09-24 (`_S_VERSION 1.4.1`) — Mobile pre-footer/CTA button was silently clipped to ~16px tall site-wide; fixed to auto-size + 50px bottom gap
+
+Client reported the CTA button looked too small on mobile while reviewing the new Events page (built
+from `page-service.php`) - supplied two Figma node links for the mobile button (3548:4017 the
+section frame, 3548:4019 the button itself: 239x39px, positioned so its bottom sits 50px above the
+section's own bottom edge) and asked for the same 50px gap site-wide, since the button reads small on
+every page, not just Events.
+
+**Root cause, found by measuring, not assumed:** `.btn-pre-footer`'s desktop base rule (in both
+`css/style.css` and `css/style-v2.css`) sets `height: 4.0278cqi` (the ~58px fixed height added in the
+earlier Figma-button-match fix, intended to resolve against the ~1440px desktop container). The mobile
+`@media (max-width: 767px)` override never resets `height` at all, so that same `cqi` value keeps
+applying at mobile widths too - but `cqi` scales to the *actual* container size, so against a ~390px
+mobile container the identical rule silently computed to **~15.7px** instead of ~58px, clipping the
+34px icon and 30px-line-height text into a box far shorter than either. This is why it looked broken
+on every page using this shared button, not something specific to the Events page or its content.
+
+**Verified live on both Branding & Design and Events before fixing** - identical broken numbers on
+both (`height: 15.7px`, icon 34px/text 30px overflowing it) - confirming this was already live and
+site-wide, not an Events-only regression.
+
+**Fix, both `css/style.css` and `css/style-v2.css`:**
+- `.btn-pre-footer` (mobile block): added `height: auto !important` so the box sizes itself from its
+  own padding + tallest child (icon 34px + 4px top/bottom padding = 42px) instead of inheriting the
+  stray desktop `cqi` value - same "auto-size, don't hardcode" approach already used for this button's
+  width.
+- `.pre-footer-inner` (mobile block): `padding: 56px 24px` → `padding: 56px 24px 50px 24px` - the
+  button is the last child in this column-flex layout, so its own bottom padding *is* the button's gap
+  to the section's bottom edge. Top/left/right padding (56px/24px) untouched, only the bottom value
+  matches the client's requested 50px.
+
+**Verified on local WordPress** (Puppeteer, real DOM measurement, not just reading the CSS):
+- Mobile (390px), Branding & Design: button height `42px` (was `15.7px`), bottom gap to container
+  `50.00px` exactly.
+- Desktop (1440px), same page: button height `58px`, bottom gap `45px` - both completely unchanged,
+  confirming the mobile-only fix didn't touch the desktop rule from the earlier Figma-match pass.
+
+**Intro section - checked, not a bug.** Client also asked to confirm the Intro section (heading +
+description + container width) matches between Events and Branding & Design, web and mobile. Measured
+both pages directly at 1440px and 390px: container width, padding, heading font-size, and description
+font-size/width are byte-identical between the two pages at both breakpoints (both use the exact same
+shared `page-service.php` template + `branding-design.css` classes). The only difference is **content**
+- the Events page's Intro Description field still has placeholder "Lorem ipsum..." text in wp-admin,
+not a CSS/template problem. No code change made for this part; needs the real copy entered in the ACF
+field instead.
+
+Rebuilt `theme-code-only.zip` (`_S_VERSION` bumped `1.4.0` -> `1.4.1`). Upload this to cPanel File
+Manager, extract with overwrite into `wp-content/themes/sold-theme/` (same as every past theme-only
+deploy) - no SQL, no new images this round.
+
+## ⏳ PENDING (theme zip only, rides along with the `_S_VERSION 1.4.0` zip below) — Pre-footer/CTA button resized + repositioned to match Figma exactly, site-wide, web only
+
+Client supplied 4 Figma node links for the pre-footer/CTA button (the full section frame plus 3 of its
+sub-elements: the button box, its text, its icon). Fetched via the Figma MCP and cross-checked with
+`get_metadata` for exact pixel values (1440x286 reference frame): button 347x58px, positioned so its
+bottom edge sits exactly **45px** above the section's own bottom edge - matches the client's own
+independently-stated number exactly, confirming the right element/measurement. Icon 41.64x45.49px
+(already ~42x45px live, negligible), text 25px Inter Medium (already matched live, unchanged),
+icon-to-text gap 16.85px (~17px), left inset 10.91px (~11px, unchanged), right margin 26.77px (~27px).
+
+**The button's width was deliberately NOT hardcoded to Figma's 347px.** That number is what Figma's own
+"GET STARTED NOW" reference text happens to produce - the real site's CTA text differs per page (e.g.
+Home's "SPEAK TO AN EXPERT" is a different length), and this section was made genuinely dynamic earlier
+in this project specifically so it adapts to whatever text a given page has instead of clipping/
+overflowing a fixed box. Fixed the *padding/gap values* to Figma's exact numbers instead (icon-to-text
+gap 18px->17px, right padding 25px->27px, height now an explicit fixed 58px) - width still auto-sizes
+from those paddings + whatever text is present, and happens to land almost exactly on 347px for
+"SPEAK TO AN EXPERT" too (measured 333.02px live - close because the paddings are now Figma-exact, the
+remaining difference is purely the two reference strings' different lengths, not a padding error).
+
+**The 45px bottom gap.** `.pre-footer-inner`'s shared bottom padding (58px, used by both the title and
+the button via `align-items:flex-end`) was reduced to 45px in `css/style.css` and `css/style-v2.css` -
+since `branding-design.css` has no rules of its own for this section (confirmed - it reuses these same
+two files' shared rules), this one change covers every page site-wide, service pages included, with no
+separate edit needed anywhere else. Reducing that shared padding would also have pulled the title 13px
+closer to the bottom, which wasn't asked for - added `margin-bottom: 13px` to `.pre-footer-title` to
+exactly cancel that out, so only the button's gap actually changed.
+
+**Web only, confirmed** - mobile's own separate `@media (max-width: 767px)` rules for this section were
+never touched.
+
+Verified via Puppeteer across Home (`style.css`), Services, Why SOLD, and Branding & Design
+(`style-v2.css`, service-page template): button bottom gap reads exactly `45.00px` and height exactly
+`58.00px` on every page checked; title's own bottom gap reads `58.00px` - unchanged from before this
+fix, confirming the compensation works. Mobile re-checked and shows completely different values (own
+independent layout, `flex-direction: column`), confirming it's untouched. Screenshot compared side by
+side with the Figma reference image - matches closely.
+
+## ⏳ PENDING (theme zip only, rides along with the `_S_VERSION 1.4.0` zip below) — Why SOLD founder quote: added Figma's quote marks, letter-spacing set to 0, web only
+
+Client supplied two Figma node links for the "Our Founders" section (Andy Birt's card) - fetched both
+via the Figma MCP. Two changes, web only (mobile explicitly confirmed fine, untouched):
+
+1. **Quote marks.** Figma wraps the bio in curly quotes (`"…"`) as part of the quote-card's design.
+   The live/database value (`ws_founders[0].bio_desk`, ACF) has **no quote characters at all** - the
+   static prototype's `why-sold.html` had them hardcoded directly in the HTML text instead, which is
+   the more fragile approach (an editor typing new bio text would need to remember to include them).
+   Fixed at the CSS level instead: `.ws-founder-1 .ws-founder-bio.d-lg-block::before/::after` now
+   generate the opening/closing curly quotes (`\201C`/`\201D`), so they're always correct regardless of
+   what text is entered - removed the hardcoded quote characters from the static prototype's HTML to
+   match (avoids double-quoting there), the WP fallback text already had none. `.d-lg-block` (not just
+   `.ws-founder-bio`) keeps this scoped to the desktop paragraph only - the separate mobile paragraph
+   (`.d-lg-none`) has its own Figma design with no quotes, untouched.
+2. **Letter-spacing.** Figma specifies `0.01em` (1%) here - client explicitly asked for `0` instead,
+   overriding Figma. Changed in the same `.ws-founder-1 .ws-founder-bio` rule
+   (`@media (min-width: 768px)` block only).
+
+**Verified:** both Figma nodes fetched and cross-checked against the live font-size (22px)/line-height
+(25px)/color (#0F0F0F) to confirm the correct element before touching anything. Computed-style check
+initially looked wrong (`letter-spacing: normal` instead of `0px`) - traced this down to confirm it's
+expected Chromium behaviour (an explicit 0 computes to the "normal" keyword, since they're visually
+identical) rather than the rule failing to apply, by forcing other explicit values (`0.01em`, `5px`) on
+the same element and confirming those *do* show their real pixel value, only exact zero shows as
+"normal". Screenshotted the result: curly quotes render correctly around the real live bio text, tighter
+letter-spacing visible. Mobile re-checked and confirmed untouched (no generated quotes, its own separate
+letter-spacing value unaffected).
+
+## ⏳ PENDING (theme zip only, rides along with the `_S_VERSION 1.4.0` zip below) — Client Success card titles recoloured orange, all 10 boxes, web + mobile
+
+Client-requested: all 10 Client Success case-study cards' title (e.g. "Accelerating Sales for One of
+the UAE's Fastest-Growing Developers") should use the brand orange `#FFA726` instead of its previous
+colour. One shared rule (`.cs-card-title`) covers all 10 cards, so a single change per breakpoint fixes
+every card - confirmed via computed-style check that no individual card has its own colour override
+(a couple do have their own *width* override, unrelated). Desktop was `#263238` (dark slate), mobile was
+`#000000` (black) - both changed to `#FFA726` in `css/client-success.css`. No other property (font,
+size, spacing, layout) touched.
+
+Verified: computed `color` on all 10 `.cs-card-title` elements reads `rgb(255, 167, 38)` (`#FFA726`
+exactly) at both 1440px and 390px; screenshotted cards 1, 5, and 10 (not just the one the client quoted)
+to confirm every card picked up the change consistently, not just one.
+
+## ⏳ PENDING (theme zip only, `_S_VERSION 1.4.0`, not yet uploaded) — Testimonials: web drag replaced with two-finger trackpad swipe
+
+Client-requested: replace the "click and hold, then drag" interaction on the testimonials carousel
+(web only) with a two-finger trackpad swipe. Mobile's existing touch-swipe must stay exactly as-is.
+
+**What changed, in both `js/main.js` (Home) and `js/main-v2.js` (every other page):** the
+`mousedown`/`mousemove`/`mouseup` click-and-drag block is gone, replaced by a `wheel` event listener on
+`.testimonials-track`. A trackpad two-finger swipe fires `wheel` events with a horizontal `deltaX` -
+this is a fundamentally different browser event from a touchscreen finger swipe (which fires `touch`
+events, untouched by this change), so it's naturally web/desktop-only without needing any width check.
+A vertical-dominant `wheel` event (a normal mouse wheel, or a two-finger vertical scroll) is left
+completely alone - no `preventDefault()`, so the page still scrolls normally under the cursor.
+
+One physical two-finger swipe fires many small `wheel` events in quick succession, not one clean event
+- `deltaX` is accumulated across the gesture (the accumulator resets after a brief 150ms pause with no
+further wheel events) and a slide only fires once the accumulated total crosses a 50px threshold,
+followed by a 500ms cooldown that swallows the rest of that same physical gesture's leftover events -
+otherwise one swipe could fire several slides in a row.
+
+Also removed the now-dead `.testimonials-dragging` CSS rule (`css/style.css` and `css/style-v2.css`,
+`@media (min-width: 768px)`) - it only ever existed to suppress text selection while the now-removed
+drag handler was active, and nothing adds that class anymore.
+
+**Verified via Puppeteer** (had to fix the test's own positioning first - `scrollIntoView`'s smooth-
+scroll animation was racing ahead of `boundingBox()`, the same class of bug already documented
+elsewhere in this project; switched to instant `window.scrollTo`, matching that established fix):
+- Forward swipe (positive `deltaX`) advances to the next testimonial; reverse swipe (negative `deltaX`)
+  goes to the previous one, correctly wrapping around at both ends.
+- A vertical-dominant wheel gesture changes nothing about the carousel and the page still scrolls
+  normally (`window.scrollY` increased as expected).
+- The old click-and-drag gesture (mousedown → move → mouseup) no longer changes the active slide at all
+  - confirms the interaction was actually replaced, not just supplemented.
+- A single swipe burst (6 rapid wheel events, well over the 50px threshold) advances **exactly one**
+  slide, not several - confirms the accumulate/cooldown logic works.
+- Mobile touch-swipe re-tested and confirmed completely unaffected (still advances the carousel exactly
+  as before this change).
+
+## ✅ CONFIRMED LIVE 2026-09-23 — `_S_VERSION 1.3.0` — Site-wide AJAX page navigation FULLY REVERTED (+ Service Page CTA/card fixes, navbar height, pre-footer align)
+
+**Client decision: remove the AJAX-nav feature entirely, not just fix it.** The feature (documented in
+the two entries directly below this one) had briefly been live on production at `_S_VERSION 1.2.0` -
+this revert took it back down. Verified directly against the live domain after deploy: `_S_VERSION`
+serving `1.3.0`, `ajax-nav.js` absent from every enqueued script list, `main.js`/`main-v2.js`/
+`why-sold-scroll.js`/`why-sold-animations.js`/`contact-modal.js`/`page-loader.js` all confirmed
+byte-level reverted (checked via their exact distinguishing code, not just a version number), all 6
+key pages returning 200 with zero PHP warnings, and a live click test confirming navigation is a real
+full-page reload again (no AJAX interception). This same zip also carried the Service Page CTA-button
+width fix, the card-3 mobile overflow fix, the sticky-navbar height, and the pre-footer bottom-align
+fix (their own entries further down) - all confirmed live the same way.
+
+**What was reverted, file by file** (both the WP theme and the static prototype):
+- `js/ajax-nav.js` - **deleted** entirely (was the whole click-interception/fetch/swap engine).
+- `js/main.js`, `js/main-v2.js` - un-split back into a single `DOMContentLoaded` handler each (no more
+  `initHeaderChrome()`/`initMainContent()` split, no `cleanupMainContent()` registry, no
+  `window.SoldHomeMain`/`window.SoldPageMain` exports). Every other fix that landed in these files this
+  session (the testimonials-dragging text-selection fix, in particular) was **kept** - only the
+  AJAX-reusability restructuring was undone.
+- `js/why-sold-scroll.js`, `js/why-sold-animations.js` - same treatment: un-split back to a single
+  top-level `DOMContentLoaded` handler each, no `init()`/`cleanup()` exports.
+- `js/contact-modal.js` - reverted from a single delegated `document`-level click listener back to a
+  per-trigger `triggers.forEach(...)` listener (its original, pre-AJAX-nav form).
+- `js/page-loader.js` - reverted back to **removing** the loader element from the DOM 400ms after first
+  use (its original, single-use form) instead of keeping it around for reuse on later transitions. The
+  loader itself (the branded full-screen animation on a normal page load) is untouched and still works -
+  this only undoes the part that let `ajax-nav.js` fade it back in for a transition.
+- `functions.php` - the `sold-ajax-nav` script enqueue (and its dependency-array block) removed entirely.
+- All 15 static prototype HTML pages - the `<script src="js/ajax-nav.js">` tag removed.
+
+**Confirmed NOT touched by this revert** (unrelated fixes from other requests in this same window, kept
+as-is): the sticky/compact navbar pill height (40px) and the pre-footer button's bottom-right anchor -
+see their own entries further down.
+
+**Verified, not assumed:** after the revert, clicking a nav link on the local WordPress install triggers
+a real, full browser navigation again (confirmed via `framenavigated` events and a `window` marker that
+does NOT survive the click, proving it's a genuine reload, not an intercepted one) - `js/ajax-nav.js` is
+confirmed absent from both the enqueued script list and the rebuilt zip. All reverted JS files pass
+`node --check`. `js/why-sold-scroll.js`, `js/why-sold-animations.js`, `js/contact-modal.js`, and
+`js/page-loader.js` now match this project's git history for those files exactly (byte-for-byte, per
+`git diff`); `main.js`/`main-v2.js` differ from git history only by the still-wanted testimonials-drag
+fix, confirmed via diff.
+
+## ⏳ SUPERSEDED/ABANDONED — Site-wide AJAX page navigation (no full reload)
+
+**This feature was reverted - see the 🔴 URGENT entry above.** Left here only as a historical record of
+what was built and why; do not deploy anything described below, deploy the revert instead.
+
+Client requirement: navigating via the navbar/other links should not fully reload the browser, while
+keeping URL structure, SEO, and back/forward working correctly, on web and mobile, without changing
+any existing UI/functionality. Chosen transition visual: fade the existing branded page loader in/out
+during the swap (reusing the loader built in the previous pending entry below), not an instant swap.
+
+**Architecture.** Every template already followed one shared shape: `get_header()` → `<main>...</main>`
+→ `get_footer()`, with the header/footer output identical on every page (only which template fills
+`<main>` differs). `js/ajax-nav.js` (new) intercepts clicks on same-origin links, `fetch()`s the
+destination's real URL, and replaces only the `<main>` element with the fetched page's `<main>` - the
+header, footer, WhatsApp float, mobile offcanvas drawer, contact modal and page loader are never
+removed or re-created, so their own event listeners stay valid and nothing needs re-binding for them.
+Every URL still serves a complete, real server-rendered document on its own (confirmed by fetching
+each URL directly) - this is progressive enhancement of normal navigation, not a single-page app; a
+crawler, a user with JS disabled, or a hard refresh all get identical content, and every transition
+still calls a real `history.pushState()` with the real destination URL, which is what keeps SEO and
+back/forward intact.
+
+**The Contact page is deliberately excluded** - `page-contact.php` builds its own standalone document
+instead of using the shared header/`<main>`/footer structure (pre-existing, unrelated to this change),
+so it has no `<main>` to swap into. Rather than hardcoding that one exception, `ajax-nav.js` checks for
+a `<main>` in the fetched response and falls back to a real, normal navigation whenever it's missing -
+which also makes it safe against any future template that doesn't follow the shared structure.
+
+**Per-page CSS/JS reconciliation, not a hardcoded manifest.** This theme enqueues a real matrix of
+conditional assets per page type (`style.css` vs `style-v2.css`, `main.js` vs `main-v2.js`, `why-sold.css`
++ 2 dedicated scripts only on Why SOLD, per-slug CSS files, `seo-geo` uniquely loading *both* `style.css`
+and `style-v2.css` together, etc. - see `sold_theme_scripts()`). Rather than duplicating that matrix in
+JS (which would silently drift out of sync with `functions.php` over time), `ajax-nav.js` diffs the
+fetched page's actual `<head>` stylesheet `<link>`s and `<body>` `<script src>` tags against what's
+currently loaded: missing stylesheets are added and re-ordered to match the fetched page's cascade
+order exactly (`appendChild` on an already-attached `<link>` moves it without reloading it - needed
+because `seo-geo` requires `style.css` to be applied *before* `style-v2.css`, a real cascade-order
+dependency, not just presence/absence), stylesheets the new page doesn't need are removed, and any
+script not already on the page is injected and loaded (in fetched-document order, awaiting each
+before the next, matching `defer` semantics) - deduped by path so a script already loaded is never
+re-injected (re-running an already-initialized script's top-level code would double-bind its listeners
+- e.g. a second delegated click handler in `contact-modal.js`, or a second `contactModal` DOM injection).
+
+**Every interactive script needed a re-init path.** `main.js`/`main-v2.js` previously ran their entire
+setup exactly once inside a single top-level `DOMContentLoaded` handler - FAQ accordion, services
+accordion, testimonials carousel (drag/swipe/auto-scroll), mobile insights carousel, steps timeline
+scroll animation, header compact-scroll toggle, mobile offcanvas drawer, nav dropdowns. Split each file
+into `initHeaderChrome()` (header/offcanvas/dropdowns - runs once; that DOM is never swapped) and
+`initMainContent()` (everything scoped inside `<main>` - runs on first load **and** again after every
+AJAX swap, since that content is fully replaced each time). `initMainContent()` starts with a
+`cleanupMainContent()` pass that clears the testimonials auto-scroll `setInterval` and any lingering
+`window`-level drag listeners from the previous run before setting up the new content - listeners
+attached to elements *inside* `<main>` are cleaned up for free when that DOM is removed, but a
+`setInterval` or a `window.addEventListener('scroll'/'resize', ...)` is not, and would otherwise pile
+up a duplicate for every transition (confirmed this exact leak pattern in the steps-timeline scroll
+animation, which had 3 `window` listeners with no teardown). Same treatment for
+`why-sold-scroll.js` (team carousel + client-logo arc rotation, Why SOLD only) and
+`why-sold-animations.js` (rotating 3-card info stack, Why SOLD only) - both now expose an idempotent
+`init()` that `ajax-nav.js` calls after detecting the `why-sold-page-body` class on the swapped-in page.
+Each file exposes its main-content init as a distinct global (`window.SoldHomeMain` for `main.js`,
+`window.SoldPageMain` for `main-v2.js`, `window.SoldWhySoldScroll`, `window.SoldWhySoldAnimations`) so
+both the Home and non-Home script can be loaded at the same time (needed once a session has visited
+both) without colliding.
+
+**Contact modal + page loader also refactored to be AJAX-safe:**
+- `contact-modal.js` switched from a per-trigger-element listener (bound once, at initial load) to a
+  single delegated `click` listener on `document`. This means a `[data-contact-trigger]` button that
+  arrives later as part of a swapped-in `<main>` works immediately with nothing needing to re-run, and
+  a trigger already in the persistent header/footer never accumulates a second listener either. The
+  modal itself is fetched once and appended to `document.body` (a sibling of `<main>`, never touched
+  by a swap), so it's never re-fetched or duplicated.
+- `page-loader.js` used to permanently remove the loader `<div>` from the DOM 400ms after first use.
+  It's now kept in the DOM (just toggled via its existing `--hidden` class) and exposes
+  `window.SoldPageLoader.show()`/`.hide()`/`.enabled`, so `ajax-nav.js` can fade the exact same element
+  back in before each fetch and hide it again once the swap completes. Confirmed the disabled-loader
+  case too (`page_loader.enabled` off via Theme Settings): `ajax-nav.js` checks `.enabled` and simply
+  skips the fade, transitioning instantly with no error.
+
+**Also fixed a small pre-existing gap while touching this area:** the Why SOLD page's rotating 3-card
+info stack (`ws-cards-stack`, `why-sold-animations.js`) had markup and CSS for it but the script tag
+itself was missing from the static prototype's `why-sold.html` (the WordPress theme already enqueued
+it correctly) - added the missing `<script>` tag.
+
+**Verified, not assumed** - real Puppeteer runs against both the static prototype (via a local static
+file server) and this real local WordPress site, desktop (1440px) and mobile (390px):
+- No full browser reload on any link click (a `window.__marker` set before navigating survives after).
+- URL, `<title>`, and `document.body` class all update correctly after every transition (confirmed via
+  the real fetched page's own template-hierarchy body class, e.g. `why-sold-page-body`), including
+  navigating Home → Why SOLD → back to Home → browser Back button, each landing on the correct URL.
+- Header and footer are the *same DOM node* before and after a transition (identity-checked, not just
+  visually) - proving they're genuinely persisted, not silently re-created.
+- CSS cascade order is correct after a transition into the one page that uniquely double-loads
+  `style.css` + `style-v2.css` together (`seo-geo`), and correctly cleaned back up on leaving it.
+- The contact modal opens/closes correctly after multiple AJAX transitions, with exactly one
+  `#contactModal` in the DOM at all times (no duplicate injection).
+- 4 rounds of bouncing Home ↔ Why SOLD back-to-back produced no errors and no duplicate carousel/dot
+  state, confirming the auto-scroll timer and window-listener cleanup actually prevents the leak it
+  was written to prevent.
+- Mobile: the offcanvas drawer opens, closes on a nav-link click, transitions the page, and still
+  opens again afterward - proving the persistent header/footer's own listeners survived the swap.
+- The Contact page itself falls back to a real, normal navigation (confirmed no `<main>` on that
+  response), and every other page's own direct URL still returns full correct HTML on its own.
+- Zero console errors, zero thrown JS exceptions across every scenario above (aside from an unrelated,
+  pre-existing `favicon.ico` 404 present on every page regardless of this change).
+
+**Not yet done, out of scope of this pass:** true scroll-position restoration on Back only restores to
+whatever position was saved just before navigating away (a simple per-URL map), not a pixel-perfect
+native restoration for every edge case; a fresh forward navigation always scrolls to top, matching
+normal link-click behaviour. No analytics "virtual pageview" event is fired on a transition - this
+project has no analytics/GTM setup to hook into, so nothing was added rather than guessing at one.
+
+## ✅ CONFIRMED LIVE 2026-09-23 (`_S_VERSION 1.3.0`) — Pre-footer/CTA button reverted to bottom-right anchor, web only
+
+Client feedback: the pre-footer's "GET STARTED NOW"-style button ended up vertically **centred**
+against the title once this section went dynamic/flex-based (see the "Where Great Brands Begin"/CTA
+dynamic-sizing entry, later in this file) - but the original design had it anchored to the
+**bottom-right**, not centred. `.pre-footer-inner`'s `align-items: center` changed to
+`align-items: flex-end` in both `css/style.css` (Home) and `css/style-v2.css` (every other page's
+desktop rule) - the button's bottom edge now lines up with the title's last line/bottom padding edge
+at any title length, while the section's real dynamic height (no fixed box, grows with however many
+lines the title wraps to) is completely unaffected - only the button's vertical anchor point changed.
+
+**Scope, confirmed:** only the desktop (non-media-query) base rule in each file. The mobile override
+(`@media max-width:767px` in both files) already uses `flex-direction: column` with
+`align-items: flex-start` - a different layout entirely (title stacked above button), untouched, not
+applicable to this fix. `events.css`'s own `.events-page-body .pre-footer-inner` override is also
+untouched - it's mobile-only (`@media max-width:767px`) and uses `display:block` with absolute
+positioning, not flexbox, so `align-items` doesn't apply there at all.
+
+Verified via Puppeteer: button's bottom edge now measures exactly equal to the title's bottom edge
+(both at the same Y-coordinate) on Home, Services, and Why SOLD - consistent across different title
+lengths, confirming the anchor works correctly regardless of how many lines the title wraps to, not
+just for one specific page's text.
+
+## ✅ CONFIRMED LIVE 2026-09-23 (`_S_VERSION 1.3.0`) — Service Page template audited against the full ACF-editability spec; one real bug found and fixed
+
+Client re-supplied the Service Page's full section spec (Hero incl. navbar/heading/subtitle/
+breadcrumbs/CTA, Intro, "Where Great Brands Begin" cards, "Design & Production", Gallery, "How We
+Build Your Brand" steps, CTA, FAQ, footer) and asked for `page-service.php` + its ACF field group
+(`acf-json/group_service_page.json`) to be audited against it - every element editable, nothing
+hardcoded, web + mobile.
+
+**Method - a real admin-panel-equivalent test, not a read-through:** wrote every one of the ~30 ACF
+sub-fields across all 8 field groups to a distinctive, unique test string in one pass via real
+`update_field()` calls (the same function WordPress's own admin-panel save uses), confirmed all 30
+values render in the correct place in the actual page HTML, confirmed every image field's fallback
+(several left deliberately empty) resolved to its correct default asset with zero broken image
+requests, screenshotted the full page at 1440px and 390px, then restored the original content byte-
+for-byte from a backup taken before the test.
+
+**Result: every section/element in the spec is genuinely ACF-editable** - hero background (desktop +
+mobile), title, subtitle, CTA text/icon; intro heading/description; cards heading + all 4
+title/title-mobile/desc; production heading/pill icon/each row's text/CTA text/icon; gallery image (any
+aspect ratio); steps heading + all 4 label/desc (numbers and arrows are correctly auto-generated/
+global, not meant to be per-step); pre-footer desktop/mobile title + button text/icon; FAQ question/
+answer repeater. The "supporting line" under each card title and the "connecting lines" between steps
+are both purely decorative (a CSS divider, and the same global arrow icon reused) - correctly not
+separate content fields, nothing to add there. Navbar and footer are the shared global header/footer,
+correctly out of scope for a per-page field group.
+
+**One real bug found and fixed:** `.branding-production-cta` (the "Design & Production" section's CTA
+button) had a **hardcoded fixed width** (`21.4583cqi`/309px desktop, `231px` mobile) sized to fit only
+the default "SPEAK TO AN EXPERT" text exactly - entering a longer CTA text via ACF visibly overflowed
+past the button on both breakpoints (`scrollWidth > clientWidth` confirmed, not just eyeballed). The
+hero CTA and pre-footer CTA buttons were checked too and don't have this problem - fixed by removing
+the hardcoded width and letting the button auto-size to its content instead, the exact same fix pattern
+(and reasoning) already applied to `.btn-pre-footer` earlier in this project. Re-tested: no overflow at
+either breakpoint with the long test text, and the original "SPEAK TO AN EXPERT" button renders pixel-
+identical to before the fix (screenshotted side-by-side) - not a regression for the common case, only a
+fix for the longer-text case that was actually broken.
+
+## ✅ CONFIRMED LIVE 2026-09-23 (`_S_VERSION 1.3.0`) — "Where Great Brands Begin" card 3 title overflowed its card on mobile, fixed
+
+Client-reported: card 3's heading ("Built for Today." / "Ready for Tomorrow.") touched/overflowed past
+the card's right edge on some mobile screen sizes. Mobile only, keep the same two-line layout, don't
+touch desktop or any other section/card.
+
+**Root cause, found by testing (not assumed):** this title comes from an ACF field storing a real
+newline character between the two sentences - the rendered HTML has an ordinary line-break character
+there, not an actual `<br>` tag. The mobile CSS's `white-space: nowrap` (added by an earlier fix for a
+*different* card, and mistakenly assumed - per its own comment - that this card already had a real
+`<br>` splitting it into two separate nowrap nodes) collapses that newline into an ordinary,
+non-breaking space instead of letting it break - so the **entire** "Built for Today. Ready for
+Tomorrow." string was being forced onto one unbroken line. Measured directly: 395px of content trying
+to fit ~194-304px of available card width at every phone size tested (320/360/375/390/393/414/428/
+430px) - it overflowed at literally all of them, even at this rule's own 19px font-size floor.
+
+**Fix:** `white-space: nowrap` → `white-space: pre-line` for this one card's title, mobile only (its
+own already-existing dedicated selector, `.branding-card:nth-child(3) .branding-card-title`, inside the
+`@media (max-width: 767px)` block - card 1/2's shared nowrap rule and desktop's separate, untouched rule
+are unaffected). `pre-line` preserves the real newline as an actual forced line break (keeping the
+intended two-line layout) while still allowing normal wrapping if a line is ever too long for a given
+width - so unlike `nowrap`, it structurally cannot overflow the card at any screen size, it would
+degrade to a 3rd line instead (never observed in testing, since each individual sentence is well short
+enough to fit at every width checked).
+
+Verified via Puppeteer: zero overflow (`scrollWidth <= clientWidth`, box never exceeds the card's own
+right edge) at all 8 widths tested; screenshots at 320px and 390px confirm the same two-line layout,
+properly contained with consistent left/right spacing; desktop screenshot confirms pixel-unchanged
+(still wraps naturally on its own, wider card, exactly as before).
+
+## ✅ CONFIRMED LIVE 2026-09-23 (`_S_VERSION 1.3.0`) — Sticky/compact navbar pill height reduced, web only
+
+Client-requested: the sticky (scrolled) navbar's nav pill (Home/Services/Client Success/etc., the
+semi-transparent white pill that visually blends with the solid `#263238` bar behind it into what
+reads as `#515B60`) felt too tall. `height: 3.6805cqi` (53px, matched the tall header's own pill)
+reduced to `height: 2.7777cqi` (40px) in `.site-header.is-compact .main-nav-wrapper` - both
+`css/style.css` (Home) and `css/style-v2.css` (every other page) have this rule and were updated
+identically, per this codebase's usual pattern. Padding, gap, font-size, border-radius, the 72px outer
+bar height, and the "Book a Call" button are all untouched - only the pill's own height changed. Web +
+tablet only (`@media (min-width: 768px)`, same block the whole compact-bar feature lives in) - mobile
+uses a completely different header layout, unaffected by design.
+
+Verified via Puppeteer, both style variants: pill now renders at 40px, nav link text sits vertically
+centred with ~8px clearance above and below (was tight against the old 53px, still no clipping at the
+new height), dropdown arrow icon unaffected, layout/alignment otherwise pixel-identical to before.
+
+**Follow-up same session - final state confirmed:** the "Book a Call" button
+(`.site-header.is-compact .header-cta`, was 53px) is reduced to 40px, same as the nav pill, so both now
+share the same height, same vertical centre, and the button's text/arrow icon sit level with the nav
+item text (measured: nav-link text centre 35.984px, button text centre 35.992px - effectively
+identical). This went through a reduce -> revert -> re-confirm cycle in this same session (briefly
+reverted back to 53px on a misread of feedback, then explicitly re-requested at 40px with a precise
+spec) - **40px is the final, confirmed value.** Web/tablet only (`@media (min-width: 768px)`); mobile's
+`.header-cta` is `display:none` regardless (a separate offcanvas-drawer CTA is used there instead), so
+it was never touched by this change at any point.
+
+## ⏳ PENDING (theme zip only, `_S_VERSION 1.1.0`, not yet uploaded) — Mobile header top gap reduced 42px -> 30px, site-wide
+
+Client-requested: the gap above the logo/WhatsApp/hamburger row (mobile only) felt too big. Fixed
+`.site-header`'s `top` value (was 42px) in both `style.css` (Home's own copy) and `style-v2.css`
+(every other page) - each file has this exact rule duplicated 3x (a pre-existing pattern, see this
+file's own v1.0.66 history), all 3 updated together via a scoped `replace_all` in each file (matched
+on `top: 42px` + its following `left`/`right` lines specifically, since an unrelated `.client-logo`
+rule elsewhere coincidentally shares the same bare `42px` value - confirmed not touched).
+
+**No separate WhatsApp button fix needed** - since the v1.0.95 restructure (this button became a
+real child of `.site-header`, self-centering via `top:50%` + `translateY(-50%)`), it automatically
+tracks whatever position the header itself has. Verified this is genuinely automatic, not assumed:
+measured the button's and hamburger's vertical centre on 6 pages, both land exactly at 60px
+(30px new header top + half of the unchanged 60px header height) with zero extra CSS changes.
+Checked every other page-specific CSS file for a `.site-header` top override that might need its
+own update - none exist, confirming this fix in the 2 shared files covers every page. Contact page
+correctly shows no header at all (unrelated, unchanged) - it's a standalone modal page by design.
+
+Verified zero overflow, zero PHP warnings, and screenshotted the result on Home.
+
+## ⏳ PENDING (theme zip only, `_S_VERSION 1.0.99`, not yet uploaded) — Home page Insights section made fully dynamic
+
+Home's 3 Insights cards (`front-page.php`) were static ACF fields - an admin had to hand-type each
+card's title/date/excerpt/image and, critically, a manual "link" text field that had to be kept in
+sync with a real post's URL by hand (or it silently fell back to just the `/insights/` hub instead
+of a specific post). Replaced with real WordPress post data throughout.
+
+**New ACF field:** `home_insights.posts`, a relationship field (Theme Settings is NOT where this
+lives - it's on the Home page's own "7. Insights" field group, matching where it always was) letting
+an editor pick up to 3 specific posts; any slot left unpicked (including all 3, the default state)
+auto-fills with the latest published posts not already picked, newest first. The old
+`large_card`/`small_card_1`/`small_card_2` groups (manual title/date/excerpt/image/link per card)
+are gone - every card's title, date, excerpt, featured image, and link are now pulled live from the
+real post via `get_the_title()`/`get_the_date()`/`wp_trim_words(get_the_excerpt())`/
+`get_the_post_thumbnail_url()`/`get_permalink()`, the same functions the main Insights hub
+(`archive.php`) already uses, so a post's excerpt/date formatting matches site-wide.
+
+**"Click it, see the details page" is inherent, not a separate thing to build:** `get_permalink()`
+on a real post ID automatically points at that exact post's URL, and WordPress's own template
+hierarchy automatically renders that URL through `single.php` - the *same* "Insights Details" page
+template the main Insights hub already links to. There was no separate "details page" to build or
+keep in sync; using the real permalink *is* the fix.
+
+**Verified, not assumed:** confirmed via real ACF `update_field()` calls (not just reading code) -
+picking 2 specific posts put them in the large/first-small card slots in the order picked, with the
+3rd slot correctly auto-filling with the next latest post not already used; clearing the selection
+back to empty correctly fell back to pure latest-3. Confirmed with an actual simulated click (not
+just checking the HTML `href`) that clicking the large card's title lands on that real post's real
+URL with the `insights-details-page-body` template class - the exact click-target bug documented
+elsewhere in this file ("the text overlay sits on top of the image and was outside the anchor") was
+re-verified NOT present here, since the anchor-wraps-everything structure was kept unchanged.
+Screenshotted mobile: real featured photo, real date, real title, real excerpt render correctly in
+the existing card design, unchanged CSS. Confirmed the main `/insights/` hub page is untouched
+(different file, `archive.php`, never modified) and a real post's detail page still returns 200 with
+zero PHP warnings. Also simplified a small pre-existing thing in passing: the small cards used two
+separate `<img>` elements toggled by Bootstrap's `d-md-block`/`d-md-none` (a decorative SVG filler
+on mobile, the real photo only on desktop) - now both breakpoints show the one real featured image,
+which the CSS already supported without changes (it styles the plain `.insights-small-img` class,
+not the display-toggle classes).
+
+**Not applicable to the static prototype** - this is real WordPress database content
+(`WP_Query`/ACF relationship field), nothing to mirror in the static HTML files beyond the visual
+card layout, which was not changed.
+
+## ⏳ PENDING (theme zip only, `_S_VERSION 1.0.98`, not yet uploaded) — Site-wide page loader + testimonials text-selection fix
+
+**1. New feature: full-screen page loader, every page, web + mobile.** Shown the instant `<body>`
+opens (before anything else can paint), hidden via a smooth opacity fade once `window`'s `load`
+event fires (all assets, not just the DOM) - with a 4-second safety-net timeout so it can never get
+stuck showing if some resource stalls. Fully ACF-driven (Theme Settings -> Page Loader): on/off
+toggle, logo (falls back to the site logo), optional text (falls back to none), 3 animation styles
+(pulse/spin/dots, CSS keyframes only - no JS animation library, no added page weight to speak of),
+background + accent colour. When disabled, the CSS/JS aren't even enqueued - zero footprint, not
+just hidden. Respects `prefers-reduced-motion`. New files: `template-parts/page-loader.php`,
+`css/page-loader.css`, `js/page-loader.js`; included via `header.php` for every normal page, and
+separately in `page-contact.php` since that page builds its own standalone `<html>` rather than
+calling `get_header()` (it doubles as the fetch source for the contact modal injected into every
+other page - confirmed the loader div sits outside the `#contactModal` element that gets extracted,
+so it can't end up duplicated into other pages when the modal opens).
+
+**Verified, not just shipped:** screenshotted all 3 animation styles (pulse/spin/dots) after setting
+each via ACF's real `update_field()`; confirmed a throttled connection keeps it visible with
+opacity:1 while assets are still loading, and a normal-speed load removes it from the DOM entirely
+within the fade (not just hidden) on Home, Services, Client Success, Insights, and Branding & Design;
+confirmed the disabled state renders zero loader markup AND stops enqueuing its CSS/JS entirely;
+confirmed the contact modal still opens correctly and doesn't gain a duplicate loader element;
+zero PHP warnings on any page. **Also mirrored into the static prototype** (all 15 real HTML pages,
+`temp.html` correctly excluded as it's an empty scratch file) via a scripted, count-verified
+insertion (15/15/15 for the CSS link, loader markup, and JS script tag) - confirmed hides correctly
+with zero console errors and zero 404s on Home, Services, Contact, and Branding & Design.
+
+**2. Testimonials text-selection-during-swipe fix, web only.** Manually dragging the testimonials
+carousel with a mouse was highlighting/selecting the card's text and logo underneath the cursor - a
+`preventDefault()` already existed on the drag's `mousemove` handler but wasn't sufficient, since a
+browser can begin a native text selection right at `mousedown`, before any `mousemove` handler ever
+runs. Fixed with two layers: `preventDefault()` added to `mousedown` itself (`js/main.js` and
+`js/main-v2.js`, both - same reason every past testimonials fix touched both files), plus a CSS
+`user-select:none` rule scoped to `@media (min-width:768px)` and gated behind a new
+`.testimonials-dragging` class that's added on `mousedown` and removed on `mouseup` - so normal
+double-click/select-to-copy on the testimonial text still works when *not* actively dragging, and
+mobile touch-swipe is completely unaffected by construction (the class/CSS only exists at the
+768px+ breakpoint, and touch events never touch this code path at all).
+
+**Verified, not assumed:** simulated a real mouse drag (mousedown, several mousemoves crossing
+card text, mouseup) via Puppeteer on both `index.html` (style.css) and confirmed: the dragging
+class is added exactly when expected and removed after release, `window.getSelection().toString()`
+is empty after the drag (previously captured the *entire rest of the page's text*, not just the
+testimonial card, when this was tested unfixed), the carousel still actually slides on a successful
+drag (active dot changed), and - critical given "web only" - forcing the `.testimonials-dragging`
+class on at mobile width (390px) still computes `user-select: auto`, confirming the media query
+correctly excludes mobile regardless.
+
 ## 🚨 ACTIVE SECURITY COMPROMISE - RE-CONFIRMED LIVE 2026-09-21, WORSE THAN FIRST THOUGHT
 
 The 2026-09-17 backdoor (`SECURITY-INCIDENT-2026-09-17.md`) is **still live and still active**, not
@@ -41,6 +1557,154 @@ which can be done from this machine (no cPanel/SSH/FTP access here):
 before it's fully rendered, pushing body content down. This was reported as "the WhatsApp button
 shifts out of place on mobile" - fixed structurally below (v1.0.95) so it can't happen again for
 *that* reason, but the warning itself is still there and still a live compromise regardless.
+
+## ⏳ PENDING (theme zip only, already includes everything below, not yet uploaded) — Pre-footer CTA made genuinely dynamic SITE-WIDE
+
+Same root problem as the cards fix below, but for the dark "READY TO..." CTA banner that appears on
+every page (Home, Services, Why SOLD, Client Success, Insights, Insights Details, and all service
+pages) - explicitly requested site-wide, not just service pages, since pre-footer title/button text
+is now ACF-editable per page and could vary in length anywhere.
+
+**Root cause:** the shared `.pre-footer` (style.css for Home, style-v2.css for every other page) used
+a **fixed section height with the title and button absolutely positioned inside via hand-calculated
+`top`/`left` pixel values** - each page's own override then re-hardcoded ANOTHER full set of
+positions tuned to that page's own specific, known text length (e.g. client-success.css's button
+`top:250px` was commented "Was 305px, copied verbatim from Home's 4-line mobile title... moved up by
+55px" - a calculation that only holds for that exact wording). Shorter or longer text on any page
+would either leave mismatched dead space or, in the worst case, overflow the fixed box or collide
+with the button.
+
+**Fix:** rebuilt the shared base (both `style.css` and `style-v2.css`, desktop + mobile) as a real
+flexbox layout - no fixed height anywhere, title and button as normal flex children (row on desktop
+with `justify-content:space-between`, column on mobile), real padding controlling the top/bottom
+gap, `align-items:center` keeping the button vertically centered against however many lines the
+title wraps to. The button's own icon+text also converted from fixed-box absolute positioning to a
+flex row with gap, so it auto-sizes to its own text length too - the exact same fix already applied
+successfully to the hero/production CTA buttons on the new Branding & Design page earlier.
+
+**Then went through every page-specific override** (`client-success.css`, `insights.css`,
+`insights-details.css`, `branding-design.css`) and removed the now-fully-redundant ~60-100 line
+fixed-position re-implementations each one had layered on top of the base - all of that positioning
+math is now handled once, correctly, by the shared base. Kept only genuinely real per-page
+differences (a wider text-wrap `max-width` some pages need, branding-design's uppercase styling and
+larger mobile type size) - reduced roughly 400 lines of hand-tuned, page-specific pixel math down to
+about 15.
+
+**Verified, not assumed:** ran an actual stress test on all 7 pages at both 390px/1440px - swapped
+the title text to a single word and separately to a ~120-character sentence and re-measured the
+box's real height each time. Confirmed genuinely dynamic on every single page/width combination
+(shrinks with short text, grows with long text, zero horizontal overflow in any case) - not just "no
+longer looks obviously broken." Screenshotted several pages to confirm the result still looks clean,
+not just numerically correct. Zero PHP warnings on the WP side after syncing.
+
+**Not touched, flagged separately:** the site-wide fixed-position WhatsApp float button visually
+overlapped the pre-footer's own button in one desktop screenshot (Why SOLD) - this is a pre-existing
+characteristic of that `position:fixed` button (same on every page, purely a function of scroll
+position, unrelated to the pre-footer's height) rather than something this fix caused or should fix.
+
+## ⏳ PENDING (theme zip only, already includes everything below, not yet uploaded) — "Where Great Brands Begin" cards made genuinely dynamic
+
+Client flagged that the 4 cards need to support different-length content on the other 7 service
+pages once rebuilt, not just this page's own known text. Mobile previously faked its vertical
+spacing with a fixed `min-height` per card pair (197px for cards 1-2, 234px for cards 3-4) tuned
+exactly to this page's own copy, rather than real padding - documented at the time as a deliberate
+choice to match Figma's paired-height look for *this* content, but it doesn't generalise: a
+different page's longer/shorter card text would either float inside a height that doesn't match its
+own content, or (for a much longer card) grow past its pair-mate anyway since `min-height` is only a
+floor. Desktop already used real padding + grid/flex auto-sizing and needed no change - only mobile
+had the hack. Fixed: mobile `.branding-card` now uses real `padding: 20px` on all 4 sides (was `0
+20px`, vertical faked via the min-height pairs) with the two `:nth-child` min-height rules removed
+entirely - each card now grows or shrinks purely with its own content, with the gap to its border
+staying constant regardless of how many lines the text wraps to, on any page. Verified with
+Puppeteer at 320/390/430px: zero overflow, screenshotted both breakpoints - consistent-looking
+padding, natural varying heights, nothing clipped or misaligned.
+
+## ⏳ PENDING — v1.0.96: Branding & Design rebuilt as a reusable ACF template (theme zip + images zip + SQL)
+
+Branding & Design's new UI (built this session, section-by-section against Figma, both breakpoints)
+is now a fully dynamic, reusable WordPress template - `page-service.php` + the "Service Page
+Content" ACF Pro field group (`acf-json/group_service_page.json`), styled by
+`css/branding-design.css` (kept that filename, but it's the SHARED stylesheet for all 8 service
+pages now, not page-specific - see `sold_theme_scripts()`'s enqueue logic in `functions.php`).
+Every heading, description, image, icon, and button on the page is ACF-editable with a graceful
+fallback if left empty; the gallery image is fully dynamic to any uploaded dimensions/aspect ratio
+(no more hardcoded `aspect-ratio` lock) with the surrounding spacing staying identical regardless.
+Verified pixel-identical to the static prototype at 390px/1440px, zero PHP warnings, zero console
+errors, zero overflow. Full build/audit log in the "Branding & Design page rebuild" section further
+down this file.
+
+This is a **three-part deploy**, same shape as the 2026-09-20 batch - do them in this exact order:
+
+| # | What | File | Where |
+|---|------|------|-------|
+| 1 | Theme code | `theme-code-only.zip` (43 files, `_S_VERSION 1.0.96`) | cPanel File Manager |
+| 2 | **New images** | `new-images-v1.0.96.zip` (6 files - extract into `wp-content/themes/sold-theme/`, one level deeper than the theme zip since paths already start at `assets/`) | cPanel File Manager |
+| 3 | **SQL** | `deploy/replace-branding-design-page.sql` | phpMyAdmin |
+
+**IMPORTANT, found during this deploy's own pre-check:** the 2026-09-20 removal SQL
+(`remove-8-service-pages.sql`) was apparently only ever run **locally**, never on live - live was
+still serving the OLD pre-redesign `branding-design` page (ID 18, dated 2026-08-30, byte-identical
+to `deploy/backups/2026-09-20-service-pages-removal/service-pages-backup.sql`'s copy of it) when
+this was checked directly. **Use `replace-branding-design-page.sql`, not `create-branding-design-
+page.sql`** (the latter would create a duplicate page since the old one is still there) - it
+removes that one old page (nav-menu-item cleanup, then its postmeta, then the page itself, mirroring
+STEP 1+2 of the original removal SQL but scoped to just this slug) and then creates the new one, all
+in one script. The other 7 old service pages are deliberately untouched by this - separate decision,
+not part of this deploy. STEP 0 inside the script is a dry-run check that must return exactly 1 row
+before continuing; if it returns 0 or more than 1, stop and re-verify rather than run it blindly.
+
+**This SQL was tested, not just generated - the full delete-then-recreate sequence, not just the
+insert half.** The INSERT portion was generated programmatically from the real local DB state (not
+hand-written - the content has apostrophes, `&`, and embedded newlines that are easy to get subtly
+wrong by hand). Test run: recreated live's exact old-page row locally (same ID 18, same date, same
+content, straight from the backup SQL) to simulate the real live scenario, ran
+`replace-branding-design-page.sql` against it fresh, confirmed the old page (ID 18) was completely
+gone afterward with zero orphaned postmeta, a new page was created with a fresh ID (686, correctly
+different from 18), all 135 postmeta rows present, `_wp_page_template` correctly set, and the page
+rendered the real content with zero PHP errors - then cleaned up and restored local via
+`deploy/_seed_branding_design_page.php` (kept, safe to re-run, idempotent). Both this script and
+`create-branding-design-page.sql` key everything on `post_name`, never a hardcoded ID, and use a
+`LAST_INSERT_ID()` session variable (`@sp_page_id`) for the same reason - live's IDs never match
+local's, the same lesson the original 2026-09-20 removal SQL already learned.
+
+**functions.php also changed** (included in the theme zip): `sold_body_classes()` now maps all 8
+service-page slugs to `branding-page-body` (was a `branding-page-body` / `social-page-body` /
+`events-page-body` three-way split from the old, now-superseded design) - so when the other 7 pages
+get created in wp-admin later (Page Attributes → Template → "Service Page"), they automatically
+pick up the right body class and the shared `branding-design.css` with no further code change.
+
+## ✅ DEPLOYED live 2026-09-22 — v1.0.96/1.0.97, Branding & Design live and working
+
+Ran successfully: theme zip, images zip, then `replace-branding-design-page.sql` (old page ID 18
+removed cleanly - 2 old nav-menu items, 150 old postmeta rows, the page itself - then the new page
+created at ID 941 with all 135 rows). Verified directly against the live domain afterward: page
+returns 200, zero PHP warnings/errors, real content rendering (`Designs That Sell`, `Where Great
+Brands Begin`, etc.), correct `branding-page-body` class, all 7 new assets (CSS + 6 images) return
+200, `_S_VERSION` serving `1.0.96`. Spot-checked Home/Why SOLD/Services/Client Success/Contact/
+Insights - all still 200, unaffected by the shared `functions.php` change.
+
+**Follow-up bug found and fixed same-day, v1.0.97 (theme zip only, no new SQL):** the live nav
+dropdown (desktop pill + mobile offcanvas) still showed `href="#"` for "Branding & Design" instead
+of the real URL - `sold_removed_service_slugs()` still listed `branding-design` among the 8 inert
+slugs, and everything routing through `sold_resolve_link()` (nav dropdown, Home/Services accordion
+"Read More") neutralises any of those to `#` regardless of whether a real page exists. That same
+list was also being reused (not its original purpose) by `sold_body_classes()` and the CSS-enqueue
+logic to mean "which 8 slugs get this design" - a second, different question that must NOT shrink
+as pages get rebuilt, unlike the "still 404" list. Split into two functions:
+`sold_service_page_slugs()` (all 8, permanent, for body-class/CSS) and `sold_removed_service_slugs()`
+(now 7, shrinks as each page comes back - `branding-design` removed from it). Verified locally: nav
+dropdown now resolves to the real `/branding-design/` URL, CSS/body-class still correct.
+
+**Separate, non-code gap also found:** the SQL's menu cleanup (correctly) deleted the live
+`footer_services` WP menu's old "Branding & Design" item, since it pointed at the now-deleted old
+page. That menu wasn't empty otherwise (other items like Events still resolve correctly), so this
+is a normal content fix, not a bug - **add "Design & Branding" back to Appearance → Menus →
+Footer Services, pointing at `/branding-design/`**, whenever convenient.
+
+**Also defensively fixed in the same v1.0.97 zip:** `footer.php`'s hardcoded 7-link fallback list
+(the one that only fires if the footer_services menu is ever completely empty) still hardcoded `#`
+for "Design & Branding" - now routes through `sold_resolve_link('/branding-design')` like everything
+else, so it self-corrects if that fallback path is ever hit.
 
 ## PENDING - v1.0.95: WhatsApp button restructured to be immune to header/content shifts
 

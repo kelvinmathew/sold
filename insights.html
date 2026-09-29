@@ -27,9 +27,19 @@
   <!-- Specific page CSS with fluid vw calculation -->
   <link href="css/insights.css?v=18" rel="stylesheet" />
   <link href="css/contact.css?v=3" rel="stylesheet" />
+  <link href="css/page-loader.css" rel="stylesheet" />
 </head>
 
 <body class="insights-page-body">
+  <!-- Page Loader (site-wide) -->
+  <div id="sold-page-loader" class="sold-page-loader sold-page-loader--pulse" style="background-color: #263238;" role="status" aria-live="polite" aria-label="Loading">
+    <div class="sold-page-loader-inner">
+      <div class="sold-page-loader-logo-wrap">
+        <img src="assets/images/logosold.svg" alt="SOLD" class="sold-page-loader-logo" />
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="page-container">
@@ -110,28 +120,29 @@
         <div class="insights-hero-content vw-fluid-container">
           <!-- Title Container (Left) -->
           <div class="insights-hero-title-container">
-            <h1 class="insights-hero-title">Delivering Results for<br>Leading Real Estate Brands</h1>
+            <h1 class="insights-hero-title">UAE Real Estate<br><span class="hero-title-highlight">Insights, Trends &<br>Marketing</span></h1>
           </div>
 
-          <!-- Text Paragraph (Right) -->
-          <p class="insights-hero-desc">Whether you're launching a new development, growing your brokerage or
-            strengthening your brand, SOLD helps you attract more buyers, engage more brokers and close more sales.</p>
+          <!-- Text + Button Container (Right) - matches Figma's own "Frame 9" container exactly -->
+          <div class="insights-hero-text-container">
+            <p class="insights-hero-desc">Stay ahead of the market with SOLD insights on UAE real estate trends, buyer
+              behaviour, property marketing, lead generation, SEO, and AI search.</p>
 
-          <!-- Button (Right) -->
-          <a href="contact.html" class="insights-hero-btn" data-contact-trigger>
-            <span class="icon-circle">
-              <img src="assets/images/white-arrow-only.svg" alt="Arrow"
-                style="width: 2.77vw; height: 2.77vw; object-fit: contain;">
-            </span>
-            <span class="btn-text-custom">FREE STRATEGY REVIEW</span>
-          </a>
+            <a href="contact.html" class="insights-hero-btn" data-contact-trigger>
+              <span class="icon-circle">
+                <img src="assets/images/white-arrow-only.svg" alt="Arrow"
+                  style="width: 2.77vw; height: 2.77vw; object-fit: contain;">
+              </span>
+              <span class="btn-text-custom">FREE STRATEGY REVIEW</span>
+            </a>
+          </div>
 
           <!-- Breadcrumb (Bottom Left) -->
           <div class="insights-hero-breadcrumb d-none d-md-flex">
             <a href="index.html" class="breadcrumb-home">Home</a>
             <img src="assets/images/triple_arrow.svg" alt=">>>" class="breadcrumb-icon">
             <div class="breadcrumb-services-wrapper">
-              <span class="current">Blogs</span>
+              <span class="current">Articles</span>
             </div>
           </div>
 
@@ -139,7 +150,7 @@
             <a href="index.html" class="breadcrumb-home">Home</a>
             <img src="assets/images/insights_mobile_arrow.png" alt=">>>" class="breadcrumb-icon">
             <div class="breadcrumb-services-wrapper">
-              <span class="current">Blogs</span>
+              <span class="current">Articles</span>
             </div>
           </div>
         </div>
@@ -148,14 +159,32 @@
       <!-- Blogs Header Section -->
       <section class="insights-blogs-section vw-fluid-section">
         <div class="insights-blogs-container vw-fluid-container">
-          <div class="insights-blogs-label">Blogs</div>
+          <div class="insights-blogs-label">Articles</div>
           <div class="insights-blogs-text d-none d-lg-block">
-            Lorem ipsum dolor sit amet, consectetur adipisc elit, sed do eiusmod tempor incididunt ut labore dolore
-            magna aliqua, Ut enim ad ldig
+            Built from real campaign data, market intelligence, and what we see driving results for real estate
+            brands across the UAE.
           </div>
           <div class="insights-blogs-text d-block d-lg-none">
             Our work is built around one objective: delivering measurable commercial results. Explore how we've helped
             our clients launch projects, increase demand and accelerate sales.
+          </div>
+        </div>
+      </section>
+
+      <!-- Search + Category Filter Bar (moved here from the Feed section further down
+           to match Figma's real page order - node 3929:4896) -->
+      <section class="insights-searchbar-section vw-fluid-section">
+        <div class="insights-searchbar-container vw-fluid-container">
+          <div class="insights-feed-filter-wrap">
+            <div class="insights-feed-search">Search</div>
+            <hr class="insights-feed-divider">
+            <div class="insights-feed-categories">
+              <a href="#" class="filter-link active">All</a> /
+              <a href="#" class="filter-link">Marketing & Branding</a> /
+              <a href="#" class="filter-link">Lead Generation</a> /
+              <a href="#" class="filter-link">Trending Topics</a> /
+              <a href="#" class="filter-link">AI Marketing</a>
+            </div>
           </div>
         </div>
       </section>
@@ -208,20 +237,16 @@
             <!-- Card 1 -->
             <div class="insights-latest-card">
               <div class="insights-latest-img-wrap">
-                <img src="assets/images/lastestone.svg" alt="Latest Blog" class="insights-latest-img">
+                <img src="assets/images/latest-blog-1.png" alt="Pay-Per-Click Campaigns" class="insights-latest-img">
               </div>
               <div class="insights-latest-content">
                 <div class="insights-latest-date">
                   <img src="assets/images/calendar_black.svg" alt="Calendar" class="insights-latest-icon">
                   <span>July 10,2026</span>
                 </div>
-                <h3 class="insights-latest-headline">Global Office space provider</h3>
-                <p class="insights-latest-excerpt d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <span class="d-block">
-                    enim ad minim veniam, quis nostrtities and project launches, brochures and presentations, we design
-                    assets that sell.</span></p>
-                <p class="insights-latest-excerpt d-block d-lg-none">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod temporbrochures and presentations, we design assets that sell.</p>
+                <h3 class="insights-latest-headline">Pay-Per-Click Campaigns</h3>
+                <p class="insights-latest-excerpt">Cost of Running Pay-Per-Click Campaigns for Real Estate in the
+                  Middle East</p>
                 <a href="#" class="insights-latest-readmore">Read More...</a>
               </div>
             </div>
@@ -229,20 +254,16 @@
             <!-- Card 2 -->
             <div class="insights-latest-card">
               <div class="insights-latest-img-wrap">
-                <img src="assets/images/lastestsecond.svg" alt="Latest Blog" class="insights-latest-img">
+                <img src="assets/images/latest-blog-2.png" alt="Luxury Properties Online" class="insights-latest-img">
               </div>
               <div class="insights-latest-content">
                 <div class="insights-latest-date">
                   <img src="assets/images/calendar_black.svg" alt="Calendar" class="insights-latest-icon">
                   <span>July 10,2026</span>
                 </div>
-                <h3 class="insights-latest-headline">Global Office space provider</h3>
-                <p class="insights-latest-excerpt d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <span class="d-block">
-                    enim ad minim veniam, quis nostrtities and project launches, brochures and presentations, we design
-                    assets that sell.</span></p>
-                <p class="insights-latest-excerpt d-block d-lg-none">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod temporbrochures and presentations, we design assets that sell.</p>
+                <h3 class="insights-latest-headline">Luxury Properties Online</h3>
+                <p class="insights-latest-excerpt">How to Advertise Luxury Properties Online to High-Net-Worth
+                  Buyers</p>
                 <a href="#" class="insights-latest-readmore">Read More...</a>
               </div>
             </div>
@@ -250,20 +271,16 @@
             <!-- Card 3 -->
             <div class="insights-latest-card">
               <div class="insights-latest-img-wrap">
-                <img src="assets/images/lastestone.svg" alt="Latest Blog" class="insights-latest-img">
+                <img src="assets/images/latest-blog-3.png" alt="Cushman & Wakefield Core's SEO" class="insights-latest-img">
               </div>
               <div class="insights-latest-content">
                 <div class="insights-latest-date">
                   <img src="assets/images/calendar_black.svg" alt="Calendar" class="insights-latest-icon">
                   <span>July 10,2026</span>
                 </div>
-                <h3 class="insights-latest-headline">Global Office space provider</h3>
-                <p class="insights-latest-excerpt d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut<span class="d-block"> enim
-                    ad minim veniam, quis nostrtities and project launches, brochures and presentations, we design
-                    assets that sell.</span></p>
-                <p class="insights-latest-excerpt d-block d-lg-none">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod temporbrochures and presentations, we design assets that sell.</p>
+                <h3 class="insights-latest-headline">Cushman & Wakefield Core's SEO</h3>
+                <p class="insights-latest-excerpt">How SOLD Elevated Cushman & Wakefield Core's SEO Performance in
+                  the UAE</p>
                 <a href="#" class="insights-latest-readmore">Read More...</a>
               </div>
             </div>
@@ -271,20 +288,16 @@
             <!-- Card 4 -->
             <div class="insights-latest-card">
               <div class="insights-latest-img-wrap">
-                <img src="assets/images/lastestsecond.svg" alt="Latest Blog" class="insights-latest-img">
+                <img src="assets/images/latest-blog-4.png" alt="Targeted Social Media Ads" class="insights-latest-img">
               </div>
               <div class="insights-latest-content">
                 <div class="insights-latest-date">
                   <img src="assets/images/calendar_black.svg" alt="Calendar" class="insights-latest-icon">
                   <span>July 10,2026</span>
                 </div>
-                <h3 class="insights-latest-headline">Global Office space provider</h3>
-                <p class="insights-latest-excerpt d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <span class="d-block">
-                    enim ad minim veniam, quis nostrtities and project launches, brochures and presentations, we design
-                    assets that sell.</span></p>
-                <p class="insights-latest-excerpt d-block d-lg-none">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod temporbrochures and presentations, we design assets that sell.</p>
+                <h3 class="insights-latest-headline">Targeted Social Media Ads</h3>
+                <p class="insights-latest-excerpt">How to Create Targeted Social Media Ads for Real Estate
+                  Listings</p>
                 <a href="#" class="insights-latest-readmore">Read More...</a>
               </div>
             </div>
@@ -299,56 +312,16 @@
           <!-- Feed Title -->
           <div class="insights-feed-title-wrap">
             <div class="insights-feed-bar"></div>
-            <h2 class="insights-feed-title">Lorem Blogs</h2>
+            <h2 class="insights-feed-title">Explore All Insights</h2>
           </div>
 
           <!-- Feed Headline -->
-          <h3 class="insights-feed-headline d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipiscing elit
+          <h3 class="insights-feed-headline d-none d-lg-block">Everything You Need to Know to Stay Ahead in UAE Real
+            Estate
           </h3>
-          <h3 class="insights-feed-headline d-block d-lg-none">Lorem ipsum dolor sit amet<br>consectetur adipiscing elit
+          <h3 class="insights-feed-headline d-block d-lg-none">Everything You Need to Know to<br>Stay Ahead in UAE
+            Real Estate
           </h3>
-
-          <!-- Feed Main Content Wrap (Filter + Large Card) -->
-          <div class="insights-feed-main-content">
-            <!-- Feed Filter Bar -->
-            <div class="insights-feed-filter-wrap">
-              <div class="insights-feed-search">Search</div>
-              <hr class="insights-feed-divider">
-              <div class="insights-feed-categories">
-                <a href="#" class="filter-link">All</a> /
-                <a href="#" class="filter-link">Market Insights</a> /
-                <a href="#" class="filter-link active">Investment Insights</a> /
-                <a href="#" class="filter-link">Architecture & Design</a> /
-                <a href="#" class="filter-link">Lifestyle & Living</a>
-              </div>
-            </div>
-
-            <!-- Large Feed Card -->
-            <div class="insights-featured-card">
-              <div class="insights-featured-img-wrap">
-                <img src="assets/images/bigimgs.svg" alt="Blog Image" class="insights-featured-img">
-              </div>
-
-              <div class="insights-featured-content">
-                <div class="insights-featured-date">
-                  <img src="assets/images/calendar_black.svg" alt="Calendar" class="insights-calendar-icon">
-                  <span>July 10,2026</span>
-                </div>
-
-                <h3 class="insights-featured-headline">Global Office space provider</h3>
-
-                <p class="insights-featured-excerpt d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrtities and project launches, brochures and presentations, we design assets that
-                  sell.</p>
-                <p class="insights-featured-excerpt d-block d-lg-none">Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit, sed do eiusmod tempor incididunt Ut enim ad minim veniam, quis brochures and
-                  presentations, we design assets that sell.</p>
-
-                <a href="#" class="insights-featured-readmore">Read More...</a>
-              </div>
-            </div>
-          </div>
 
           <!-- Small Feed Grid -->
           <div class="insights-blog-grid">
@@ -640,6 +613,7 @@
   <script src="js/main-v2.js"></script>
   <script src="js/contact-form-local.js?v=1" defer></script>
   <script src="js/contact-modal.js?v=1" defer></script>
+  <script src="js/page-loader.js"></script>
 </body>
 
 </html>

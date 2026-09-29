@@ -27,9 +27,19 @@
   <!-- Specific page CSS with fluid vw calculation -->
   <link href="css/client-success.css?v=10" rel="stylesheet" />
   <link href="css/contact.css?v=3" rel="stylesheet" />
+  <link href="css/page-loader.css" rel="stylesheet" />
 </head>
 
 <body class="client-success-page-body">
+  <!-- Page Loader (site-wide) -->
+  <div id="sold-page-loader" class="sold-page-loader sold-page-loader--pulse" style="background-color: #263238;" role="status" aria-live="polite" aria-label="Loading">
+    <div class="sold-page-loader-inner">
+      <div class="sold-page-loader-logo-wrap">
+        <img src="assets/images/logosold.svg" alt="SOLD" class="sold-page-loader-logo" />
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="page-container">
@@ -161,7 +171,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/mered.svg" alt="Mered" class="cs-card-logo">
-              <h3 class="cs-card-title">Accelerating Sales for One of the UAE's Fastest-Growing Developers</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Accelerating Sales</span> for One of the UAE's Fastest-Growing Developers</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -186,7 +196,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/ellingtonprops.svg" alt="Ellington Properties" class="cs-card-logo">
-              <h3 class="cs-card-title">Building Global Demand That Drives Sales</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Building Global</span> Demand That Drives Sales</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -211,7 +221,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/jubailisland.svg" alt="Jubail Island" class="cs-card-logo">
-              <h3 class="cs-card-title">Building International Demand for Luxury Waterfront Living</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Building International Demand</span> for Luxury Waterfront Living</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -235,7 +245,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/knightfrankred.svg" alt="Knight Frank" class="cs-card-logo">
-              <h3 class="cs-card-title">Launching the GCC's Leading Destination Investment Platform</h3>
+              <h3 class="cs-card-title">Launching the <span class="cs-title-highlight">GCC's Leading Destination</span> Investment Platform</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -260,7 +270,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/beyond.svg" alt="Beyond" class="cs-card-logo">
-              <h3 class="cs-card-title">Driving Demand for a Landmark Project Launch</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Driving Demand</span> for a Landmark Project Launch</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -286,7 +296,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/banyangrpupclient.svg" alt="Banyan Group" class="cs-card-logo">
-              <h3 class="cs-card-title">Turning Inspiration into High-Value Bookings</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Turning Inspiration </span>into High-Value Bookings</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -311,7 +321,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/regusclient.svg" alt="Regus" class="cs-card-logo">
-              <h3 class="cs-card-title">Turning Local Searches into Qualified Business Enquiries</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Turning Local Searches</span> into Qualified Business Enquiries</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -336,7 +346,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/masarajclient.svg" alt="Masar" class="cs-card-logo">
-              <h3 class="cs-card-title">Driving a Successful Multilingual Property Launch</h3>
+              <h3 class="cs-card-title">Driving a <span class="cs-title-highlight">Successful Multilingual Property Launch</span></h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -361,7 +371,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/betterhomesclient.svg" alt="Better Homes" class="cs-card-logo">
-              <h3 class="cs-card-title">Growing Organic Buyer Demand From High Intent Buyers</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Growing Organic Buyer Demand</span> From High Intent Buyers</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -386,7 +396,7 @@
           <div class="cs-card">
             <div class="cs-card-left">
               <img src="assets/images/ayatclinet.svg" alt="Ayat" class="cs-card-logo">
-              <h3 class="cs-card-title">Selling Out Phase 1 Through Strategic Market Launch</h3>
+              <h3 class="cs-card-title"><span class="cs-title-highlight">Selling Out Phase 1 Through</span> Strategic Market Launch</h3>
             </div>
             <div class="cs-card-right">
               <div class="cs-card-quote-block">
@@ -780,6 +790,7 @@
   <script src="js/main-v2.js"></script>
   <script src="js/contact-form-local.js?v=1" defer></script>
   <script src="js/contact-modal.js?v=1" defer></script>
+  <script src="js/page-loader.js"></script>
 </body>
 
 </html>

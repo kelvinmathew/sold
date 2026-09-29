@@ -1,8 +1,7 @@
 /**
- * SOLD Real Estate Website - Main JavaScript
+ * SOLD Real Estate Website - Main JavaScript (Home page)
  * Custom Vanilla JS Interactions
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log('SOLD Frontend Initialized');
 
@@ -10,11 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // with the page like any other content - no JS needed for that part.
     // Once the user has scrolled well past it, swap in a separate, shorter
     // "is-compact" fixed bar instead of leaving nothing pinned at the top.
-    // This toggle runs at every width - mobile now uses the same
-    // scroll-away-then-compact model as web/tablet (client-requested,
-    // matching web's behaviour exactly), each breakpoint just has its own
-    // CSS for what "tall" and "is-compact" look like (see css/style.css's
-    // and css/style-v2.css's mobile vs. desktop .site-header rules).
     const siteHeader = document.querySelector('.site-header');
     if (siteHeader) {
         const COMPACT_THRESHOLD = 200; // px - clears the 144px tall header, then a bit more
@@ -32,13 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (questionDiv) {
             const toggleFaq = () => {
                 const isActive = item.classList.contains('active');
-                // Close all FAQ items
                 faqItems.forEach(faqItem => {
                     faqItem.classList.remove('active');
                     const q = faqItem.querySelector('.faq-question');
                     if (q) q.setAttribute('aria-expanded', 'false');
                 });
-                // If clicked item wasn't active, open it
                 if (!isActive) {
                     item.classList.add('active');
                     questionDiv.setAttribute('aria-expanded', 'true');
@@ -56,13 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Services Accordion Interaction
     const serviceItems = document.querySelectorAll('.service-list-item');
-    
+
     serviceItems.forEach((item, index) => {
         item.addEventListener('click', () => {
             const isMobile = window.innerWidth < 768;
 
             if (isMobile) {
-                // Mobile: toggle open/close, only one open at a time
                 const prevTop = item.getBoundingClientRect().top;
 
                 if (item.classList.contains('active')) {
@@ -72,14 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.classList.add('active');
                 }
 
-                // If the layout shift caused the item to move on screen (e.g. card above closed),
-                // instantly scroll to perfectly offset the shift. The item stays exactly under the user's finger.
                 const newTop = item.getBoundingClientRect().top;
                 if (newTop !== prevTop) {
                     window.scrollBy({ top: newTop - prevTop, behavior: 'instant' });
                 }
             } else {
-                // Desktop: existing behavior
                 if (item.classList.contains('active')) return;
                 serviceItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
@@ -87,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // On mobile, remove initial active class so all cards start closed
     if (window.innerWidth < 768) {
         serviceItems.forEach(i => i.classList.remove('active'));
     }
@@ -109,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.remove('open');
         });
     }
-    
+
     // Close offcanvas when clicking any navigation link (the Services
     // trigger is excluded - it only opens the dropdown, it never navigates)
     const offcanvasLinks = document.querySelectorAll('.offcanvas-link');
@@ -186,10 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.carousel-dots-center .dot');
 
-    // .mobile-only-dot is a decorative extra dot with no matching card - it
-    // never took part in the cycle correctly (one dot too many for the real
-    // card count desynced the active dot from the actual card after a full
-    // cycle), so it's excluded here at every width now, not just >=768px.
     let activeDots = Array.from(dots).filter(d => !d.classList.contains('mobile-only-dot'));
 
     if (track && prevBtn && nextBtn) {
@@ -204,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        // Reorder on mobile to show the second card (Ellington) first
         if (window.innerWidth < 768) {
             const firstCard = track.children[0];
             if (firstCard) {
@@ -212,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Fix layout for seamless sliding by preventing auto-centering
         track.style.justifyContent = 'flex-start';
 
         const slide = (direction) => {
@@ -231,47 +212,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const moveAmount = cards[0].offsetWidth + gap;
 
             if (direction === 'next') {
-                // Update dots immediately so they move with the cards
                 currentIndex = (currentIndex + 1) % numCards;
                 updateDots();
 
-                // Clone the first card and append it to the end
                 const clone = cards[0].cloneNode(true);
                 track.appendChild(clone);
 
-                // Animate slide left
                 track.style.transition = 'transform 0.4s ease';
                 track.style.transform = `translateX(-${moveAmount}px)`;
 
                 setTimeout(() => {
                     track.style.transition = 'none';
-                    // Remove the original first card
                     track.removeChild(track.firstElementChild);
                     track.style.transform = 'translateX(0)';
                     isAnimating = false;
                 }, 400);
             } else {
-                // Update dots immediately so they move with the cards
                 currentIndex = (currentIndex - 1 + numCards) % numCards;
                 updateDots();
 
-                // Clone the last card and prepend it to the start
                 const clone = track.lastElementChild.cloneNode(true);
                 track.prepend(clone);
-                
-                // Offset instantly so visual position doesn't change
+
                 track.style.transition = 'none';
                 track.style.transform = `translateX(-${moveAmount}px)`;
-                
+
                 void track.offsetWidth; // Force reflow
 
-                // Animate slide right back to 0
                 track.style.transition = 'transform 0.4s ease';
                 track.style.transform = 'translateX(0)';
 
                 setTimeout(() => {
                     track.style.transition = 'none';
-                    // Remove the original last card (which is now pushed one spot right)
                     track.removeChild(track.lastElementChild);
                     isAnimating = false;
                 }, 400);
@@ -281,10 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoScrollInterval;
 
         const startAutoScroll = () => {
-            // Auto-scroll on all devices
             autoScrollInterval = setInterval(() => {
                 slide('next');
-            }, 3500); // 3.5 seconds
+            }, 3500);
         };
 
         const resetAutoScroll = () => {
@@ -304,13 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoScroll();
         });
 
-        // Swipe support (mobile/touch). Reuses the same slide() transition
-        // as the arrow buttons and auto-scroll, so a swipe animates exactly
-        // the same way and stays in sync with them instead of running its
-        // own separate drag animation.
         let touchStartX = 0;
         let touchStartY = 0;
-        const SWIPE_THRESHOLD = 40; // px - minimum horizontal distance to count as a swipe
+        const SWIPE_THRESHOLD = 40;
 
         track.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].clientX;
@@ -321,8 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const deltaX = e.changedTouches[0].clientX - touchStartX;
             const deltaY = e.changedTouches[0].clientY - touchStartY;
 
-            // A mostly-vertical gesture is the user scrolling the page, not
-            // swiping the carousel - leave it alone.
             if (Math.abs(deltaX) < Math.abs(deltaY)) return;
             if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
 
@@ -330,88 +295,77 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoScroll();
         }, { passive: true });
 
-        // Manual drag support (mouse, web/desktop) - same threshold-based
-        // approach as the touch swipe above, so it stays in sync with it and
-        // the buttons/auto-scroll rather than a separate drag animation.
-        // Only resolved on mouseup (not followed continuously), matching how
-        // the touch version only acts on touchend.
-        let mouseStartX = 0;
-        let mouseStartY = 0;
-        let isMouseDown = false;
+        // Two-finger trackpad swipe (web only). Replaces the previous
+        // click-and-drag interaction - a trackpad two-finger swipe fires
+        // "wheel" events with a horizontal deltaX (this never happens from a
+        // touchscreen finger swipe, which fires touch events instead - see
+        // the touchstart/touchend block above, untouched), so this is
+        // naturally web/desktop-only without needing a width check.
+        //
+        // One physical swipe gesture fires many small wheel events in quick
+        // succession, not a single clean one - deltaX is accumulated across
+        // the gesture (reset after a brief pause with no wheel events) and
+        // only acted on once the total crosses the threshold, then a short
+        // cooldown swallows the rest of that same gesture's leftover events
+        // so it can't fire two slides for one swipe.
+        const WHEEL_SWIPE_THRESHOLD = 50;
+        const WHEEL_GESTURE_IDLE_MS = 150;
+        const WHEEL_COOLDOWN_MS = 500;
+        let wheelAccumX = 0;
+        let wheelIdleTimer = null;
+        let wheelCooldown = false;
 
-        const onTrackMouseMove = (e) => {
-            // Prevent text/image selection while dragging across the cards.
-            if (isMouseDown) e.preventDefault();
-        };
+        track.addEventListener('wheel', (e) => {
+            // A mostly-vertical gesture is the user scrolling the page, not
+            // swiping the carousel - leave it (and the page's own scroll)
+            // alone entirely.
+            if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
 
-        const onTrackMouseUp = (e) => {
-            if (!isMouseDown) return;
-            isMouseDown = false;
-            track.style.cursor = 'grab';
-            window.removeEventListener('mousemove', onTrackMouseMove);
-            window.removeEventListener('mouseup', onTrackMouseUp);
+            e.preventDefault();
+            if (wheelCooldown) return;
 
-            const deltaX = e.clientX - mouseStartX;
-            const deltaY = e.clientY - mouseStartY;
+            wheelAccumX += e.deltaX;
+            clearTimeout(wheelIdleTimer);
+            wheelIdleTimer = setTimeout(() => { wheelAccumX = 0; }, WHEEL_GESTURE_IDLE_MS);
 
-            if (Math.abs(deltaX) < Math.abs(deltaY)) return;
-            if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+            if (Math.abs(wheelAccumX) < WHEEL_SWIPE_THRESHOLD) return;
 
-            slide(deltaX < 0 ? 'next' : 'prev');
+            slide(wheelAccumX > 0 ? 'next' : 'prev');
             resetAutoScroll();
-        };
+            wheelAccumX = 0;
+            wheelCooldown = true;
+            setTimeout(() => { wheelCooldown = false; }, WHEEL_COOLDOWN_MS);
+        }, { passive: false });
 
-        track.addEventListener('mousedown', (e) => {
-            if (e.button !== 0) return; // primary button only
-            isMouseDown = true;
-            mouseStartX = e.clientX;
-            mouseStartY = e.clientY;
-            track.style.cursor = 'grabbing';
-            window.addEventListener('mousemove', onTrackMouseMove);
-            window.addEventListener('mouseup', onTrackMouseUp);
-        });
-
-        track.style.cursor = 'grab';
-
-        // Initialize auto-scroll
         startAutoScroll();
     }
+
     // Mobile Insights Carousel Pagination
     const insightsCards = document.querySelectorAll('.insights-cards-container > div');
     const insightsDots = document.querySelectorAll('.insight-dot');
     const insightsContainer = document.querySelector('.insights-cards-container');
-    
+
     if (insightsCards.length > 0 && insightsDots.length > 0 && insightsContainer) {
-        
         const updateDotsOnScroll = () => {
             const scrollLeft = insightsContainer.scrollLeft;
             const cardWidth = insightsCards[0].offsetWidth;
-            const gap = 26; // Match CSS gap
-            // Calculate which card is currently most visible
+            const gap = 26;
             const index = Math.round(scrollLeft / (cardWidth + gap));
-            
+
             insightsDots.forEach((dot, i) => {
-                if (i === index) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+                dot.classList.toggle('active', i === index);
             });
         };
 
-        // Listen for scroll events to update immediately without delay
         insightsContainer.addEventListener('scroll', updateDotsOnScroll, { passive: true });
-        
-        // Initial setup
         updateDotsOnScroll();
-        
-        // Allow clicking dots to scroll to that card
+
         insightsDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 if (insightsCards[index]) {
                     insightsContainer.scrollTo({
                         left: insightsCards[index].offsetLeft - insightsContainer.offsetLeft,
-                        behavior: 'smooth'
+                        behavior: 'smooth',
                     });
                 }
             });
@@ -425,7 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const stepCircles = document.querySelectorAll('.step-circle');
 
     if (stepsContainer && highlightLine && stepCards.length > 0 && window.innerWidth >= 768) {
-        // Dynamically calculate circle centers from DOM for responsiveness
         const getPositions = () => {
             const containerRect = stepsContainer.getBoundingClientRect();
             const circleCenters = [];
@@ -433,10 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const circleRect = circle.getBoundingClientRect();
                 circleCenters.push(circleRect.top - containerRect.top + circleRect.height / 2);
             });
-            // Line starts at center of first circle
             const lineStart = circleCenters[0] || 0;
             const lastLine = document.querySelector('.step-line-3');
-            let lineEnd = stepsContainer.offsetHeight; // default to container height
+            let lineEnd = stepsContainer.offsetHeight;
             if (lastLine && lastLine.offsetHeight > 0) {
                 const lastLineRect = lastLine.getBoundingClientRect();
                 lineEnd = lastLineRect.top - containerRect.top + lastLineRect.height;
@@ -452,7 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         let positions = getPositions();
-        // Recalculate on load (after images/fonts render) and resize for responsiveness
         window.addEventListener('load', () => { positions = getPositions(); updateStepsAnimation(); });
         window.addEventListener('resize', () => { positions = getPositions(); updateStepsAnimation(); });
 
@@ -460,21 +411,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const updateStepsAnimation = () => {
             const containerRect = stepsContainer.getBoundingClientRect();
-            // Use 50% of viewport as the trigger scanline
             const triggerY = window.innerHeight * 0.5;
 
-            // How far into the container the trigger scanline has reached
             const scrollProgress = triggerY - containerRect.top;
 
-            // --- Yellow highlight line ---
             let lineHeight = scrollProgress - positions.lineStart;
             if (window.innerWidth < 768) {
-                lineHeight *= 1.15; // Fill slightly faster on mobile so it completes before page hits bottom
+                lineHeight *= 1.15;
             }
             lineHeight = Math.max(0, Math.min(lineHeight, positions.maxLineHeight));
             highlightLine.style.height = lineHeight + 'px';
 
-            // --- Circles & Cards ---
             for (let i = 0; i < stepCards.length; i++) {
                 const threshold = positions.circleCenters[i];
                 if (scrollProgress >= threshold) {
@@ -497,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         window.addEventListener('scroll', onScroll, { passive: true });
-        // Run once on load
         updateStepsAnimation();
     }
 });
