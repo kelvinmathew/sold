@@ -739,7 +739,10 @@
     /* 4.14 rounded */
     left: 1.1806cqi;
     /* 16.66 rounded */
-    width: 19.7917cqi;
+    width: max-content;
+    /* was 19.7917cqi (285px), sized to the old "What our Client say" - the
+       corrected "What Our Clients Say" is longer and wrapped to 2 lines. */
+    white-space: nowrap;
     height: 2.0833cqi;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
@@ -1905,8 +1908,10 @@
     top: -15vw !important;
     left: 6.16vw !important;
     /* 24.24px */
-    width: 54.10vw !important;
-    /* 212.59px */
+    width: max-content !important;
+    /* was 54.10vw (212.59px), sized to the old "What our Client say" - the
+       corrected "What Our Clients Say" is longer and wrapped to 2 lines. */
+    white-space: nowrap !important;
     height: 8.18vw !important;
     /* 32.14px */
     margin: 0 !important;
@@ -1983,8 +1988,11 @@
   }
 
   .ws-client-inner img {
-    max-width: 12.21vw !important;
-    /* 48px */
+    max-width: 13.99vw !important;
+    /* 55px (was 48px) - wide logos (Better Homes, Cushman, Sobha, Mashriq,
+       Knight Frank) were capped small. With the unchanged 26px height cap,
+       every logo's corners stay inside the 61px dark circle (radius ~30),
+       so nothing is clipped by the circle edge. */
     max-height: 6.62vw !important;
     /* 26px */
     width: auto !important;
@@ -2538,10 +2546,10 @@
   }
 
   /* Row 1 */
-  /* Ben Neve (C1) */
-  .ws-team-grid-row:nth-child(1) .ws-team-member:nth-child(1) .ws-team-info {
-    width: 7.7778cqi;
-  }
+  /* Card 1 of each row used to get .ws-team-info { width: 7.7778cqi } (112px, sized to "Ben Neve").
+     Names are nowrap, so any longer first-card name (Anum Ashfaq, Mike Semmance) overflowed that box
+     to the right and sat 10-25px off-centre. Removed (all 3 rows) - the info box now shrinks to its
+     content and is centred by .ws-team-member's align-items:center, like every other card. */
 
   /* Omar Talafha (C2) */
   .ws-team-grid-row:nth-child(1) .ws-team-member:nth-child(2) .ws-team-name {
@@ -2570,11 +2578,6 @@
   }
 
   /* Row 2 */
-  /* Anum Ashfaq (C1) */
-  .ws-team-grid-row:nth-child(2) .ws-team-member:nth-child(1) .ws-team-info {
-    width: 7.7778cqi;
-  }
-
   /* Mohnish Vanjani (C2) */
   .ws-team-grid-row:nth-child(2) .ws-team-member:nth-child(2) .ws-team-role {
     width: 10.4167cqi;
@@ -2594,11 +2597,6 @@
   }
 
   /* Row 3 */
-  /* Mike Semmance (C1) */
-  .ws-team-grid-row:nth-child(3) .ws-team-member:nth-child(1) .ws-team-info {
-    width: 7.7778cqi;
-  }
-
   /* Nyan Moe Wai (C2) */
   .ws-team-grid-row:nth-child(3) .ws-team-member:nth-child(2) .ws-team-role {
     width: 10.4167cqi;
@@ -2764,5 +2762,130 @@
   .ws-founder-bio,
   .ws-clients-quote {
     font-size: max(12px, 1.1111cqi);
+  }
+}
+
+/* Why SOLD founder "Get in touch" (web only, 768px+; mobile keeps its own rules) - Figma 1512:3049/3050/3053.
+   The button is scaled inside the founder card (Frame 175, 1191x446): its real box is card inset
+   71.75% / 74.22% / 14.8% / 4.45% = 254 x 60 at card (53, 320), i.e. (2, 265) from .ws-founder-info
+   (Frame 181 at card 51,55). Live was 282 x 67 (the unscaled component size) at (0, 239): bigger and 26px higher.
+   Icon 1512:3050: left 4.33% (11px), 16.54% wide (42 x 41), top 50%-1.5px (8px). Text 1512:3053: left 27.68%
+   (70.3px), 25px Inter 600, centred at 50%+0.27px. Arrow 60% of the icon width (25.2px). All at /14.4 (1440). */
+@media (min-width: 768px) {
+  .ws-founder-1 .ws-founder-btn {
+    top: 18.4028cqi;
+    left: 0.1389cqi;
+    width: 17.6389cqi;
+    height: 4.1667cqi;
+  }
+
+  .ws-founder-1 .ws-founder-btn .ws-btn-icon {
+    top: 0.5556cqi;
+    left: 0.7639cqi;
+    width: 2.9181cqi;
+    height: 2.8472cqi;
+  }
+
+  .ws-founder-1 .ws-founder-btn .ws-btn-icon svg {
+    width: 1.75cqi;
+    height: auto;
+  }
+
+  .ws-founder-1 .ws-founder-btn .ws-btn-text {
+    top: 0.8333cqi;
+    left: 4.884cqi;
+    width: 12.04cqi;
+    height: 2.5372cqi;
+  }
+}
+
+/* ==========================================================================
+   SEO heading structure - Why SOLD (client sheet, 2026-09-29): tags changed, design unchanged.
+   :where() = tag-level priority, so every class rule still wins exactly as before; only the browser/Bootstrap
+   heading defaults that differ between the old and new tag are put back. (Hero, Success Formula, FAQ: style-v2.css.)
+   ========================================================================== */
+/* labels About / Our Founders / What Our Clients Say / Our Team: <span> -> <h2> */
+h2:where(.ws-section-label-text, .ws-team-label-text) {
+  display: inline;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* team names (desktop grid) + Mission/Vision/Collaborate: <h4> -> <h3> - keep the h4 default size */
+h3:where(.ws-team-name, .ws-info-title) {
+  font-size: calc(1.275rem + .3vw);
+}
+
+/* team names (phone carousel): <h4> -> <div> - keep the h4 defaults it had */
+div:where(.ws-team-mobile-name) {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: calc(1.275rem + .3vw);
+  color: var(--bs-heading-color, inherit);
+}
+
+/* founder: name (<h3>) + title (<div>) now two lines inside one <h3> that takes no box of its own */
+h3:where(.ws-founder-heading) {
+  display: contents;
+  margin: 0;
+}
+
+span:where(.ws-founder-name) {
+  display: block;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: calc(1.3rem + .6vw);
+  color: var(--bs-heading-color, inherit);
+}
+
+span:where(.ws-founder-subtitle) {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  h3:where(.ws-team-name, .ws-info-title),
+  div:where(.ws-team-mobile-name) {
+    font-size: 1.5rem;
+  }
+
+  span:where(.ws-founder-name) {
+    font-size: 1.75rem;
+  }
+}
+
+/* Steps (The SOLD Success Formula) - web/tablet: cards 02 and 03 use exactly
+   step 01's card layout (2026-10-01). They had their own padding, heading ->
+   text gap and a narrower text column; now all three match 01. Card size,
+   position, timeline and the swing animation are unchanged. Why SOLD only
+   (this file loads only here); mobile has its own rules. */
+@media (min-width: 768px) {
+  .why-sold-page-body .step-card-2,
+  .why-sold-page-body .step-card-3 {
+    padding: 2.3264cqi 3.4722cqi 3.2292cqi 3.4722cqi;
+    /* 33.5 / 50 / 46.5 / 50 at 1440 = step 01 */
+  }
+
+  .why-sold-page-body .step-card-inner-2,
+  .why-sold-page-body .step-card-inner-3 {
+    width: 27.9861cqi;
+    /* 403/1440 = step 01 */
+    gap: 2.5694cqi;
+    /* 37/1440 = step 01 */
+  }
+
+  .why-sold-page-body .step-desc-2,
+  .why-sold-page-body .step-desc-3 {
+    width: 27.9861cqi;
+    /* 403/1440 = step 01 */
   }
 }

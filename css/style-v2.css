@@ -10166,3 +10166,162 @@ body:has(.contact-modal-overlay.active) .whatsapp-float-btn {
     height: 41px;
   }
 }
+/* Success Formula mobile subtitle (Services, Why SOLD, Client Success) - Figma 1680:2414: Mona Sans Medium 12/17,
+   0.01em, #5D5C5C, centred, 298 wide; "helping your business sell more." in #FFA726 on its own line. Was 14/20 with
+   the old "Our three-step method..." copy (text itself = ACF subtitle_mob / subtitle_mobile, see
+   deploy/steps-subtitle-mobile.sql). The 15px top / 30px bottom gaps are unchanged. `p.` beats the equal
+   !important rule in client-success.css, which loads after this file. */
+@media (max-width: 767px) {
+  p.sf-subtitle-mobile {
+    font-size: 12px !important;
+    line-height: 17px !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  p.sf-subtitle-mobile .orange-text {
+    color: #FFA726 !important;
+  }
+}
+
+/* ==========================================================================
+   SEO heading structure - All Services page (client sheet, 2026-09-29): tags changed, design unchanged.
+   New h2/h3 (were span/div) get Bootstrap/global heading defaults (margin-bottom .5rem, heading font, weight 500,
+   line-height 1.2, size) the old elements never had -> put back what they had. :where() = tag-level priority, so every
+   class rule still wins exactly as before. Only matches these tags, so other pages sharing the classes are unaffected.
+   ========================================================================== */
+h2:where(.faq-mobile-label),
+h3:where(.faq-mobile-question-text, .title) {
+  display: inline;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+h2:where(.sf-title-wrapper),
+h3:where(.step-card-title-wrapper) {
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Hero: "Marketing Services" was an <h2>, now a line inside the single <h1> - keep the h2 defaults it had */
+span:where(.services-hero-title-bottom) {
+  display: block;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: calc(1.325rem + .9vw);
+  color: var(--bs-heading-color, inherit);
+}
+
+span:where(.services-hero-title-top) {
+  display: block;
+}
+
+/* the single <h1> around both lines takes no box of its own (and no heading margin), so the two lines sit in the
+   title container's flex column exactly as the old <h1> + <h2> did */
+h1:where(.services-hero-title-seo) {
+  display: contents;
+  margin: 0;
+}
+
+@media (min-width: 1200px) {
+  span:where(.services-hero-title-bottom) {
+    font-size: 2rem;
+  }
+}
+
+/* Services list (01-08) - web/tablet: the open item's text (subtitle, "+"
+   lines, button) keeps a fixed gap to the image on the right and wraps to the
+   next line instead of running into it. Service names are not affected. A
+   "+" line that wraps keeps its lines apart (line height = the 22px icon at
+   1440, so a one-line item is exactly as before). */
+@media (min-width: 768px) {
+  .service-list-item.active .service-body {
+    width: calc(100% - 2.0833cqi);
+    /* 30/1440 gap to the image */
+  }
+
+  .service-list-item.active .service-body-inner {
+    width: 100%;
+  }
+
+  /* Heading -> subtitle gap 18px at 1440 (was 9). The open area keeps the
+     same total height: its design min-height drops by the same 9px (there is
+     30-73px free space under the button), so rows are as tall as before. */
+  .service-list-item.active .service-content-col .title {
+    margin-bottom: 1.25cqi;
+  }
+
+  /* The open area grows only if its content needs more room (narrow tablet
+     widths), never below the design height - so the button is never cut. */
+  .service-list-item.active .service-body,
+  .service-list-item.active .service-body-inner {
+    height: auto;
+    min-height: 23.4333cqi;
+    /* 24.0583cqi design height - the 0.625cqi added above the subtitle */
+  }
+
+  .service-desc {
+    max-width: none;
+  }
+
+  .service-features li {
+    align-items: flex-start;
+    line-height: 1.5277cqi;
+    /* = .plus-icon height */
+  }
+}
+
+/* Services list - mobile: a "+" line that wraps gets proper line spacing
+   (23px; was 14px, so its 2 lines squeezed together and spilled out of the
+   row) and its row grows; one-line rows keep their 31.7px height and spot.
+   A 4+ line subtitle pushes the list down (keeps the 30px gap) instead of
+   running into it. Never wider than the screen (Galaxy Fold, 280px). */
+@media (max-width: 767px) {
+  .service-desc {
+    height: auto !important;
+    min-height: 63px !important;
+  }
+
+  .service-features {
+    height: auto !important;
+    min-height: 105px !important;
+    max-width: 100% !important;
+  }
+
+  .service-features li {
+    height: auto !important;
+    min-height: 31.6667px !important;
+    /* the 105px list fitted 3 x 35px rows + 2 x 5px gaps = 31.67px each */
+    line-height: 23px !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Services list - mobile: the "Read More" / "Discover More" pill grows with
+   its label so the text stays on one line (never narrower than the 158px
+   design width, so a short label looks exactly as before). */
+@media (max-width: 767px) {
+  .btn-read-more-pill {
+    width: fit-content !important;
+    min-width: 158px !important;
+    box-sizing: border-box !important;
+    padding: 10px 20px 0 50px !important;
+  }
+
+  .btn-read-more-pill .btn-text {
+    position: static !important;
+    width: auto !important;
+    white-space: nowrap !important;
+  }
+}

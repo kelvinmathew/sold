@@ -3,26 +3,6 @@
    Provides perfectly scaled identical output to Figma mockups globally
    ========================================================================= */
 
-/* contact.html has no <header>/hamburger at all (standalone modal page) - the
-   2026-09-21 fix that made .whatsapp-float-btn a child of .site-header and
-   positioned it relative to that header doesn't apply here, since there's no
-   header to be relative to. Restored to a simple fixed corner placement so
-   this page isn't regressed by that shared style.css change.
-   MUST be scoped to .contact-page-body, not just a bare selector - this
-   file is loaded on every page (the contact popup is available site-wide),
-   and contact.html shares the exact same "home-page-body" body class as the
-   real Home page, so an unscoped rule here silently clobbered the header-
-   relative fix on every other page too until this was scoped properly. */
-@media (max-width: 767px) {
-  .contact-page-body .whatsapp-float-btn {
-    position: fixed !important;
-    top: auto !important;
-    bottom: 16px !important;
-    right: 16px !important;
-    transform: none !important;
-  }
-}
-
 /* Screen-reader-only live region: announces "Sending...", success and error
    text to assistive tech without any visual footprint (the visible feedback
    is the centered popup below + the inline field tooltips). */
@@ -1104,4 +1084,37 @@
         /* back to the original Figma h-93 */
         padding: 15px 19px;
     }
+}
+/* SEO heading structure (2026-09-29): inside the popup on other pages the "Contact The Team" titles are <div>s
+   (js/contact-modal.js) - give them the heading defaults the old <h2> had (Bootstrap h2 + theme heading font), at
+   tag-level priority so the .contact-title / .mobile-contact-title rules still win exactly as before. */
+div:where(.contact-title, .mobile-contact-title) {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: calc(1.325rem + .9vw);
+  color: var(--bs-heading-color, inherit);
+}
+
+@media (min-width: 1200px) {
+  div:where(.contact-title, .mobile-contact-title) {
+    font-size: 2rem;
+  }
+}
+
+/* Tappable phone / email in the popup (tel: / mailto:). The link sits inside
+   the original span and looks exactly like the text it wraps - same colour,
+   font and size, no underline - in every state (Bootstrap would otherwise
+   paint links blue + underlined). */
+#contactModal a.contact-tap,
+#contactModal a.contact-tap:hover,
+#contactModal a.contact-tap:focus,
+#contactModal a.contact-tap:active,
+#contactModal a.contact-tap:visited {
+    color: inherit !important;
+    font: inherit !important;
+    letter-spacing: inherit !important;
+    text-decoration: none !important;
 }

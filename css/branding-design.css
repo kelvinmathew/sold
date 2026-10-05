@@ -633,7 +633,12 @@ body.branding-page-body {
 
   .branding-gallery-img {
     display: block;
-    width: 100%;
+    /* Natural size: an image narrower than the container shows at its own width (centred), never
+       stretched; a wider one is scaled down to the container (max-width) - aspect ratio kept either
+       way. Was width:100%, which enlarged small uploads and made them soft. */
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
     height: auto;
     /* Was aspect-ratio:1808/1060, this placeholder image's own natural
        ratio hardcoded - would distort or letterbox any differently-shaped
@@ -711,8 +716,12 @@ body.branding-page-body {
        node 3506:1428); was 1.3889cqi (20px), which is actually the gap
        between that group and the description below, not this one. See
        .branding-step-desc for how the 20px gap is restored there instead. */
-    width: 19.5139cqi;
-    /* 281/1440 */
+    width: min-content;
+    min-width: 19.5139cqi;
+    /* 281/1440 minimum (Figma). min-content = the one-line pill's width, so
+       a long label ("Content Optimisation") widens its own column instead of
+       spilling out of it; the description still wraps within that width. */
+    flex-shrink: 0;
   }
 
   .branding-step-number {
@@ -729,10 +738,14 @@ body.branding-page-body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15.2083cqi;
-    /* 219/1440 - was 100% (281px, the full step column). Figma's pill is
-       narrower than the column and centred within it, not stretched to
-       fill it. */
+    width: auto;
+    min-width: 15.2083cqi;
+    /* 219/1440 minimum (Figma) - was a fixed width, so longer labels on the
+       other service pages ("Content Optimisation", "Launch & Optimise")
+       wrapped to 2 lines inside it. Now it grows with its text: one line
+       always, with 24/1440 side padding. */
+    padding: 0 1.6667cqi;
+    white-space: nowrap;
     height: 4.3056cqi;
     /* 62/1440 */
     background: #ffffff;
@@ -763,7 +776,10 @@ body.branding-page-body {
   }
 
   .branding-step-arrow {
-    flex-shrink: 0;
+    flex-shrink: 1;
+    min-width: 6.9444cqi;
+    /* 100/1440 - a wider pill column takes its space from this connector
+       (236px by default) rather than pushing the row past its container. */
     align-self: flex-start;
     /* was align-self:center, which centred it on the whole row's height
        (driven by whichever step is tallest) instead of a fixed offset from
@@ -892,8 +908,19 @@ body.branding-page-body {
   }
 
   .branding-hero-text-container {
-    margin-bottom: 60px;
-    /* 385px (breadcrumb) - 325px (bottom of text) = 60px */
+    /* Bottom-anchored instead of flowing down from the 294px padding-top:
+       the CTA below is pinned at top:435px, so a title that wraps to 2+
+       lines (e.g. "Lead & Demand Generation") must grow UPWARD or it runs
+       into the button. Bottom edge stays at 377px (294 + 43 title + 10 gap
+       + 30 subtitle, the original single-line position), keeping the same
+       58px gap to the CTA for any title length. left/right 24px bound the
+       width so wrapped text never touches the screen edge. */
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    top: auto;
+    bottom: calc(100% - 377px);
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -919,7 +946,13 @@ body.branding-page-body {
     color: #ffffff;
     margin: 0;
     text-align: left;
-    white-space: nowrap;
+    /* Was nowrap - fine for "Branding & Design" but longer titles on the
+       other service pages ("Social Media Marketing", "Lead & Demand
+       Generation") ran past the right edge. Wraps within the container's
+       24px side gutters instead. */
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   .branding-hero-subtitle {
@@ -1177,11 +1210,19 @@ body.branding-page-body {
 
   .branding-cards-heading {
     margin: 0 auto 33px !important;
-    max-width: 199px !important;
+    /* Was max-width:199px - sized so "Where Great Brands Begin" splits into
+       Figma's 2 lines, but it forced longer headings on the other service
+       pages ("Why Our Leads Convert Better", "SEO & GEO Transforms Sales")
+       into 3. Full width + balance lets every heading use 2 even lines. */
+    max-width: 100% !important;
+    text-wrap: balance;
     font-family: 'Mona Sans', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 28px !important;
-    line-height: 31px !important;
+    font-size: clamp(24px, 7.13vw, 28px) !important;
+    /* Figma 28px from ~393px up; eases down to 24px on the narrowest phones
+       so longer headings still fit 2 lines at 320px. */
+    line-height: 1.107 !important;
+    /* 31/28 - unitless so it scales with the clamped size */
     letter-spacing: 0.01em !important;
     color: #263238 !important;
     text-align: center !important;
@@ -1220,58 +1261,17 @@ body.branding-page-body {
     font-size: 23px !important;
     line-height: 30px !important;
     color: #ffa726 !important;
-  }
-
-  /* Cards 1-3's titles are each set to whitespace-nowrap in Figma (every
-     line is its own single-line text node, e.g. 3548:4322) - card 2's
-     "Built Around Your Brand" is meant to stay on one line, but without
-     this it wrapped to "Built Around Your / Brand", which also inflated
-     the card's measured content height and threw off the vertical
-     centering (wrong top/bottom gap) added for the card-pairing fix. Card
-     3's two lines are two separate nowrap text nodes (the <br> in the HTML
-     already forces that split) - this just stops either half from
-     wrapping again on narrow phones. Card 4's "Lorem ipsum..." title is
-     the one exception: Figma leaves it as normal auto-wrap (node
-     3548:4333 has no whitespace-nowrap), so it's excluded here. */
-  .branding-card:nth-child(1) .branding-card-title,
-  .branding-card:nth-child(2) .branding-card-title {
-    white-space: nowrap !important;
-  }
-
-  /* "Built Around Your Brand" (card 2) is wide enough at the full 23px
-     Figma size that once nowrap stops it wrapping, it instead overflows
-     past the card's right edge on narrower phones (194-249px of available
-     text width vs. the ~227-268px it actually needs at 23px) - the
-     "heading touches the right edge" bug. Card 1 is short enough to never
-     hit this. Shrinking the font slightly on narrow screens keeps the
-     title readably close to Figma's 23px (reached at/above the 393px
-     reference) while guaranteeing it always fits in one line without
-     spilling past the border. */
-  .branding-card:nth-child(2) .branding-card-title {
-    font-size: clamp(15px, calc(8.33cqi - 11.67px), 22.5px) !important;
-  }
-
-  /* Card 3 ("Built for Today.<newline>Ready for Tomorrow.") is ACF-driven
-     (a WordPress text/textarea field storing a real newline character, not
-     an HTML <br>), so the rendered markup has an ordinary line-break
-     character between the two sentences, not a forced tag. white-space:
-     nowrap (as used above for cards 1-2) collapses that character into an
-     ordinary, non-breaking space, so the *entire* two-sentence string was
-     being laid out as one unbroken line - 395px of content trying to fit
-     roughly 194-304px of available width at every phone size tested
-     (320-430px), even at this rule's own 19px font-size floor. That's the
-     actual "heading overflows the card" bug reported - the old comment
-     here assumed a real <br> already existed in the HTML, which it does
-     not for the dynamic/ACF-driven template.
-     white-space: pre-line preserves that newline as a real line break
-     (keeping the intended two-line layout) while still allowing normal
-     wrapping if either resulting line is ever too long for a given screen
-     width - so unlike nowrap, it can never overflow the card, it degrades
-     to a 3rd line instead. Desktop's own separate (unmodified) rule is
-     unaffected - this selector only exists inside this mobile media query. */
-  .branding-card:nth-child(3) .branding-card-title {
-    font-size: clamp(19px, calc(10.81cqi - 15.6px), 23px) !important;
-    white-space: pre-line !important;
+    /* One rule for every card, on every service page. Previously cards 1-2
+       were white-space:nowrap with per-card font-size clamps tuned to the
+       Branding page's own words, so longer titles on the other pages
+       ("Become the Brand Everyone Talks About", "Found Everywhere Your
+       Customers Search") ran past the card's right border. Now every title
+       wraps at the card edge; an editor's ACF line break is output as a
+       real <br> by page-service.php (nl2br), so it no longer needs
+       pre-line. break-word covers a single over-long word. */
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    min-width: 0;
   }
 
   .branding-card-divider {
@@ -1420,7 +1420,11 @@ body.branding-page-body {
     transform: translateY(-50%) !important;
     width: 38px !important;
     height: 38px !important;
-    background: url("../assets/images/branding-pill-icon.svg") center / contain no-repeat !important;
+    /* image comes from the inline style (Service page -> Production -> Pill Icon, default branding-pill-icon.svg);
+       this used to be a background shorthand with the default url + !important, which hid the admin image on mobile */
+    background-position: center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
   }
 
   .branding-pill-text {
@@ -1454,7 +1458,10 @@ body.branding-page-body {
 
   .branding-gallery-img {
     display: block;
-    width: 100% !important;
+    /* Natural size, only scaled down when wider than the container (same as desktop) */
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
     height: auto !important;
     /* Was also aspect-ratio:1808/1060 !important - same fix as desktop,
        see that rule's comment. Removing it here too so a differently-
@@ -1549,7 +1556,12 @@ body.branding-page-body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 113px !important;
+    width: auto !important;
+    min-width: 113px !important;
+    /* Figma width is now the minimum; the pill grows with its label and
+       stays on one line (was a fixed 113px). */
+    padding: 0 20px !important;
+    white-space: nowrap !important;
     height: 40px !important;
     background: #ffffff !important;
     border: 1.5px solid #ffa726 !important;
@@ -1772,5 +1784,13 @@ body.branding-page-body {
   .branding-pill-text,
   .branding-step-desc {
     font-size: max(12px, 1.5277cqi);
+  }
+}
+
+/* Service pages intro description - mobile uses Mona Sans like web (was
+   Inter); mobile size, weight and line height unchanged. */
+@media (max-width: 767px) {
+  .branding-intro-desc {
+    font-family: 'Mona Sans', sans-serif !important;
   }
 }

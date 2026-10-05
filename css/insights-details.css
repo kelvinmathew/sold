@@ -1134,3 +1134,72 @@
     font-size: max(12px, 1.4583cqi);
   }
 }
+
+/* Mobile hero: long titles (5+ lines) used to run over the read-time/date line,
+   which was pinned 212px below the title top (room for 4 lines of 43px + a 40px
+   gap). The meta now follows the title in normal flow: the title box keeps a
+   212px minimum height, so titles of 1-4 lines put the meta exactly where it
+   was; longer titles push it down and keep the same 40px gap. */
+@media (max-width: 767px) {
+  .insights-details-hero-title-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 333px 0 0 25px !important;
+    min-height: 212px !important;
+    padding-bottom: 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  .insights-details-hero-meta {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin-left: 25px !important;
+    width: max-content !important;
+  }
+}
+
+/* Tables inside articles (2 of the old getsold.ae posts have one; no other
+   page has tables): readable rows - header row bold, thin row lines, top-aligned
+   cells. Text keeps the article's own font, size and colour. */
+.insights-details-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5em;
+}
+
+.insights-details-body th,
+.insights-details-body td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.7em 1.2em 0.7em 0;
+  border-bottom: 1px solid #D5D9DB;
+}
+
+.insights-details-body th,
+.insights-details-body tr:first-child td {
+  font-weight: 600;
+  border-bottom-color: #263238;
+}
+
+.insights-details-body th p,
+.insights-details-body td p {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  /* A table wider than the phone (e.g. 4 columns) scrolls sideways inside its
+     own box instead of being cut off; tables that fit look the same. */
+  .insights-details-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .insights-details-body th,
+  .insights-details-body td {
+    padding: 0.6em 0.8em 0.6em 0;
+  }
+}

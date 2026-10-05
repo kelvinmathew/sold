@@ -12,6 +12,500 @@ cPanel prefix `uaenewpr_` · DB `uaenewpr_sold` · DB user `uaenewpr_solduser` �
 
 # PART 1 — PENDING DEPLOY
 
+## LIVE 2026-10-02, verified (theme zip `_S_VERSION 1.5.60`, no SQL, no images) — Insights Featured Story card back to the earlier size (web only)
+
+Client: the whole-image Featured card (1.5.58, 1197 x 1078 at 1440) is too big - wanted the earlier size. New block at the
+end of `css/insights.css` (min-width 768) overrides the three 2026-10-02 Featured blocks: card 1197 x 695 at 1440
+(83.125vw x 48.2639vw), image area 1141 x 384 (26.6667vw), image object-fit cover (crops top/bottom like before).
+Heading/description fonts from 1.5.56 kept. Mobile unchanged (355 x 408 at 393). Verified local + live (CSS injected)
+at 1920/1440/1280/1024/768/393: sizes exact, no text outside the card, no sideways scroll. Zip includes 1.5.59.
+
+## LIVE 2026-10-02 with 1.5.60 (theme zip `_S_VERSION 1.5.59`, no SQL, no images) — contact popup links underline + Why SOLD mobile founder card = Figma
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). Includes 1.5.58 if not deployed.
+- css/contact.css (end): #contactModal a.contact-tap - mouse devices `@media (hover: hover)`: underline on hover / focus-visible;
+  touch devices `@media (hover: none)`: always underlined (offset 0.18em, 1px). Colour + font unchanged (inherit).
+- css/why-sold.css (end), mobile: founder card 1 = Figma 1655:2193 as a flow layout (was absolute tops): padding 31 top / 43
+  bottom, name lh 21, name->subtitle 7 (subtitle lh 20), ->bio 12, bio padding 23 each side (310 box), ->button 32, ->photo 32,
+  photo 296 tall (flex 0 0 auto - a 320px flex-basis rule took over in column flex). Fonts unchanged.
+- Verified: live injection 280-767 - 393: name 31 / subtitle 59 / bio 91 / button 228 / photo 303 / card 642 (live admin text is
+  5 lines = Figma + 21); local (Figma's 4-line fallback text): card 356x621, button 207, photo 282 = Figma exactly. Photo sizes
+  = before at every width. Web unchanged. Contact links: 1440/1024 underline only on hover; 393/820 touch always; colour same.
+
+## ✅ CONFIRMED LIVE 2026-10-02 with 1.5.59 — (was PENDING) (theme zip `_S_VERSION 1.5.58`, no SQL, no images) — Insights Featured whole image + blog details article spacing (web)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). Includes 1.5.57 (Featured width back to 1197).
+- css/insights.css (end), web: Featured card 1197 wide (as before), image full width + WHOLE image (img height auto, wrap height
+  auto) -> card 1197 x 1078 @1440 (user OK: "if the image is showing fully then it is fine"). Mobile unchanged.
+- css/insights-details.css (end), web only: .insights-details-body gap 0; h2/h3 max-width none (were capped 719 of 1221 -> wrapped
+  early); spacing 40 above everything, 16 for text after text/heading (p, ul, ol after p/h2/h3/h4/ul/ol); p with an image keeps
+  40 above + below; > p margin-bottom 0 (pasted Google Docs 12pt margins in 4 old posts); p.sold-empty-p hidden.
+- functions.php: sold_post_mark_empty_paragraphs (the_content, single posts) adds class sold-empty-p to blank paragraphs
+  (<p>&nbsp;</p>, <p></p>) keeping their content - hidden on web only; the saved posts are NOT changed.
+- Verified local: all 15 posts x 1440/1024/768/393 - headings full width, gaps 16 (text) / 40 (headings, images), no overlap,
+  no h-scroll (60/60); mobile 393/320 gaps IDENTICAL to live; Insights featured 1197 x 1078 whole image. Live injection same.
+  Previous zip: scratchpad theme-code-only-1.5.57.zip.
+
+## (superseded by 1.5.58, never deployed alone) — (theme zip `_S_VERSION 1.5.57`, no SQL, no images) — Insights Featured card (web): width + image back to earlier, only shorter
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- User: 1.5.56's 900-wide card + narrow whole image was too small. css/insights.css (end), `@media (min-width: 768px)`: card
+  width 83.125vw (1197 @1440, as before), image full card width again (object-fit cover, wrap radius 26, overflow hidden).
+  Kept from 1.5.56: image area 340 tall (was 384), card height auto -> 1197 x 603 @1440 (was 695). Mobile unchanged.
+- Verified: injected on LIVE 768-1920 (1197x603 @1440, centred L121/R122, all inside, no h-scroll); local same.
+
+## ✅ CONFIRMED LIVE 2026-10-02 (live = tested numbers 280-1920; Featured size then changed again in 1.5.57) — (was PENDING) (theme zip `_S_VERSION 1.5.56`, no SQL, no images) — Insights: Featured + Latest headings in full, Featured card smaller/centred with whole image, Explore text sizes
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). (Includes 1.5.55 steps fix if not deployed.)
+- css/insights.css (end). Web (>= 768): .insights-featured-headline + .insights-latest-headline = Explore heading (700, 1.6667vw,
+  lh 1) with NO clamp (was 2 lines + "..."); .insights-featured-excerpt + .insights-latest-excerpt = Explore desc (400, 0.9722vw /
+  1.3889vw, 12px floor 768-1199; still 2 lines "..."; were 23/29 and 18/23). Featured card: `.insights-featured-container
+  .insights-featured-card` 62.5vw wide (900 @1440, was 83.125vw = 1197), height auto (was fixed 48.2639vw = 695 -> 627), centred;
+  image area 23.6111vw tall (340, was 384), img object-fit contain, own shape, centred, rounded (was cover = top/bottom cut).
+- Mobile (<= 767): Featured + Latest heading = Explore (700, 2.5445vw / 5.598vw, 10px @393; was 20px/600 and 12px), desc = Explore
+  (2.5445vw / 3.5623vw; was 13px and 11px). Featured image on mobile unchanged (user: web only).
+- Verified: injected on LIVE 280-1920 - fonts = Explore at every width, all text/images inside every card, Featured centred
+  (L=R), Latest cards 4-8px shorter, no h-scroll, colours unchanged. Real file local: identical numbers. Previous zip: scratchpad
+  theme-code-only-1.5.55.zip.
+
+## PENDING (theme zip `_S_VERSION 1.5.55`, no SQL, no images) — Services + Client Success: steps cards 02/03 = card 01 layout (web only)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- css/style-v2.css (end), `@media (min-width: 768px)`, `:is(.services-page-body, .client-success-page-body)`: .step-card-2/-3
+  padding 2.3264cqi 3.4722cqi 3.2292cqi; .step-card-inner-2/-3 width 27.9861cqi + gap 2.5694cqi; .step-desc-2/-3 width 27.9861cqi
+  (= the Why SOLD fix in why-sold.css). Before: 02 pad 47/52/45 gap 43 desc 342, 03 pad 38/50/51 gap 28 desc 337 (01: 34/50/47,
+  37, 403 @1440).
+- Verified: injected on LIVE 768-1920 - 01/02/03 identical on both pages, card sizes identical before/after, text inside;
+  mobile (393/767) + Why SOLD unchanged. Real file local: same. Previous zip: scratchpad theme-code-only-1.5.54.zip.
+
+## ✅ CONFIRMED LIVE 2026-10-02 (live why-sold.css?ver=1.5.54: founder bio 5 lines inside card 280-767, no h-scroll; all 1.5.53 Mona Sans targets OK) — (was PENDING) (theme zip `_S_VERSION 1.5.54`, no SQL, no images) — Why SOLD mobile: Our Founders bio wraps inside the card
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- css/why-sold.css (end), `@media (max-width: 767px)` `.why-sold-page-body .ws-founder-bio.d-lg-none`: white-space normal (was
+  nowrap !important - built for the fallback text with <br>s; the live admin text "For over two decades..." has no breaks, so it
+  ran on ONE line, cut off at the card edge - already so before 1.5.53), padding 0 5.09vw (20px @393), border-box.
+- Verified: injected on LIVE 280-767 - 5 centred lines at every width, inside the card, 8-22px above Get in touch, no h-scroll.
+  Local (fallback text with <br>s) still 4 lines as designed. Web unchanged (rule is mobile-only; this <p> is hidden on web).
+
+## ✅ LIVE 2026-10-01 (live shows style-v2.css?ver=1.5.53) — (was PENDING) (theme zip `_S_VERSION 1.5.53`, no SQL, no images) — Mona Sans for description texts (web + mobile)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- Same block at the end of css/style.css (Home) + css/style-v2.css (all other pages), font-family ONLY (sizes, weights, spacing
+  unchanged): Services list `.service-desc` + `.service-features li` ('+' lines) (Home, Services); Steps section `.sf-subtitle`,
+  `.sf-subtitle-mobile` (+ `.orange-text`), `.step-desc`, `-2`, `-3` (Services, Why SOLD, Client Success - selector
+  `body :is(#steps-section, .steps-section) ...` to beat the mobile `:is(.services-page-body, .why-sold-page-body) .step-desc`
+  and client-success.css Inter !important rules); Why SOLD `.ws-about-text` (+ `.ws-about-text-mobile p`), `.ws-founder-bio`,
+  `.ws-testimonial-text` (was already Mona Sans - kept for safety).
+- Before (live): these were Inter (service desc/li, step descs, about text, founder bio on web). Home testimonials (Poppins) not
+  requested - untouched.
+- Verified: injected on LIVE Home/Services/Why SOLD/Client Success at 280-1920 - all targets Mona Sans, same sizes, no text cut by
+  its box, no h-scroll; a few texts wrap 1 line more/less (normal for the font change). Real files local: same. Previous zip:
+  scratchpad theme-code-only-1.5.52.zip.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.52`; live: all 8 service pages intro desc Mona Sans on mobile 320-767 (40/40), web unchanged (Mona Sans 500), text inside, no h-scroll; identical to the tested injection)
+## (was PENDING) (theme zip `_S_VERSION 1.5.52`, no SQL, no images) — 8 service pages: intro description in Mona Sans on mobile
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). (Includes 1.5.51 Insights headings if not deployed.)
+- css/branding-design.css (shared by all 8 service pages, end): `@media (max-width: 767px) .branding-intro-desc { font-family:
+  'Mona Sans' }` (was Inter on mobile; web already Mona Sans). Mobile size 16px / line 22px / weight 400 unchanged.
+- Verified: injected on all 8 LIVE service pages at 320/375/393/430/767 - Mona Sans loads, text inside screen, no h-scroll; web
+  (768/1440) rows identical before/after; real file local (branding-design) same. Class only in page-service.php.
+
+## ✅ CONFIRMED LIVE 2026-10-01 with 1.5.52 (live: Featured + Latest headings = Explore size at 768-1920, Latest 2 lines, Read More inside, mobile sizes unchanged) — (was PENDING) (theme zip `_S_VERSION 1.5.51`, no SQL, no images) — Insights: Featured + Latest card headings = Explore heading size (web)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- css/insights.css (end), `@media (min-width: 768px)`: .insights-featured-headline + .insights-latest-headline font-size 1.6667vw,
+  line-height 1 (= .insights-blog-headline: 24px @1440; were 45px / 32px one line), up to 2 lines then "…".
+- Verified local 768-1920: both = Explore size + line height at every width; Featured card same size (its text + Read More sit
+  higher inside it), Latest cards 2px shorter (page 2-5px shorter); Read More inside all cards; no h-scroll; mobile (320-767)
+  IDENTICAL. Classes used only on Insights (+ archive.php which 301s). Previous zip: scratchpad 1.5.50.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.50` + 15-post import; live: 15 posts, no duplicates, flow 40/40 (Featured = Cost of PPC, Load More 6->12->15, ?fpage=2/3), device emulation Home/Services list/Why SOLD OK 280-1920)
+## (was PENDING) (theme zip `_S_VERSION 1.5.50` + `old-blogs-import.zip` (15 posts), no SQL) — the 9 remaining old blog posts (all 15 on the blog) + article tables
+**Steps:** 1) upload `theme-code-only.zip` -> extract in `wp-content/themes/`; 2) upload `old-blogs-import.zip` -> extract in
+`wp-content/themes/` (overwrite posts.json, adds 23 images; 38 files); 3) open wp-admin once (refresh an open tab), first load
+~15-20 s. `sold_import_old_blogs` step 2 (flag `sold_old_blogs_done` 1 -> 2) adds the 9 posts, skips the 6 that exist. (Includes
+1.5.49 services spacing if not yet deployed.)
+- Source: the 9 are NOT in the gbbck backup (its trash = lorem placeholders + old drafts) - taken from getsold.ae's public REST API
+  (wp-json/wp/v2/posts: content, date_gmt/modified_gmt, featured media, yoast_head_json). They were Elementor posts with Google-Docs
+  inline styles: converted (scratchpad prep_blogs9.py) to plain article HTML - heading widgets -> h2/h3, text-editor -> p/ul/li/
+  table, bold/italic spans -> strong/em, images re-hosted (23, <=1600px, 27-305 KB), getsold.ae links mapped (0 unmapped); each
+  post's hand-made Article JSON-LD (old URLs) dropped - Yoast prints the Article schema. Text = old site word-for-word (100%).
+- css/insights-details.css (end): article tables - header row bold, thin row lines, top-aligned cells; on mobile a table wider
+  than the screen (Cost of PPC, 4 columns) scrolls sideways inside its box (was cut off). Only 2 posts have tables.
+- Verified local: 15 posts (exact old dates, featured image, AI Marketing, old SEO title/desc); Insights Featured = newest (Cost of
+  PPC), Latest 4, Explore 6 -> Load More 12 -> 15, button gone; ?fpage=2/3 titled, ?fpage=4 + ?page=2 301; all 15 articles x
+  1440/393: 1 title/H1, description, canonical, og + twitter, schema, alt, img sizes, no broken img / overlap / h-scroll / errors
+  (40/40). DB backup before: scratchpad sold-before-9blogs.sql. Previous zips: scratchpad 1.5.49 + old-blogs-import-6.zip.
+
+## ✅ CONFIRMED LIVE 2026-10-01 with 1.5.50 — (was PENDING) (theme zip `_S_VERSION 1.5.49`, no SQL, no images) — Services list spacing: web heading->subtitle gap + mobile '+' line spacing
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). 1.5.47 + 1.5.48 are already LIVE (verified).
+- Same edits in css/style.css (Home) + css/style-v2.css (Services), inside the services-list block added in 1.5.48:
+  web (>= 768): open item's title margin-bottom 1.25cqi (heading -> subtitle 18px @1440, was 9 = 0.625cqi); open area min-height
+  23.4333cqi (was 24.0583) so the row keeps the same height (free space under the button absorbs it). Verified row heights
+  identical 768-1920.
+- Mobile (<= 767): '+' li line-height 23px (was 14px - a wrapped '+' line squeezed its 2 lines and spilled ~2px above its row),
+  li height auto / min-height 31.6667px (= the real rendered height: 105px list shrank 3 x 35px rows), list height auto / min 105px,
+  .service-desc height auto / min 63px (a 4-line subtitle ran into the 30px gap: 10px left -> now 31px), list + li max-width 100%
+  (Galaxy Fold 280px: '+' lines went off screen). One-line rows: same 31.7px height + icon spot, text 0.6px lower (rounding).
+- Verified: injected on LIVE content 280-1920, then real files local; device emulation (Galaxy Fold 280, iPhone SE, Galaxy S8,
+  iPhone 14, Pixel 7, iPhone 14 Pro Max, iPad Mini/Air/Pro, laptops 1280/1366, desktop 1920) - all services-list checks pass on
+  Home + Services; Why SOLD OK. Full-page vs originals: changes only inside the services list. NOTE: Services page also has the
+  steps section (cards 02/03 still old layout - the 1.5.47 fix was Why SOLD only, as asked). Previous zip: scratchpad 1.5.48.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.48` + 1.5.47; live: Why SOLD steps 02/03 = 01 at 768-1920; services list text 17-46px from image, 0 cut, button 1 line; device emulation Home/Why SOLD OK)
+## (was PENDING) (theme zip `_S_VERSION 1.5.48`, no SQL, no images) — Services list 01-08 (Home + Services page): text gap to image + mobile button on one line
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). (Includes 1.5.47 Why SOLD steps if not deployed yet.)
+- Same block appended to css/style.css (Home) and css/style-v2.css (Services): web/tablet `@media (min-width: 768px)`: open
+  item's .service-body width = 100% - 2.0833cqi (30px @1440 gap to the image; was 0 / -0.9px overlap on 02 + 04 subtitles and
+  08's last '+' line), .service-desc max-width none, open area height auto with min-height = the design 24.0583cqi (grows only
+  when content needs it - at 768 item 06 was already cut 4px before), '+' lines line-height = icon height + align flex-start
+  (a wrapped '+' line no longer overlaps; one-line rows move < 1px). Service names (headings) untouched.
+- Mobile `@media (max-width: 767px)`: .btn-read-more-pill width fit-content, min-width 158px, padding 10/20/0/50 (text now in flow,
+  same 50,10 position, nowrap) - live label "Discover More" (Theme Settings services_acc_readmore_text) = 176px one line (was
+  158px, 2 lines); "Read More" stays exactly 158x47.
+- Verified (fix injected on LIVE content, then real files local): 768-1920 smallest text-to-image gap 17-46px, 0px content cut,
+  button 1 line; mobile 320-767 button 1 line, inside screen, text/list positions unchanged, no h-scroll. Full-page Home +
+  Services vs originals: changes only inside the services list (+ Home Insights cards = earlier blog content); Services mobile
+  identical. Why SOLD has no services list (user meant the Services page). Previous zip: scratchpad 1.5.47.
+
+## ✅ CONFIRMED LIVE 2026-10-01 with 1.5.48 — (was PENDING) (theme zip `_S_VERSION 1.5.47`, no SQL, no images) — Why SOLD steps: cards 02 + 03 use step 01's card layout (web/tablet)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- css/why-sold.css (end, `@media (min-width: 768px)`, `.why-sold-page-body` = Why SOLD only): step-card-2/3 padding = step 01
+  (2.3264/3.4722/3.2292/3.4722cqi = 33.5/50/46.5/50 @1440; were 47/50/45/52 and 38/50/51/50), inner width 403 + gap 37 (were
+  401/43 and 403/28), text width 403 (were 342 / 337). Card size/position, timeline, circles, swing animation unchanged.
+- Verified local (cards measured flat): at 768/992/1024/1025/1200/1280/1440/1920 card 01 unchanged; 02 + 03 title position,
+  title->text gap, text width, padding = card 01; outer boxes unchanged; text fits (same bottom space as 01). Mobile (320/393)
+  of Why SOLD + Services + Client Success and web of Services + Client Success PIXEL-IDENTICAL to the originals; Why SOLD web
+  changes only inside cards 02/03. Live texts have no manual <br>, so they wrap like 01. Previous zip: scratchpad 1.5.46.
+
+## ✅ LIVE 2026-10-01 except step 3 (`_S_VERSION 1.5.46`; live: icon tags = sold-site-icon-v2 (32/192/apple/tile), 3 icon files 200, popup tel:+971585931979 + mailto:growth@getsold.ae in panel + mobile bar). OPEN: step 3 root `public_html/favicon.ico` still 404 - user: do later. Visual popup check on live DONE after the server recovered (it was serving files at ~1.6 KB/s for a while): phone/email position + look = original at 1440/1024/768/393/320 (10/10), hover unchanged, tap hands off to phone/mail app, 0 JS errors.
+## (was PENDING) (theme zip `_S_VERSION 1.5.46` + `new-images-v1.5.46.zip` + root `favicon.ico`, no SQL) — Contact popup phone/email tappable + favicon = footer SOLD. logo
+**Steps:**
+1. Upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+2. Upload `new-images-v1.5.46.zip`, extract in `wp-content/themes/` too (3 files in `sold-theme/assets/images/seo/`:
+   `sold-site-icon-v2.png`, `sold-apple-touch-icon-v2.png`, `favicon-v2.ico`).
+3. Upload `deploy/favicon.ico` into **`public_html/`** (site root, next to wp-config.php) - LiteSpeed answers /favicon.ico itself.
+4. Open any wp-admin page once (refresh an open tab). `sold_site_icon_setup` (flag `sold_site_icon_done` = 2) adds the icon to
+   the Media Library ("SOLD icon") and sets it as Settings -> General -> Site Icon.
+- Contact popup (template-parts/contact-modal.php): phone -> `tel:+971585931979`, email -> `mailto:` (desktop/tablet left
+  panel + mobile bottom bar). Link sits inside the original span; css/contact.css `.contact-tap` = inherit colour/font, no
+  underline in every state. Verified local: popup PIXEL-IDENTICAL at 1440/1024/768/393/320, text boxes + styles identical,
+  hover look unchanged, click hands off to the phone/mail app (page + popup stay), 0 JS errors.
+- Favicon (user/senior 2026-10-01): the footer logo (footer_logo.png: black SOLD + orange dot) on a white rounded square (visible
+  on light AND dark tabs), 512 site icon + 16/32/48 .ico + 180 apple icon. Replaces the unshipped orange-dot version (old
+  local attachment removed). Admin bar: WordPress "W" removed (`sold_admin_bar_logo`); WP's own site-name item already shows
+  the SOLD icon. Login page already shows the SOLD logo (1.5.43+, live).
+- After deploy check: icon tags on pages, /favicon.ico 200, popup links (tel/mailto) on 1440/768/393, popup look unchanged.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.45`; live: Featured H3 = post title + excerpt, still 6 posts (import did not re-run); card layout IDENTICAL at 11 widths 1920-320 vs the original measurements, Read More inside, no h-scroll; blog flow 270/270; UI break check 11 pages x 9 widths = 99/99 clean)
+## (was PENDING) (theme zip `_S_VERSION 1.5.45`, no SQL, no images) — Insights Featured card shows the post's own title + excerpt
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). (The old-blogs import already ran on
+live; its flag stops it running again. The favicon code stays off until its icon files are uploaded.)
+- User (2026-10-01): "no fixed title" - the Featured Story card showed fixed copy "Featured Insights" + "SOLD breaks down the
+  latest story..." (ACF insights_featured, now unused). home.php: H3 = get_the_title($fid), text = sold_post_excerpt($fid, 60).
+  Matches the heading sheet's Insights recommendation (featured H3 = the post title).
+- The card is a fixed-height box on >= 768 (overflow hidden): a 2-line title pushed Read More out by 25-61px. css/insights.css
+  (end): title 1 line + "…", excerpt 2 lines (4 below 768) + "…" = the design's own line counts. Card image/date/title/text/
+  Read More boxes IDENTICAL at 1920/1440/1280/1024/768/767/430/393/375/360/320; Read More inside; no h-scroll. Full title is
+  still in the H3 (SEO) and on the post page. Classes only used here (+ archive.php, which always 301s).
+- Verified local: blog flow 270/270 (Featured now passes too). Previous zip: scratchpad theme-code-only-1.5.44.zip.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.44` + old-blogs-import.zip; importer ran: 6 old posts published, 12 samples trashed (404); blog flow 268/270 (2 = Featured card fixed design copy), SEO vs getsold.ae: 99 tags equal incl. exact dates, only expected diffs; UI break check 11 pages x 9 widths (1920-320) = 99/99 clean; Services/Client Success/Why SOLD image boxes = 808/808 identical to the step-7 live recording. Favicon files NOT uploaded yet (waiting senior) -> favicon code inactive)
+## (was PENDING) (theme zip `_S_VERSION 1.5.44` + `old-blogs-import.zip`, no SQL) — Old blog posts for client review (6 from the gbbck backup) + mobile long-title fix
+NOTE: 1.5.44 also contains the favicon/login work (1.5.43, waiting for the senior's OK on the dot). Deploying 1.5.44 deploys
+that code too; it only switches on when wp-admin is opened AND its 3 icon files (new-images-v1.5.43.zip) are on the server.
+**Steps:**
+1. Upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+2. Upload `old-blogs-import.zip`, extract in `wp-content/themes/` too (15 files in `sold-theme/import/old-blogs/`: posts.json + 14 images).
+3. Open any wp-admin page once (refresh an already-open tab). `sold_import_old_blogs` (runs once, option `sold_old_blogs_done`):
+   adds the 6 posts (published, original dates, category AI Marketing, featured image, old Yoast SEO title + description),
+   adds their 14 images to the Media Library, then moves the 12 sample articles to the Trash (restorable 30 days).
+   The first admin load takes ~15 s (image processing).
+- Source: gbbck backup DB (24 Sep 2025) = 6 published posts (10 more were in the old site's Trash). The current getsold.ae
+  has 15 - the 9 newer ones are not in the backup (user chose the 6). Content is plain HTML (h2/h3/p/ul/b/img) -> uses the
+  existing single.php design. Old image URLs (getsold.ae/wp-content/...) -> our copies; links to old pages -> new pages
+  (real-estate-pr -> /public-relations/, ai-search-page -> /ai-marketing/, lead-generation, home). 0 getsold.ae refs left.
+  Featured images > 1 MB resized to 1600 px JPG (one was 26 MB); the 2 AVIF inline images converted to JPG (server can't
+  resize AVIF). Old SEO titles end in "| Get Sold" - copied as-is, flag to client.
+- SEO = old site (checked tag by tag vs getsold.ae): title + description (old Yoast), robots, og:type article, og:title/desc,
+  published + modified dates EXACT (old GMT times, `date_gmt`/`modified_gmt` in posts.json; modified set after save + Yoast
+  indexable rebuilt), "Selling Dubai..." title = the online one ("...in 2026", edited on the old site after the backup),
+  twitter:title/description/image added back on posts (`sold_post_twitter_*`; old Yoast 25.7 printed them, Yoast 28 omits),
+  schema Article/WebPage/Breadcrumb/Organization/Person. Author stays "SOLD" (user, old = "Get Sold"). 1 empty inline alt
+  -> post title (doc #3). Expected differences: domain + /insights/ path (canonical/og:url), image copies, AdSense (tracking, skipped).
+- Flow verified local (268/270): every Insights card (Featured/Latest/Explore), Home card and related card -> Read More -> the
+  right post (H1/date/excerpt match). The 2 'fails' = Featured card headline/text are FIXED design copy ("Featured Insights",
+  ACF insights_featured) by design - only its image/date/link come from the post. Explore cards use the fixed design images.
+- front-page.php: Home Insights cards skip a hand-picked post that is no longer published (else a trashed pick = broken card).
+- css/insights-details.css (end): mobile hero - titles of 5+ lines ran over the read-time/date line (pinned 212px below the
+  title top; also hit the old sample "Golden Visa Demand..." = 5 lines). Meta now follows the title, title box min 212px:
+  1-4 line titles IDENTICAL (measured 0.1px at 320/375/393/430/767), longer ones get the same 40px gap. >= 768 untouched.
+- Insights with 6 posts: Featured 1 + Latest 4 + Explore 6, no Load More (comes back at 7+ posts; ?fpage=2 -> /insights/).
+  Tabs: All + AI Marketing = 6; Marketing & Branding / Lead Generation / Trending Topics empty (client adds later - OK'd).
+- Verified local: 6 articles x 1440/393 = 1 H1, old SEO title, featured + inline images load, related 4, links to new pages,
+  no h-scroll, 0 errors; Insights + Home OK; DB backup before import: scratchpad sold-before-old-blogs.sql.
+- After deploy check: same on live; old URLs need 301s at launch (getsold.ae/<slug>/ -> /insights/<slug>/).
+
+## ❌ SUPERSEDED by 1.5.46 (do NOT use new-images-v1.5.43.zip - deleted) — was: Favicon = orange SOLD dot + SOLD logo on the login page
+Client: "Change the WordPress logo to orange SOLD dot". User chose (2026-10-01): favicon = the orange dot only; login page
+logo too; admin bar left as is. **Four steps:**
+1. Upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+2. Upload `new-images-v1.5.43.zip`, extract in `wp-content/themes/` too (3 files in `sold-theme/assets/images/seo/`:
+   `sold-site-icon.png`, `sold-apple-touch-icon.png`, `favicon.ico`).
+3. Upload `deploy/favicon.ico` into **`public_html/`** (the site root, next to wp-config.php). Needed because LiteSpeed answers
+   `/favicon.ico` with its own 404 before WordPress runs.
+4. Open any wp-admin page once (refresh if a tab was already open). `sold_site_icon_setup` adds `sold-site-icon.png` to
+   the Media Library ("SOLD icon") and sets it as Settings -> General -> Site Icon (runs once; option `sold_site_icon_done`).
+- Icons: dot colour = the logo's own dot `#FCA82D`. Site icon 512x512 transparent (tab icon, Android, Windows tile);
+  apple-touch-icon 180 = dot on white (iOS paints transparency black; `sold_apple_touch_icon` swaps that tag only while the
+  SOLD icon is the Site Icon); favicon.ico 16/32/48.
+- Login page (`sold_login_logo`): logosold_dark.png (dark SOLD + orange dot) 240x76, links to the site, text "SOLD" -
+  was the WordPress W linking to wordpress.org.
+- Verified local: icon tags on every page (icon 32 + 192, apple-touch, msapplication tile); login page screenshot; 5
+  in-scope pages x 5 widths = 25/25 pixel-identical to the ORIGINAL pre-step-4 design (one Services 320 shot was image-load
+  noise, re-shot twice identical). Previous zip: scratchpad theme-code-only-1.5.42.zip.
+- After deploy check: icon tags in view-source; /favicon.ico 200 image; login page logo; tab shows the orange dot.
+
+## 🔎 FULL RE-AUDIT 2026-10-01 (steps 1-7, local + live, scratchpad audit.js / popscroll.js / pop4.js)
+- Step 1: /contact + /contact/ 301 Home; 4 category URLs 301 to tabs; no /contact/ links; 1 <title> + 1 H1 + no duplicate ids on 7 pages x
+  1440/393; every visible Contact trigger opens the popup and X / Esc / backdrop close it; page returns to the same scroll spot
+  (live 77/78 + the 78th re-run 5/5 OK - the miss was the test reading mid smooth-scroll; Bootstrap sets scroll-behavior:smooth, so
+  tests must wait for scroll to settle); mobile drawer Contact + Book a Call open the popup and close the drawer; empty submit = field
+  errors, 0 requests. Step 2: every image has alt on Home/Why SOLD/Services/Client Success/Insights; Branding & Design still has 3
+  icons without alt (branding-hero-cta-icon / branding-cta-icon / branding-step-arrow = doc #3 items, deferred with the service pages).
+  Step 3: every internal link ends in / and opens 200 directly (live 24 URLs; local = same except the 7 service pages not in the local
+  DB). Step 4: exact titles/descriptions, index,follow, self canonicals, sitemaps. Step 5: og:image 1200x630 + Organization SOLD/logo,
+  both files 200. Step 6: 11 URL variants + Load More. Step 7: all images sized. UI: no JS/network errors (favicon.ico excepted), no
+  horizontal scroll; local screenshots 7 pages x 5 widths = 35/35 pixel-identical to the pre-step-4 originals.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.42`; live: 336 img on 7 pages all sized, 0 missing, <source> sized, breadcrumb tags intact; every image's box on live vs a pre-deploy live recording = 1,551 boxes (33 page/width sets) IDENTICAL; popup 7 pages x 1440/393 OK (favicon.ico 404 pre-existing); Load More 5 widths + 4 mobile runs OK, new cards sized; sitemaps/robots/feed/REST untouched; redirects intact; Home ~1.4 s)
+## (was PENDING) (theme zip `_S_VERSION 1.5.42`, no SQL, no images, no new files) — SEO doc step 7: image width/height (#9)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- functions.php (`sold_add_img_sizes` + helpers): the finished HTML of every front-end page (output buffer, template_redirect
+  prio 99; not admin/feeds/robots/AJAX/REST, only text/html) gets `width` + `height` on every `<img>` without them whose file
+  is in this theme or in uploads (real size: getimagesize, SVG from its width/height or viewBox), plus on `<picture>`'s
+  `<source srcset>` (mobile hero = 393x852, its own shape). Sizes cached in option `sold_img_sizes` (autoload off, keyed by
+  file + mtime). Tag regex respects quoted values (breadcrumb icon alt=">>>" contains ">").
+- No visual change by design: processed images also get `data-sold-size`, and `<style id="sold-img-size">
+  :where(img[data-sold-size]){width:auto;height:auto}</style>` (wp_head prio 1, zero specificity, so every stylesheet
+  rule still wins) stops the attributes from setting the drawn size - they only give the shape (aspect ratio), so the
+  browser can reserve space when CSS sets one side (the CLS fix).
+- Not touched: images that already have width/height (WordPress's own, e.g. article featured SVGs get width="1"
+  height="1" from WordPress - pre-existing, articles are out of scope), external images.
+- Verified local: 7 pages - 300 img all sized (0 missing), sources sized; every image's rendered box at 5 widths x 7 pages
+  = 1,583 boxes IDENTICAL to before (to 0.01px); shape of attrs = file shape for all 94 files (mobile hero handled by its
+  <source>); screenshots 35 pairs vs step 6 = 34 identical + the known 1/255 Why SOLD 768 noise pixel; popup 7 pages x
+  1440/393, 0 JS errors; Load More still OK (new cards arrive sized); sitemaps / feed / REST JSON untouched; cost ~14 ms
+  per page. Previous zip: scratchpad theme-code-only-1.5.41.zip.
+- After deploy check: view-source shows width/height on images; same box check on live (rects.js) vs before.
+
+## ✅ CONFIRMED LIVE 2026-10-01 (`_S_VERSION 1.5.41`; live: all 11 URL variants = table below (status, X-Redirect-By, title, robots, canonical, prev/next, og:url), one hop, https; Load More at 1440/1024/768/393/320 = 6 -> 12 cards all visible + unique, same document + URL, button gone, 0 JS errors; tabs + search work, noindex; popup 7 pages x 1440/393 OK (favicon.ico 404 pre-existing); Home CSS/JS unchanged; sitemap has no fpage URLs)
+## (was PENDING) (theme zip `_S_VERSION 1.5.41`, no SQL, no images) — SEO doc step 6: Insights canonicals / noindex / page titles / Load More (#5, #7, #13)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). It has 1 NEW file:
+`sold-theme/js/insights-load-more.js` (zip now 49 files).
+- The feed's page parameter is `fpage` (the doc says `?page=` - WordPress reserves `page` and redirects it, so it stays
+  `fpage`). Rules (functions.php `sold_redirect_insights_variants`, `sold_insights_seo_presentation`,
+  `sold_insights_noindex_when_filtered`, `sold_insights_no_canonical_when_filtered`):
+  | URL | Result |
+  |---|---|
+  | `/insights/` | index, self canonical, title from step 4, rel=next `?fpage=2` (was `/insights/page/2/`) |
+  | `/insights/?fpage=2` (3, ...) | index, self canonical, title + og:title "Insights – Page N \| SOLD", prev/next |
+  | `?fpage=1`, junk, out-of-range | 301 -> `/insights/` (filters kept: `?insights_cat=x&fpage=1` -> `?insights_cat=x`) |
+  | `/insights/page/N/`, `/insights/?page=N` | 301 -> `?fpage=N` (one hop; these showed page 1 again = duplicates, not in the doc) |
+  | `?insights_cat=` / `?insights_search=` | noindex, follow; no canonical; no prev/next |
+  Redirects carry `X-Redirect-By: SOLD Insights`. Category tab links no longer add `fpage=1` (home.php `sold_insights_url`).
+- Load More (#13): `js/insights-load-more.js` (only on Insights) fetches the button's `?fpage=N` URL and appends its
+  cards - no reload, URL unchanged; button moves to the next page or disappears. The link stays a real link (works
+  without JS / for crawlers; on a failed request the click falls back to it). Mobile shows 4 of each 6 (design): a Load
+  More click first reveals the hidden ones, so no article is skipped on mobile (before, cards 5-6 of each page were never
+  visible on mobile). Keyboard: focus moves to the first new card. Behaviour change: Load More now ADDS articles below
+  (before it reloaded the page showing only the next 6).
+- Verified local: all URL variants above (status, X-Redirect-By, title, robots, canonical, prev/next, og:url, schema
+  WebPage url/name); Load More at 1440/1024/768/393/320: 6 -> 12 cards, all visible, all unique, same document, same
+  URL, button gone, 0 JS errors; multi-click test with 3/page (temporary) 3->6->9->12 incl. keyboard Enter; category tabs
+  + search work and are noindex; 7 pages x 5 widths screenshots vs step 5 identical (3 single-pixel 1/255 render-noise
+  spots that move between runs); popup 7 pages x 1440/393, 0 JS errors. Previous zip: scratchpad theme-code-only-1.5.40.zip.
+- After deploy check: the URL table above on live; Load More on live at 1440 + 393.
+
+## ✅ CONFIRMED LIVE 2026-09-30 (`_S_VERSION 1.5.40` + images zip; wp-admin opened -> attachments 1115 etc. created 13:21; live: og:image sold-share.jpg 1200x630 + Organization SOLD / sold-logo.png 1200x480 on Home, Why SOLD, Services, Client Success, Insights, a post; 1 title each; CSS/JS list identical to before; popup 7 pages x 1440/393, 0 JS errors (favicon.ico 404 pre-existing). NOTE: an admin tab opened BEFORE the upload must be refreshed (F5) for the one-time setup to run)
+## (was PENDING) (theme zip `_S_VERSION 1.5.40` + `new-images-v1.5.40.zip`, no SQL) — SEO doc step 5: Open Graph image + Organization schema (#11, #12)
+**Three steps:**
+1. Upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+2. Upload `new-images-v1.5.40.zip`, extract in `wp-content/themes/` too (2 files: `sold-theme/assets/images/seo/sold-logo.png`,
+   `sold-share.jpg`).
+3. Open any wp-admin page once (e.g. Dashboard). Theme code (`sold_yoast_defaults`, step 2) then adds the 2 images to
+   the Media Library ("SOLD logo", "SOLD") and sets Yoast: Organization name "SOLD" + logo, sitewide share image.
+   Only fills empty Yoast fields; runs once (option `sold_yoast_defaults_done` = 2). Editable later in Yoast -> Settings
+   (Site representation / Site basics).
+- Why: old getsold.ae (also Yoast) had og:image + an Organization "SOLD" with logo; the new site had neither. User
+  decided 2026-09-30: use ONLY new-site images - the old Client Success / Insights og:images are screenshots of another
+  brand ("nestopa") and the old logo is the old wordmark. New images: `sold-share.jpg` 1200x630 (56 KB) = the site's
+  hero photo (bannersold.png) + the new logo; `sold-logo.png` 1200x480 (82 KB) = new logo (from logosold.svg) on brand
+  dark #263238 (the logo is white, so on Google's white it needs a background).
+- Result per page: og:image (+width/height/type) = share image (articles with a PNG featured image use it; the 8 with
+  SVG featured images fall back to the share image - SVG isn't allowed for og:image). Schema graph = WebPage,
+  BreadcrumbList, WebSite, Organization(SOLD + logo) - same structure as getsold.ae. og:title/description/url/type,
+  twitter:card were already equal since step 4.
+- Verified local: 6 pages og tags + schema as above; 7 pages x 5 widths full-page screenshots vs step 4 = 35/35
+  pixel-identical (2 had 1/255 decode noise, re-shot identical); popup 7 pages x 1440/393, 0 JS errors.
+  Previous zip: scratchpad theme-code-only-1.5.39.zip.
+- After deploy check: view-source Home -> og:image = .../uploads/.../sold-share.jpg, schema has "Organization" with
+  sold-logo.png; share test in https://www.opengraph.xyz or LinkedIn Post Inspector; Google Rich Results Test.
+
+## ✅ CONFIRMED LIVE 2026-09-30 (`_S_VERSION 1.5.39` + Yoast SEO 28.6 + `seo-yoast-titles-descriptions.sql` = 6 rows; live: Home/Client Success/Insights old titles + descriptions exact, 1 title/1 H1/canonical/index,follow on 14 pages, sitemap_index = page+post sitemaps, category/author 404, /wp-sitemap.xml 301 -> sitemap_index, contact + category 301s intact, robots.txt now 200 (Yoast, Disallow: empty + Sitemap line), Yoast loads no front-end CSS/JS (head assets identical), popup opens on 7 pages x 1440/393, 0 JS errors (favicon.ico 404 = pre-existing, no favicon file))
+## (was PENDING) (theme zip `_S_VERSION 1.5.39` + Yoast SEO plugin + `seo-yoast-titles-descriptions.sql`) — SEO doc step 4: Yoast + SEO titles / meta descriptions (#7, #8)
+**Four steps, IN THIS ORDER** (the SQL must go in before Yoast is activated - Yoast caches each page's SEO
+in its own table the first time it sees the page, and would miss values added later):
+1. Upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+2. wp-admin -> Plugins -> Add New -> search "Yoast SEO" (by Team Yoast) -> **Install Now. Do NOT click Activate yet.**
+3. phpMyAdmin -> `uaenewpr_sold` -> SQL tab -> run `deploy/seo-yoast-titles-descriptions.sql`. The last query lists
+   the values: expect 6 rows (title + description for home, client-success, insights).
+   Safe to run twice (adds only where empty). The 8 service pages are NOT in it (later, with the service rebuild).
+4. Plugins -> Yoast SEO -> **Activate**. Skip/close Yoast's setup wizard (First-time configuration) - not needed.
+   Opening any wp-admin page sets the title separator to "|" once (theme code).
+- What changes: every page gets one `<title>` "Page | SOLD" (separator was "–") and Yoast's canonical; Home, Client
+  Success, Insights get the old getsold.ae SEO title + meta description (editable later in each page's Yoast box). Old -> new map is at the
+  top of the SQL file. Sitemap becomes `/sitemap_index.xml` (Yoast); `/wp-sitemap.xml` redirects to it (root installs
+  only - 404 locally because of the /sold/ subfolder). Contact page, category and author sitemaps excluded
+  (`sold_yoast_sitemap_exclude_*` in functions.php). Yoast also adds its default OG + schema tags (tuned in step 5).
+- No text for (client to supply): Services, Why SOLD, the 12 Insights posts -> title "Page | SOLD", no description.
+  8 service pages: later (re-fetch their values from the matching getsold.ae service pages then; lead-generation's old
+  description duplicates Home's, flag to client then).
+- Re-checked after trimming scope: SQL run on a clean copy of the 2026-09-30 DB = 6 rows, 2nd run adds none, "Don’t"
+  apostrophe intact; local Yoast cache (wp_yoast_indexable) = values only on Home/Client Success/Insights; 7 pages
+  1 title/1 H1/1 canonical, robots index,follow.
+- Verified local: 7 pages (5 in scope + branding-design + a post) = 1 title, 1 H1, 1 canonical each; descriptions exact
+  (curly apostrophe OK); sitemap_index = page + post sitemaps only; 7 pages x 5 widths full-page screenshots
+  PIXEL-IDENTICAL before/after (35/35); popup opens on 7 pages x 1440/393, 0 JS errors. SQL run twice = no duplicates.
+  Yoast 28.6 files checked against wordpress.org checksums (1938/1938 match). Previous zip: scratchpad theme-code-only-1.5.38.zip.
+- After deploy check: view-source of Home / Client Success / Insights / a service page = old title + description;
+  `/sitemap_index.xml` loads; `/wp-sitemap.xml` redirects; no visual change; popup works; ver=1.5.39.
+
+## ✅ CONFIRMED LIVE 2026-09-30 (`_S_VERSION 1.5.38`; live: 846 internal links on 7 pages x 1440/393 = 0 without the slash, all 25 targets direct 200; popup/drawer/validation OK on 7 pages x 5 widths, 0 JS errors; UI: live pages with vs without the change (links reverted in-browser) pixel-identical; vs 1.5.37 shots 24/25 identical, Insights 1440 photo-decoding noise max 7/255) — SEO doc step 3: internal links straight to the final URL (#6)
+- `sold_trailing_slash()` (functions.php): internal page URLs get the ending "/" (before any ?query/#fragment); external,
+  files, mailto:/tel:/#, protocol-relative untouched. Used by `sold_resolve_link()` (ACF link fields: services accordion Read
+  More + All Services, Who-we-work Discover Now, Home Insights button, footer fallback) and `wp_nav_menu_objects` filter
+  (menus, front end only - saved admin values untouched). home_url('/x') -> home_url('/x/') in header/footer/front-page;
+  Client Success breadcrumb home_url() -> home_url('/').
+- Verified local: 846 internal links on 7 pages x 1440/393 - 0 without the slash; edge-case unit test OK; 5 pages x 5 widths +
+  popup PIXEL-IDENTICAL to the morning baseline. The 7 service URLs 404 locally only (not in local DB) - all 200 on live.
+
+## ✅ CONFIRMED LIVE 2026-09-30 (`_S_VERSION 1.5.37`; live: 573/573 img have alt text on the 5 pages @1440+393, new alts correct; step 1 re-checked (redirects, sitemap, 1 title/H1, popup on 7 pages x 5 widths, drawer, validation, 0 JS errors, scroll 54/54); UI: live page vs same page with the changes undone in-browser = identical 23/25, 2 = max 1/255 colour noise) — SEO doc step 2: alt text (#3)
+- whatsppmob.svg alt "" -> "WhatsApp" (whatsapp-float.php; link keeps its aria-label) · Client Success doublequotes.png
+  "" -> "Quote" · popup icons Call/Office/Car -> Phone/Email/Address, mobile bar Call -> Phone (contact-modal.php).
+- green SOLD logos (Success Formula title x3 pages, Why SOLD "About SOLD.") "" -> "SOLD logo" (user wants EVERY image with alt;
+  heading textContent unchanged = live). Local check: 520/520 img have alt text on the 5 pages at 1440 + 393. "Arrow" alts kept
+  (the client's audit tool flags EMPTY alt, so blanking them would add flags). branding-* images = service pages, later.
+- Verified local: 5 pages x 5 widths + popup at 5 sizes pixel-identical (Services vs the morning baseline; the step-1
+  "final" Services shot was photo-loading noise). Zip carries step 1 too (1.5.36 is already live).
+
+## ✅ CONFIRMED LIVE 2026-09-30 (`_S_VERSION 1.5.36`; live: /contact/ + /contact 301 Home, 4 category URLs 301 to their tabs,
+sitemap clean, 1 title + 1 H1 on every page, 0 /contact/ links, popup same design; 7 pages x 5 widths every button opens/closes,
+drawer Contact + Book a Call open the popup, validation OK, 0 JS errors; scroll restore 54/54)
+## (was PENDING) (theme zip `_S_VERSION 1.5.36`, no SQL) — SEO doc step 1: Contact page (#1, #2, #4) + category archive redirects
+Client SEO doc: https://docs.google.com/document/d/10dEIi2fhPzuzTL2fkAiDLWgfr48QTP-_6G_FW7-pCMU (14 items; #10 skipped, #14 done 09-29;
+scope = Home, Services, Client Success, Why SOLD, Contact, Insights - the 8 service pages later).
+- Contact popup no longer fetched from /contact/: `template-parts/contact-modal.php` (same markup, reads the Contact page's ACF by
+  its ID - still edited in Pages -> Contact) printed on every page via `sold_print_contact_modal()` (wp_footer, prio 5).
+  `js/contact-modal.js` uses the in-page modal. Titles are divs (same as the old injected popup).
+- `sold_contact_url()` now returns `#contact`; `sold_contact_page_url()` = real permalink; `sold_is_contact_link()` maps saved
+  /contact links (ACF fields via sold_resolve_link, menu items in the nav walker) to `#contact`. Why SOLD founder button now uses
+  sold_cta_url(). Mobile drawer "Book a Call" got data-contact-trigger (it used to navigate to /contact/).
+- `/contact/` and `/contact` -> 301 Home in one hop (`sold_redirect_contact_page`, template_redirect prio 1). `page-contact.php`
+  kept (ACF group is attached to its template) but reduced to the shared part; its duplicate `<title>` removed.
+- `/insights/category/<slug>/` -> 301 `/insights/?insights_cat=<slug>#lorem-blogs` (uncategorized -> /insights/)
+  (`sold_redirect_category_archives`). archive.php rendered with no footer/scripts and nothing links to it.
+- Verified local: popup pixel-identical at 1440x900/1024x768/768x1024/393x852/320x568; 5 pages x 5 widths full-page identical
+  (2 photo-loading noise diffs re-shot identical); every visible trigger on the 5 pages opens+closes the popup (1440 + 393);
+  form submit OK (test enquiry deleted, mail blocked during test); 0 links to /contact/ left; category redirect = same tab +
+  same posts as clicking the tab. Previous zip saved as scratchpad theme-code-only-1.5.35.zip.
+- wp-sitemap.xml: Contact page and the category sitemap removed (they 301) - `sold_sitemap_exclude_contact`,
+  `sold_sitemap_drop_categories`. Pages sitemap = home, why-sold, client-success, services, insights, branding-design; 12 posts.
+- Pre-deploy full check (local): 7 pages (5 in scope + branding-design + a post) x 1440/1024/768/393/320 - every visible trigger
+  opens/closes (X / Esc / backdrop), mobile drawer Contact + Book a Call open the popup and close the drawer, empty-submit
+  validation shows 5 messages with no request, 0 requests to /contact/, 0 duplicate ids, 0 JS errors; popup DOM = live's
+  (95 elements, classes, texts, images identical); scroll after close back to the exact spot 54/54 (live 54/54 too); admin edit
+  of Pages -> Contact title shows in the popup on every page (restored).
+- After deploy check: /contact/ 301, popup opens on every page, category URLs 301 to tabs, sitemap clean, ver=1.5.36.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (theme zip `_S_VERSION 1.5.35` + `footer-social-links.sql`) — Footer social icon links (all pages)
+- `footer.php`: Facebook / LinkedIn / Instagram icons fall back to SOLD's pages instead of "#" when the Theme Settings field is empty.
+- `deploy/footer-social-links.sql`: fills Theme Settings -> Facebook / LinkedIn / Instagram Link (only if empty; editable in admin after).
+  - Facebook https://www.facebook.com/GetSold.ae/ · LinkedIn https://www.linkedin.com/company/soldmedia/?originalSubdomain=ae · Instagram https://www.instagram.com/getsold.ae/
+- Verified local: all pages with the footer, 1440 + 393, links correct, icons unchanged 34x34. Zip also carries 1.5.34 below.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (included in the 1.5.35 zip, no SQL) — Insights MOBILE: "Explore All Insights" one card per row (was 2)
+
+`css/insights.css` (block at the end), mobile only (<768). Figma 4050:1735 / 1530 / 1570 / 1651 / 1653 / 1655 / 4075:1744 /
+4075:1746 (393 frame): heading 35 tall (bar 5.4x31, SemiBold 20/30 orange 11.2 after the bar, left 21) -29- headline (Bold
+20/24, left 20, 352 wide) -29- 4 cards 333 x 278, 30 from each side, 8 apart; card #E9EAEB r5, padding 7/8/14, gap 6, image
+317 x 147 r4; date Inter 8, title Bold 10 (1 line "..."), excerpt 10/14 (3 lines "..."), Read More SemiBold 8. vw-based.
+Verified locally 320-767 = Figma x scale exactly, no overflow/h-scroll; web/tablet 1440/1024/768 PIXEL-IDENTICAL to before
+on /insights/ and a category page. Category pages share the section: their small cards are now 1 per row too (below their
+large featured card) - web unchanged.
+
+## ✅ FINAL SEO AUDIT 2026-09-29 (live 1.5.33, fresh copy of the client sheet) — Homepage 34/34, All Services 32/32,
+Client Success 27/27, Why SOLD 36/36, Insights 21/21 headings: every TAG and the ORDER match "Recommended". Wording differs
+only in 3 deliberately-kept texts (CS + Insights pre-footer desktop line, Insights featured "Featured Insights"). UI: 1,070
+computed-style checks of every changed element vs the original version at 1440/1024/768/393/320 = identical. 1 H1 per page,
+0 headings in the popup, no h-scroll, all images load (a "23 broken" reading at home 1440 = lazy-load timing; slow re-check:
+69/69 loaded), no JS errors. Service pages (Branding & Design tab) = later, per client.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (`_S_VERSION 1.5.33`; live Insights 21/21 tags = sheet, H1 text now exact, only the 2 known TEXT choices differ (Featured "Featured Insights", pre-footer desktop wording); category H1 fixed; heading styles identical to original at 1440/1024/768/393/320 (80 + 75 checks); filter, search, Load More, card links work; 1 H1; no h-scroll/broken imgs/JS errors) — SEO heading tags: Insights (+ category pages)
+
+Sheet tab "Insights": live already matched the recommended tags except the H1 TEXT, which read "UAE Real EstateInsights,
+Trends & Marketing" (no space - the <br> between the two lines). functions.php sold_title_with_highlight(): space before the
+first <br> -> "UAE Real Estate Insights, Trends & Marketing" (Insights + category pages share it). Styles + full-page
+screenshots identical at 1440/1024/768/393/320 on both. Left as is (text, not tag - editable in the admin): Featured card H3
+shows the fixed "Featured Insights" (sheet wants the post title; hiding it as invisible text = risky, so no); pre-footer
+desktop wording. Branding & Design / the 8 service pages: client said LATER - not started.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (`_S_VERSION 1.5.32`; live outline = sheet: Why SOLD 36/36 headings exact; Client Success 27/27 tags exact - only the pre-footer TEXT differs (tag-only task, kept); styles of every changed element identical to the original at 1440/1024/768/393/320 (CS 160 + WS 230 checks); FAQ, popup work, 1 H1 each, popup + mobile team carousel 0 headings, no h-scroll, no JS errors) — SEO heading tags: Why SOLD
+
+Sheet tab "Why SOLD". Outline now: H1 Get the Real Estate Experts on Your Team (hero lines in h1.services-hero-title-seo,
+same classes/CSS as Services) > H2 About SOLD. (span -> h2 + hidden " SOLD.", logo alt "") > H3 Our Mission / Our Vision
+/ Collaborate with Us (h4 -> h3) > H2 Our Founders > H3 "Andy Birt Co-Founder | CEO" (h3.ws-founder-heading
+display:contents around name + title spans) > H2 Our Team > H3 x12 names (DESKTOP grid; phone carousel names h4 -> div
+because the carousel clones a card for its loop) > H2 What Our Clients Say > H2 The SOLD Success Formula (hidden SOLD)
+> H3 x3 steps > H2 pre-footer > H2 Have Questions ? > H3 x6 (phone FAQ copy) > H4 x3.
+`page-why-sold.php` + `css/why-sold.css` (block at the end; h3 team/info keep h4 default size, mobile names keep h4
+defaults, founder spans keep h3/div defaults). Verified locally: styles/boxes/text positions identical at
+1440/1024/768/393/320 (only the 2 clipped hidden words); full-page screenshots PIXEL-IDENTICAL original vs new (768:
+1 px inside the logo-animation spot that also differs original-vs-original); FAQ, popup, carousel same as live.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (shipped in 1.5.32) — SEO heading tags: Client Success
+
+Sheet tab "Client Success". Outline now: H1 Growing Sales for Leading Brands > H2 Client Success (div.cs-intro-label -> h2)
+> H3 x10 case studies (unchanged) > H2 The SOLD Success Formula (h2, hidden "SOLD", logo alt "") > H3 01./02./03. steps
+> H2 pre-footer > H2 Have Questions ? > H3 x6 (phone FAQ copy) > H4 x3. Demoted: "Designed For Deals" (phone hero
+subtitle h2 -> div). `page-client-success.php` + `css/client-success.css` (2 :where rules; FAQ/steps reuse the style-v2 ones).
+NOT changed (text, not tag): sheet recommends pre-footer "READY TO GROW YOUR BUSINESS FROM THE REAL ESTATE EXPERTS?",
+page says "READY TO WORK WITH THE REAL ESTATE EXPERTS?" - kept (tag-only task); editable in Client Success -> Pre-Footer.
+Verified locally: styles/boxes/text positions identical at 1440/1024/768/393/320 (only the clipped hidden word) and
+full-page screenshots PIXEL-IDENTICAL original vs new at all 5 widths; FAQ, card buttons -> popup work; no JS errors.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (`_S_VERSION 1.5.30`; live outline = sheet exactly: Home 34 / Services 32 headings, tag + text + order; styles (display, margins, padding, font family/size/weight, line-height, spacing, colour) of every changed element identical to the original version at 1440/1024/768/393/320; FAQ, accordion, popup work, popup has 0 headings; no h-scroll, no JS errors. Before deploy: full-page pixel comparison original vs new code on local = identical at all 5 widths) — SEO heading tags: All Services (/services/)
+
+Sheet tab "All Services". Outline now: H1 Industry Leading Marketing Services (hero lines in h1.services-hero-title-seo,
+display:contents) > H2 Services (intro) > H3 Strategic marketing solutions... (accordion title_tag h3) > H3 x8 names >
+H2 The SOLD Success Formula (div.sf-title-wrapper -> h2, visually-hidden "SOLD", logo alt "") > H3 01./02./03. steps
+(div.step-card-title-wrapper -> h3) > H2 WHO DO SOLD WORK WITH? > H3 x4 > H2 pre-footer > H2 Have Questions ? > H3 x7
+(phone FAQ copy only) > H4 x3. Accordion label stays a div here (the intro "Services" is the H2).
+`page-services.php` + `css/style-v2.css` (block at the end: :where() resets; span.services-hero-title-bottom keeps the h2
+defaults it had; h1 wrapper display:contents - without it the phone hero moved 8px). Verified locally at
+1440/1024/768/393/320: every changed element's styles/boxes, every text position and page height IDENTICAL to before
+(only the clipped hidden "SOLD" + a 0.016px sub-pixel width); Success Formula title pixel-identical with/without it.
+
+## ✅ CONFIRMED LIVE 2026-09-29 (shipped in 1.5.30) — SEO heading tags: Homepage (client sheet tab "Homepage")
+
+Client SEO sheet: https://docs.google.com/spreadsheets/d/10_85HhFbFDJP_itcUkHuFJYEOEhsw76AYE5P_8tmSFA (tabs: Instructions,
+Homepage, All Services, Client Success, Why SOLD, Branding & Design = model for all service pages, Insights). Rules: backend
+only, design must not change; follow the recommended structure; remove all other headings. Doing one tab at a time.
+Homepage outline now = sheet: H1 "The UAE's No. 1 Real Estate Marketing Agency" (hero lines in ONE h1.hero-title-seo,
+display:contents, lines are spans) > H2 What we do > H3 Design/Launch/Sell > H2 WHO DO SOLD WORK WITH? (visually-hidden
+"SOLD" in the logo spacer) > H3 x4 > H2 What Our Clients Say > H2 Services > H3 x8 service names > H2 Why SOLD? > H2 Insights
+> H3 Latest real estate updates and insights > H2 pre-footer > H2 Have Questions ? > H3 x6 (phone FAQ copy only; desktop
+copy stays spans, no duplicates) > H4 footer x3. Demoted: "We ensure..." (p), accordion long heading (div), 3 insight card
+titles (div), popup "Contact The Team" x2 (div, converted in js/contact-modal.js; Contact page keeps its h2).
+Files: front-page.php, template-parts/services-accordion.php (label/title/item tags via get_template_part args; Services
+page passes its CURRENT tags until its tab is done), template-parts/who-we-work.php, page-services.php, js/contact-modal.js,
+css/style.css + css/contact.css (:where() resets so the new tags look exactly like the old span/div/h2).
+Verified locally: computed styles + boxes of every changed element and the position of every visible text run at
+1440/1024/768/393/320 IDENTICAL to before (page heights too); hidden "SOLD" pixel-identical. Services: only WHO DO SOLD
++ popup change (both in its sheet tab); Contact page headings unchanged.
+
 ## ✅ CONFIRMED LIVE 2026-09-28 (`_S_VERSION 1.5.28`; 8 emulated phones 320-430 = Figma x scale: heading 35, bar 3.8x31, gap 27 at 393; 1 per row, no h-scroll; desktop unchanged gap 62 / 589x582; no JS errors) — Insights MOBILE: Latest Blogs heading -> first card gap to Figma
 
 `css/insights.css` (end of the 1.5.27 mobile block). Figma 4050:1514 (heading, 35 tall: bar 3.77x31, text 20/30 SemiBold
@@ -33,7 +527,7 @@ Final local check emulating iPhone SE / 12-14 / 14 Pro / Pro Max, Galaxy S8, Pix
 DPRs): identical layout on all; web section vs live = same height (1391) and card positions. Nothing new for the admin:
 cards = posts; "Latest Blogs" = Insights -> Latest Blogs; "Read More..." + calendar icon = Theme Settings.
 
-## ⏳ PENDING — client to-dos only: Facebook/LinkedIn/Instagram URLs, Privacy/Terms pages, delete the 6 ignored sub-items under "Services" in Appearance -> Menus -> Menu 1; security: delete fake plugin wp-optimizer-pro (+ gboost, sold-theme-backup), host malware scan, change the SOLD admin password (it was shared in chat for testing).
+## ⏳ PENDING — client to-dos only: Privacy/Terms pages, delete the 6 ignored sub-items under "Services" in Appearance -> Menus -> Menu 1; security: delete fake plugin wp-optimizer-pro (+ gboost, sold-theme-backup), host malware scan, change the SOLD admin password (it was shared in chat for testing).
 
 ## ✅ CONFIRMED LIVE 2026-09-26 (`_S_VERSION 1.5.26` + theme-settings-fill-current-values.sql + admin-fields-fill-current-values.sql (122 queries)). Live check: 9 templates x 1440/393 - all expected texts/placeholders present, no broken text/images, no h-scroll, no JS errors; every saved admin value in the new/parent-row groups is what the page shows; Why SOLD + Client Success steps pixel-compared with 25 Sep screenshots = same content (only scroll-animation frames differ); live Theme Settings shows the 5 tabs + filled values — Admin audit: EVERY page, navbar, footer editable in the admin (web + mobile)
 

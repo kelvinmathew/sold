@@ -7172,10 +7172,18 @@ h6 {
   }
 
   .site-footer .footer-address-text {
-    width: 346.88px !important;
-    height: 95.44px !important;
-    font-size: 16px !important;
-    line-height: 25px !important;
+    width: 100% !important;
+    max-width: 346.88px !important;
+    /* Was a fixed 346.88px, wider than 320-375px phones, so the address was
+       clipped on the right on the home page (style-v2.css, used by every
+       other page, already had this fix). Same values as there. */
+    height: auto !important;
+    white-space: nowrap !important;
+    /* Keeps the admin/theme line breaks as the only breaks, so every phone
+       shows the same 4 lines; the font scales down instead of re-wrapping. */
+    font-size: clamp(13px, 4vw, 16px) !important;
+    line-height: 1.5625 !important;
+    /* 25/16 - unitless so it scales with the clamped size (as style-v2.css) */
     font-family: "Inter", var(--font-body) !important;
     font-weight: 400 !important;
   }
@@ -8906,5 +8914,287 @@ body:has(.contact-modal-overlay.active) .whatsapp-float-btn {
     display: block;
     width: 41px;
     height: 41px;
+  }
+}
+/* =============================================================
+   Home "What we do" image - mobile (Figma iPhone frame 1363:570, node
+   1363:671). Keeps Figma's exact 331x355 proportion at every phone width
+   instead of a fixed 355px height with a width that changed per phone,
+   which cropped the same square photo differently on every device (at
+   320px it cut the "Campaigns That Reach / The Right Buyers" headline).
+   - left 30 / right 32 (Figma x=30, w=331 in a 393 frame)
+   - top: 74px below the last feature line (Figma: text bottom 1913 ->
+     image top 1987). Feature text ends at a fixed 954px here.
+   - section ends at the image bottom, so the existing 50px gap to "Who do
+     SOLD work with" is kept (Figma 2342 -> 2392 = 50).
+   At 393px this renders exactly 331x355, and object-fit:cover in a box of
+   the same proportion shows the photo framed exactly as in Figma.
+   Declared last so it overrides the earlier mobile blocks (1033/1106px).
+   ============================================================= */
+@container (max-width: 767px) {
+  .what-we-do-section {
+    height: calc(1028px + (100cqi - 62px) * 355 / 331) !important;
+  }
+
+  .features-right {
+    top: 1028px !important;
+    left: 30px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: calc(100% - 62px) !important;
+    height: auto !important;
+    aspect-ratio: 331 / 355;
+  }
+}
+
+/* =============================================================
+   Home Insights cards - web + mobile (Figma 1363:909 large, 3620:1077 /
+   3620:1096 small; mobile 1363:926). Figma shows each card's title in at
+   most 2 lines and the excerpt in 2 lines ending "...". Real post titles
+   and excerpts are longer (3-4 line titles, 4-5 line excerpts), and the
+   text boxes are fixed-position, so on mobile the title ran into the
+   excerpt and the excerpt ran past the bottom of the card; on desktop the
+   small cards' excerpt also overflowed the card. Clamp both to 2 lines
+   with an ellipsis - positions, sizes and fonts stay as they were (they
+   already match Figma). Cards still link to the post's details page.
+   ============================================================= */
+.insights-small-title,
+.insights-small-excerpt,
+.insights-large-title,
+.insights-large-excerpt {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  /* The mobile rules give these fixed heights (e.g. the large card excerpt
+     58px = almost 3 lines); with a fixed height the browser draws the
+     ellipsis but still shows the next line. Auto height lets the clamp
+     actually end the box after line 2. Top positions are unchanged. */
+  height: auto !important;
+}
+
+@media (min-width: 768px) {
+  /* Desktop large card text is left-anchored with no right edge, so give
+     it one (same 28.29px inset as the left) for the 2-line clamp to wrap
+     against instead of the card's edge. */
+  .insights-large-title,
+  .insights-large-excerpt {
+    right: 1.9645cqi;
+  }
+}
+
+/* Home "What we do" lead - web + mobile (Figma 3620:1154): the orange
+   highlight "delivering more sales, faster" is Mona Sans SemiBold (600),
+   with "faster" SemiBold Italic; the rest of the sentence stays Medium
+   (500). The highlight is a <span> inside the ACF lead_text, so this
+   applies to whatever wording the editor puts in that span. */
+.what-we-do-lead span,
+.what-we-do-lead span i,
+.what-we-do-lead span em {
+  font-weight: 600 !important;
+}
+
+/* Testimonials (768px+): quote text wraps around the double-quote icon instead of running under it.
+   The icon is absolutely positioned in the box's bottom-right (Figma), and long quotes used to reach it
+   (the old quote.png also had an opaque #263238 square, so it hid the letters - it is transparent now).
+   A right float the full height of the text column, with shape-outside cut down to the bottom-right
+   corner, pushes only the lines that reach the icon; lines above keep the full width.
+   Box geometry at 1440 (all cqi-scaled): icon left edge 100px (6.944cqi) from the box's right edge,
+   icon top 59.2px (4.111cqi) above its bottom. Bottom padding reduced to 0.5cqi so the text column
+   (and the float) reach the icon; text still starts at the same top position. Mobile unchanged. */
+@media (min-width: 768px) {
+  .testi-quote-box {
+    padding-bottom: 0.5cqi;
+  }
+
+  .testi-quote {
+    align-self: stretch;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testi-quote::before {
+    content: '';
+    float: right;
+    height: 100%;
+    /* 6.944 - 1.8055 side padding + 0.5 gap */
+    width: 5.64cqi;
+    /* 4.111 - 0.5 bottom padding + 0.1 gap (more pushed line 1 too) */
+    shape-outside: inset(calc(100% - 3.71cqi) 0 0 0);
+  }
+}
+
+/* Tablet (768-1023): the box is small here and the quote font is floored at 12px (see the 768+ font
+   floors), so the corner wrap above still ran up to 13px past the box on 5-line quotes. Instead the
+   box grows downward (min = the Figma height) into the empty strip below it in the card, with enough
+   bottom padding that the icon (pinned bottom-right) sits under the last line. Longest live quote at
+   768: box ends 3px inside the card. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .testi-quote-box {
+    height: auto;
+    /* room under the last line for the icon */
+    padding-bottom: 4.6cqi;
+  }
+
+  .testi-quote {
+    align-self: auto;
+    padding-right: 0;
+    /* the 12px font floor kept the 1.3888cqi line-height (10.7px at 768), so lines overlapped */
+    line-height: 1.35;
+  }
+
+  .testi-quote::before {
+    display: none;
+  }
+
+  /* Card +3.68cqi taller (~28px at 768) so the grown box fits (card has overflow:hidden). Logo, stars
+     and box keep their original spots: their % tops (of the old 23.8194cqi card) converted to cqi. */
+  .testimonial-card {
+    height: 27.5cqi;
+  }
+
+  .client-logo {
+    /* inline style sets top:5.8% */
+    top: 1.3815cqi !important;
+  }
+
+  .testi-stars {
+    top: 7.8252cqi;
+  }
+
+  .testi-quote-box {
+    top: 11.0027cqi;
+    min-height: 8.1136cqi;
+  }
+}
+
+/* Home "Insights" label line (mobile) - Figma 1363:886: 1.88 x 26.36 orange bar, 8px gap, "Insights" 20/30.
+   The bar was set but invisible: the wrap is fixed at 86.88px and bar + 11px gap + 77px text didn't fit, so flex
+   shrank the ::before to 0px wide. Now it can't shrink, and the gap is Figma's 8 (1.88 + 8 + 77 = 86.88). */
+@media (max-width: 767px) {
+  .insights-label-wrap {
+    gap: 8px !important;
+  }
+
+  .insights-label-wrap::before {
+    flex-shrink: 0 !important;
+    width: 1.88px !important;
+    height: 26.36px !important;
+    background: #FFA726 !important;
+  }
+}
+
+/* ==========================================================================
+   SEO heading structure - Homepage (client sheet, 2026-09-29): tags changed, design unchanged.
+   These elements became h2/h3 (were span/div). Headings get Bootstrap/global defaults (margin-bottom .5rem,
+   heading font, weight 500, line-height 1.2) that the old span/div never had - put back what they had.
+   :where() keeps this at tag-level priority, so each element's own class rules still win exactly as before.
+   ========================================================================== */
+h2:where(.what-we-do-label, .why-sold-label, .insights-label, .faq-mobile-label),
+h3:where(.title, .faq-mobile-question-text) {
+  display: inline;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+h2:where(.services-text) {
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Services list (01-08) - web/tablet: the open item's text (subtitle, "+"
+   lines, button) keeps a fixed gap to the image on the right and wraps to the
+   next line instead of running into it. Service names are not affected. A
+   "+" line that wraps keeps its lines apart (line height = the 22px icon at
+   1440, so a one-line item is exactly as before). */
+@media (min-width: 768px) {
+  .service-list-item.active .service-body {
+    width: calc(100% - 2.0833cqi);
+    /* 30/1440 gap to the image */
+  }
+
+  .service-list-item.active .service-body-inner {
+    width: 100%;
+  }
+
+  /* Heading -> subtitle gap 18px at 1440 (was 9). The open area keeps the
+     same total height: its design min-height drops by the same 9px (there is
+     30-73px free space under the button), so rows are as tall as before. */
+  .service-list-item.active .service-content-col .title {
+    margin-bottom: 1.25cqi;
+  }
+
+  /* The open area grows only if its content needs more room (narrow tablet
+     widths), never below the design height - so the button is never cut. */
+  .service-list-item.active .service-body,
+  .service-list-item.active .service-body-inner {
+    height: auto;
+    min-height: 23.4333cqi;
+    /* 24.0583cqi design height - the 0.625cqi added above the subtitle */
+  }
+
+  .service-desc {
+    max-width: none;
+  }
+
+  .service-features li {
+    align-items: flex-start;
+    line-height: 1.5277cqi;
+    /* = .plus-icon height */
+  }
+}
+
+/* Services list - mobile: a "+" line that wraps gets proper line spacing
+   (23px; was 14px, so its 2 lines squeezed together and spilled out of the
+   row) and its row grows; one-line rows keep their 31.7px height and spot.
+   A 4+ line subtitle pushes the list down (keeps the 30px gap) instead of
+   running into it. Never wider than the screen (Galaxy Fold, 280px). */
+@media (max-width: 767px) {
+  .service-desc {
+    height: auto !important;
+    min-height: 63px !important;
+  }
+
+  .service-features {
+    height: auto !important;
+    min-height: 105px !important;
+    max-width: 100% !important;
+  }
+
+  .service-features li {
+    height: auto !important;
+    min-height: 31.6667px !important;
+    /* the 105px list fitted 3 x 35px rows + 2 x 5px gaps = 31.67px each */
+    line-height: 23px !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Services list - mobile: the "Read More" / "Discover More" pill grows with
+   its label so the text stays on one line (never narrower than the 158px
+   design width, so a short label looks exactly as before). */
+@media (max-width: 767px) {
+  .btn-read-more-pill {
+    width: fit-content !important;
+    min-width: 158px !important;
+    box-sizing: border-box !important;
+    padding: 10px 20px 0 50px !important;
+  }
+
+  .btn-read-more-pill .btn-text {
+    position: static !important;
+    width: auto !important;
+    white-space: nowrap !important;
   }
 }
