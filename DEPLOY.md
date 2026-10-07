@@ -12,6 +12,137 @@ cPanel prefix `uaenewpr_` · DB `uaenewpr_sold` · DB user `uaenewpr_solduser` �
 
 # PART 1 — PENDING DEPLOY
 
+> **getsold.ae (`/home/uaenewpr/getsold.ae`) is still on 1.5.60 (built 2026-10-02).** Decision 2026-10-05: fixes go to staging
+> only; when ALL fixes are done, sync getsold.ae in ONE batch = latest `theme-code-only.zip` into
+> `/home/uaenewpr/getsold.ae/wp-content/themes/` + any SQL / image zips listed below that shipped to staging after 1.5.60.
+> Missing on getsold.ae so far: 1.5.61 - 1.5.68 (theme zip + open wp-admin once for 1.5.64; 1.5.67 + 1.5.68 run on the first page view).
+> Open (not in sheet red cells): Insights pre-footer H2 holds two DIFFERENT sentences (web 'READY TO WORK WITH THE...' / mobile 'READY TO GROW YOUR BUSINESS...') - user 2026-10-05: SKIP (different texts = leave as is).
+
+## ✅ LIVE 2026-10-06, verified (?ver=1.5.68; 6 service <title> + og:title = Metas tab, descriptions intact; blog H2 600 / H3 500 at 1440 + 393, column centred) — (was PENDING) (theme zip `_S_VERSION 1.5.68`, no SQL, no images) — 6 service page meta titles + blog H2/H3 weights (web)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). No wp-admin login needed.
+- `sold_seo_service_titles()` (once, first page view, flag `sold_seo_service_titles_done`): `_yoast_wpseo_title` for
+  branding-design, public-relations, real-estate-websites, ai-marketing, social-media-marketing, seo-geo = old getsold.ae
+  titles from client sheet tab "Metas". Verified local on branding-design (only one of the 6 that exists locally): <title> + og:title.
+- css/insights-details.css web block (>= 768): blog H2 600 (was 500, Figma Medium), H3 500 (was 600) - SEO doc #18 wording
+  "H2 bigger bold, H3 smaller not so thick". Sizes unchanged. Mobile identical to 1.5.67 (60/60). Web: 10 of 910 headings
+  (2 long H2s per width) now wrap to 2 lines; everything else same positions.
+- NOTE: earlier "web identical" checks that swapped CSS by request interception ran with the browser cache on - only the
+  first width was valid. Re-run properly (cache off): 1.5.66 vs 1.5.65 web 1920/1440/1024/768 = 60/60 identical.
+
+## ✅ LIVE 2026-10-06, verified (?ver=1.5.67; Services / Why SOLD / Events / Lead Gen <title>, meta description, og:description = sheet text) — (was PENDING) (theme zip `_S_VERSION 1.5.67`, no SQL, no images; includes 1.5.66) — SEO doc #8: client's meta title + description for Services, Why SOLD, Events, Lead Generation
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). NO wp-admin login needed (account
+compromised - don't log in): `sold_seo_remaining_metas()` runs once on the first normal page view by anyone (`wp_loaded`,
+flag `sold_seo_remaining_metas_done`) and writes `_yoast_wpseo_title` + `_yoast_wpseo_metadesc` for the 4 pages (overwrites;
+Lead Gen's old desc was the Homepage text). Source: client sheet 1r4R2D6xlWbGRd3kiZM4BZ4N7pDXaTO578WVG5azIg0I tab "remaining metas".
+- Verified local (services, why-sold; events + lead-generation pages exist only on live): one logged-out request ->
+  postmeta + wp_yoast_indexable updated, <title>, meta description, og:title, og:description = sheet text.
+- After deploy check: view-source of the 4 pages (title + meta description) - from mobile data while the office IP is blocked.
+
+## ✅ LIVE 2026-10-06, verified after the IP block lifted (live 393 = local: title 327, meta 662/left 30, Insights label + real title; 320 + 430 = scaled 393, drift <= 1.3px, same line breaks; web 1440 = local) — files byte-identical. Earlier: host firewall Monarx
+## (X-RASP-Block, "unusual activity" captcha page, 403) blocks pages for this PC's IP 106.222.201.80 after the automated checks;
+## static files still load. Visual live check pending (unblock IP / screenshots). (theme zip `_S_VERSION 1.5.66`, no SQL, no images) — Blog Details = Figma MOBILE (< 768 only; web + tablet unchanged)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- Figma "iPhone 14 & 15 Pro - 16" node 2036:264 (hero 2036:265, article 2036:667, Related 2036:696 / 2036:697; pre-footer
+  2036:308 + footer 2036:315 are the shared sections, already match - not touched). New block at the end of css/insights-details.css,
+  `@media (max-width: 767px)`, scoped `.insights-details-page-body` (single posts only), Figma px at 393 written as vw (n/393)
+  so every phone shows the same layout scaled (like the Insights listing page; user 2026-10-06 "same UI on all mobile screens").
+  Hero vertical position = % of hero height (38.38%). Checked: all 15 posts at 320/375/430 = 393 layout scaled, drift <= 3.6px,
+  same line breaks (one paragraph on one post wraps one word differently at 320 - text rounding). Shared pre-footer is fixed px
+  (not scaled, as on every page). Values at 393:
+  hero title lines start at 38.38% of the hero (327 of 852), 38.2/43 Bold 2%; meta 34 below the title (533 for 4 lines), left 30;
+  article 336 column: body/lists 14/22, H2 20/28 SemiBold, H3 16/22 Medium, H4 18/26 Medium; gaps 16 between blocks, 37 before H2,
+  6 under H3 and between paragraph/list; disc bullets 21 indent; images r4, 16 above / 12 below; featured image 336:233.
+  Pasted Google Docs styles + blank-line paragraphs neutralised on mobile too (as on web).
+  Related: 47 below article; label/title now show the Theme Settings text ("Insights" / "Latest real estate updates and insights")
+  instead of CSS placeholder "Lorem Blogs" / "Lorem ipsum ..."; cards 2 x 174, 8 apart, 11 between rows, centred; card date row 16,
+  icon 13x12, Read More 24; Load More 31 below cards, 88 to pre-footer.
+- Verified local: 393 numbers = Figma; 15 posts x 7 widths (430-320) = 105 checks passed (meta never over title / inside hero,
+  equal margins, nothing outside column, no h-scroll, fonts, no gaps between bullets, no blank-line gaps, cards centred);
+  web/tablet 15 posts x 4 widths (1920/1440/1024/768) every element identical to 1.5.65 (60/60).
+  Previous zip: scratchpad theme-code-only-1.5.65.zip.
+
+## ✅ LIVE 2026-10-05, verified (live 1440: hero 818, column 275/890; 15 posts x 8 widths 1920-768 = 120 checks passed; 84 lists no gaps; mobile 393/375/320 SAME as before) — (was PENDING) (theme zip `_S_VERSION 1.5.65`, no SQL, no images) — Blog Details = Figma (WEB + TABLET only; mobile next)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- Figma "Desktop - 11" node 4132:1455 (+ 4132:1456 hero, 4132:1764 intro, 4137:2114 / 4142:2975 content, 4134:2084 image).
+  SEO doc #17 (blog formatting) + #18 (H2/H3 look the same). Related Insights, pre-footer, footer unchanged.
+- css/insights-details.css (end), `@media (min-width: 768px)`, scoped `.insights-details-page-body`, vw = Figma px / 1440:
+  hero 818 tall, title 57/62 Bold in a 933 x 220 box at top 418 (text centred; longer titles grow it), meta 24 below,
+  gradient 150.54deg #000 4.05% -> 0 75.07% (also single.php's Theme Settings hero override); article column 890 centred
+  (equal sides), 81 below hero, 70 above Related; text Mona Sans black 1%: body/lists 18/38 Regular, intro (before first
+  heading) 18/30, H2 37/45 Medium, H3 20/32 SemiBold, H4 26/38 Medium; gaps 28 between blocks, 12 under H2, 4 under H3,
+  56 intro -> first heading, list right after its paragraph; images column-wide, radius 12, 80 above/below; featured image
+  890 x 504 cover. Pasted Google Docs inline styles (Arial 11pt, line-height 1.38, white-space pre) neutralised in the
+  article (4 old posts) - saved posts not changed. Tablet 768-1023: column 84vw. Font floors 15 / 26 / 17 / 20 px.
+- Verified local: 1440 numbers = Figma (hero 818, title top 435, meta 662, column 275/890, H2 37, H3 20, p 18/38, image
+  890x504 r12); 15 posts x 7 widths (1920-768) = 105 checks: left = right margin, no text outside the column, no
+  h-scroll, title never over the meta; mobile 393/375/320 SAME as live. Previous zip: scratchpad theme-code-only-1.5.64.zip.
+- Follow-up same version: pasted blank lines inside bullets (sold-empty-p in li) + a list with white-space:pre made gaps
+  between bullets -> hidden / normal. 84 lists on 15 posts: no gap between bullets. Re-check 15 posts x 13 widths
+  (2560-768) passed; 22-width run (2560-768, 330 checks) passed.
+
+## ✅ LIVE 2026-10-05, verified (?ver=1.5.64; 7 service pages meta description + og:description = old site text; alt on all icons, no img without alt on 13 pages; 8 service pages x 6 widths UI SAME as 1.5.63) — (was PENDING) (theme zip `_S_VERSION 1.5.64`, no SQL, no images) — SEO doc #3 alt text (service icons) + #8 meta descriptions (service pages)
+**Steps:** 1) upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite); 2) open wp-admin once (any page) - this
+runs `sold_seo_service_metadesc` one time (flag option `sold_seo_metadesc_done`).
+- #3 (red "issue still found"): page-service.php - branding-hero-cta-icon.svg + branding-cta-icon.svg alt "" -> "Arrow icon";
+  branding-step-arrow.svg alt "" -> "Next step arrow" (all 8 service pages). Live scan: no other img without alt text on the
+  13 pages (triple_arrow / insights_mobile_arrow have alt ">>>").
+- #8 (red list): functions.php `sold_seo_service_metadesc()` fills Yoast `_yoast_wpseo_metadesc` (only if empty) with the OLD
+  getsold.ae text, word for word: social-media-marketing <- /real-estate-social-media-marketing/, seo-geo <- /property-seo-services/,
+  public-relations <- /real-estate-pr/, real-estate-websites <- /real-estate-website-services/, branding-design <-
+  /real-estate-branding-design/, ai-marketing <- /ai-search-page/, lead-generation <- /lead-generation/ (old page used the same
+  text as Home - duplicate, migrated as on the old site). Yoast outputs meta description + og:description (tested local).
+- NOT filled (no real old text): events (old = Yoast filler "Events page on SOLD..."), services + why-sold (no old page) - doc:
+  client/SEO team to provide - user asked the client 2026-10-05 for Services, Why SOLD, Events + a unique Lead Generation text (old one = Home text). When they reply: paste into each page's Yoast box (no deploy).
+- Verified local: branding-design meta + og:description output; alt on all 5 icons; page identical at 13 widths.
+  Previous zip: scratchpad theme-code-only-1.5.63.zip.
+
+## ✅ LIVE 2026-10-05, verified (all 8 service pages ?ver=1.5.63, 30 headings each = sheet; Branding: page heights identical 13 widths, card 1 pixel-identical 7 widths; other 7: reverse test identical text/heights, page heights = pre-deploy 91/91) — (was PENDING) (theme zip `_S_VERSION 1.5.63`, no SQL, no images) — SEO heading structure: ALL 8 service pages (Branding & Design sheet tab + sheet note 2)
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- Client sheet "Branding & Design" tab: Recommended Structure (29 headings) applied. page-service.php, gated by
+  `$seo_bd = is_page(array('branding-design'))` - the other 7 service pages (same template) are NOT changed (add slugs later).
+  - Design & Production items (.branding-pill-text) span -> H3 (5).
+  - Steps: number + label wrapped in one `h3.branding-step-heading` ("01 Discover"...) with display:contents (flex layout same).
+  - FAQ: "Have Questions ?" H2 + 6 question H3s on the MOBILE copy (same as Home / All Services); web copy keeps spans.
+  - Pre-footer H2 web/mobile copy -> once (sold_echo_heading_pair). Card title "Designs That Sell" (web) / "Design That Sell"
+    (mobile, different words): heading = web text once, mobile wording drawn by CSS from data-alt (.sold-alt-text::before).
+- EXTENDED same day to all 8 slugs (`$seo_bd` list in page-service.php), per sheet note 2 "Follow Branding & Design heading
+  structure across all other services". Live content check: no other card has a different mobile title; pre-footer merges on
+  6 pages; AI Marketing pre-footer = two DIFFERENT sentences ("...TRANSFORM YOUR MARKETING WITH AI?" / "...TURN AI INTO ROI?")
+  -> kept as two spans (user rule: different texts = skip).
+- Pre-deploy test on LIVE, 7 pages x 13 widths (1920-320): applied the same tag changes + CSS in the page -> every text line
+  (position, font, colour), page height and element box identical; only difference = the removed duplicate pre-footer <span>.
+  Headings per page = 30 (H1, 3 H2 intro/cards, 4 card H3, H2 + 5 item H3, H2 + 4 step H3, pre-footer H2, FAQ H2 + 6 H3, 3 H4).
+- css/branding-design.css (end): h3:where(.branding-pill-text / .branding-step-heading) inherit reset; display:contents; ::before.
+- Verified local, 13 widths 1920-320: every element box + page height IDENTICAL, all text lines identical (only the mobile
+  card-1 text is now ::before); pixel screenshots old vs new template (card, pills, steps, mobile FAQ x 7 widths) 27/27 identical.
+  Headings = sheet (local pre-footer stays 2 spans: LOCAL title_desk has a double <br>, live text merges). Live before-snapshot
+  saved (scratchpad bd_live_before.json). Previous zip: scratchpad theme-code-only-1.5.62.zip.
+
+## ✅ LIVE 2026-10-05, verified (live ?ver=1.5.62; Home/Services/Client Success/Why SOLD headings = sentence once; 4 pages x 13 widths: line breaks, positions, heights, page heights unchanged; exact line edges old vs new markup identical to 0.01px @1440/393) — (was PENDING) (theme zip `_S_VERSION 1.5.62`, no SQL, no images) — SEO sheet red cells: one heading text for web + mobile
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- Client SEO sheet (10_85HhFbFDJP_itcUkHuFJYEOEhsw76AYE5P_8tmSFA, "After Check" column, red #F4CCCC; Branding & Design tab
+  excluded by user, Insights tab had none): the heading held a web <span> AND a mobile <span> with the same sentence -> read
+  twice (and glued: "YOURBUSINESS"). Fixed: Home pre-footer H2, All Services "Strategic marketing solutions..." H3 + pre-footer
+  H2, Client Success pre-footer H2, Why SOLD pre-footer H2.
+- functions.php: `sold_one_heading_text()` / `sold_echo_heading_pair()` - takes the two texts (ACF title_desk / title_mob or the
+  fallbacks, same escaping as before), outputs the words ONCE with breaks per breakpoint: both -> <br>, web only ->
+  <br class="d-none d-lg-inline">, mobile only -> <br class="d-lg-none"> (md for the accordion, as its spans were). If an admin
+  ever saves different words in the two fields it falls back to the old two spans (nothing breaks).
+- services-accordion.php: merged only where the title is a heading (Services H3); Home keeps its div pair (not flagged).
+- Verified local: 4 pages x 13 widths (1920-320 incl. 992/991, 768/767) - every heading line text + position, font, box and page
+  height IDENTICAL to before; heading text = sentence once. Live texts checked (Client Success web text has a trailing <br>,
+  handled). Previous zip: scratchpad theme-code-only-1.5.61.zip.
+
+## ✅ LIVE 2026-10-05, verified (live insights.css?ver=1.5.61; 280-1920 + Load More: 15/15 cards = own post image, image boxes same as before, none broken, no h-scroll) — (was PENDING) (theme zip `_S_VERSION 1.5.61`, no SQL, no images) — Insights "Explore All Insights" cards show each post's own image
+**One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite).
+- home.php: the Explore grid used fixed design images (office / tower / tower repeating, Figma 1867:2094 or ACF explore_images)
+  for every post. Now each card = that post's featured image (`sold_post_card_image`, medium_large, same as Featured / Latest);
+  the fixed images are only the fallback for a post without one. Load More cards come from the same template, so they match.
+- No CSS change: the image box keeps its size, radius and object-fit cover (web + mobile).
+- Verified local 1920/1440/1024/768/393/320: every card / image / text box and page height IDENTICAL to before, only the
+  image changed; all 15 cards (after Load More) = their own post's image (15/15 matched), none broken, no h-scroll.
+  Live: all 15 posts have a featured image (REST). Previous zip: scratchpad theme-code-only-1.5.60.zip.
+
 ## LIVE 2026-10-02, verified (theme zip `_S_VERSION 1.5.60`, no SQL, no images) — Insights Featured Story card back to the earlier size (web only)
 
 Client: the whole-image Featured card (1.5.58, 1197 x 1078 at 1440) is too big - wanted the earlier size. New block at the
