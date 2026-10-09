@@ -12,11 +12,43 @@ cPanel prefix `uaenewpr_` · DB `uaenewpr_sold` · DB user `uaenewpr_solduser` �
 
 # PART 1 — PENDING DEPLOY
 
+## ⏳ PENDING - `deploy/theme-ga-consent-1.5.69.zip` (functions.php ONLY, perms 0644) - GA migration completed
+Senior-SEO pass 2026-10-07 on live: GA4/GTMx2/Adsx2 fire (GA4 g/collect 204, both GTM 200, both Ads remarketing hits),
+16 + 18 clean. Two gaps vs the old site's plugins found and fixed locally (27 lines added, nothing removed):
+- Google Consent Mode default exactly as old Site Kit: ads/analytics storage denied for EU/EEA + GB/CH/NO/IS/LI until
+  consent, wait_for_update 500 - printed BEFORE all tags (verified: consent default precedes every config).
+- GTM4WP-style page data for GTM-P95FD387: dataLayer.push {pagePostType frontpage|bloghome|post|page|archive,
+  pagePostType2 single-<type>, pagePostAuthor (omitted if empty)}.
+Upload zip to wp-content/themes/, extract (overwrite), check perms 0644. No CSS change -> version unchanged.
+
 > **getsold.ae (`/home/uaenewpr/getsold.ae`) is still on 1.5.60 (built 2026-10-02).** Decision 2026-10-05: fixes go to staging
 > only; when ALL fixes are done, sync getsold.ae in ONE batch = latest `theme-code-only.zip` into
 > `/home/uaenewpr/getsold.ae/wp-content/themes/` + any SQL / image zips listed below that shipped to staging after 1.5.60.
 > Missing on getsold.ae so far: 1.5.61 - 1.5.68 (theme zip + open wp-admin once for 1.5.64; 1.5.67 + 1.5.68 run on the first page view).
 > Open (not in sheet red cells): Insights pre-footer H2 holds two DIFFERENT sentences (web 'READY TO WORK WITH THE...' / mobile 'READY TO GROW YOUR BUSINESS...') - user 2026-10-05: SKIP (different texts = leave as is).
+
+## ✅ LIVE 2026-10-07, verified (15/15 posts web+mobile: own hero image, headings, sizes; 5 tags on every page; live layout = local) - after fixing a 403: the first upload of this hand-built zip stored no file permissions -> css/insights-details.css unreadable (blog pages unstyled) until set to 0644 in File Manager; zip rebuilt with 0644 - PARTIAL ZIP `deploy/theme-blog-ga-1.5.69.zip` (3 files only: functions.php, single.php, css/insights-details.css)
+**Do NOT upload the full theme-code-only.zip now:** the theme folder also holds the unfinished service-page redesign
+(page-service.php + css/branding-design.css, web done / mobile not). Upload this 3-file zip, extract in wp-content/themes/
+(overwrite). No SQL, no wp-admin.
+- SEO doc #16: blog hero background = the post's own featured image (web + mobile, gradients kept) + 45% dark layer
+  (only with the post photo) so title + read-time/date stay readable on images with their own text. Local: 15/15 posts
+  show their own image. No featured image -> Theme Settings hero -> CSS default.
+- SEO doc #18: heading levels fixed at display time (sold_blog_heading_levels, exact per-post list; saved posts
+  unchanged): PPC "B. Facebook" -> H3 + its UAE/Saudi -> H4, Targeting/Landing/Negative/Follow-Up -> H3; leads
+  Conclusion/FAQs -> H2; RERA What's Worked/What You Should Do -> H2; AI search Quick Checklist -> H2; How AI "Why does
+  this matter"/Conclusion -> H2; Bing all H3 -> H2. All 15 posts: one H1, no skipped level. Sizes step down: web
+  H2 37/600 > H3 20/500 > H4 18/500 (was 26) > p 18; mobile 20 > 16 > 15 (was 18) > 14.
+- SEO-tool pass (2026-10-07, what a heading checker sees on the whole page): blog pre-footer H2 held the web + mobile copy
+  ("THEREAL ... READY TO") -> one text via sold_echo_heading_pair (look unchanged: 2 lines web / 3 mobile); nested
+  <h2><h2>..</h2></h2> in Stop Junk Leads unwrapped + empty headings dropped (all posts); pasted <font color> ignored;
+  bold tags inside headings no longer thicken them (14 H3s in PPC were 700) -> all H2 600 / H3+H4 500. 15/15 posts clean
+  (one H1, no empty/doubled heading, no skip above the footer; footer H4s kept = client heading sheet).
+- GA migration: old site's Elementor Custom Code (gbbck backup, snippets 6899 head prio 1 / 6922 body start) copied:
+  GTM-N7D2Q5CD, Google Ads AW-17360129904 + gtag_report_conversion, GA4 G-3EWX2RYWMG, GTM noscript (once). Off on
+  localhost (?sold_tags_test=1 to test - that sends a real hit). Plus the 2 the live old site added later via plugins
+  (not in gbbck; user OK 2026-10-07): GTM-P95FD387 (+ noscript, once) and AW-17676855202 (gtag config). New site = all 5
+  old-site Google IDs; verified loading, no JS errors.
 
 ## ✅ LIVE 2026-10-06, verified (?ver=1.5.68; 6 service <title> + og:title = Metas tab, descriptions intact; blog H2 600 / H3 500 at 1440 + 393, column centred) — (was PENDING) (theme zip `_S_VERSION 1.5.68`, no SQL, no images) — 6 service page meta titles + blog H2/H3 weights (web)
 **One step:** upload `theme-code-only.zip`, extract in `wp-content/themes/` (overwrite). No wp-admin login needed.
